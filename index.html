@@ -889,6 +889,62 @@ body[data-view="home"] .nav-tools .vt-row,body[data-view="plant"] .nav-tools .vt
   .leftcol{left:12px!important;right:12px!important;width:auto!important}
   .scn{left:8px!important;right:8px!important}
 }
+
+/* ---- landing flow: site plan → infrastructure → inside ---- */
+.nav-mode{display:flex;gap:3px;border:2px solid var(--ink);border-radius:999px;padding:3px;margin:12px 0 4px;background:#fff}
+.nav-mode button{flex:1;border:0;background:transparent;border-radius:999px;padding:8px 6px;font:700 .8rem/1 var(--f-display);color:var(--ink);cursor:pointer}
+.nav-mode button[aria-selected="true"]{background:var(--sun);box-shadow:inset 0 0 0 2px var(--ink)}
+.nav-main{flex:1;min-height:0;overflow:auto;padding:8px 2px 6px;overscroll-behavior:contain}
+.pg[hidden]{display:none}
+.nv-lead{margin:6px 0 10px;font-size:.82rem;line-height:1.4;color:var(--mute)}
+.nv-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 4px}
+.nv-kpi div{border:1.5px solid var(--rule);border-radius:12px;background:#fff;padding:7px 8px}.nv-kpi b{display:block;font:600 1rem/1.1 var(--f-display)}.nv-kpi span{font:600 .62rem/1.2 var(--f-mono);color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.nv-list{display:flex;flex-direction:column;gap:7px}
+.nv-card{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:2px solid var(--ink);border-radius:14px;background:var(--paper);padding:10px 10px 10px 12px;cursor:pointer;color:var(--ink);box-shadow:2px 2px 0 var(--ink);transition:transform .15s,background .15s}
+.nv-card:hover,.nv-card:focus-visible{background:#fff6dc;transform:translateX(2px)}
+.nv-card i,.nv-title i{flex:none;width:14px;height:14px;border-radius:4px;border:2px solid var(--ink)}
+.nv-card span{flex:1;min-width:0}.nv-card b{display:block;font:800 .88rem/1.2 var(--f-body)}.nv-card small{display:block;font-size:.72rem;line-height:1.35;color:var(--mute);margin-top:2px}
+.nv-card em{display:block;font:600 .64rem/1.2 var(--f-mono);font-style:normal;color:var(--ink);margin-top:4px}.nv-card u{text-decoration:none;font-size:1.2rem;color:var(--mute)}
+.nv-pv{display:flex;gap:3px;margin:12px 0 0;border:1.5px solid var(--rule);border-radius:999px;padding:3px;width:max-content}
+.nv-pv button{border:0;background:transparent;border-radius:999px;padding:5px 14px;font:700 .74rem/1 var(--f-body);cursor:pointer;color:var(--ink)}.nv-pv button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.nv-back{border:0;background:transparent;font:700 .78rem/1 var(--f-body);color:var(--mute);cursor:pointer;padding:4px 0;margin:2px 0 6px}.nv-back:hover{color:var(--ink)}
+.nv-title{display:flex;gap:10px;align-items:flex-start}.nv-title i{margin-top:4px}.nv-title b{display:block;font:600 1.12rem/1.15 var(--f-display)}.nv-title small{display:block;font:600 .66rem/1.3 var(--f-mono);color:var(--mute);margin-top:2px}
+.nv-acts{display:flex;gap:6px;margin:4px 0 6px}.nv-acts .cta{flex:1;justify-content:center;padding:9px 12px;font-size:.86rem;box-shadow:2px 2px 0 var(--ink)}
+.nv-gh{cursor:default}.nv-gh:hover{background:transparent}
+.nv-c.sel{background:#fff1c9;box-shadow:inset 2px 0 0 var(--sun)}.nv-go{margin-left:auto;font-style:normal;font:800 .72rem/1 var(--f-body);color:#b07800}
+.nv-chem{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}.nv-chem button{border:1.5px solid var(--ink);border-radius:999px;background:var(--paper);font:700 .7rem/1 var(--f-body);padding:5px 9px;cursor:pointer}.nv-chem button[aria-pressed="true"]{background:var(--sun)}
+.fac-tools{margin:8px 0 10px}.fac-tools .vt-row{display:flex!important;flex-wrap:wrap;gap:6px;background:transparent;border:0;box-shadow:none;padding:0}
+.fac-tools .vt-sec{flex:1 1 100%;justify-content:center;font-size:.9rem!important;padding:10px 14px!important}
+.fac-tools .ex{flex:1;display:flex!important;align-items:center;gap:6px;border:2px solid var(--ink);border-radius:999px;padding:4px 10px;background:var(--paper)}.fac-tools .ex input{flex:1;width:auto;min-width:0}
+.np-eye{margin-left:4px;font-size:.9rem;line-height:1;color:var(--ink);cursor:pointer;padding:2px 4px;border-radius:6px}.np-eye:hover{background:#fff1c9}
+.nav-lens{border-top:2px dashed var(--rule);padding-top:8px;margin-top:4px}
+.nav-lens .lens-pick{display:flex;justify-content:space-between;align-items:center;padding:3px 3px 3px 10px!important;font-size:.8rem}.nav-lens .lens-pick .tl{display:inline!important}.nav-lens .lens-pick .tl::before{content:'Color by '}.nav-lens .lens-pick .tl{font-size:0}.nav-lens .lens-pick .tl::before{font-size:.8rem;font-weight:700}
+.nav-lens #lens-key{margin-top:6px;border:2px solid var(--ink);border-radius:12px;padding:6px 9px;background:#fff;font-size:.72rem}.nav-lens #lens-key[hidden]{display:none}
+.nav-foot{position:relative;display:flex;gap:6px;margin-top:8px}.nav-foot .tool{flex:1;justify-content:center;padding:8px 6px}.nav-foot [data-foot="assume"],.nav-foot [data-foot="more"]{flex:none;width:40px}
+.nav-pop{position:absolute;right:0;bottom:calc(100% + 8px);width:230px;background:var(--paper);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:8px;display:flex;flex-direction:column;gap:6px;z-index:3}
+.nav-pop[hidden]{display:none}.nav-pop>*{width:100%;justify-content:center;margin:0!important}.nav-pop .chip .nl{display:inline!important}
+.nav-pop #about-btn{width:100%;height:auto;border-radius:999px;padding:8px;font-size:0;display:flex;justify-content:center}.nav-pop #about-btn::after{content:'ⓘ About & color key';font:700 .8rem/1 var(--f-body)}
+.mbar{display:none}
+@media (max-width:640px){
+  #controls{display:none!important}
+  .mbar{display:flex;position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:5;align-items:center;gap:6px;padding:7px!important;border-radius:20px;box-shadow:var(--shadow)}
+  .mb-menu{flex:none;width:40px;height:40px;border-radius:12px;border:2px solid var(--ink);background:var(--ink);color:var(--paper);font-size:1.1rem;cursor:pointer}
+  .mb-t{flex:1;min-width:0;font:600 .9rem/1.15 var(--f-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mbar .tool,.mbar .cta{flex:none;padding:9px 11px;font-size:.8rem}
+  .mb-chips{flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}.mb-chips::-webkit-scrollbar{display:none}
+  .mb-chips button{flex:none;display:flex;align-items:center;gap:6px;border:2px solid var(--ink);border-radius:999px;background:var(--paper);padding:8px 11px;font:700 .78rem/1 var(--f-body);color:var(--ink);white-space:nowrap}
+  .mb-chips i{width:10px;height:10px;border-radius:3px;border:1.5px solid var(--ink)}
+  body.panel-open .mbar{display:none}
+  .vtools{display:none!important}
+}
+.np-gh .np-eye{margin-left:auto}.np-gh span{flex:1}
+
+.nv-truck{border:1.5px solid var(--rule);border-radius:12px;background:#fff;padding:4px 10px 8px;margin:4px 0 8px}
+.nv-tk{margin-top:6px}.nv-tk b{font:800 .8rem/1.2 var(--f-body);margin-right:6px}.nv-tk span{font-size:.74rem;color:var(--mute)}
+.nv-tk i{display:block;height:7px;border:1.5px solid var(--ink);border-radius:4px;margin:4px 0 2px;background:#eef2f5;overflow:hidden}.nv-tk u{display:block;height:100%;background:var(--water)}
+.nv-tk small{font:600 .64rem/1 var(--f-mono);color:var(--mute)}
+.nv-tourhint{display:flex;align-items:center;gap:8px;border:2px solid var(--ink);border-radius:14px;background:linear-gradient(135deg,#fffaf0,#ffe9a8);padding:8px 8px 8px 12px;margin:4px 0 8px}
+.nv-tourhint b{font:800 .82rem/1 var(--f-body)}.nv-tourhint .cta{flex:1;justify-content:center;padding:7px 10px;font-size:.8rem;box-shadow:2px 2px 0 var(--ink)}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -977,7 +1033,7 @@ body[data-view="home"] .nav-tools .vt-row,body[data-view="plant"] .nav-tools .vt
       <p class="b-sub">Adapt the concept twin to a community. Facts come from public sources. Enter the threat groups from the state's 2019 Statewide Threat Assessment; they tune the scenarios and the At-risk table.</p>
       <div class="fields">
         <div class="field"><label for="pl-preset">Start from</label>
-          <select id="pl-preset"><option value="concept">Concept village</option><option value="allakaket">Allakaket</option><option value="fortyukon">Fort Yukon</option></select></div>
+          <select id="pl-preset"><option value="concept">Concept village</option></select></div>
         <div class="field"><label for="pl-name">Community</label><input type="text" id="pl-name" class="txt" enterkeyhint="done" autocomplete="off"></div>
         <div class="field"><label for="pl-river">River</label><input type="text" id="pl-river" class="txt" enterkeyhint="done" autocomplete="off"></div>
         <div class="field"><label for="pl-fg">Flood threat group</label><select id="pl-fg" class="grp"></select></div>
@@ -1230,6 +1286,8 @@ body[data-view="home"] .nav-tools .vt-row,body[data-view="plant"] .nav-tools .vt
     <button id="v-plant" aria-pressed="false">Plant</button>
     <button id="v-well" aria-pressed="false">Well</button>
     <button id="v-piped" aria-pressed="false">Piped</button>
+    <button id="v-power" aria-pressed="false" hidden>Power</button>
+    <button id="v-lagoon" aria-pressed="false" hidden>Lagoon</button>
     <button id="v-site" aria-pressed="false">Site plan</button>
   </div>
   <div class="ex">
@@ -1304,8 +1362,8 @@ body[data-view="home"] .nav-tools .vt-row,body[data-view="plant"] .nav-tools .vt
   <div class="as-in card">
     <header class="as-h"><div><p class="ak-eye">Every input behind every number</p><h2 id="as-title">Assumptions &amp; defaults</h2></div><button class="iconbtn" id="as-x" aria-label="Close assumptions">✕</button></header>
     <div class="as-bar"><input type="search" id="as-q" placeholder="Search values, e.g. fuel, chlorine, truck" aria-label="Search assumptions"><span id="as-n" class="as-n0" aria-live="polite"></span>
-      <button class="tool" id="as-reset">Reset all</button><button class="tool" id="as-exp">Export</button><button class="tool" id="as-imp">Import</button><input type="file" id="as-file" accept="application/json,.json" hidden></div>
-    <p class="as-note">Change a value and every cost, budget, study, lens and map on the page updates. Your changes are saved in this browser; export a file to share a set with your team.</p>
+      <button class="tool" id="as-reset">Reset all</button><button class="tool" id="as-exp">Export CSV</button><button class="tool" id="as-expj" title="Export JSON">JSON</button><button class="tool" id="as-imp">Import CSV / JSON</button><input type="file" id="as-file" accept=".csv,text/csv,application/json,.json" hidden></div>
+    <p class="as-note">Change a value and every cost, budget, study, lens and map on the page updates. Your changes are saved in this browser. Export a CSV to edit in Excel and import it back, or share a set with your team; only the id and value (or low/high) columns are read on import.</p>
     <div id="as-body" class="as-body"></div>
   </div>
 </section>
@@ -1443,7 +1501,7 @@ function updateFlows(dt){
 }
 
 /* ---------- helpers ---------- */
-const pickables=[];let isoId='';
+const pickables=[];let isoId='',siteSel=null;
 const layers={shell:[],water:[],waste:[],foundation:[],valves:[]};
 const layerOn={shell:true,water:true,waste:true,foundation:true,valves:false};
 function sh(m){m.castShadow=true;m.receiveShadow=true;return m;}
@@ -2052,6 +2110,199 @@ let PLA=new V(0,.9,40);const loopG=new THREE.Group();loopG.visible=false;scene.a
 function setPiped(on){pipedOn=on;pIn.visible=on;pOut.visible=!on;loopG.visible=on&&(typeof FSON==='undefined'||FSON.q_water!==false);}
 function pipedTick(dt){const pl=view==='piped'?PLIFT:0;pLift+=(pl-pLift)*Math.min(1,dt*(reduceMotion?20:1.8));if(Math.abs(pl-pLift)<.002)pLift=pl;pipedG.position.y=pLift;pHole.visible=pLift>.05;}
 
+
+// ---- community buildings: school and clinic (haul customers with their own tanks) ----
+const SCP=new V(-29,0,7),CLP=new V(-11,0,16);
+function civic(P,o){const g=new THREE.Group();g.position.copy(P);g.rotation.y=o.ry||0;scene.add(g);
+  g.add(M(BOX(o.w+3,.25,o.d+3),mat(C.gravel),0,.12,0));
+  [-o.w/2+.6,0,o.w/2-.6].forEach(x=>[-o.d/2+.6,o.d/2-.6].forEach(z=>g.add(M(CYL(.12,1.1,8),mat(C.wood),x,.7,z))));
+  const b=new THREE.Group();b.add(M(BOX(o.w,o.h,o.d),mat(o.col),0,1.25+o.h/2,0));
+  const r=gable(o.w+.6,o.d+.8,1.4,mat(C.roof));r.position.y=1.25+o.h;b.add(r);
+  for(let i=0;i<o.win;i++){const w=new THREE.Mesh(new THREE.PlaneGeometry(1.1,.9),winM);w.position.set(-o.w/2+1.6+i*(o.w-3.2)/Math.max(1,o.win-1),1.25+o.h*.55,o.d/2+.02);w.userData.noOutline=true;b.add(w);}
+  b.add(M(BOX(1.4,2.2,.1),mat(C.sun),o.w/2-1.6,1.25+1.1,o.d/2+.03));g.add(b);
+  return{g,b};}
+const school=civic(SCP,{w:14,d:8,h:3.4,col:'#e7b56a',win:5,ry:.12});
+school.b.add(M(BOX(2.4,.25,1),mat('#d3463b'),0,1.25+3.4+1.6,0));
+const clinic=civic(CLP,{w:9,d:6,h:2.8,col:'#f1f4f6',win:3,ry:-.08});
+{const cr=new THREE.Group();cr.add(M(BOX(1.2,.35,.08),mat('#d3463b'),0,0,0));cr.add(M(BOX(.35,1.2,.08),mat('#d3463b'),0,0,0));cr.position.set(-2.4,1.25+2.1,3.05);clinic.b.add(cr);}
+tag(school.b,'school');tag(clinic.b,'clinic');
+function civicParts(c,pre,o){const g=c.g;
+  const tr=new THREE.Group();tr.add(M(BOX(o.tw,2.2,o.td),mat('#cfd8df'),o.tx,1.25+1.1,o.tz));tr.add(M(CYL(o.tr,o.tl,20),mat(C.water),o.tx,1.25+.2+o.tl/2,o.tz));tag(tr,pre+'tank');g.add(tr);
+  const fp=new THREE.Group();fp.add(M(BOX(.5,.5,.3),mat(C.port),o.tx+o.tw/2+.1,1.6,o.tz+o.td/2-.4));fp.add(M(BOX(.5,.5,.3),mat('#7a5a3c'),o.tx+o.tw/2+.1,1.6,o.tz-o.td/2+.4));tag(fp,pre+'ports');g.add(fp);
+  const ht=new THREE.Group();ht.add(M(BOX(o.tw*.9,.9,o.td*.8),mat('#9fb2c0'),o.tx,.55,o.tz));tag(ht,pre+'hold');g.add(ht);
+  const bl=new THREE.Group();bl.add(M(CYL(.18,1.8,10),mat(C.steel),o.bx,1.25+o.bh+.9,o.bz));tag(bl,pre+'boiler');g.add(bl);}
+civicParts(school,'s_',{tx:-8.4,tz:0,tw:2.8,td:4,tr:1,tl:1.8,bx:4,bz:-2,bh:3.4});
+civicParts(clinic,'c_',{tx:6,tz:0,tw:2.4,td:3,tr:.8,tl:1.6,bx:-2.5,bz:-1.5,bh:2.8});
+{const gen=new THREE.Group();gen.add(M(BOX(1.6,1.1,1),mat('#d99a1e'),-3.2,.8,-3.6));gen.add(M(CYL(.1,.6,8),mat(C.steel),-3.6,1.6,-3.6));tag(gen,'c_gen');clinic.g.add(gen);}
+const CYP=new V(-14,0,-4),TRP=new V(-27,0,20),STP=new V(2,0,20);
+const cityB=civic(CYP,{w:9,d:5.5,h:2.6,col:'#9fc3d9',win:3,ry:.05});const tribeB=civic(TRP,{w:11,d:5,h:2.8,col:'#c98f6a',win:4,ry:-.1});const storeB=civic(STP,{w:9,d:5.5,h:3,col:'#8fb98a',win:2,ry:.08});
+{const f=new THREE.Group();f.add(M(CYL(.06,5,8),mat(C.steel),5.8,2.5,2.8));f.add(M(BOX(1.2,.7,.04),mat('#2b6cb0'),6.45,4.55,2.8));cityB.g.add(f);}
+{const f=new THREE.Group();f.add(M(CYL(.06,5,8),mat(C.steel),-6.6,2.5,2.6));f.add(M(BOX(1.2,.7,.04),mat('#9b2c2c'),-5.95,4.55,2.6));tribeB.g.add(f);}
+storeB.b.add(M(BOX(4.2,.7,.12),mat('#fff3d6'),-1,1.25+3+.1,2.85));
+{const fp=new THREE.Group();fp.add(M(BOX(.6,1.3,.5),mat('#d3463b'),6.2,.9,2.4));fp.add(M(BOX(.6,1.3,.5),mat('#d3463b'),6.2,.9,1.2));tag(fp,'k_fuel');storeB.g.add(fp);}
+tag(cityB.b,'cityhall');tag(tribeB.b,'tribehall');tag(storeB.b,'store');
+civicParts(cityB,'y_',{tx:6,tz:0,tw:2,td:2.6,tr:.6,tl:1.2,bx:-2.6,bz:-1.4,bh:2.6});
+civicParts(tribeB,'t_',{tx:-7,tz:0,tw:2,td:2.6,tr:.6,tl:1.2,bx:2.8,bz:-1.4,bh:2.8});
+civicParts(storeB,'k_',{tx:-6,tz:-.6,tw:2,td:2.6,tr:.6,tl:1.2,bx:2.6,bz:-1.4,bh:3});
+
+// ---- river landing: barge landing, fuel header + line to the tank farm, boat tie-up ----
+const BLX=-44,BLZ=bankN0(-44),BTX=-10,BTZ=bankN0(-10),RWY=-1.1;
+const landG=new THREE.Group();scene.add(landG);
+const FUEL_RUN=[[BLX-3,BLZ+6],[BLX-3,-30],[-91,-30],[-91,19],[-88.5,19]];
+{// barge landing: graded apron, ramp into the channel, mooring dead-men, lights
+  const g=new THREE.Group();
+  g.add(M(BOX(16,.22,9),mat('#cdbfa6'),BLX,.11,BLZ+4.5));
+  const ramp=M(BOX(10,.25,5.2),mat('#b9ab93'),BLX+1,RWY/2,BLZ-2.2);ramp.rotation.x=-Math.atan2(-RWY,5);g.add(ramp);
+  [-7,-1,5].forEach(dx=>{g.add(M(CYL(.28,1.4,10),mat('#6f5236'),BLX+dx,.7,BLZ+1.2));g.add(M(CYL(.34,.12,10),mat(C.port),BLX+dx,1.42,BLZ+1.2));});
+  [-8,8].forEach(dx=>{g.add(M(CYL(.08,4.2,8),mat(C.steel),BLX+dx,2.1,BLZ+8.4));g.add(M(BOX(.5,.25,.5),mat('#ffe08a',{emissive:new THREE.Color('#ffe08a'),emissiveIntensity:.6}),BLX+dx,4.25,BLZ+8.4));});
+  tag(g,'bargelanding');landG.add(g);}
+{// fuel header: manifold, valves, hose reel, spill kit, containment
+  const g=new THREE.Group(),x=BLX-3,z=BLZ+5;
+  g.add(M(BOX(3.6,.35,2.6),mat('#b8bfc5'),x,.18,z));g.add(M(BOX(3.2,.15,2.2),mat('#2f3a44'),x,.4,z));
+  g.add(pipe([[x-1.2,1,z],[x+1.2,1,z]],mat('#c98a10'),.12,{noFlow:true}));[-.8,0,.8].forEach(d=>g.add(M(CYL(.16,.4,10),mat('#e8553d'),x+d,1.3,z)));
+  const reel=M(CYL(.55,.5,16),mat('#3b4b57'),x+2.6,.75,z);reel.rotation.x=Math.PI/2;g.add(reel);
+  g.add(M(BOX(.8,.9,.6),mat('#ffc145'),x-2.6,.45,z+.8));
+  tag(g,'fuelheader');landG.add(g);}
+{// fuel line on short supports to the tank farm
+  const g=new THREE.Group();const P=FUEL_RUN.map(([x,z])=>[x,.75,z]);g.add(pipe(P,mat('#c98a10'),.1,{speed:.7,gate:()=>skyMode==='midsun'}));
+  for(let i=0;i<P.length-1;i++){const a=P[i],b=P[i+1],L=Math.hypot(b[0]-a[0],b[2]-a[2]),n=Math.floor(L/6);for(let k=1;k<n;k++){const t=k/n,x=a[0]+(b[0]-a[0])*t,z=a[2]+(b[2]-a[2])*t;g.add(M(BOX(.5,.6,.5),mat(C.struct),x,.3,z));}}
+  tag(g,'fuelline');landG.add(g);}
+{// boat tie-up: float dock, gangway, skiffs on the bank, rack
+  const g=new THREE.Group();
+  const gw=M(BOX(1.2,.12,4),mat(C.woodLt),BTX,RWY/2+.1,BTZ-1.4);gw.rotation.x=-Math.atan2(-RWY,4);g.add(gw);
+  g.add(M(BOX(10,.3,1.8),mat(C.woodLt),BTX,RWY+.15,BTZ-4.2));[-4,0,4].forEach(d=>g.add(M(BOX(.9,.25,1.6),mat('#3b4b57'),BTX+d,RWY+.02,BTZ-4.2)));
+  const skiff=(x,z,ry,c,y)=>{const s=new THREE.Group();const hull=M(BOX(4.4,.6,1.5),mat(c),0,.3,0);s.add(hull);const bow=M(new THREE.ConeGeometry(.78,1.2,4),mat(c),2.7,.3,0);bow.rotation.z=-Math.PI/2;bow.rotation.x=Math.PI/4;s.add(bow);
+    s.add(M(BOX(.5,.7,.5),mat('#2f3a44'),-2.1,.75,0));s.position.set(x,y,z);s.rotation.y=ry;return s;};
+  g.add(skiff(BTX-6,BTZ+2.5,.4,'#c7d3db',0));g.add(skiff(BTX-2,BTZ+3.4,.15,'#8fb3c9',0));g.add(skiff(BTX+3,BTZ+2.8,-.2,'#d7c49b',0));
+  g.add(M(BOX(4,1.2,.3),mat(C.wood),BTX+8,.6,BTZ+5));
+  tag(g,'boatlanding');landG.add(g);
+  const sum=new THREE.Group();sum.add(skiff(BTX-2,BTZ-6.2,0,'#8fb3c9',RWY+.05));sum.add(skiff(BTX+3,BTZ-6.2,0,'#c7d3db',RWY+.05));tag(sum,'boatlanding');landG.add(sum);landG.userData.summerBoats=sum;}
+{// the fuel barge and tug, only in the summer (midnight sun) light
+  const g=new THREE.Group();g.add(M(BOX(22,1.6,7),mat('#7f8c96'),BLX+1,RWY+.6,BLZ-9));
+  [-6,0,6].forEach(d=>{g.add(M(CYL(1.3,5.5,18),mat('#f4f1ea'),BLX+1+d,RWY+2.3,BLZ-9));g.children[g.children.length-1].rotation.z=Math.PI/2;});
+  g.add(M(BOX(6,2.2,5),mat('#d3463b'),BLX+15.5,RWY+1.1,BLZ-9));g.add(M(BOX(2.6,1.6,3),mat('#fff3d6'),BLX+16.5,RWY+3,BLZ-9));
+  g.add(pipe([[BLX-3,1,BLZ+5],[BLX-3,.8,BLZ+1],[BLX-2,RWY+1.8,BLZ-5.6]],mat('#2f3a44'),.09,{noFlow:true}));
+  tag(g,'fuelbarge');landG.add(g);landG.userData.barge=g;}
+const LANDING_EXCL=(x,z)=>{if(Math.abs(x-BLX)<11&&z>BLZ-1&&z<BLZ+12)return true;if(Math.abs(x-BTX)<12&&z>BTZ-1&&z<BTZ+8)return true;
+  for(let i=0;i<FUEL_RUN.length-1;i++)if(segD(x,z,FUEL_RUN[i][0],FUEL_RUN[i][1],FUEL_RUN[i+1][0],FUEL_RUN[i+1][1])<2.2)return true;return false;};
+function landingSeason(){let sum=false;try{sum=skyMode==='midsun';}catch(e){}landG.userData.barge.visible=sum;landG.userData.summerBoats.visible=sum;}
+landingSeason();
+
+// ---- power: diesel powerhouse, tank farm, heat recovery to the water plant, overhead distribution ----
+const PWP=new V(-74,0,22);let powerOn=false;const powerGate=()=>powerOn;
+const powG=new THREE.Group();powG.position.copy(PWP);scene.add(powG);
+const pwOut=new THREE.Group(),powIn=new THREE.Group();powIn.visible=false;powG.add(pwOut);powG.add(powIn);
+const PW=(o,id)=>{tag(o,id);powIn.add(o);return o;};
+const PWA=(o,id)=>{tag(o,id);powG.add(o);return o;};
+powG.add(M(BOX(30,.25,12),mat(C.gravel),-4,.12,0));
+// exterior shell (village views)
+{pwOut.add(M(BOX(12,4.4,8),mat('#d9a65a'),0,2.2,0));pwOut.add(M(BOX(12.6,.45,8.6),mat(C.roof),0,4.6,0));
+  [-3.5,0,3.5].forEach(x=>{pwOut.add(M(CYL(.22,2.4,12),mat(C.steel),x,5.9,-1.4));pwOut.add(M(CYL(.34,.7,12),mat('#8a949c'),x,5.1,-1.4));});
+  for(let i=0;i<3;i++){const w=new THREE.Mesh(new THREE.PlaneGeometry(1.4,.9),winM);w.position.set(-3.5+i*3.5,3,4.02);w.userData.noOutline=true;pwOut.add(w);}
+  pwOut.add(M(BOX(1.6,3,.1),mat(C.sun),5,1.5,4.02));tag(pwOut,'powerhouse');}
+// interior (Power view): slab, back + side glass walls, lifted roof
+PW((()=>{const s=new THREE.Group();s.add(M(BOX(12,.3,8),mat('#cfd6dc'),0,.15,0));s.add(M(BOX(12,4.4,.1),glass(C.white,.16),0,2.2,-4));s.add(M(BOX(.1,4.4,8),glass(C.white,.16),-6,2.2,0));
+  const r=M(BOX(12.6,.4,8.6),mat(C.roof,{transparent:true,opacity:.3,depthWrite:false}),0,7.4,0);s.add(r);return s;})(),'pwbldg');
+PW((()=>{const g=new THREE.Group();[-3.5,0,3.5].forEach((x,i)=>{g.add(M(BOX(3.2,.3,1.4),mat('#3b4b57'),x,.45,-1.2));g.add(M(BOX(1.9,1.3,1.1),mat(i===2?'#e8c34a':'#f2c14e'),x-.5,1.25,-1.2));
+    const al=M(CYL(.55,1.1,20),mat('#8a949c'),x+1,1.2,-1.2);al.rotation.z=Math.PI/2;g.add(al);g.add(M(BOX(.5,.5,.5),mat(C.port),x-.5,2.1,-1.2));
+    g.add(pipe([[x-.5,2.35,-1.2],[x-.5,4.4,-1.4],[x-.5,7.2,-1.4]],mat('#8a949c'),.12,{noFlow:true}));});return g;})(),'pwgen');
+PW((()=>{const g=new THREE.Group();for(let i=0;i<5;i++){g.add(M(BOX(1,2.3,.8),mat('#a9b4bc'),-3+i*1.05,1.45,3.2));g.add(M(BOX(.5,.3,.03),mat('#d8eef8'),-3+i*1.05,2.2,2.79));}
+  g.add(M(BOX(.12,.12,.03),mat('#6dff8a',{emissive:new THREE.Color('#6dff8a'),emissiveIntensity:.8}),-3,1.8,2.79));return g;})(),'pwswitch');
+PW((()=>{const g=new THREE.Group();g.add(M(BOX(1.3,1.6,.4),mat('#5f707c'),3.6,1.6,3.4));g.add(M(BOX(.9,.5,.03),mat('#d8eef8'),3.6,1.9,3.19));return g;})(),'pwctrl');
+PW((()=>{const g=new THREE.Group();g.add(M(BOX(.5,1.1,.7),mat('#c3ced6'),5,.85,-.2));for(let i=0;i<4;i++)g.add(M(BOX(.52,1,.02),mat('#8a949c'),5,.85,-.45+i*.16));
+  [-3.5,0,3.5].forEach(x=>g.add(pipe([[x-.5,1.8,-.6],[x-.5,1.8,.3],[4.6,1.8,.3]],mat(C.hot),.06,{gate:powerGate,speed:.6})));
+  g.add(M(BOX(2.6,.9,1.6),mat('#7f97a8'),0,5.1,-1.6));return g;})(),'pwheat');
+PWA((()=>{const g=new THREE.Group();g.add(pipe([[5.2,.9,-.2],[6.6,.9,-.2],[6.6,.6,-4.6],[8,.6,-4.6],[8,.6,-19.5]],mat(C.hot),.14,{speed:.8}));
+  g.add(pipe([[8.6,.6,-19.5],[8.6,.6,-4.2],[6.9,.6,-4.2],[6.9,.6,-.6],[5.2,.6,-.6]],mat('#7cc4f0'),.14,{speed:.8}));return g;})(),'pwloop');
+PW((()=>{const g=new THREE.Group();g.add(M(BOX(1.2,1,.8),mat('#c98a10'),-5,.8,1.8));return g;})(),'pwday');
+PWA((()=>{const g=new THREE.Group();g.add(M(BOX(9,.8,10),mat('#b8bfc5'),-14,.4,0));g.add(M(BOX(8.4,.2,9.4),mat('#2f3a44'),-14,.55,0));
+  [[-16,-2.6],[-12,-2.6],[-16,2.6],[-12,2.6]].forEach(([x,z])=>{g.add(M(CYL(1.6,4.2,24),mat('#f4f1ea'),x,2.8,z));g.add(M(CYL(1.62,.25,24),mat('#c98a10'),x,4.4,z));});
+  g.add(pipe([[-10,1.2,1.8],[-6,1.2,1.8],[-5.4,1.2,1.8]],mat('#c98a10'),.07,{gate:powerGate,speed:.4}));return g;})(),'pwtank');
+PWA((()=>{const g=new THREE.Group();g.add(M(BOX(1.6,1.6,1.4),mat('#4f8a63'),9,.8,2.5));g.add(M(BOX(1.7,.15,1.5),mat(C.port),9,1.65,2.5));return g;})(),'pwxfmr');
+// overhead distribution around the village
+const distG=new THREE.Group();scene.add(distG);let PDA=new V(-40,7,20);
+{let cx=0,cz=0;RS.forEach(p=>{cx+=p.x;cz+=p.z;});cx/=RS.length;cz/=RS.length;
+  const poleM=mat('#8b6a48'),armM=mat('#6f5236'),wireM=new THREE.LineBasicMaterial({color:'#2b3640',transparent:true,opacity:.8}),H=6.2,poles=[];
+  for(let i=0;i<RS.length;i+=18){const p=RS[i],dx=cx-p.x,dz=cz-p.z,l=Math.hypot(dx,dz)||1,x=p.x+dx/l*4.6,z=p.z+dz/l*4.6;
+    if(Math.hypot(x-PP.x,z-PP.z)<13)continue;poles.push(new V(x,H,z));}
+  const sag=(a,b,s)=>{const pts=[];for(let k=0;k<=8;k++){const t=k/8;pts.push(new V(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t-Math.sin(Math.PI*t)*s,a.z+(b.z-a.z)*t));}return pts;};
+  const wire=(a,b,s)=>{const L=new THREE.Line(new THREE.BufferGeometry().setFromPoints(sag(a,b,s)),wireM);L.raycast=NOOP;distG.add(L);};
+  const polesG=new THREE.Group();poles.forEach(p=>{polesG.add(M(CYL(.13,H,8),poleM,p.x,H/2,p.z));const a=M(BOX(1.6,.12,.12),armM,p.x,H-.3,p.z);a.lookAt(p.x+1,H-.3,p.z);polesG.add(a);});
+  distG.add(polesG);tag(polesG,'pdist');
+  for(let i=0;i<poles.length;i++){const a=poles[i],b=poles[(i+1)%poles.length];if(a.distanceTo(b)>40)continue;[-.6,0,.6].forEach(o=>wire(new V(a.x+o,a.y-.2,a.z),new V(b.x+o,b.y-.2,b.z),.35));}
+  const near=q=>{let best=poles[0],bd=1e9;poles.forEach(p=>{const d=(p.x-q.x)**2+(p.z-q.z)**2;if(d<bd){bd=d;best=p;}});return best;};
+  const trG=new THREE.Group(),drops=[];const served=new Set();
+  const serve=(q,h)=>{const p=near(q);if(!served.has(p)){served.add(p);trG.add(M(CYL(.32,.75,12),mat('#9aa6ae'),p.x+.35,H-1.1,p.z));}wire(new V(p.x+.35,H-.8,p.z),new V(q.x,h,q.z),.25);};
+  homes.forEach(hm=>serve(hm.g.position,4.2));serve(SCP,5.6);serve(CLP,5);serve(CYP,4.8);serve(TRP,5);serve(STP,5);serve(new V(0,0,1),4.6);serve(new V(-63,0,-2),5);serve(new V(lagPort.x,0,lagPort.z),2.2);serve(new V(PP.x-2,0,PP.z-6),3.8);
+  distG.add(trG);tag(trG,'ptrans');
+  const feed=near(new V(PWP.x+9,0,PWP.z+2.5));wire(new V(PWP.x+9,1.6,PWP.z+2.5),feed,.2);
+  if(poles.length)PDA.copy(poles[Math.floor(poles.length*.62)]).setY(H+.6);}
+function setPower(on){powerOn=on;powIn.visible=on;pwOut.visible=!on;}
+// ---- lagoon: components for the Lagoon view ----
+const lagIn=new THREE.Group();lag.add(lagIn);
+const LG=(o,id)=>{tag(o,id);lagIn.add(o);return o;};
+LG((()=>{const g=new THREE.Group();g.add(M(BOX(2.4,.9,1.6),mat('#cfd6dc'),-12.8,.45,2.4));g.add(M(BOX(1,.6,.8),mat('#7f97a8'),-12.8,1.2,2.4));g.add(M(CYL(.12,1,10),mat(C.port),-13.6,.9,1.2));return g;})(),'ldump');
+LG((()=>{const g=new THREE.Group();g.add(pipe([[-12.5,.5,0],[-10.4,.5,0],[-8.4,.5,0],[-7.6,.15,0]],mat(C.waste),.14,{speed:.5}));return g;})(),'linlet');
+LG((()=>{const g=new THREE.Group();g.add(M(BOX(1.6,1.05,16),bermM,2,.52,0));return g;})(),'ldivide');
+LG((()=>{const g=new THREE.Group();const p=new THREE.Mesh(new THREE.PlaneGeometry(7.6,16),mat('#b9dfae'));p.rotation.x=-Math.PI/2;p.position.set(6,.72,0);g.add(p);return g;})(),'lcell2');
+LG((()=>{const g=new THREE.Group();const p=new THREE.Mesh(new THREE.PlaneGeometry(10.2,16),mat('#8fbf8a'));p.rotation.x=-Math.PI/2;p.position.set(-4.1,.71,0);g.add(p);return g;})(),'lcell1');
+LG((()=>{const g=new THREE.Group();g.add(M(BOX(.9,.8,.9),mat('#9aa6ae'),2,1.2,-5));g.add(pipe([[1.2,.6,-5],[2.8,.6,-5]],mat(C.effluent),.1,{speed:.3}));return g;})(),'ltransfer');
+LG((()=>{const g=new THREE.Group();const lm=mat('#2f3a44');[[0,-7.95,18,.3],[0,7.95,18,.3]].forEach(([x,z,w])=>g.add(M(BOX(w,.36,.18),lm,x,.82,z)));[[-8.95],[8.95]].forEach(([x])=>g.add(M(BOX(.18,.36,16),lm,x,.82,0)));return g;})(),'lliner');
+LG((()=>{const g=new THREE.Group();g.add(M(BOX(1.2,1.6,1.2),mat('#9aa6ae'),10,1,-4));g.add(M(CYL(.18,.4,12),mat('#e8553d'),10,2,-4));
+  g.add(pipe([[10.6,.5,-4],[13,.5,-4],[16,.3,-6],[20,.2,-9]],mat(C.effluent),.13,{speed:.4}));return g;})(),'ldischarge');
+LG((()=>{const g=new THREE.Group();g.add(M(CYL(.12,1.4,10),mat(C.steel),13.2,.7,6));g.add(M(CYL(.16,.15,10),mat(C.port),13.2,1.45,6));return g;})(),'lmon');
+LG((()=>{const g=new THREE.Group();g.add(M(BOX(.12,2,.12),mat('#ffffff'),8,1,6.5));for(let i=0;i<5;i++)g.add(M(BOX(.3,.05,.13),mat(i%2?'#e8553d':'#24323d'),8,.6+i*.3,6.55));return g;})(),'lgauge');
+lagIn.visible=true;
+function setLagoon(on){}
+
+
+// ---- terrain detail: far-bank hills, cut bank, willows, gravel bars, ice ridges, thermokarst ponds, winter trail ----
+const terrG=new THREE.Group();scene.add(terrG);
+const trr=rng(4242);
+const BUSY=[[-70,-2,16],[PWP.x-4,PWP.z,20],[40,36,16],[PP.x,PP.z,16],[WP.x+3,WP.z,14],[0,1,12],[SCP.x,SCP.z,11],[CLP.x,CLP.z,9],[CYP.x,CYP.z,9],[TRP.x,TRP.z,10],[STP.x,STP.z,9],[BLX,BLZ+5,13],[BTX,BTZ+3,12]];
+const busy=(x,z,pad)=>BUSY.some(([a,b,r])=>Math.hypot(x-a,z-b)<r+(pad||0))||homes.some(h=>Math.hypot(h.g.position.x-x,h.g.position.z-z)<9+(pad||0))||RS.some((s,i)=>i%5===0&&Math.hypot(s.x-x,s.z-z)<6+(pad||0));
+const inIsland=(x,z,m)=>Math.hypot(x-IC.x,z-IC.z)<IR-(m||4);
+// far-bank hills: low rolling snow ridges beyond the river
+{const hm=snowMat;for(let i=0;i<9;i++){const x=IC.x-IR+20+i*24+trr()*8,zb=bankS(x),z=zb-10-trr()*16;if(!inIsland(x,z,8))continue;
+  const r=9+trr()*8,h=2+trr()*3.2,m=M(new THREE.SphereGeometry(1,24,10,0,Math.PI*2,0,Math.PI/2),hm,x,0,z);m.scale.set(r,h,r*.7);m.rotation.y=trr()*3;m.userData.noOutline=true;m.castShadow=true;terrG.add(m);}}
+// cut bank: exposed soil and ice-rich layers on the eroding village bank, with slumped blocks
+{const soil=mat('#8f6b47'),ice=mat('#eef8ff'),blk=mat('#a7825a');
+  for(let x=IC.x-IR+10;x<IC.x+IR-10;x+=2.2){const z=bankN0(x);if(!inIsland(x,z,3))continue;const w=erRate(x);if(w<.35)continue;
+    const face=M(BOX(2.3,1.05,.25),soil,x,-.55,z-.08);face.userData.noOutline=true;terrG.add(face);
+    const l=M(BOX(2.3,.1,.27),ice,x,-.35-(Math.floor(x)%3)*.12,z-.09);l.userData.noOutline=true;terrG.add(l);
+    if(trr()<.35){const b=M(BOX(.9+trr(),.6,.8),blk,x+trr(),-.85,z-1.2-trr()*1.2);b.rotation.set(trr()*.6,trr()*2,trr()*.5);terrG.add(b);}}}
+// willows along both banks and the old slough
+{const geo=new THREE.IcosahedronGeometry(1,0),wm=mat('#7d8f5c'),N=520,inst=new THREE.InstancedMesh(geo,wm,N);inst.userData.noOutline=true;inst.castShadow=true;let n=0;const d=new THREE.Object3D();
+  const put=(x,z,s)=>{if(n>=N||!inIsland(x,z,3)||busy(x,z,-3))return;d.position.set(x,s*.45,z);d.scale.set(s*(.8+trr()*.6),s*(.6+trr()*.4),s*(.8+trr()*.6));d.rotation.set(0,trr()*6,0);d.updateMatrix();inst.setMatrixAt(n++,d.matrix);};
+  for(let x=IC.x-IR;x<IC.x+IR;x+=1.6){put(x+trr(),bankN0(x)+1.2+trr()*3.5,.6+trr()*.7);put(x+trr(),bankS(x)-1.2-trr()*3.5,.6+trr()*.7);}
+  for(let i=0;i<SL.length-1;i++)for(let t=0;t<1;t+=.08){const x=SL[i][0]+(SL[i+1][0]-SL[i][0])*t,z=SL[i][1]+(SL[i+1][1]-SL[i][1])*t;put(x+(trr()-.5)*8,z+(trr()-.5)*8,.5+trr()*.6);}
+  inst.count=n;terrG.add(inst);}
+// gravel bars on the inside of the river bends
+{const gm=mat('#c9bfae');[[-80,.62],[-30,.3],[22,.66],[70,.35]].forEach(([x,f])=>{const zN=bankN0(x),zS=bankS(x),z=zS+(zN-zS)*f;if(!inIsland(x,z,6))return;
+  const m=M(new THREE.CircleGeometry(1,24),gm,x,RWY+.03,z);m.rotation.x=-Math.PI/2;m.scale.set(9+trr()*6,(zN-zS)*.18,1);m.userData.noOutline=true;m.castShadow=false;m.receiveShadow=true;terrG.add(m);});}
+// river ice: pressure ridges and a marked winter trail across
+const winterG=new THREE.Group();terrG.add(winterG);
+{const rm=mat('#e6f2fb');for(let k=0;k<3;k++){const x0=IC.x-IR+30+k*60+trr()*20;for(let i=0;i<14;i++){const x=x0+i*1.3,zN=bankN0(x),zS=bankS(x),z=zS+(zN-zS)*(.3+.4*((i*7+k*3)%10)/10);
+    if(!inIsland(x,z,4))continue;const b=M(BOX(1+trr(),.35+trr()*.4,.7),rm,x,RWY+.2,z);b.rotation.set(trr()*.4,trr()*3,trr()*.4);b.userData.noOutline=true;winterG.add(b);}}
+  const tx=58,zN=bankN0(tx),zS=bankS(tx);for(let i=0;i<=10;i++){const z=zN-(zN-zS)*i/10,x=tx+Math.sin(i*.6)*2.5;
+    const st=M(CYL(.05,1.2,6),mat('#3b4b57'),x,RWY+.6,z);st.userData.noOutline=true;winterG.add(st);const fl=M(BOX(.35,.22,.03),mat('#e8553d'),x+.18,RWY+1.1,z);fl.userData.noOutline=true;winterG.add(fl);}
+  const tr=new THREE.Line(new THREE.BufferGeometry().setFromPoints(Array.from({length:30},(_,i)=>{const z=zN+6-(zN-zS+12)*i/29;return new V(tx+Math.sin(i*.2)*2.5,RWY+.04+(z>zN||z<zS?1.15:0),z);})),new THREE.LineDashedMaterial({color:'#7d8a96',dashSize:.8,gapSize:.6}));
+  tr.computeLineDistances();tr.raycast=NOOP;winterG.add(tr);}
+// thermokarst ponds where ice-rich ground has thawed
+const PONDS=[];
+{const pm=mat('#bfe0f2');let tries=0;while(PONDS.length<6&&tries<400){tries++;const zi=ZONES[Math.floor(trr()*ZONES.length)],a=trr()*6.28,r=zi[2]*(.3+trr()*.9),x=zi[0]+Math.cos(a)*r,z=zi[1]+Math.sin(a)*r;
+  const rad=2+trr()*2.5;if(!inIsland(x,z,8)||busy(x,z,rad)||z<bankN0(x)+6||PONDS.some(p=>Math.hypot(p[0]-x,p[1]-z)<p[2]+rad+3))continue;
+  const m=M(new THREE.CircleGeometry(1,22),pm,x,.03,z);m.rotation.x=-Math.PI/2;m.scale.set(rad,rad*(.6+trr()*.4),1);m.userData.noOutline=true;m.castShadow=false;terrG.add(m);
+  const rim=new THREE.Mesh(new THREE.RingGeometry(.92,1.08,22),mat('#7d8f5c',{side:THREE.DoubleSide}));rim.rotation.x=-Math.PI/2;rim.position.set(x,.035,z);rim.scale.copy(m.scale);rim.userData.noOutline=true;terrG.add(rim);
+  PONDS.push([x,z,rad]);}}
+// snow drifts and tussock texture
+{const dm=snowMat,N=160,inst=new THREE.InstancedMesh(new THREE.SphereGeometry(1,10,6,0,Math.PI*2,0,Math.PI/2),dm,N);inst.userData.noOutline=true;let n=0;const d=new THREE.Object3D();
+  for(let t=0;t<2000&&n<N;t++){const a=trr()*6.28,r=Math.sqrt(trr())*(IR-6),x=IC.x+Math.cos(a)*r,z=IC.z+Math.sin(a)*r;if(z<bankN0(x)+2&&z>bankS(x)-2)continue;if(busy(x,z,1))continue;
+    d.position.set(x,0,z);d.scale.set(1.5+trr()*3,.25+trr()*.35,.8+trr()*1.2);d.rotation.set(0,.3+trr()*.4,0);d.updateMatrix();inst.setMatrixAt(n++,d.matrix);}inst.count=n;terrG.add(inst);}
+function terrainSeason(){let k='sunset';try{k=skyMode;}catch(e){}winterG.visible=k!=='midsun';}
+terrainSeason();
+const TERR_EXCL=(x,z)=>PONDS.some(p=>Math.hypot(p[0]-x,p[1]-z)<p[2]+1);
+
 // black spruce (positions kept so hazards can lean or remove them)
 const treeGeo=new THREE.ConeGeometry(1,1,8);treeGeo.translate(0,.5,0);
 const MAXT=800;
@@ -2067,6 +2318,10 @@ for(let a=0;a<9000&&TD.length<MAXT;a++){
   if(Math.hypot(x+70,z+2)<17||Math.hypot(x-40,z-36)<17)continue;
   if(x>WP.x-11&&x<WP.x+22&&z>WP.z-10&&z<WP.z+16)continue;
   if(x>PP.x-15&&x<PP.x+15&&z>PP.z-11&&z<PP.z+9)continue;
+  if(x>PWP.x-22&&x<PWP.x+13&&z>PWP.z-8&&z<PWP.z+8)continue;
+  if(LANDING_EXCL(x,z)||TERR_EXCL(x,z))continue;
+  if(Math.hypot(x-SCP.x,z-SCP.z)<11||Math.hypot(x-CLP.x,z-CLP.z)<9||Math.hypot(x-CYP.x,z-CYP.z)<8.5||Math.hypot(x-TRP.x,z-TRP.z)<9||Math.hypot(x-STP.x,z-STP.z)<9)continue;
+  if(x>PWP.x+5&&x<PWP.x+11&&z>PWP.z-21&&z<PWP.z)continue;
   if(homes.some(h=>Math.hypot(h.g.position.x-x,h.g.position.z-z)<8))continue;
   if(Math.abs(x+74)<2.5&&z<-10&&z>-60)continue;
   if(sloughD(x,z)<4)continue;
@@ -2283,7 +2538,7 @@ VALVES.forEach(v=>{
 outline(scene);
 
 /* ---------- info content ---------- */
-const SYS={water:['Water supply','var(--water)'],waste:['Wastewater','var(--waste)'],structure:['Structure','var(--struct)'],haul:['Haul system','var(--sun)'],fixture:['Fixture','var(--fixture)'],ground:['Ground','var(--soil)'],hazard:['Hazard','var(--hazard)']};
+const SYS={water:['Water supply','var(--water)'],waste:['Wastewater','var(--waste)'],structure:['Structure','var(--struct)'],haul:['Haul system','var(--sun)'],fixture:['Fixture','var(--fixture)'],ground:['Ground','var(--soil)'],hazard:['Hazard','var(--hazard)'],power:['Power','#d99a1e']};
 const anchor=(obj,x,y,z)=>({obj,p:new V(x,y,z)});
 const routeAnchor=anchorPt(...road.getPointAt(.12).toArray());
 const A={
@@ -2322,7 +2577,7 @@ dwv:{t:'Drain, waste & vent piping',sys:'waste',layer:'waste',a:anchor(plumb,-.3
   s:[['Slope','¼ in per ft (3 in and smaller)'],['Main','3 in ABS or PVC'],['Vent through roof','≥ 3 in, insulated']]},
 treatment:{t:'Onsite wastewater treatment unit',sys:'waste',layer:'waste',a:anchor(plumb,2.0,F+1.22,.75),
   b:'A compact unit in the utility room treats household wastewater before it leaves the house. Solids settle, bacteria break down organics with added air, and the water is filtered and disinfected. Treated effluent is far lower in strength and odor than raw sewage, so it is easier and safer to store and haul.',
-  s:[['Process','Settling → aeration → filtration → UV'],['Location','Heated utility room'],['Residuals','Sludge pumped periodically'],['Related work','ANTHC PASS; Alaska Water & Sewer Challenge']]},
+  s:[['Process','Settling → aeration → filtration → UV'],['Location','Heated utility room'],['Residuals','Sludge pumped periodically'],['Related work','Statewide in-home water and sewer pilot programs']]},
 effluent:{t:'Effluent holding tank',sys:'waste',layer:'waste',a:anchor(plumb,3.1,F+.98,2.3),
   b:'Stores treated water until the sewage truck pumps it out. The level is live, and the amber light on the treatment unit blinks as it nears full. Some pilot systems recycle part of this water for flushing or laundry, which cuts both delivery and pump-out volume.',
   s:[['Capacity','300–500 gal typical'],['Alarm','High level, audible and visual'],['Venting','Sealed tank, vented through roof']]},
@@ -2459,7 +2714,7 @@ function chemCard(){
 }
 Object.assign(A,{
  wellhome:{t:'Private-well home',sys:'water',v:'village',act:'Open the well cutaway',actView:'well',a:anchor(wellG,0,5.6,0),dist:30,
-  b:'An upland lot with its own drilled well and septic system instead of haul service, which is common on the road system around Fairbanks. Water quality varies a lot from well to well, so the treatment train depends on the lab test. Open the cutaway to see the well through permafrost and pick a water chemistry.',
+  b:'An upland lot with its own drilled well and septic system instead of haul service, which is common on the road system near regional hubs. Water quality varies a lot from well to well, so the treatment train depends on the lab test. Open the cutaway to see the well through permafrost and pick a water chemistry.',
   s:[['Water','Drilled well, own pump and treatment'],['Wastewater','Septic tank + drainfield'],['Owner does','Testing, filter changes, upkeep']]},
  wchem:{t:'Well water chemistry',sys:'water',v:'well',a:anchor(wellG,3.8,WF+1.5,2.4),dist:8,extra:chemCard,
   b:'Every well is different, even next door. Pick a water type below to change the treatment train in the 3D cutaway and the 2D section.',
@@ -2516,7 +2771,7 @@ Object.assign(A,{
   b:'Perforated pipes in gravel trenches spread effluent into thawed, well-drained soil, where it is treated as it soaks in. It has to sit well away and downhill from the well. Rigid insulation and an undisturbed snow cover keep it from freezing.',
   s:[['From well','Typically 100 ft or more'],['Soil','Thawed and well drained'],['Winter','Do not pack snow over it']]},
  wpermafrost:{t:'Permafrost & thawed ground',sys:'ground',v:'well',a:anchor(wellG,-1,-2.6,5),dist:13,
-  b:'Around Fairbanks permafrost is discontinuous: frozen under north slopes and black spruce, thawed under south slopes and old clearings. The house and well sit on the frozen side and the drainfield on the thawed side. A well that thaws the ground around it can settle.',
+  b:'In much of Interior Alaska permafrost is discontinuous: frozen under north slopes and black spruce, thawed under south slopes and old clearings. The house and well sit on the frozen side and the drainfield on the thawed side. A well that thaws the ground around it can settle.',
   s:[['Type','Discontinuous'],['Active layer','Thaws each summer'],['Rule','Keep the drainfield out of permafrost']]},
  wshell:{t:'Heated utility room',sys:'structure',v:'well',a:anchor(wellG,-4.5,WF+2.6,-3),dist:10,
   b:'Everything that holds water lives inside the heated envelope. A floor drain takes filter backwash and leaks, and a low-temperature alarm warns before anything freezes.',
@@ -2671,9 +2926,152 @@ Object.assign(A,{
   s:[['Length','About 100 ft per home'],['Homes','Set in Assumptions'],['Layout','One loop, so water always moves']]}
 });
 
+
+// ---- power & lagoon: info ----
+Object.assign(A,{
+ powerhouse:{t:'Power plant & distribution',sys:'power',v:'village',act:'Open the powerhouse',actView:'power',a:anchor(powG,0,7,0),dist:40,
+  b:'Most Interior villages make their own electricity with diesel generators in a small powerhouse, store a year of fuel in a tank farm filled by the summer barge, and send power around town on overhead lines. Engine heat that would be thrown away can warm the water plant through a buried heat-recovery loop.',
+  s:[['Generation','Diesel gensets, one running, others standby'],['Fuel','About a year’s supply, by summer barge'],['Lines','Overhead, on wood poles'],['Heat','Recovered to the water plant']]},
+ pwbldg:{t:'Powerhouse building',sys:'structure',v:'power',a:anchor(powG,-5.6,4.6,-3.8),dist:14,
+  b:'An insulated steel building on a pad or piles, with ventilation for engine heat and combustion air, and room to pull an engine out. Noise and exhaust set where it can go in town.',
+  s:[['Size','About 40 × 26 ft in this concept'],['Foundation','Pad or piles; engines on isolated bases'],['Access','Large doors for engine swaps']]},
+ pwgen:{t:'Diesel generator sets',sys:'power',v:'power',a:anchor(powG,0,2.6,-1.2),dist:10,
+  b:'Three diesel engines with generators. The controls run the smallest set that can carry the load and bring the next one on as demand climbs on a cold evening. Fuel efficiency, in kWh per gallon, is the number the utility watches most.',
+  s:[['Sets','Three, sized for low, typical and peak load'],['Efficiency','About 12–15 kWh per gallon'],['Overhaul','Every 20,000–40,000 hours'],['Redundancy','Peak load with the largest set out']]},
+ pwswitch:{t:'Switchgear',sys:'power',v:'power',a:anchor(powG,-1,2.8,3.2),dist:9,
+  b:'Parallels the generators onto one bus, protects each feeder and lets the operator isolate a line for repairs.',
+  s:[['Bus','Paralleling switchgear'],['Feeders','One or two to town'],['Protection','Breakers or reclosers per feeder']]},
+ pwctrl:{t:'Plant controls',sys:'power',v:'power',a:anchor(powG,3.6,2.6,3.4),dist:7,
+  b:'Starts, syncs and loads the gensets, logs fuel and kWh, and calls the operator on alarms. Fuel and kWh logs feed the Power Cost Equalization report.',
+  s:[['Logs','kWh, fuel, run hours'],['Reports','Monthly PCE filing'],['Alarms','Low fuel, high temperature, breaker trips']]},
+ pwheat:{t:'Heat recovery',sys:'water',v:'power',a:anchor(powG,5,1.8,-.2),dist:7,
+  b:'Engine jacket-water heat goes through a plate heat exchanger into a glycol loop instead of only out the radiators. In many villages this is the cheapest heat the water plant can get.',
+  s:[['Source','Engine jacket water'],['Exchanger','Plate, glycol on the loop side'],['Backup','Roof radiators dump heat the loop can’t use']]},
+ pwloop:{t:'Heat-recovery loop to the water plant',sys:'water',v:'power',a:anchor(powG,8,1.2,-12),dist:14,
+  b:'Insulated buried pipes carry the recovered heat to the water plant and bring cooler glycol back. Shorter is better: the loop loses heat along its length and costs money per foot.',
+  s:[['Pipe','Pre-insulated, supply and return'],['Length','About 70 ft in this concept'],['Saves','Heating oil at the plant']]},
+ pwday:{t:'Day tank',sys:'power',v:'power',a:anchor(powG,-5,1.6,1.8),dist:6,
+  b:'A small tank inside the powerhouse feeds the engines and is topped up automatically from the tank farm, so a leak in the main line can’t drain the bulk tanks into the building.',
+  s:[['Size','Several hundred gallons'],['Fill','Automatic, from the tank farm'],['Alarm','High and low level']]},
+ pwtank:{t:'Bulk fuel tank farm',sys:'power',v:'power',a:anchor(powG,-14,5,0),dist:16,
+  b:'Vertical tanks inside a lined, bermed containment that can hold more than the largest tank. They are filled once a year from the summer barge, so their size sets how long the village can run if the barge is late.',
+  s:[['Storage','About a year of fuel'],['Containment','110% of the largest tank, lined'],['Fill','Summer barge']]},
+ pwxfmr:{t:'Step-up transformer',sys:'power',v:'power',a:anchor(powG,9,2.2,2.5),dist:7,
+  b:'Raises generator voltage to the distribution voltage so the power can travel around town on small conductors.',
+  s:[['From','480 V at the generators'],['To','7.2 or 12.47 kV distribution'],['Type','Pad-mounted']]},
+ pdist:{t:'Overhead distribution lines',sys:'power',v:'power',a:{obj:distG,p:PDA},dist:30,
+  b:'Wood poles carry the distribution lines around the village. Service drops run from a pole to each building’s meter. Frost jacking tips poles in permafrost, and ice and wind bring lines down; the poles here follow the road so crews can reach them.',
+  s:[['Poles','Wood, about every 150 ft'],['Voltage','7.2 or 12.47 kV'],['Watch','Frost jacking, leaning poles, ice load']]},
+ ptrans:{t:'Pole transformers & services',sys:'power',v:'power',a:{obj:distG,p:PDA.clone().add(new V(.35,-1.6,0))},dist:14,
+  b:'Small transformers on the poles step the line voltage down to 120/240 V for homes; one transformer can serve a few nearby buildings. Each service drop ends at a meter.',
+  s:[['Size','10–50 kVA each'],['Output','120/240 V'],['Serves','One to several buildings']]},
+ lberm:{t:'Berms',sys:'structure',v:'lagoon',a:anchor(lag,-6,1.4,9.2),dist:12,
+  b:'Compacted earth embankments hold the wastewater. In permafrost, warm water in the cells can thaw the ground below, so berm stability and seepage are watched closely.',
+  s:[['Height','About 5–8 ft'],['Slopes','About 3 horizontal to 1 vertical'],['Freeboard','At least 2–3 ft kept empty']]},
+ ldump:{t:'Truck dump station',sys:'waste',v:'lagoon',a:anchor(lag,-12.8,1.8,2.4),dist:8,
+  b:'Where the vacuum truck connects and empties, through a screen that catches rags and debris. A paved apron and a wash-down hose keep the area clean.',
+  s:[['Connection','Camlock to the inlet'],['Screen','Bar screen or basket'],['Winter','Inlet kept open with heat trace']]},
+ linlet:{t:'Inlet pipe',sys:'waste',v:'lagoon',a:anchor(lag,-9.5,1,0),dist:7,
+  b:'Carries sewage from the dump station into the first cell, discharging below the surface so ice doesn’t block it.',
+  s:[['Size','6–8 in'],['Outlet','Below the ice line'],['Freeze','Sloped to drain; heat traced']]},
+ lcell1:{t:'Primary cell',sys:'waste',v:'lagoon',a:anchor(lag,-4,1,3),dist:12,
+  b:'Most treatment happens here: solids settle to the bottom as sludge, and bacteria break down the organic load, slowly in winter and fast in summer.',
+  s:[['Type','Facultative'],['Depth','About 5–6 ft of water'],['Sludge','Removed every 10–20 years']]},
+ lcell2:{t:'Secondary cell',sys:'waste',v:'lagoon',a:anchor(lag,6,1,3),dist:12,
+  b:'Polishes the water from the first cell and stores it until a summer discharge is allowed, once tests show it meets the permit.',
+  s:[['Role','Polishing and storage'],['Holds','Winter’s flow until summer'],['Release','After sampling, under the permit']]},
+ ldivide:{t:'Divider berm',sys:'structure',v:'lagoon',a:anchor(lag,2,1.4,6),dist:10,
+  b:'Splits the lagoon into cells so water moves through in series instead of short-circuiting across.',
+  s:[['Built','Same as the outer berms'],['Top','Wide enough to walk or drive'],['Watch','Erosion at the waterline']]},
+ ltransfer:{t:'Transfer structure',sys:'waste',v:'lagoon',a:anchor(lag,2,1.8,-5),dist:7,
+  b:'A pipe and valve through the divider that moves water from the primary to the secondary cell at a set level.',
+  s:[['Control','Valve or stop logs'],['Sets','Water level in the first cell'],['Winter','Often left closed']]},
+ lliner:{t:'Liner',sys:'ground',v:'lagoon',a:anchor(lag,-2,1.1,7.95),dist:8,
+  b:'A synthetic liner, often HDPE, under the cells and up the berms keeps sewage from seeping into the ground and groundwater. Ice and UV damage it where it is exposed at the waterline.',
+  s:[['Material','HDPE or similar'],['Thickness','About 40–60 mil'],['Watch','Tears at the waterline, frost heave']]},
+ ldischarge:{t:'Discharge structure & outfall',sys:'waste',v:'lagoon',a:anchor(lag,10,2.2,-4),dist:9,
+  b:'Releases treated water from the secondary cell, typically once or twice a summer after the water is tested, to a wetland or the river as the permit allows.',
+  s:[['When','Summer, after sampling'],['To','Wetland or river, per the permit'],['Records','Volumes and lab results reported']]},
+ lmon:{t:'Monitoring well',sys:'ground',v:'lagoon',a:anchor(lag,13.2,1.7,6),dist:7,
+  b:'Lets the operator sample groundwater beside the lagoon to check that the liner and berms are holding.',
+  s:[['Sampled','On the permit schedule'],['Looks for','Nitrogen, bacteria, conductivity'],['Placed','Downgradient of the cells']]},
+ lgauge:{t:'Freeboard gauge',sys:'waste',v:'lagoon',a:anchor(lag,8,2.2,6.5),dist:7,
+  b:'A staff gauge shows how full the cells are and how much freeboard is left before spring melt, so a discharge can be planned before the berms are at risk.',
+  s:[['Read','Weekly'],['Keep','At least 2–3 ft of freeboard'],['Spring','Snowmelt adds volume fast']]}});
+
+
+// ---- school & clinic: info ----
+const CIV={school:{gpd:900,tank:5000,hold:4000,n:'School'},clinic:{gpd:250,tank:2000,hold:1500,n:'Clinic'}};
+function civUse(k){const c=CIV[k],days=c.tank*.85/c.gpd;return '<h3>Water use and haul service</h3><table class="ub-table"><tr><td>Typical use</td><td>'+c.gpd.toLocaleString('en-US')+' gal/day</td></tr><tr><td>Water tank</td><td>'+c.tank.toLocaleString('en-US')+' gal · about '+days.toFixed(1)+' days</td></tr>'+
+  '<tr><td>Deliveries</td><td>about '+Math.ceil(7/Math.max(.5,days*.8))+' per week, '+Math.ceil(c.gpd*7/1600)+' truckloads</td></tr><tr><td>Share of all haul water</td><td>'+(UBR?Math.round(c.gpd*365/(UBR.base.Gw+c.gpd*365)*100)+'%':'—')+'</td></tr></table>'+
+  '<p class="note">Concept values; change use and tank sizes in Assumptions. A missed delivery here closes classrooms or limits clinic care, so these stops come first on the route.</p>';}
+Object.assign(A,{
+ school:{t:'School',sys:'haul',v:'village',a:anchor(school.g,0,7,0),dist:34,extra:()=>civUse('school'),
+  b:'Usually the largest building in the village and the biggest single water customer: kitchen, restrooms, showers in the gym, and often the community’s backup shelter. It has its own large water and sewage tanks filled and emptied by the haul trucks, or a short service line where the plant is close.',
+  s:[['Water','Large storage tank, own pump and treatment'],['Wastewater','Holding tank pumped by the vacuum truck'],['Role','Classrooms, meals, emergency shelter']]},
+ s_tank:{t:'School water storage',sys:'water',v:'village',a:anchor(school.g,-8.4,4.2,0),dist:14,
+  b:'A heated tank room holds several days of water so a truck breakdown or a storm doesn’t close the school. A pressure system, filter and UV serve the kitchen and restrooms.',s:[['Size','About 3,000–8,000 gal'],['Treatment','Filter + UV or chlorine residual check'],['Freeze','Heated room, low-temperature alarm']]},
+ s_ports:{t:'School fill & pump-out ports',sys:'haul',v:'village',a:anchor(school.g,-6.9,2.2,0),dist:10,
+  b:'Insulated, heat-traced ports for the water truck and the vacuum truck, placed where trucks can reach them all winter.',s:[['Fill','Camlock, locked cap'],['Pump-out','3 in camlock'],['Winter','Heat traced, cleared of snow']]},
+ s_hold:{t:'School sewage holding tank',sys:'waste',v:'village',a:anchor(school.g,-8.4,1.2,0),dist:10,
+  b:'Collects wastewater from the kitchen, restrooms and showers until the vacuum truck empties it, with a high-level alarm so it never backs up into the building.',s:[['Size','About 3,000–5,000 gal'],['Alarm','High level'],['Pump-outs','Several a week']]},
+ s_boiler:{t:'School boiler & waste-heat tie-in',sys:'water',v:'village',a:anchor(school.g,4,6,-2),dist:12,
+  b:'Heats the building and the tank room. Schools are a common customer for recovered heat from the power plant where the distance is short.',s:[['Fuel','Heating oil'],['Backup','Second boiler'],['Option','Recovered heat loop']]},
+ clinic:{t:'Clinic',sys:'haul',v:'village',a:anchor(clinic.g,0,6.2,0),dist:28,extra:()=>civUse('clinic'),
+  b:'The village clinic needs reliable running water for handwashing, cleaning and sterilizing instruments. Like the school, it has its own tanks served by the haul trucks and keeps a backup generator so care can continue through an outage.',
+  s:[['Water','Storage tank, pressure, filter + UV'],['Wastewater','Holding tank, pumped by truck'],['Must keep','Handwashing and sterilization running']]},
+ c_tank:{t:'Clinic water storage',sys:'water',v:'village',a:anchor(clinic.g,6,3.8,0),dist:10,
+  b:'Holds a few days of water in a heated room, with treatment sized for clinical use: a sediment filter and UV, with a chlorine residual checked regularly.',s:[['Size','About 1,000–3,000 gal'],['Treatment','Filter + UV'],['Check','Residual and bacteria samples']]},
+ c_ports:{t:'Clinic fill & pump-out ports',sys:'haul',v:'village',a:anchor(clinic.g,7.3,2.2,0),dist:8,
+  b:'The same insulated, heat-traced ports as a home, but served first on the route.',s:[['Fill','Camlock, locked cap'],['Pump-out','3 in camlock'],['Priority','First stop on each run']]},
+ c_hold:{t:'Clinic holding tank',sys:'waste',v:'village',a:anchor(clinic.g,6,1.1,0),dist:8,
+  b:'Collects wastewater until the vacuum truck empties it. Medical waste and sharps go out separately, never down the drain.',s:[['Size','About 1,000–2,000 gal'],['Alarm','High level'],['Medical waste','Shipped out separately']]},
+ c_boiler:{t:'Clinic heat',sys:'water',v:'village',a:anchor(clinic.g,-2.5,5,-1.5),dist:9,
+  b:'Keeps the building, tank room and pipes warm. A clinic that freezes can’t reopen until plumbing is repaired.',s:[['Fuel','Heating oil'],['Alarm','Low temperature'],['Backup','Electric or second boiler']]},
+ c_gen:{t:'Clinic backup generator',sys:'power',v:'village',a:anchor(clinic.g,-3.2,2,-3.6),dist:8,
+  b:'Starts automatically if village power fails, keeping heat, water pumps, lights and the refrigerator for vaccines running.',s:[['Size','About 20–40 kW'],['Transfer','Automatic'],['Test','Monthly under load']]}});
+const GOVB={cityhall:{gpd:60,tank:500},tribehall:{gpd:80,tank:500},store:{gpd:70,tank:500}};
+function govUse(k){const c=GOVB[k];return '<h3>Water use and haul service</h3><table class="ub-table"><tr><td>Typical use</td><td>'+c.gpd+' gal/day</td></tr><tr><td>Water tank</td><td>'+c.tank+' gal · about '+(c.tank*.85/c.gpd).toFixed(1)+' days</td></tr></table><p class="note">Concept values; change them in Assumptions.</p>';}
+const govParts=(pre,obj,n,x,bx,bh)=>({[pre+'tank']:{t:n+' water tank',sys:'water',v:'village',a:anchor(obj,x,3.4,0),dist:8,b:'A small heated tank like a home’s, filled by the water truck, with a pump and UV.',s:[['Size','About 300–700 gal'],['Treatment','Filter + UV'],['Freeze','Inside the heated building']]},
+ [pre+'ports']:{t:n+' fill & pump-out',sys:'haul',v:'village',a:anchor(obj,x+(x>0?1.1:1.1),2.2,0),dist:7,b:'The same insulated, heat-traced ports as a home.',s:[['Fill','Camlock, locked cap'],['Pump-out','3 in camlock'],['Winter','Heat traced, kept clear of snow']]},
+ [pre+'hold']:{t:n+' holding tank',sys:'waste',v:'village',a:anchor(obj,x,1,0),dist:7,b:'Collects wastewater until the vacuum truck empties it.',s:[['Size','About 500 gal'],['Alarm','High level'],['Pump-outs','About weekly']]},
+ [pre+'boiler']:{t:n+' heat',sys:'water',v:'village',a:anchor(obj,bx,bh+2,-1.4),dist:8,b:'Keeps the building, tank and pipes warm.',s:[['Fuel','Heating oil'],['Alarm','Low temperature'],['Check','Before freeze-up']]}});
+Object.assign(A,{
+ cityhall:{t:'City office',sys:'haul',v:'village',a:anchor(cityB.g,0,6,0),dist:28,extra:()=>govUse('cityhall'),
+  b:'Where a village is an incorporated city, the city often owns and runs the water and sewer utility: it employs the operators and haul crew, sets and collects rates, keeps the books and applies for grants with the state. It is also a haul customer itself.',
+  s:[['Role','Utility owner and operator, in many cities'],['Runs','Billing, payroll, budgets, grant match'],['Support','State RUBA advisors, regional partners']]},
+ tribehall:{t:'Tribal office',sys:'haul',v:'village',a:anchor(tribeB.g,0,6,0),dist:28,extra:()=>govUse('tribehall'),
+  b:'The tribal council is the federally recognized government of the village. Where there is no city, the tribe often owns the utility. It is the partner of record for federal sanitation projects, runs the environmental program (IGAP), and is usually where community meetings about water and sewer happen.',
+  s:[['Role','Federally recognized tribal government'],['Projects','Partner for federal sanitation projects'],['Programs','Environmental (IGAP), housing, planning']]},
+ store:{t:'Village store',sys:'haul',v:'village',a:anchor(storeB.g,0,6.4,0),dist:28,extra:()=>govUse('store'),
+  b:'The general store sells groceries, supplies and often heating fuel and gasoline by the gallon. It is a haul customer, and its prices show what everything costs once it arrives by barge or plane; bottled water here can cost several dollars a gallon when haul service is down.',
+  s:[['Sells','Groceries, supplies, often fuel'],['Supplied','Summer barge and air freight'],['Water','Haul customer; bottled water as backup']]},
+ k_fuel:{t:'Store fuel pumps',sys:'power',v:'village',a:anchor(storeB.g,6.2,2,1.8),dist:8,
+  b:'Many stores sell gasoline and heating fuel from a small tank farm filled by the barge. The price at this pump is the same heating-oil price that drives home heating and the utility’s truck and boiler costs.',
+  s:[['Sells','Gasoline, heating oil'],['Filled','Summer barge'],['Price','Set in Assumptions as fuel price']]}},
+ govParts('y_',cityB.g,'City office',6,-2.6,2.6),govParts('t_',tribeB.g,'Tribal office',-7,2.8,2.8),govParts('k_',storeB.g,'Store',-6,2.6,3));
+Object.assign(A,{
+ bargelanding:{t:'Barge landing',sys:'haul',v:'village',a:anchor(landG,BLX,2,BLZ+3),dist:30,
+  b:'A graded gravel landing where the summer barge noses in and lowers its ramp. Vehicles, pipe, building materials and a year of fuel come ashore here in a few short weeks between breakup and freeze-up. Dead-men posts hold the mooring lines and lights allow round-the-clock unloading.',
+  s:[['Season','Summer only, after breakup'],['Brings','Fuel, vehicles, freight, construction materials'],['Watch','Bank erosion, low water, ice damage each spring']]},
+ fuelheader:{t:'Fuel header',sys:'power',v:'village',a:anchor(landG,BLX-3,2,BLZ+5),dist:14,
+  b:'The barge’s hose connects here. Valves and a meter send fuel up the line to the tank farm. A lined pad, spill kit and an attendant are required for every transfer.',
+  s:[['Connection','Camlock with dry-break coupling'],['Spill','Containment pad, boom and kit on hand'],['Records','Gallons received per tank']]},
+ fuelline:{t:'Fuel line to the tank farm',sys:'power',v:'village',a:anchor(landG,-70,1.6,-30),dist:24,
+  b:'An above-ground steel line on short supports carries fuel from the landing to the bulk tanks. It is drained and inspected between barge seasons; a break during transfer is the biggest spill risk in the village.',
+  s:[['Pipe','Welded steel, 3–4 in'],['Used','A few days a year'],['Watch','Supports, corrosion, vehicle crossings']]},
+ fuelbarge:{t:'Fuel barge and tug',sys:'haul',v:'village',a:anchor(landG,BLX+1,4,BLZ-9),dist:30,on:()=>{try{return skyMode==='midsun';}catch(e){return false;}},
+  b:'Visible in the summer light setting. A tug pushes fuel and freight barges up the river once or twice a season; low water can cancel the run, which is why fuel storage is sized for a full year.',
+  s:[['When','Once or twice a summer'],['Carries','Bulk fuel plus deck freight'],['Risk','Low water cancels the run']]},
+ boatlanding:{t:'Boat landing and tie-up',sys:'haul',v:'village',a:anchor(landG,BTX,1.6,BTZ+2),dist:22,
+  b:'Where families keep and launch skiffs for travel, fishing and hunting. A float dock and gangway are used in summer; in winter the boats are pulled up on the bank. It is also how parts and people move between villages when planes can’t fly.',
+  s:[['Summer','Float dock and gangway'],['Winter','Boats pulled up and stored'],['Watch','Spring ice, bank erosion, high water']]}});
+
 const ORDER={home:['fillport','watertank','pump','pressuretank','uv','heater','supply','kitchen','washer','bath','dwv','treatment','effluent','pumpout','floor','shell','foundation','pads','gravel','insulation','activelayer','permafrost'],
-  village:['thishome','wtp','watertruck','homes','sewertruck','lagoon','route','airstrip','wellhome','pipedlot'],
+  village:['thishome','wtp','watertruck','homes','sewertruck','lagoon','route','airstrip','wellhome','pipedlot','powerhouse','school','s_tank','s_ports','s_hold','s_boiler','clinic','c_tank','c_ports','c_hold','c_boiler','c_gen','cityhall','y_tank','y_ports','y_hold','y_boiler','tribehall','t_tank','t_ports','t_hold','t_boiler','store','k_tank','k_ports','k_hold','k_boiler','k_fuel','bargelanding','fuelheader','fuelline','fuelbarge','boatlanding'],
   well:['wchem','aquifer','subpump','wcasing','heattrace','wellhead','wptank','sediment','oxidizer','ironfilter','softener','arsenic','wuv','wheater','ro','wfix','septic','drainfield','wpermafrost','wshell'],
+  power:['pwtank','pwday','pwgen','pwswitch','pwctrl','pwxfmr','pdist','ptrans','pwheat','pwloop','pwbldg'],
+  lagoon:['ldump','linlet','lcell1','ldivide','ltransfer','lcell2','ldischarge','lberm','lliner','lgauge','lmon'],
   piped:['pmain','pvmain','pservice','pmeter','pheater','pfix','pdrain','ppit','pstation','pcirc','pboiler','phx','pvtank','pvpump','pdisch','pctrl','psupport','pground','pshell','ploop'],
   plant:['intake','rawline','rawpump','chemfeed','flocsed','filters','backwash','ctank','clearwell','heat','storage','fillarm','scada','lab','plantbldg']};
 VALVES.forEach(v=>ORDER[v.view].push(v.id));
@@ -2683,7 +3081,7 @@ const TOUR=['wtp','intake','flocsed','filters','ctank','storage','fillarm','wate
 const TOUR_DWELL=11;
 Object.keys(A).forEach(k=>{A[k].v=A[k].v||'home';});
 bEl('about-btn').onclick=()=>{if(touring)stopTour();current==='about'?closeInfo():openInfo('about');};
-const scope=()=>view==='home'?'home':view==='plant'?'plant':view==='well'?'well':view==='piped'?'piped':'village';
+const scope=()=>view==='home'?'home':view==='plant'?'plant':view==='well'?'well':view==='piped'?'piped':view==='power'?'power':view==='lagoon'?'lagoon':'village';
 
 /* ---------- hotspots & labels ---------- */
 const hsWrap=bEl('hotspots');
@@ -2694,7 +3092,7 @@ const SHORT={wellhome:'Well home',wchem:'Water chemistry',aquifer:'Aquifer',subp
   thishome:'Cutaway home',wtp:'Water plant',watertruck:'Water truck',homes:'Homes',sewertruck:'Sewage truck',lagoon:'Sewage lagoon',route:'Haul route',airstrip:'Airstrip',
   hz_flood:'Flooding',hz_erosion:'Erosion',hz_thaw:'Permafrost thaw',hz_settle:'Settlement'};
 VALVES.forEach(v=>SHORT[v.id]=v.tag);
-Object.assign(SHORT,{pipedlot:'Piped lot',pmain:'Water main',pvmain:'Vacuum main',psupport:'Pile supports',pservice:'Service pair',pmeter:'Meter & circ',pheater:'Water heater',pfix:'Fixtures',pdrain:'House drain',ppit:'Valve pit',pstation:'Utility station',pboiler:'Heat-add boiler',phx:'Heat exchanger',pcirc:'Circ pumps',pvtank:'Vacuum tank',pvpump:'Vacuum pumps',pdisch:'Discharge pumps',pctrl:'Controls',pground:'Permafrost',pshell:'Home shell',ploop:'Village loop'});
+Object.assign(SHORT,{powerhouse:'Power plant',pwbldg:'Powerhouse',pwgen:'Gensets',pwswitch:'Switchgear',pwctrl:'Controls',pwheat:'Heat recovery',pwloop:'Heat loop',pwday:'Day tank',pwtank:'Tank farm',pwxfmr:'Step-up transformer',pdist:'Overhead lines',ptrans:'Pole transformers',lberm:'Berms',ldump:'Dump station',linlet:'Inlet',lcell1:'Primary cell',lcell2:'Secondary cell',ldivide:'Divider berm',ltransfer:'Transfer',lliner:'Liner',ldischarge:'Discharge',lmon:'Monitoring well',lgauge:'Freeboard gauge',pipedlot:'Piped lot',pmain:'Water main',pvmain:'Vacuum main',psupport:'Pile supports',pservice:'Service pair',pmeter:'Meter & circ',pheater:'Water heater',pfix:'Fixtures',pdrain:'House drain',ppit:'Valve pit',pstation:'Utility station',pboiler:'Heat-add boiler',phx:'Heat exchanger',pcirc:'Circ pumps',pvtank:'Vacuum tank',pvpump:'Vacuum pumps',pdisch:'Discharge pumps',pctrl:'Controls',pground:'Permafrost',pshell:'Home shell',ploop:'Village loop'});
 const measure=document.createElement('canvas').getContext('2d');
 let labelsOn=true;try{labelsOn=localStorage.getItem('hwh-labels')!=='off';}catch(e){}
 Object.keys(A).forEach(id=>{
@@ -2726,6 +3124,8 @@ function projectHotspots(){
     if(show&&a.v==='piped'&&pLift<PLIFT*.85&&id!=='ploop')show=false;
     if(show&&fsHidden(id))show=false;
     if(show&&(hlKey||isoId)&&inFacility(id)&&!(isoId?id===isoId:hlMember(id)))show=false;
+    if(show&&siteSel&&a.v==='village'&&!siteSel.includes(id))show=false;
+    if(show&&/^[scytk]_/.test(id)&&a.v==='village'&&!(typeof infraSel!=='undefined'&&({s:'school',c:'clinic',y:'city',t:'tribe',k:'store'})[id[0]]===infraSel))show=false;
     if(show&&a.on&&!a.on())show=false;
     if(show){anchorWorld(a,tmpV);
       if(!onScreen(tmpV))show=false;
@@ -2737,7 +3137,7 @@ function projectHotspots(){
 }
 // greedy label placement: dots are obstacles; selected/hovered first, then top-to-bottom; try right, then left, else hide
 function placeLabels(w,h){
-  const small=['home','plant','well','piped'].includes(view),r=small?9:13,H=21,boxes=[];
+  const small=['home','plant','well','piped','power','lagoon'].includes(view),r=small?9:13,H=21,boxes=[];
   for(const el of uiBlocks){if(el.offsetParent===null&&getComputedStyle(el).position!=='fixed')continue;const q=el.getBoundingClientRect();if(q.width&&q.height)boxes.push([q.left-4,q.top-4,q.width+8,q.height+8]);}
   const hit=(x,y,bw,bh)=>{if(x<4||y<4||x+bw>w-4||y+bh>h-4)return true;for(const q of boxes)if(x<q[0]+q[2]&&x+bw>q[0]&&y<q[1]+q[3]&&y+bh>q[1])return true;return false;};
   if(typeof sysBoxes!=='undefined')boxes.push(...sysBoxes);
@@ -2847,7 +3247,7 @@ addEventListener('keydown',e=>{if(e.target.matches&&e.target.matches('input,sele
 const music=(function(){
   const BPM=82,SIX=60/BPM/4;
   let ctx=null,out,lpf,verb,verbIn,noiseBuf,crackleG,timer=null,step=0,next=0,playing=false;
-  let muted=false;try{muted=localStorage.getItem('hwh-music2')==='off';}catch(e){}
+  let muted=true;try{muted=localStorage.getItem('hwh-music2')!=='on';}catch(e){}
   const hz=m=>440*Math.pow(2,(m-69)/12);
   // Dm9 · G13 · Cmaj9 · A7(b13), one bar each
   const PROG=[{b:38,c:[53,57,60,64]},{b:43,c:[53,59,64,69]},{b:36,c:[52,55,59,62]},{b:45,c:[55,61,65,67]}];
@@ -3058,15 +3458,17 @@ function updateViewOffset(dt){
 /* ---------- views & camera ---------- */
 function preset(v){const narrow=innerWidth/innerHeight<.8;
   if(v==='home'){const k=narrow?1.6:1;return{p:new V(12.5*k,LIFT+5.5*k,14*k),t:new V(.4,LIFT+1.6,.5)};}
-  if(v==='site'){const k=narrow?1.9:1.05;return{p:new V(-5,300*k,72*k),t:new V(-5,0,6)};}
+  if(v==='site'){const k=narrow?3.3:1.05;return{p:new V(-5,300*k,72*k),t:new V(-5,0,6)};}
   if(v==='well'){const k=narrow?1.8:1,t=new V(WP.x+2.5,WLIFT-1.2,WP.z);return{p:t.clone().add(new V(11*k,11*k,25*k)),t};}
   if(v==='plant'){const k=narrow?1.7:1,t=new V(-70,2.2,-3.5);return{p:t.clone().add(new V(15.5*k,12*k,18*k)),t};}
+  if(v==='power'){const k=narrow?1.8:1,t=new V(PWP.x-3,2,PWP.z);return{p:t.clone().add(new V(16*k,15*k,22*k)),t};}
+  if(v==='lagoon'){const k=narrow?1.8:1,t=new V(40,1,36);return{p:t.clone().add(new V(-14*k,18*k,24*k)),t};}
   if(v==='piped'){const k=narrow?1.8:1,t=new V(PP.x+1,PLIFT+.6,PP.z-1.5);return{p:t.clone().add(new V(15*k,12*k,21*k)),t};}
   const k=narrow?1.5:1;return{p:new V(78*k,72*k,96*k),t:new V(-6,0,6)};}
-const VIEWNAME={village:'Village',home:'Home',plant:'Plant',well:'Well',piped:'Piped',site:'Site plan',alaska:'Alaska'};
+const VIEWNAME={village:'Village',home:'Home',plant:'Plant',well:'Well',piped:'Piped',power:'Power',lagoon:'Lagoon',site:'Site plan',alaska:'Alaska'};
 function applyViewState(v){
-  view=v;document.body.dataset.view=v;setPlant(v==='plant');setWell(v==='well');setPiped(v==='piped');if(window.__fsReady){hlKey='';fillHl();applyLens();applyFsysVis();if(window.__scnReady)syncDrawer();}
-  ['village','home','plant','well','piped','site'].forEach(k=>bEl('v-'+k).setAttribute('aria-pressed',k===v));
+  view=v;document.body.dataset.view=v;setPlant(v==='plant');setWell(v==='well');setPiped(v==='piped');setPower(v==='power');if(window.__fsReady){hlKey='';fillHl();applyLens();applyFsysVis();if(window.__scnReady)syncDrawer();}
+  ['village','home','plant','well','piped','power','lagoon','site'].forEach(k=>bEl('v-'+k).setAttribute('aria-pressed',k===v));
 }
 function setView(v,instant,keepPanel){
   if(sectionOn&&v!==sectionKind)setSection(false);
@@ -3082,7 +3484,7 @@ function flyTo(pt,dist,dir){
   if(view!=='village')applyViewState('village');
   camTo(pt,dist,1.6,dir);
 }
-['village','home','plant','well','piped','site'].forEach(k=>bEl('v-'+k).onclick=()=>{if(touring)stopTour();setView(k);});
+['village','home','plant','well','piped','power','lagoon','site'].forEach(k=>bEl('v-'+k).onclick=()=>{if(touring)stopTour();setView(k);});
 
 /* ---------- controls ---------- */
 const exIn=bEl('explode'),exOut=bEl('ex-out');
@@ -3332,11 +3734,7 @@ label('100-yr flood',new V(22,.5,4),ovLbl,'water');
 /* ---------- place profiles (adapt the concept twin to a community) ---------- */
 const GROUPS=[['','Not set'],['1','Group 1 · high'],['2','Group 2 · medium'],['3','Group 3 · low']];
 const PLACES={
-  concept:{preset:'concept',name:'Concept village',river:'River',region:'Interior Alaska (illustrative)',coords:'',pop:'',history:'A generic layout for explaining the system.',fg:'',eg:'',pg:'',bfe:10},
-  allakaket:{preset:'allakaket',name:'Allakaket',river:'Koyukuk River',region:'Yukon-Koyukuk Census Area',coords:'66.563° N, 152.647° W',pop:'177 (2020 census)',
-    history:'On the south bank of the Koyukuk near the Alatna. A spring 1964 ice-jam flood covered about 85% of the community; the September 1994 flood destroyed or swept away nearly all buildings.',fg:'',eg:'',pg:'',bfe:10},
-  fortyukon:{preset:'fortyukon',name:'Fort Yukon',river:'Yukon River',region:'Yukon-Koyukuk Census Area',coords:'66.568° N, 145.256° W',pop:'428 (2020 census)',
-    history:'On the north bank of the Yukon at the mouth of the Porcupine. A 1949 flood is part of the community history. Alaska record high, 100 °F (1915); record low, −78 °F (1934).',fg:'',eg:'',pg:'',bfe:10}
+  concept:{preset:'concept',name:'Concept village',river:'River',region:'Interior Alaska (illustrative)',coords:'',pop:'',history:'A generic layout for explaining the system.',fg:'',eg:'',pg:'',bfe:10}
 };
 let PLACE=Object.assign({},PLACES.concept);
 const placeCard=bEl('place'),placeBtn=bEl('place-btn');
@@ -3442,8 +3840,8 @@ A.utilbudget={t:'Haul utility budget',sys:'haul',v:'any',list:['utilbudget'],
       '<li>40–70% of plant heat, power, chemicals and 50–90% of the plant operator are charged to haul water; the rest serves the washeteria.</li>'+
       (UIN.reserve?'<li>Truck replacement reserve: $250k–450k per truck delivered, 10–15 year life (vacuum truck +15%).</li>':'<li>Truck replacement reserve is off: assumes trucks are replaced with capital grants.</li>')+
       '<li>Sewage volume is 90% of water delivered. Contingency 5–12%.</li></ul>';
-    h+='<p class="note">Planning-level estimate for a generic village, not an audited budget. Swap in your utility’s actual payroll, fuel invoices and truck costs to firm it up. Fuel reference: the state’s Alaska Fuel Price Report (Jan 2026) shows Interior averages of $6.81/gal heating fuel and $6.87/gal gasoline; Allakaket reported $6.93 and $7.01 (Winter 2025). For comparison, the state found 2019 piped-system flat rates in rural Alaska averaged $85.80/month.</p>'+
-      '<p class="note"><a href="https://www.commerce.alaska.gov/web/Portals/4/pub/RA/Fuel_price_report/Alaska%20Fuel%20Price%20Report%20-%20January%202026.pdf" target="_blank" rel="noopener">Alaska Fuel Price Report, Jan 2026</a> · <a href="https://akenergygateway.alaska.edu/explore/communities/allakaket/fuel" target="_blank" rel="noopener">Alaska Energy Data Gateway: Allakaket fuel</a> · <a href="https://dec.alaska.gov/media/21759/alaska-w-and-s-affordability-model-report.pdf" target="_blank" rel="noopener">ADEC water &amp; sewer affordability report</a></p>';
+    h+='<p class="note">Planning-level estimate for a generic village, not an audited budget. Swap in your utility’s actual payroll, fuel invoices and truck costs to firm it up. Fuel reference: the state’s Alaska Fuel Price Report (Jan 2026) shows Interior averages of $6.81/gal heating fuel and $6.87/gal gasoline; a remote Interior village reported $6.93 and $7.01 (Winter 2025). For comparison, the state found 2019 piped-system flat rates in rural Alaska averaged $85.80/month.</p>'+
+      '<p class="note"><a href="https://www.commerce.alaska.gov/web/Portals/4/pub/RA/Fuel_price_report/Alaska%20Fuel%20Price%20Report%20-%20January%202026.pdf" target="_blank" rel="noopener">Alaska Fuel Price Report, Jan 2026</a> · <a href="https://dec.alaska.gov/media/21759/alaska-w-and-s-affordability-model-report.pdf" target="_blank" rel="noopener">ADEC water &amp; sewer affordability report</a></p>';
     return h;}};
 bEl('lib-btn').onclick=()=>{if(touring)stopTour();current==='library'?closeInfo():openInfo('library');};
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-open]');const _x=e.target.closest('[data-view]:not(body),[data-hl]:not(body),[data-act]:not(body)');if(_x&&b&&b!==_x&&b.contains(_x))return;if(b){openInfo(b.dataset.open);}});
@@ -3844,7 +4242,7 @@ const THERM={
  heattrace:{k:'trace',W:400,hrs:5000,energy:'elec',preset:'well',what:'Heat trace through the frozen part of the well'},
  wshell:{k:'bldg',UA:100,energy:'fuel',what:'Well-home walls, roof, floor and air leakage'}
 };
-const DDC=7700;               // heating degree-days, °C (≈13,900 °F-days), Fairbanks-like
+const DDC=7700;               // heating degree-days, °C (≈13,900 °F-days), Interior Alaska
 const KWH_PER_GAL=40.6;       // No. 2 heating oil, ≈138,500 Btu/gal
 const ENER={eff:.8,elec:.6};
 const fuelKwh=()=>UIN.fuel/(KWH_PER_GAL*ENER.eff);
@@ -3923,7 +4321,7 @@ function applyLens(){
   document.body.dataset.lens=lens;
   for(const m of pickables){const id=m.userData.id;if(!m.userData.mat0)m.userData.mat0=m.material;
     const lc=lens==='systems'?null:lensColor(view==='plant'&&id==='wtp'?'storage':id);let mt=lens==='systems'?m.userData.mat0:lensMat(id,lc),gh=lens!=='systems'&&!lc;
-    if((hlKey||isoId)&&inFacility(id)&&!(isoId?id===isoId:hlMember(id))){mt=ghostMat(id);gh=true;}m.material=mt;
+    if((hlKey||isoId)&&inFacility(id)&&!(isoId?id===isoId:hlMember(id))){mt=ghostMat(id);gh=true;}else if(siteSel&&A[id]&&A[id].v==='village'&&!siteSel.includes(id)){mt=ghostMat(id);gh=true;}m.material=mt;
     for(const c of m.children)if(c.userData.hull||c.isLineSegments)c.visible=!gh;}
   for(const f of flows){const p=f.inst.parent;if(!p)continue;if(f.fid===undefined){const mm=p.children.find(c=>c.isMesh&&c.userData.id);f.fid=mm?mm.userData.id:null;}
     const gh=!!(f.fid&&(((hlKey||isoId)&&inFacility(f.fid)&&!(isoId?f.fid===isoId:hlMember(f.fid)))||(lens!=='systems'&&!lensColor(f.fid))));f.inst.material.transparent=gh;f.inst.material.opacity=gh?((hlKey||isoId)?0:.12):1;f.inst.material.depthWrite=!gh;}
@@ -4074,14 +4472,18 @@ const FSYS={
   ['w_ground','Ground',['wpermafrost','aquifer'],[0,-3.5,0],'#a7825a'],['w_valves','Valves',vIds('well'),[0,1.4,0],'#e8553d']],
  piped:[['q_bldg','Buildings',['pshell','pstation'],[0,5,0],'#ffffff'],['q_water','Water loop',['pmain','pservice','pmeter','pcirc','ploop'],[0,.8,-2.5],'#2479bd'],
   ['q_heat','Heat',['pboiler','phx','pheater'],[0,1.4,2.5],'#f2665a'],['q_vac','Vacuum sewer',['pdrain','ppit','pvmain','pvtank','pvpump','pdisch'],[2.5,0,1.5],'#d49a3a'],
-  ['q_fix','Fixtures',['pfix'],[-2,0,2.5],'#9b7fd4'],['q_ctrl','Controls',['pctrl'],[2,0,3.5],'#7f97a8'],['q_ground','Ground & supports',['psupport','pground'],[0,-3.5,0],'#a7825a']]
+  ['q_fix','Fixtures',['pfix'],[-2,0,2.5],'#9b7fd4'],['q_ctrl','Controls',['pctrl'],[2,0,3.5],'#7f97a8'],['q_ground','Ground & supports',['psupport','pground'],[0,-3.5,0],'#a7825a']],
+ power:[['e_bldg','Building',['pwbldg'],[0,5,0],'#ffffff'],['e_fuel','Fuel',['pwtank','pwday'],[-3,0,0],'#c98a10'],['e_gen','Generation',['pwgen'],[0,1.5,-2.5],'#d99a1e'],['e_sw','Switchgear & controls',['pwswitch','pwctrl'],[0,1,3],'#7f97a8'],
+  ['e_heat','Heat recovery',['pwheat','pwloop'],[2.5,0,0],'#f2665a'],['e_dist','Distribution',['pwxfmr','pdist','ptrans'],[3,0,2],'#4a5568']],
+ lagoon:[['l_recv','Receiving',['ldump','linlet'],[-2,0,0],'#d49a3a'],['l_cells','Treatment cells',['lcell1','ldivide','ltransfer','lcell2'],[0,0,0],'#3fbf82'],['l_out','Discharge',['ldischarge'],[2,0,0],'#2479bd'],
+  ['l_contain','Containment',['lberm','lliner'],[0,0,0],'#a7825a'],['l_mon','Monitoring',['lgauge','lmon'],[0,0,0],'#7f97a8']]
 };
 const FSOF={},FSON={},FOBJ={},FOFF={};let hlKey='';
 for(const v in FSYS)FSYS[v].forEach(([k,n,ids,off])=>{FSON[k]=true;FOBJ[k]=[];FOFF[k]=new V(...(off||[0,0,0]));ids.forEach(id=>FSOF[id]=k);});
 // gather the 3D groups for each facility system and re-anchor hotspots to them so they travel with the explode
-[[wtpIn,'plant'],[wIn,'well'],[pIn,'piped'],[{children:pipedG.children.filter(o=>o!==pIn&&o!==pOut)},'piped']].forEach(([root,v])=>root.children.forEach(o=>{let id=null;o.traverse(m=>{if(!id&&m.isMesh&&m.userData.id)id=m.userData.id;});
-  const k=id&&FSOF[id];if(!k||!k.startsWith(({plant:'p',well:'w',piped:'q'})[v]+'_'))return;o.userData.fb=o.position.clone();FOBJ[k].push(o);
-  if(A[id]&&A[id].a&&(A[id].a.obj===wtp||A[id].a.obj===wellG||A[id].a.obj===pipedG)&&!o.userData.anch){A[id].a.obj=o;o.userData.anch=true;}}));
+[[wtpIn,'plant'],[wIn,'well'],[pIn,'piped'],[{children:pipedG.children.filter(o=>o!==pIn&&o!==pOut)},'piped'],[powIn,'power'],[{children:powG.children.filter(o=>o!==powIn&&o!==pwOut)},'power'],[lagIn,'lagoon']].forEach(([root,v])=>root.children.forEach(o=>{let id=null;o.traverse(m=>{if(!id&&m.isMesh&&m.userData.id)id=m.userData.id;});
+  const k=id&&FSOF[id];if(!k||!k.startsWith(({plant:'p',well:'w',piped:'q',power:'e',lagoon:'l'})[v]+'_'))return;o.userData.fb=o.position.clone();FOBJ[k].push(o);
+  if(A[id]&&A[id].a&&(A[id].a.obj===wtp||A[id].a.obj===wellG||A[id].a.obj===pipedG||A[id].a.obj===powG||A[id].a.obj===lag)&&!o.userData.anch){A[id].a.obj=o;o.userData.anch=true;}}));
 const wtpTank=[2,3,4].map(i=>wtp.children[i]);wtpTank.forEach(m=>{m.userData.fb=m.position.clone();});
 const fsHidden=id=>{const k=FSOF[id];return !!k&&FSON[k]===false&&!k.endsWith('_valves');};
 function applyFsysVis(){
@@ -4102,13 +4504,13 @@ bEl('hl-sel').onchange=e=>{hlKey=e.target.value;applyLens();};
 // facility explode (slider + cursor), plant and well
 let fe=0;const fctr=new V();
 function updateFacility(dt){
-  const fac=view==='plant'||view==='well'||view==='piped';let cf=0;
+  const fac=view==='plant'||view==='well'||view==='piped'||view==='power'||view==='lagoon';let cf=0;
   if(fac&&cursorOn&&pointerIn&&!tw&&!current){if(view==='plant')fctr.set(-70,2.5,-3.5);else if(view==='piped')fctr.set(PP.x+1,pLift+1.5,PP.z-1);else fctr.set(WP.x+2,wLift+1.5,WP.z);fctr.project(camera);
     const sx=(fctr.x+1)/2*innerWidth,sy=(1-fctr.y)/2*innerHeight,R=Math.min(innerWidth,innerHeight)*.42;cf=Math.max(0,Math.min(1,1-Math.hypot(px-sx,py-sy)/R));cf=cf*cf*(3-2*cf);}
   const goal=fac?Math.max(exIn.value/100,cf):0;
   if(Math.abs(goal-fe)<.0005&&goal===0&&fe===0)return;
   fe+=(goal-fe)*Math.min(1,dt*(reduceMotion?10:4));if(Math.abs(goal-fe)<.0005)fe=goal;
-  const pk=view==='well'?'w_':view==='piped'?'q_':'p_';
+  const pk=view==='well'?'w_':view==='piped'?'q_':view==='power'?'e_':view==='lagoon'?'l_':'p_';
   for(const k in FOBJ){const on=k.startsWith(pk)&&fac;FOBJ[k].forEach(o=>{if(o.userData.fb)o.position.copy(o.userData.fb).addScaledVector(FOFF[k],on?fe:0);});}
   wtpTank.forEach(m=>m.position.copy(m.userData.fb).addScaledVector(FOFF.p_treated,view==='plant'?fe:0));
   if(fac)exOut.textContent=Math.round(fe*100)+'%';
@@ -4119,7 +4521,7 @@ window.__fsReady=true;
 /* =====================================================================
    System labels: one pill per system; part labels only for the selected one
    ===================================================================== */
-const SYSL={};const FACV=['home','plant','well','piped'];
+const SYSL={};const FACV=['home','plant','well','piped','power','lagoon'];
 const SYSCOL={h_water:'var(--water)',h_fix:'var(--fixture)',h_waste:'var(--waste)',h_struct:'var(--struct)',h_ground:'var(--soil)',h_valves:'#e8553d',
   w_hot:'var(--hot)',w_ground:'var(--soil)'};
 FACV.forEach(v=>FSYS[v].forEach(g=>{const[k,n,ids,,col]=g;const b=document.createElement('button');b.className='sysl';b.hidden=true;b.dataset.sys=k;
@@ -4271,7 +4673,7 @@ function drawStatic(){
   const box=(x,z,w,h,fill)=>{const[a,b]=tm(x-w/2,z-h/2);c.fillStyle=fill;c.fillRect(a,b,w*mapK,h*mapK);c.lineWidth=1.5;c.strokeStyle=C.ink;c.strokeRect(a,b,w*mapK,h*mapK);};
   box(-70,-2,14,9,'#8fc6e6');{const[a,b]=tm(-72,-11);c.beginPath();c.arc(a,b,4.2*mapK,0,Math.PI*2);c.fillStyle='#fff';c.fill();c.stroke();}
   box(40,36,22,20,'#9ccf9f');
-  box(PP.x-5,PP.z+1,8,6,'#9fd6c6');box(PP.x+7,PP.z+1,7,6,'#c9b8e8');
+  box(PP.x-5,PP.z+1,8,6,'#9fd6c6');box(SCP.x,SCP.z,14,8,'#e7b56a');box(CLP.x,CLP.z,9,6,'#f1f4f6');box(CYP.x,CYP.z,9,5.5,'#9fc3d9');box(TRP.x,TRP.z,11,5,'#c98f6a');box(STP.x,STP.z,9,5.5,'#8fb98a');box(PP.x+7,PP.z+1,7,6,'#c9b8e8');
   box(WP.x,WP.z,9,6,'#cdb8ff');{const[a,b]=tm(WP.x-3.3,WP.z+.9);c.beginPath();c.arc(a,b,2.2,0,Math.PI*2);c.fillStyle=C.water;c.fill();c.lineWidth=1;c.stroke();}
   allHomes().forEach((h,i)=>{const d=h.z-bankE(h.x,y),wet=elevFt(h.x,h.z)<HZ.stageV,ice=zoneW(h.x,h.z)>.3&&(HZ.warmV>.5||HZ.open&&HZ.tab==='thaw');
     const rl=OV?worstRisk(h.x,h.z,true):0;const fill=OV?['#ffffff','#cdeedb','#ffe08a','#ffb39a'][rl]:i===0?C.sun:d<3.5?C.hazard:wet?C.water:'#ffffff';box(h.x,h.z,i===0?8:7,i===0?8:6,fill);
@@ -4348,7 +4750,7 @@ function ubDraw(pick,I){
   const P={};for(const k in UB_P)P[k]=pick(k,UB_P[k]);
   const gpcd=pick('gpcd',[I.gpcd*.75,I.gpcd,I.gpcd*1.3]);
   const fuel=pick('fuel',[I.fuel*.9,I.fuel,I.fuel*1.25]),wage=pick('wage',[I.wage*.85,I.wage,I.wage*1.2]);
-  const Gw=I.homes*P.hh*gpcd*365,Gs=Gw*.9;
+  const Gw=I.homes*P.hh*gpcd*365+(CIV.school.gpd+CIV.clinic.gpd+GOVB.cityhall.gpd+GOVB.tribehall.gpd+GOVB.store.gpd)*365,Gs=Gw*.9;
   const sW=Gw/P.wPerStop,sS=Gs/P.sPerStop,lW=Gw/1600,lS=Gs/1200;
   const hW=sW*P.hrsStop+lW*P.hrsLoad,hS=sS*P.hrsStop+lS*P.hrsLoad;
   const hMin=P.minFTE*2080,scale=Math.max(1,hMin/(hW+hS));
@@ -4515,7 +4917,7 @@ function loop(now){
   {const wl=view==='well'?WLIFT:0;wLift+=(wl-wLift)*Math.min(1,dt*(reduceMotion?20:1.8));if(Math.abs(wl-wLift)<.002)wLift=wl;wellG.position.y=wLift;wHole.visible=wLift>.05;}pipedTick(dt);
   // hazards: smooth toward targets
   const hk=reduceMotion?1:Math.min(1,dt*2.4);
-  const ovOn=HZ.open&&HZ.tab==='overview',stT=ovOn?BFE:HZ.stage;
+  const ovOn=HZ.open&&HZ.tab==='overview',stT=HZ.stage;
   HZ.stageV+=(stT-HZ.stageV)*hk;HZ.yearsV+=(HZ.years-HZ.yearsV)*hk;HZ.warmV+=(HZ.warm-HZ.warmV)*hk;
   HZ.settleV+=(HZ.settle-HZ.settleV)*hk;HZ.relevelV+=(HZ.relevel-HZ.relevelV)*(reduceMotion?1:Math.min(1,dt*1.1));
   if(Math.abs(HZ.yearsV-appliedYears)>.02||Math.abs(HZ.warmV-appliedWarm)>.03){applyLand();mapDirty=true;}
@@ -5052,9 +5454,9 @@ function facCostHtml(id){if(!UBR)runUB0();const v=FAC_IDS[id],{F,rows,well}=facR
 // ---- assumptions register ----
 function assumeHtml(){const rows=[
   ['Community','Homes on the system',UIN.homes,'Concept village','data-act="budget"'],['Community','People per home','3.4 (2.8–4.0)','Village average, assumed',''],['Community','Water use',BUD.gpcd+' gal per person per day','Typical haul-served use','data-act="budget"'],
-  ['Prices','Heating oil / diesel','$'+UIN.fuel.toFixed(2)+'/gal','Between the Interior average ($6.81) and Allakaket ($6.93) heating fuel prices, Alaska Fuel Price Report, Jan 2026','data-act="budget"'],['Prices','Electricity','$'+ENER.elec.toFixed(2)+'/kWh','Assumed rural rate','data-open="study_heat"'],['Prices','Haul crew wage','$'+UIN.wage+'/hr','Assumed','data-act="budget"'],['Prices','Rate charged',BUD.rate?'$'+BUD.rate.toFixed(2)+'/gal':'None set','Your utility tariff','data-open="finance"'],
+  ['Prices','Heating oil / diesel','$'+UIN.fuel.toFixed(2)+'/gal','Between the Interior average ($6.81) and a remote Interior village ($6.93) heating fuel prices, Alaska Fuel Price Report, Jan 2026','data-act="budget"'],['Prices','Electricity','$'+ENER.elec.toFixed(2)+'/kWh','Assumed rural rate','data-open="study_heat"'],['Prices','Haul crew wage','$'+UIN.wage+'/hr','Assumed','data-act="budget"'],['Prices','Rate charged',BUD.rate?'$'+BUD.rate.toFixed(2)+'/gal':'None set','Your utility tariff','data-open="finance"'],
   ['Cost basis','Remote freight & install factor',RCF.factor.toFixed(1)+'× equipment price','Assumed','data-open="costroll"'],['Cost basis','Capital paid by grants',FIN.grant+'%','Assumed','data-open="finance"'],['Cost basis','Loan interest',FIN.rate+'%','Assumed','data-open="finance"'],['Cost basis','Service lives','10–50 years by component','Typical','data-open="finance"'],['Cost basis','Median household income','$'+Math.round(FIN.mhi/1000)+'k','Assumed; use census data for the place','data-open="finance"'],
-  ['Climate & energy','Heating degree-days','≈13,900 °F-days','Interior Alaska (Fairbanks-like)',''],['Climate & energy','Design cold','−50 °F','Interior Alaska; used for every heat-loss and structure number',''],['Climate & energy','Boiler efficiency','80% on heating oil (≈138,500 Btu/gal)','Typical',''],
+  ['Climate & energy','Heating degree-days','≈13,900 °F-days','Interior Alaska',''],['Climate & energy','Design cold','−50 °F','Interior Alaska; used for every heat-loss and structure number',''],['Climate & energy','Boiler efficiency','80% on heating oil (≈138,500 Btu/gal)','Typical',''],
   ['Hazards','100-year flood stage',BFE+' ft above normal','Place profile','data-act="hazards"'],['Hazards','Current scenario','Stage '+HZ.stage+' ft · erosion +'+HZ.years+' yr · warming +'+HZ.warm+' yr · outage '+OPS.outH+' h at '+OPS.tOut+' °F','Your slider settings','data-open="ops"'],
   ['Operations','Leaks',OPS.flapPct+'% of toilets at '+OPS.flapGpd+' gal/day; '+OPS.drips+' dripping faucets per home','Faucet drip and running-toilet rates from EPA WaterSense; flapper and relief-valve rates assumed','data-open="ops"'],['Operations','Well water',CHEM[chemKey].name,'Illustrative chemistry','data-open="wchem"']];
   let h='<table class="ub-table assume"><tr><th>Input</th><th>Value</th><th>Basis</th></tr>',last='';
@@ -5333,27 +5735,27 @@ const WP_=([lo,la])=>[WEBX(lo),WEBY(la)];
 const AK_OUT=[[-141,69.65],[-143.5,70.1],[-146,70.2],[-148.5,70.4],[-151,70.45],[-153,70.9],[-155,71.1],[-156.8,71.3],[-158.5,70.8],[-160,70.5],[-162,70.2],[-163.5,69.4],[-165.8,68.9],[-166.2,68.3],[-164.5,67.7],[-163.7,67.1],[-162.5,66.9],[-161.8,66.4],[-163.5,66.1],[-166.8,65.6],[-168.1,65.6],[-166.2,64.6],[-164.8,64.5],[-162,64.4],[-160.8,63.6],[-162.5,63.3],[-164.4,63],[-165,62.4],[-166,61.5],[-165.2,60.6],[-164,60],[-162.5,59.9],[-161.9,59],[-160,58.7],[-158,58.6],[-157,58],[-157.5,57],[-159,56.3],[-161,55.6],[-163,54.8],[-164.8,54.4],[-162,55.1],[-159.5,55.8],[-157,56.8],[-155,57.8],[-154,58.6],[-153.4,59.4],[-152.6,60.2],[-151.6,60.8],[-150.6,61.3],[-149.9,61.25],[-150.3,61.0],[-151.3,60.75],[-151.6,60.2],[-151.9,59.7],[-151.5,59.4],[-151.0,59.2],[-150,59.6],[-149,59.9],[-148.3,60],[-147,60.4],[-145.7,60.5],[-144,60],[-142,60],[-140,59.7],[-139,59.5],[-137.5,58.8],[-136.5,58.2],[-135.5,57.5],[-134.5,56.5],[-133,55.3],[-131,55],[-130,55.9],[-130.6,56.5],[-133.4,58.4],[-135.5,59.8],[-137.5,59.2],[-139,60.3],[-141,60.3]];
 const RIV={yukon:[[-141,64.8],[-144.1,65.8],[-145.25,66.56],[-149.1,66],[-152,65.17],[-155.5,64.74],[-156.9,64.74],[-157.7,64.88],[-158.1,64.7],[-158.7,64.3],[-159.8,62.2],[-162.1,61.9],[-164.8,62.6]],
   tanana:[[-147.7,64.84],[-149.1,64.56],[-150.6,65],[-152,65.17]],koyukuk:[[-157.7,64.88],[-156.4,65.7],[-154.3,66.05],[-152.65,66.56],[-151.5,66.92]]};
-const PLACE_={anc:['Anchorage',[-149.9,61.2]],fai:['Fairbanks',[-147.7,64.84]],nen:['Nenana',[-149.1,64.56]],jnu:['Juneau',[-134.4,58.3]],
-  akk:['Allakaket',[-152.65,66.56]],fyu:['Fort Yukon',[-145.25,66.56]],bet:['Bettles',[-151.5,66.92]],gal:['Galena',[-156.9,64.74]],tan:['Tanana',[-152,65.17]]};
+const PLACE_={anc:['Port city',[-149.9,61.2]],fai:['Interior hub',[-147.7,64.84]],nen:['Rail–river landing',[-149.1,64.56]],jnu:['State capital',[-134.4,58.3]],
+  akk:['Village A',[-152.65,66.56]],fyu:['Village B',[-145.25,66.56]],bet:['Air-hub village',[-151.5,66.92]],gal:['River hub',[-156.9,64.74]],tan:['Confluence village',[-152,65.17]]};
 // agencies: badge = acronym only (a plain badge, not the organization's logo)
 const AG={
- ihs:{n:'Indian Health Service',b:'IHS',c:'#2b6cb0',at:'l48',role:'Funds sanitation facilities construction for Alaska Native homes (Sanitation Deficiency System), largely carried out through ANTHC and tribal partners.',d:[['IIJA sanitation, Alaska, FY25',395e6],['Regular IHS sanitation, SFY25',23e6]]},
+ ihs:{n:'Indian Health Service',b:'IHS',c:'#2b6cb0',at:'l48',role:'Funds sanitation facilities construction for Alaska Native homes (Sanitation Deficiency System), largely carried out through a statewide tribal health organization and tribal partners.',d:[['IIJA sanitation, Alaska, FY25',395e6],['Regular IHS sanitation, SFY25',23e6]]},
  epa:{n:'U.S. EPA Region 10',b:'EPA',c:'#2f855a',at:'l48',role:'Alaska Native Village (ANV) grant for water and sewer projects, plus tribal set-asides from the drinking water and clean water funds.',d:[['ANV program, FY24',39e6],['Tribal set-asides incl. IIJA, SFY25',30.3e6]]},
  usda:{n:'USDA Rural Development',b:'USDA',c:'#975a16',at:'l48',role:'Rural Alaska Village Grant (RAVG) for water and sewer in qualifying rural communities, paired with state match.',d:[['RAVG, SFY25',20.6e6]]},
  dec:{n:'Alaska DEC · Village Safe Water',b:'DEC',c:'#2c5282',at:'jnu',role:'State program that plans and builds rural water and sewer with communities and provides the state match for federal funds.',d:[['State match, SFY25',17.7e6]]},
- anthc:{n:'Alaska Native Tribal Health Consortium',b:'ANTHC',c:'#c05621',at:'anc',role:'Designs and builds most rural sanitation projects under IHS funding; runs the Alaska Rural Utility Collaborative (ARUC) for utility operations support.',d:[['Delivers most IHS and EPA project dollars','']]},
+ anthc:{n:'Statewide tribal health organization',b:'THO',c:'#c05621',at:'anc',role:'Designs and builds most rural sanitation projects under IHS funding; runs a shared utility-operations program that supports small systems.',d:[['Delivers most IHS and EPA project dollars','']]},
  aea:{n:'Alaska Energy Authority',b:'AEA',c:'#b7791f',at:'anc',role:'Power Cost Equalization lowers residential electric rates in rural communities, which lowers the cost of pumping, heat trace and treatment at home.',d:[['PCE disbursed statewide, FY25',46e6]]},
  denali:{n:'Denali Commission',b:'DC',c:'#4a5568',at:'anc',role:'Federal-state partnership that co-funds infrastructure, including sanitation and environmentally threatened communities.',d:[['Varies year to year','']]},
  dcra:{n:'DCCED · RUBA program',b:'RUBA',c:'#6b46c1',at:'anc',role:'Rural Utility Business Advisors help utilities with budgets, billing and management so systems stay sustainable.',d:[['Technical assistance','']]},
- tcc:{n:'Regional tribal consortium (e.g. Tanana Chiefs Conference)',b:'TCC',c:'#9b2c2c',at:'fai',role:'Regional tribal health and environmental programs: project coordination, operator support and advocacy for Interior villages.',d:[['Regional support','']]},
+ tcc:{n:'Regional tribal consortium',b:'RTC',c:'#9b2c2c',at:'fai',role:'Regional tribal health and environmental programs: project coordination, operator support and advocacy for Interior villages.',d:[['Regional support','']]},
  vil:{n:'Village utility & tribe',b:'VIL',c:'#ffc145',at:'akk',role:'Owns and runs the system: operators, haul crew, billing. Receives the projects and carries the O&M.',d:[['Rate revenue at $0.20/gal (model)','$rev']]}};
 const FLOWS=[['ihs','anthc'],['epa','anthc'],['epa','dec'],['usda','dec'],['dec','vil'],['anthc','vil'],['aea','vil'],['denali','vil'],['dcra','vil'],['tcc','vil']];
 const ROUTES=[
- {k:'barge',n:'Summer barge from Nenana (Ruby Marine and others): fuel, freight, vehicles',c:'#2479bd',dash:'',pts:()=>[[-149.1,64.56],[-150.6,65],[-152,65.17],[-155.5,64.74],[-156.9,64.74],[-157.7,64.88],[-156.4,65.7],[-154.3,66.05],[-152.65,66.56]]},
+ {k:'barge',n:'Summer barge from the river landing: fuel, freight, vehicles',c:'#2479bd',dash:'',pts:()=>[[-149.1,64.56],[-150.6,65],[-152,65.17],[-155.5,64.74],[-156.9,64.74],[-157.7,64.88],[-156.4,65.7],[-154.3,66.05],[-152.65,66.56]]},
  {k:'barge2',n:'',c:'#2479bd',dash:'',pts:()=>[[-149.1,64.56],[-150.6,65],[-152,65.17],[-149.1,66],[-145.25,66.56]]},
- {k:'air',n:'Year-round air cargo and passengers from Fairbanks',c:'#e53e3e',dash:'6 5',pts:()=>[[-147.7,64.84],[-152.65,66.56]]},
+ {k:'air',n:'Year-round air cargo and passengers from the Interior hub',c:'#e53e3e',dash:'6 5',pts:()=>[[-147.7,64.84],[-152.65,66.56]]},
  {k:'air2',n:'',c:'#e53e3e',dash:'6 5',pts:()=>[[-147.7,64.84],[-145.25,66.56]]},
- {k:'rail',n:'Rail and highway: Anchorage port → Fairbanks and the Nenana barge landing',c:'#4a5568',dash:'2 3',pts:()=>[[-149.9,61.2],[-149.5,62.3],[-149.1,63.3],[-149.1,64.56],[-147.7,64.84]]},
+ {k:'rail',n:'Rail and highway: port city → Interior hub and the river landing',c:'#4a5568',dash:'2 3',pts:()=>[[-149.9,61.2],[-149.5,62.3],[-149.1,63.3],[-149.1,64.56],[-147.7,64.84]]},
  {k:'air3',n:'',c:'#e53e3e',dash:'6 5',pts:()=>[[-149.9,61.2],[-147.7,64.84]]}];
 let webSel='';
 const webPos=k=>{const a=AG[k];if(a.at==='l48'){const i=['ihs','epa','usda'].indexOf(k);return[478+i*44,512];}const P=WP_(PLACE_[a.at][1]),off={anthc:[-26,22],aea:[18,26],denali:[-48,-6],dcra:[-56,34],dec:[-34,-4],tcc:[40,-16],vil:[-40,-14]}[k]||[0,0];return[P[0]+off[0],P[1]+off[1]];};
@@ -5362,7 +5764,7 @@ function webSvg(){const W=600,H=560,P=pts=>pts.map(p=>WP_(p).map(v=>v.toFixed(1)
   let g='<svg viewBox="0 0 '+W+' '+H+'" class="webmap" role="img" aria-label="Schematic map of Alaska showing agencies, funding flows and supply routes to Interior villages">';
   g+='<rect width="'+W+'" height="'+H+'" fill="#e8f1f8"/><polygon points="'+P(AK_OUT)+'" fill="#fbf7ef" stroke="#24323d" stroke-width="1.6" stroke-linejoin="round"/>';
   Object.values(RIV).forEach(r=>{g+='<polyline points="'+P(r)+'" fill="none" stroke="#8fc6e0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>';});
-  g+='<text x="'+WEBX(-155)+'" y="'+WEBY(64.3)+'" class="wm-r">Yukon R.</text><text x="'+WEBX(-155.2)+'" y="'+WEBY(66.1)+'" class="wm-r">Koyukuk R.</text><text x="'+WEBX(-150.4)+'" y="'+WEBY(64.35)+'" class="wm-r">Tanana R.</text>';
+  g+='<text x="'+WEBX(-155)+'" y="'+WEBY(64.3)+'" class="wm-r">Main river</text><text x="'+WEBX(-155.2)+'" y="'+WEBY(66.1)+'" class="wm-r">Tributary</text><text x="'+WEBX(-150.4)+'" y="'+WEBY(64.35)+'" class="wm-r">Rail-side river</text>';
   ROUTES.forEach(r=>{g+='<polyline points="'+P(r.pts())+'" fill="none" stroke="'+r.c+'" stroke-width="2.6" stroke-dasharray="'+r.dash+'" stroke-linecap="round" opacity="'+(webSel&&webSel!=='routes'?.25:.9)+'"/>';});
   // money flows: width by dollars
   const mx=Math.max(...Object.keys(AG).map(webAmt));
@@ -5385,8 +5787,8 @@ function webHtml(){const tot=['ihs','epa','usda','dec'].reduce((a,k)=>a+webAmt(k
   h+='<div class="wm-wrap">'+webSvg()+'</div>';
   h+='<div class="sleg"><span><i style="background:#2479bd"></i>Barge</span><span><i style="background:#e53e3e"></i>Air</span><span><i style="background:#4a5568"></i>Rail &amp; road</span><span><i style="background:#8fc6e0"></i>River</span><span>Line width = dollars</span></div>';
   h+='<div id="web-det">'+webDet()+'</div>';
-  h+='<h3>Supply lines to Interior villages</h3><ul class="ub-assume"><li><b>Barge, summer only:</b> from Nenana down the Tanana and Yukon; up the Yukon to Fort Yukon and up the Koyukuk to Allakaket. Low water can cancel the Koyukuk run.</li><li><b>Air, year-round:</b> scheduled and cargo flights from Fairbanks carry chemicals, UV lamps, pump parts and people.</li><li><b>Rail and road:</b> the Alaska Railroad and Parks Highway link the port of Anchorage to Fairbanks and the Nenana barge landing.</li><li><b>Winter trails:</b> snowmachine and ice routes between villages in some years.</li></ul>';
-  h+='<p class="note">Dollar figures are statewide program totals for rural Alaska water, sewer and power costs, not this village. Sources: ANTHC water and sewer funding summary (IIJA FY25), Alaska DEC SFY25 rural water and sewer funding table, EPA Alaska Native Villages FY24 fact sheet, Alaska Energy Authority PCE presentation (FY25), Ruby Marine service area. Check current year awards before using in a budget.</p>';
+  h+='<h3>Supply lines to Interior villages</h3><ul class="ub-assume"><li><b>Barge, summer only:</b> from the rail–river landing down the rail-side river to the main river, then up the main river to Village B and up the tributary to Village A. Low water can cancel the tributary run.</li><li><b>Air, year-round:</b> scheduled and cargo flights from the Interior hub carry chemicals, UV lamps, pump parts and people.</li><li><b>Rail and road:</b> the railroad and highway link the port city to the Interior hub and the river landing.</li><li><b>Winter trails:</b> snowmachine and ice routes between villages in some years.</li></ul>';
+  h+='<p class="note">Dollar figures are statewide program totals for rural Alaska water, sewer and power costs, not this village. Sources: statewide tribal health organization water and sewer funding summary (IIJA FY25), Alaska DEC SFY25 rural water and sewer funding table, EPA Alaska Native Villages FY24 fact sheet, Alaska Energy Authority PCE presentation (FY25), regional barge line service areas. Check current year awards before using in a budget.</p>';
   return h;}
 function webDet(){if(!webSel)return '<p class="frz">Tap an agency badge to see its role and dollars and highlight its lines.</p>';const a=AG[webSel];
   return '<div class="wm-det"><b style="background:'+a.c+'" class="wm-db'+(webSel==='vil'?' dk':'')+'">'+a.b+'</b><div><b>'+esc(a.n)+'</b><p>'+esc(a.role)+'</p><table class="ub-table">'+a.d.map(([n,v])=>'<tr><td>'+esc(n)+'</td><td>'+(v==='$rev'?(UBR&&typeof finCalc==='function'?kmoney(finCalc().rev)+'/yr':'—'):typeof v==='number'?fmtM(v):'')+'</td></tr>').join('')+'</table></div></div>';}
@@ -5400,7 +5802,7 @@ EXTRA_FIND.unshift(['study_web','Study: support web (agencies, dollars, supply l
 /* =====================================================================
    Auto-fit framing for the cutaways (any screen), phone dock tidy, splash
    ===================================================================== */
-const FIT={home:{c:()=>new V(.4,LIFT+1.5,.5),r:5.2,d:new V(12.5,5.5,14)},plant:{c:()=>new V(-69,3,-4.5),r:11,d:new V(15.5,12,18)},well:{c:()=>new V(WP.x+4,WLIFT-2.5,WP.z),r:11.5,d:new V(11,11,25)},piped:{c:()=>new V(PP.x+.5,PLIFT+.2,PP.z-1.5),r:10.5,d:new V(13,15,19)}};
+const FIT={home:{c:()=>new V(.4,LIFT+1.5,.5),r:5.2,d:new V(12.5,5.5,14)},plant:{c:()=>new V(-69,3,-4.5),r:11,d:new V(15.5,12,18)},well:{c:()=>new V(WP.x+4,WLIFT-2.5,WP.z),r:11.5,d:new V(11,11,25)},piped:{c:()=>new V(PP.x+.5,PLIFT+.2,PP.z-1.5),r:10.5,d:new V(13,15,19)},power:{c:()=>new V(PWP.x-4,2.5,PWP.z),r:15,d:new V(14,14,20)},lagoon:{c:()=>new V(40,1,36),r:15,d:new V(-12,16,22)}};
 function fitPreset(v){const F=FIT[v];if(!F)return null;
   const H=innerHeight,W=innerWidth-(typeof navOff==='function'?navOff():0),ctrl=(bEl('controls').offsetHeight||0)+30,top=phoneQ.matches?16:24,useH=Math.max(.35,(H-ctrl-top)/H);
   const vf=camera.fov*Math.PI/180,ef=2*Math.atan(Math.tan(vf/2)*useH),hf=2*Math.atan(Math.tan(vf/2)*W/H),f=Math.min(ef,hf);
@@ -5420,7 +5822,7 @@ const TIDBITS=[
  'In many Interior villages, every gallon of water arrives by truck and every gallon of sewage leaves the same way.',
  'At −50 °F, a heat-traced fill box can start to freeze about an hour after the power goes out.',
  'A haul-served family often uses about 15 gallons per person per day: a fraction of what a piped home uses.',
- 'Summer barges from Nenana carry the fuel, chemicals and trucks that keep a village water system running all winter.',
+ 'Summer barges from the railroad’s river landing carry the fuel, chemicals and trucks that keep a village water system running all winter.',
  'Permafrost under many Interior villages sits within a few degrees of thawing, so foundations are built to keep it frozen.',
  'In a haul system, a leaking toilet is paid for twice: once when the water is delivered, again when it is pumped out.'];
 function showSplash(){const sp=bEl('splash');sp.querySelector('.sp-tid').textContent=TIDBITS[Math.floor(Math.random()*TIDBITS.length)];
@@ -5563,19 +5965,19 @@ freezeOf=(function(f0){return function(id,tOut){const a=A[id];if(!a||(a.v!=='pip
 const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 // modes: freight rates and lead times are assumptions (edit in Assumptions)
 const LOG={
- ocean:{n:'Ocean freight',ic:'⛴',c:'#1f6f9f',dash:'',lo:.08,hi:.2,d:[3,7],open:[1,1,1,1,1,1,1,1,1,1,1,1],limit:'Containers and vans, weekly sailings to the Port of Alaska'},
- rail:{n:'Rail',ic:'🚆',c:'#4a5568',dash:'2 3',lo:.05,hi:.15,d:[1,2],open:[1,1,1,1,1,1,1,1,1,1,1,1],limit:'Anchorage to Fairbanks, with a stop at the Nenana barge landing'},
- road:{n:'Truck',ic:'🚚',c:'#718096',dash:'8 3 2 3',lo:.08,hi:.2,d:[1,1],open:[1,1,1,1,1,1,1,1,1,1,1,1],limit:'Parks Highway; no road reaches most Interior villages'},
- barge:{n:'River barge',ic:'🛳',c:'#2479bd',dash:'',lo:.25,hi:.6,d:[7,21],open:[0,0,0,0,0,1,1,1,1,0,0,0],limit:'Summer only; low water can cancel the Koyukuk run. Fuel, vehicles, pipe, building materials'},
+ ocean:{n:'Ocean freight',ic:'⛴',c:'#1f6f9f',dash:'',lo:.08,hi:.2,d:[3,7],open:[1,1,1,1,1,1,1,1,1,1,1,1],limit:'Containers and vans, weekly sailings to the state’s main port'},
+ rail:{n:'Rail',ic:'🚆',c:'#4a5568',dash:'2 3',lo:.05,hi:.15,d:[1,2],open:[1,1,1,1,1,1,1,1,1,1,1,1],limit:'Port city to the Interior hub, with a stop at the river landing'},
+ road:{n:'Truck',ic:'🚚',c:'#718096',dash:'8 3 2 3',lo:.08,hi:.2,d:[1,1],open:[1,1,1,1,1,1,1,1,1,1,1,1],limit:'Highway to the Interior hub; no road reaches most Interior villages'},
+ barge:{n:'River barge',ic:'🛳',c:'#2479bd',dash:'',lo:.25,hi:.6,d:[7,21],open:[0,0,0,0,0,1,1,1,1,0,0,0],limit:'Summer only; low water can cancel the tributary run. Fuel, vehicles, pipe, building materials'},
  air:{n:'Air cargo',ic:'✈',c:'#e53e3e',dash:'6 5',lo:.8,hi:1.6,d:[1,3],open:[1,1,1,1,1,1,1,1,1,1,1,1],limit:'Year-round but weather-bound; weight and size limits; no oxidizers or fuel on passenger flights'},
  trail:{n:'Winter trail',ic:'❄',c:'#7f5af0',dash:'1 4',lo:.5,hi:1.5,d:[1,3],open:[1,1,1,0,0,0,0,0,0,0,0,1],limit:'Snowmachine and sled, some years an ice road; small loads only'}};
-const AKP={sea:['Seattle / Tacoma',[-133.6,54.6]],anc:['Anchorage',[-149.9,61.2]],fai:['Fairbanks',[-147.7,64.84]],nen:['Nenana',[-149.1,64.56]],jnu:['Juneau',[-134.4,58.3]],
- akk:['Allakaket',[-152.65,66.56]],fyu:['Fort Yukon',[-145.25,66.56]],bet:['Bettles',[-151.5,66.92]],gal:['Galena',[-156.9,64.74]],tan:['Tanana',[-152,65.17]],cir:['Circle',[-144.07,65.83]],bth:['Bethel',[-161.76,60.79]]};
+const AKP={sea:['Lower 48 port',[-133.6,54.6]],anc:['Port city',[-149.9,61.2]],fai:['Interior hub',[-147.7,64.84]],nen:['Rail–river landing',[-149.1,64.56]],jnu:['State capital',[-134.4,58.3]],
+ akk:['Village A',[-152.65,66.56]],fyu:['Village B',[-145.25,66.56]],bet:['Air-hub village',[-151.5,66.92]],gal:['River hub',[-156.9,64.74]],tan:['Confluence village',[-152,65.17]],cir:['Road-end village',[-144.07,65.83]],bth:['Coastal hub',[-161.76,60.79]]};
 const HUB={anc:'Port, rail head and the state’s main air-cargo hub. Most freight for rural Alaska passes through here.',fai:'Interior hub: air cargo and passenger flights to the villages, fuel and parts suppliers, the end of the railroad.',
- nen:'Barge landing on the Tanana River where rail meets river. Summer barges load fuel, vehicles and freight for the Yukon and Koyukuk villages.',gal:'Yukon River hub with a large airport; barges stop on the way down the river.',
- bth:'Hub for the Yukon–Kuskokwim Delta, supplied by ocean barge up the Kuskokwim (another region, shown for comparison).',bet:'Upper Koyukuk air hub with a long runway; the winter trail to Allakaket starts here in good years.',sea:'Where most freight starts: container ships and barges sail weekly to Alaska.',
- akk:'Concept village on the Koyukuk River. Barge in high-water summers, air cargo the rest of the year, winter trail to Bettles.',fyu:'Concept village on the Yukon River. Barge in summer, air cargo year-round, winter trail toward Circle.',
-tan:'Village at the Tanana–Yukon confluence; barges pass in summer.',cir:'End of the Steese Highway on the Yukon; winter trail start toward Fort Yukon.',jnu:'State capital: DEC Village Safe Water and the legislature that sets the state match.'};
+ nen:'River landing where the railroad meets the river. Summer barges load fuel, vehicles and freight for the river villages.',gal:'Main-river hub with a large airport; barges stop on the way downriver.',
+ bth:'A coastal regional hub supplied by ocean barge (another region, shown for comparison).',bet:'Upriver air hub with a long runway; a winter trail to Village A starts here in good years.',sea:'Where most freight starts: container ships and barges sail weekly to Alaska.',
+ akk:'Concept village on a tributary. Barge in high-water summers, air cargo the rest of the year, winter trail to the air-hub village.',fyu:'Concept village on the main river. Barge in summer, air cargo year-round, winter trail toward the road-end village.',
+tan:'Village at a river confluence; barges pass in summer.',cir:'Where the highway ends at the river; a winter trail starts here toward Village B.',jnu:'State capital: the state rural water and sewer program and the legislature that sets the state match.'};
 const LEG={
  sea_anc:{m:'ocean',pts:[[-133.6,54.6],[-140,57.4],[-146,58.7],[-149.5,58.9],[-151.6,59.0],[-152.5,59.6],[-151.9,60.4],[-150.9,60.95],[-149.9,61.2]]},
  anc_nen:{m:'rail',pts:[[-149.9,61.2],[-149.5,62.3],[-149.1,63.3],[-149.1,64.56]]},
@@ -5591,7 +5993,7 @@ const LEG={
  cir_fyu:{m:'trail',pts:[[-144.07,65.83],[-144.7,66.2],[-145.25,66.56]]}};
 const KIT={
  chlorine:{n:'Chlorine for the plant (granular calcium hypochlorite)',lb:1200,path:['sea_anc','anc_nen','nen_akk'],alt:['sea_anc','anc_fai_air','fai_akk'],note:'An oxidizer: ships as hazardous material. It rides the summer barge in bulk; by air it needs a cargo-only flight and costs several times more.'},
- pump:{n:'Replacement circulation or haul pump',lb:180,path:['sea_anc','anc_fai_air','fai_akk'],note:'Breakdowns cannot wait for the barge. Parts fly from Anchorage or Fairbanks, and the downtime is the real cost.'},
+ pump:{n:'Replacement circulation or haul pump',lb:180,path:['sea_anc','anc_fai_air','fai_akk'],note:'Breakdowns cannot wait for the barge. Parts fly from the port city or the Interior hub, and the downtime is the real cost.'},
  fuel:{n:'Heating fuel for the plant (10,000 gal)',lb:71000,path:['sea_anc','anc_nen','nen_akk'],note:'Fuel arrives once a year by barge. If low water cancels the run, it is flown in at many times the price.'},
  uv:{n:'UV lamps and filter cartridges (one year)',lb:90,path:['sea_anc','anc_fai_air','fai_akk'],note:'Small, light and fragile: usually air freight or parcel post.'},
  truck:{n:'New water truck',lb:26000,path:['sea_anc','anc_nen','nen_akk'],note:'Vehicles only move by barge. Order a year ahead and catch the summer run.'},
@@ -5609,7 +6011,7 @@ function akSvg(){const P=pts=>pts.map(p=>AKXY(p).map(v=>v.toFixed(1)).join(','))
   g+='<rect x="0" y="0" width="620" height="560" fill="var(--ak-sea)"/><polygon points="'+P(AK_OUT)+'" fill="var(--ak-land)" stroke="var(--ink)" stroke-width="1.6" stroke-linejoin="round"/>';
   Object.values(RIV).forEach(r=>{g+='<polyline points="'+P(r)+'" fill="none" stroke="#8fc6e0" stroke-width="'+(zi?4:3)+'" stroke-linecap="round" stroke-linejoin="round"/>';});
   const rl=(t,ll)=>{const[x,y]=AKXY(ll);return '<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" class="wm-r">'+t+'</text>';};
-  g+=rl('Yukon R.',[-161.4,62.75]);if(zi)g+=rl('Koyukuk R.',[-158.9,65.75])+rl('Tanana R.',[-151.25,64.68])+rl('Yukon R.',[-148.2,66.35]);
+  g+=rl('Main river',[-161.4,62.75]);if(zi)g+=rl('Tributary',[-158.9,65.75])+rl('Rail-side river',[-151.25,64.68])+rl('Main river',[-148.2,66.35]);
   const kit=akKit&&KIT[akKit];
   if(akLayers.routes){Object.keys(LEG).forEach(k=>{const L=LEG[k],M=LOG[L.m],on=legOpen(k),inKit=kit&&kit.path.includes(k),dim=(kit&&!inKit)||(akSel&&LOG[akSel]&&akSel!==L.m);
     g+='<polyline data-mode="'+L.m+'" class="ak-leg" points="'+P(L.pts)+'" fill="none" stroke="'+M.c+'" stroke-width="'+(inKit?5:3.2)+'" stroke-dasharray="'+(on?M.dash:'2 6')+'" stroke-linecap="round" stroke-linejoin="round" opacity="'+(dim?.14:on?.92:.35)+'"><title>'+esc(M.n)+(on?'':' (closed in '+MON[akMonth]+')')+'</title></polyline>';});}
@@ -5645,7 +6047,7 @@ function akSide(){
   if(akSel&&AG[akSel])return '<p class="ak-k">Funding</p>'+webDet().replace('wm-det','wm-det ak-det')+akModes();
   return '<p class="ak-k">Alaska</p><h3>How a village is supplied</h3><p>Everything a rural water system runs on, from chlorine and pumps to fuel and trucks, travels by ship, rail, river barge, air or winter trail. The summer barge window sets the year’s work. Tap a route, hub or badge, or follow a part.</p>'+akModes();}
 function akModes(){return '<h4>Ways in</h4><table class="ub-table ak-modes"><tr><th>Mode</th><th>'+MON[akMonth]+'</th><th>Days</th><th>$/lb</th></tr>'+Object.keys(LOG).map(k=>{const M=LOG[k];return '<tr data-mode="'+k+'"'+(akSel===k?' class="sel"':'')+'><td><i style="background:'+M.c+'"></i>'+esc(M.n)+'</td><td>'+(M.open[akMonth]?'<b class="st ok">open</b>':'<b class="st bad">closed</b>')+'</td><td>'+M.d[0]+(M.d[1]!==M.d[0]?'–'+M.d[1]:'')+'</td><td>'+M.lo.toFixed(2)+'–'+M.hi.toFixed(2)+'</td></tr>';}).join('')+'</table>';}
-function akSeason(){const note={0:'Deep winter: air only, winter trails open in good years.',1:'Cold and dark: air and trails. Plan the summer barge orders now.',2:'Trails still open; barge orders and fuel contracts due.',3:'Trails soften; air only into breakup.',4:'Breakup: river ice goes out. Nothing moves on the river, trails are gone.',5:'Barge season opens after breakup, once the river rises and clears.',6:'Peak barge season: fuel, freight, vehicles and construction materials.',7:'Barge season; watch Koyukuk water levels for the upriver run.',8:'Last barges before freeze-up. Anything missed waits a year or flies.',9:'Freeze-up begins: river closes, trails not yet safe. Air only.',10:'Freeze-up: air only.',11:'Winter: air, and trails once the ice is thick.'}[akMonth];
+function akSeason(){const note={0:'Deep winter: air only, winter trails open in good years.',1:'Cold and dark: air and trails. Plan the summer barge orders now.',2:'Trails still open; barge orders and fuel contracts due.',3:'Trails soften; air only into breakup.',4:'Breakup: river ice goes out. Nothing moves on the river, trails are gone.',5:'Barge season opens after breakup, once the river rises and clears.',6:'Peak barge season: fuel, freight, vehicles and construction materials.',7:'Barge season; watch tributary water levels for the upriver run.',8:'Last barges before freeze-up. Anything missed waits a year or flies.',9:'Freeze-up begins: river closes, trails not yet safe. Air only.',10:'Freeze-up: air only.',11:'Winter: air, and trails once the ice is thick.'}[akMonth];
   let h='<div class="aks-top"><b>'+MON[akMonth]+'</b><span>'+esc(note)+'</span></div><div class="aks-grid" role="group" aria-label="Month">';
   MON.forEach((m,i)=>{h+='<button data-month="'+i+'" aria-pressed="'+(i===akMonth)+'">'+m+'</button>';});h+='</div><div class="aks-bars">';
   Object.keys(LOG).forEach(k=>{const M=LOG[k];h+='<div class="aks-row"><span>'+M.ic+' '+esc(M.n)+'</span><div>'+M.open.map((o,i)=>'<i class="'+(o?'on':'')+(i===akMonth?' cur':'')+'" style="--c:'+M.c+'"></i>').join('')+'</div></div>';});
@@ -5766,7 +6168,7 @@ asP('Community & water use','tank','Home water tank',BUD,'tank','gal','Typical h
 AS.push({g:'Community & water use',id:'rate',n:'Rate charged (water + sewer)',u:'$/gal',src:'0 = no rate set',step:.01,get:()=>BUD.rate||0,set:v=>{BUD.rate=v>0?v:null;}});
 asP('Community & water use','plantMult','Plant output vs home deliveries',CONSP,'plantMult','×','Washeteria, school and clinic use; assumed',{step:.1});
 // prices & energy
-asP('Prices & energy','fuel','Heating oil / diesel, delivered',UIN,'fuel','$/gal','Interior average to Allakaket, Alaska Fuel Price Report (Jan 2026)',{step:.05});
+asP('Prices & energy','fuel','Heating oil / diesel, delivered',UIN,'fuel','$/gal','Interior average to a remote village, Alaska Fuel Price Report (Jan 2026)',{step:.05});
 asP('Prices & energy','elec','Electricity (homes, heat trace)',ENER,'elec','$/kWh','Assumed rural rate',{step:.01});
 asTri('Prices & energy','kwhRate','Electricity in the O&M model','kwhRate','$/kWh','',{step:.01});
 AS.push({g:'Prices & energy',id:'eff',n:'Boiler efficiency',u:'%',src:'Heating-oil boiler, assumed',get:()=>Math.round(ENER.eff*100),set:v=>{ENER.eff=v/100;}});
@@ -5854,14 +6256,34 @@ bEl('as-body').addEventListener('change',e=>{const t=e.target,a=ASBY[t.dataset.a
 bEl('as-body').addEventListener('click',e=>{const b=e.target.closest('[data-asr]');if(!b)return;const a=ASBY[b.dataset.asr];a.set(Array.isArray(a.def)?a.def.slice():a.def);asPersist();asRender();asRecompute();});
 bEl('as-reset').onclick=()=>{AS.forEach(a=>{if(asChanged(a))a.set(Array.isArray(a.def)?a.def.slice():a.def);});asPersist();asRender();asRecompute();};
 let asDL;const asDLp=(window.claude&&typeof window.claude.use==='function')?window.claude.use('downloads').then(d=>{asDL=d;return d;}).catch(()=>null):Promise.resolve(null);
-bEl('as-exp').onclick=async()=>{const o={};AS.forEach(a=>{o[a.id]=a.get();});const txt=JSON.stringify({model:'rural-sanitation-twin',saved:new Date().toISOString(),values:o},null,1);
-  const dl=asDL!==undefined?asDL:await asDLp;
-  if(dl){try{await dl.save({filename:'twin-assumptions.json',data:txt});alertish('Saved.');}catch(e){alertish(e&&e.code==='declined'?'Export cancelled.':'Export is not available here.');}return;}
+async function asSave(name,txt,mime){const dl=asDL!==undefined?asDL:await asDLp;
+  if(dl){try{await dl.save({filename:name,data:txt});alertish('Saved '+name+'.');}catch(e){alertish(e&&e.code==='declined'?'Export cancelled.':'Export is not available here.');}return;}
   if(window.claude&&typeof window.claude.use==='function'){alertish('Export is not available in this view.');return;}
-  const u=URL.createObjectURL(new Blob([txt],{type:'application/json'})),l=document.createElement('a');l.href=u;l.download='twin-assumptions.json';document.body.appendChild(l);l.click();setTimeout(()=>{URL.revokeObjectURL(u);l.remove();},500);};
+  const u=URL.createObjectURL(new Blob([txt],{type:mime})),l=document.createElement('a');l.href=u;l.download=name;document.body.appendChild(l);l.click();setTimeout(()=>{URL.revokeObjectURL(u);l.remove();},500);}
+const csvQ=v=>{const s=v==null?'':String(v);return /[",\n\r]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;};
+function asCSV(){const rows=[['group','id','name','value','low','high','unit','default','changed','source']];
+  AS.forEach(a=>{const v=a.get(),d=a.def,r=a.type==='range',b=a.type==='bool';
+    rows.push([a.g,a.id,a.n,r?'':b?(v?'yes':'no'):v,r?v[0]:'',r?v[1]:'',a.u||'',r?d[0]+'–'+d[1]:b?(d?'yes':'no'):d,asChanged(a)?'yes':'',a.src||'']);});
+  return '﻿'+rows.map(r=>r.map(csvQ).join(',')).join('\r\n')+'\r\n';}
+function parseCSV(t){t=t.replace(/^﻿/,'');const out=[];let row=[],f='',q=false;
+  for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++;}else q=false;}else f+=c;}
+    else if(c==='"')q=true;else if(c===','){row.push(f);f='';}else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;row.push(f);out.push(row);row=[];f='';}else f+=c;}
+  if(f!==''||row.length){row.push(f);out.push(row);}return out.filter(r=>r.some(x=>x.trim()!==''));}
+const numIn2=s=>{const v=parseFloat(String(s).replace(/[$,%\s]/g,''));return isFinite(v)?v:null;};
+function importCSV(t){const R=parseCSV(t);if(!R.length)return{n:0,bad:0};const H=R[0].map(h=>h.trim().toLowerCase()),ix=k=>H.indexOf(k);
+  if(ix('id')<0)throw new Error('The CSV needs an "id" column. Export first to get the template.');
+  let n=0,bad=0;R.slice(1).forEach(r=>{const a=ASBY[(r[ix('id')]||'').trim()];if(!a)return;
+    try{if(a.type==='range'){const lo=numIn2(r[ix('low')]),hi=numIn2(r[ix('high')]);if(lo==null||hi==null){bad++;return;}a.set(lo<=hi?[lo,hi]:[hi,lo]);}
+      else if(a.type==='bool'){const s=(r[ix('value')]||'').trim().toLowerCase();if(!s){bad++;return;}a.set(['yes','true','1','y','on'].includes(s));}
+      else{let v=numIn2(r[ix('value')]);if(v==null){bad++;return;}if(a.min!=null)v=Math.max(a.min,v);if(a.max!=null)v=Math.min(a.max,v);a.set(v);}n++;}catch(x){bad++;}});
+  return{n,bad};}
+bEl('as-exp').onclick=()=>asSave('twin-assumptions.csv',asCSV(),'text/csv');
+bEl('as-expj').onclick=()=>{const o={};AS.forEach(a=>{o[a.id]=a.get();});asSave('twin-assumptions.json',JSON.stringify({model:'rural-sanitation-twin',saved:new Date().toISOString(),values:o},null,1),'application/json');};
 bEl('as-imp').onclick=()=>bEl('as-file').click();
-bEl('as-file').onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;f.text().then(t=>{let d;try{d=JSON.parse(t);}catch(x){alertish('That file is not valid JSON.');return;}const v=d.values||d;let n=0;
-  for(const id in v){const a=ASBY[id];if(a){try{a.set(v[id]);n++;}catch(x){}}}asPersist();asRender();asRecompute();alertish('Loaded '+n+' values.');});e.target.value='';};
+bEl('as-file').onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;f.text().then(t=>{let res;
+  try{if(/\.json$/i.test(f.name)||/^\s*[{[]/.test(t)){const d=JSON.parse(t),v=d.values||d;let n=0;for(const id in v){const a=ASBY[id];if(a){try{a.set(v[id]);n++;}catch(x){}}}res={n,bad:0};}else res=importCSV(t);}
+  catch(x){alertish(x&&x.message&&x.message.startsWith('The CSV')?x.message:'Could not read that file.');return;}
+  asPersist();asRender();asRecompute();alertish('Loaded '+res.n+' values'+(res.bad?', skipped '+res.bad+' blank or invalid':'')+'.');});e.target.value='';};
 function alertish(m){const c=bEl('as-n');if(c){c.textContent=m;setTimeout(asCount,2500);}}
 if(Object.keys(asSaved).length)setTimeout(asRecompute,0);
 asCount();
@@ -6052,6 +6474,292 @@ bEl('dock-map').onclick=()=>setMapMin(!document.body.classList.contains('map-min
 bEl('scn-ops').onclick=()=>{setDrawer(false);openInfo('ops');};
 bEl('scn-more').onclick=()=>{setDrawer(false);if(!HZ.open)openHazards('overview');};
 setMapMin(true,true);
+
+
+/* =====================================================================
+   Landing flow: site plan → infrastructure (isolated, components listed) → inside (cutaway)
+   plus one place for everything that isn't infrastructure (studies & logistics)
+   ===================================================================== */
+const INFRA=[
+ {k:'plant',f:[-70,3,-6,16],n:'Water treatment plant',ids:['wtp'],view:'plant',ic:'#2479bd',d:'River water in; treated, stored and loaded onto the water truck.',cap:()=>rollUp().plant.mid},
+ {k:'haul',f:[-12,0,6,48],n:'Haul trucks & route',ids:['watertruck','sewertruck','route'],view:null,ic:'#ffc145',d:'One water truck and one vacuum truck run the loop between plant, homes and lagoon.',comps:['watertruck','sewertruck','route','fleet'],cap:()=>rollUp().fleet.rows.filter(r=>r.id!=='lagoon').reduce((a,r)=>a+r.mid*r.q,0)},
+ {k:'home',f:[0,2,1,12],n:'Haul-served home',ids:['thishome','homes'],view:'home',ic:'#3aa0e8',d:'Tanks, pump and UV inside; fill and pump-out ports outside. Shown as a cutaway.',cap:()=>rollUp().home.mid,per:true},
+ {k:'lagoon',f:[40,0,36,18],n:'Sewage lagoon',ids:['lagoon'],view:null,ic:'#d49a3a',d:'Where the vacuum truck empties; treats wastewater by settling and time.',comps:['lagoon'],cap:()=>(rollOf('lagoon')||{mid:0}).mid},
+ {k:'piped',f:[PP.x,1,PP.z-1,16],n:'Piped option',ids:['pipedlot'],view:'piped',ic:'#6c7a86',d:'The alternative: a circulating main, vacuum sewer and utility station.',cap:()=>pipedRoll().perHome.mid,per:true},
+ {k:'well',f:[WP.x+3,1,WP.z,12],n:'Private-well home',ids:['wellhome'],view:'well',ic:'#9b7fd4',d:'The other alternative: own well, treatment train and septic.',cap:()=>rollUp().well.mid,per:true}];
+const INFRA_BY={};INFRA.forEach(x=>INFRA_BY[x.k]=x);
+const VIEW2INFRA={plant:'plant',home:'home',piped:'piped',well:'well'};
+const STUDY_NAV=[
+ ['Logistics',[['alaska','Alaska view','Routes, seasons, follow a part'],['open:study_web','Support web','Agencies and dollars'],['open:consumables','Consumables & supply','Chemicals, fuel, parts, samples']]],
+ ['Cost',[['open:finance','Whole financial picture','Capital, O&M, rates, gap'],['open:costroll','Cost roll-up','Every component priced'],['open:utilbudget','O&M budget lines','Haul utility, line by line'],['budget','Household budget','One family’s water bill']]],
+ ['Compare',[['open:study_svc','Piped vs haul vs well','Per household per month'],['open:pipedcost','Piped option cost','Mains, station, services'],['open:study_heat','Heat-loss study','Pipes, tanks, buildings'],['open:study_ins','Insulation vs waste heat','Payback study']]],
+ ['Risk',[['hz','Hazard map','Flood, erosion, thaw, settlement'],['scn','Scenario sliders','Drive the scene'],['open:ops','Outages, leaks, vacant homes','Time to freeze']]],
+ ['Reference',[['open:overview','Overview & gaps','Scope, cost, facilities, gaps'],['assume','Assumptions','Every default, editable'],['open:library','Manuals & explainers','Linked to each part']]]];
+let navMode='infra',infraSel='',compSel='';
+// ---------- build the panel ----------
+{const nav=navEl;
+  const hold=document.createElement('div');hold.hidden=true;hold.id='nav-hold';document.body.append(hold);
+  ['nav-top','nav-views','nav-tools','nav-tabs'].forEach(id=>{const e=bEl(id);if(e)hold.append(e);});
+  const lk=bEl('lens-key');
+  const body=nav.querySelector('.nav-body');
+  const npq=bEl('np-q'),npl=bEl('np-list');
+  const mode=document.createElement('div');mode.className='nav-mode';mode.setAttribute('role','tablist');
+  mode.innerHTML='<button role="tab" data-mode="infra">Infrastructure</button><button role="tab" data-mode="studies">Studies &amp; logistics</button>';
+  nav.querySelector('.nav-h').after(mode);
+  const main=document.createElement('div');main.className='nav-main';main.id='nav-main';
+  main.innerHTML='<div id="pg-infra" class="pg"></div><div id="pg-fac" class="pg" hidden><div id="fac-h"></div><div id="fac-tools" class="fac-tools"></div><div id="fac-list"></div></div><div id="pg-studies" class="pg" hidden></div>';
+  body.before(main);hold.append(body);
+  bEl('fac-list').append(npq,npl);bEl('fac-tools').append(vtRow);
+  const lensRow=document.createElement('div');lensRow.className='nav-lens';lensRow.append(lensPick,lk);main.after(lensRow);
+  const foot=document.createElement('div');foot.className='nav-foot';
+  foot.innerHTML='<button class="tool" data-foot="tour"><span aria-hidden="true">▶</span> Tour</button><button class="tool" data-foot="find" aria-label="Find a part"><span aria-hidden="true">🔍</span> Find</button><button class="tool" data-foot="assume" aria-label="Assumptions"><span aria-hidden="true">⚙</span></button><button class="tool" data-foot="more" aria-expanded="false" aria-label="Display settings">⋯</button>';
+  lensRow.after(foot);
+  const pop=document.createElement('div');pop.className='nav-pop';pop.id='nav-pop';pop.hidden=true;
+  ['place-btn','labels-btn','dock-music','night-btn','about-btn'].forEach(id=>{const e=bEl(id);if(e)pop.append(e);});foot.append(pop);
+  foot.addEventListener('click',e=>{const b=e.target.closest('[data-foot]');if(!b)return;const a=b.dataset.foot;
+    if(a==='more'){pop.hidden=!pop.hidden;b.setAttribute('aria-expanded',!pop.hidden);return;}
+    pop.hidden=true;if(phoneQ.matches)setNav(false);
+    if(a==='tour')bEl('tour-btn').click();else if(a==='find')openFinder();else if(a==='assume')asOpen(true);});
+  document.addEventListener('pointerdown',e=>{if(!pop.hidden&&!e.target.closest('#nav-pop,[data-foot="more"]'))pop.hidden=true;});
+  mode.addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(b)setMode(b.dataset.mode);});}
+function setMode(m){navMode=m;navRender();if(m==='infra'&&document.body.dataset.view==='alaska')setView('site');}
+// ---------- site isolation ----------
+function infraIds(x){return x?x.ids:[];}
+function siteApply(){const x=INFRA_BY[infraSel];siteSel=x&&!FACV.includes(view)?x.ids.slice():null;
+  const rv=x&&!FACV.includes(view)?x.view:null;setPlant(view==='plant'||rv==='plant');setWell(view==='well'||rv==='well');setPiped(view==='piped'||rv==='piped');
+  applyLens();}
+function siteOutline(ids){for(const m of pickables){const on=!!ids&&ids.includes(m.userData.id);for(const c of m.children)if(c.userData.hull){if(!c.userData.m0)c.userData.m0=c.material;if(on)c.material=c.userData.m0===OUT_THIN?OUT_HL_THIN:OUT_HL;else if(!hlKey)c.material=c.userData.m0;}}}
+let infraHover='';
+const applyLens3=applyLens;applyLens=function(){applyLens3();if(siteSel){for(const k in GMAT)GMAT[k].opacity=.16;}const x=INFRA_BY[infraHover]||(!FACV.includes(view)&&INFRA_BY[infraSel]);if(!hlKey)siteOutline(x?x.ids:null);};
+function infraFly(x){if(x.f){const narrow=innerWidth/innerHeight<.8;camTo(new V(x.f[0],x.f[1],x.f[2]),x.f[3]*(narrow?4.2:3),1.4,view==='site'?new V(.12,1,.42):new V(.6,.55,.75));return;}const ms=pickables.filter(m=>x.ids.includes(m.userData.id)&&!m.isInstancedMesh&&m.geometry);if(!ms.length)return;const b=new THREE.Box3(),b1=new THREE.Box3();
+  ms.forEach(m=>{m.updateMatrixWorld(true);if(!m.geometry.boundingBox)m.geometry.computeBoundingBox();b1.copy(m.geometry.boundingBox).applyMatrix4(m.matrixWorld);b.union(b1);});
+  const s=new THREE.Sphere();b.getBoundingSphere(s);const narrow=innerWidth/innerHeight<.8;camTo(s.center,Math.min(320,Math.max(30,s.radius*(narrow?4:2.8))),1.4,view==='site'?new V(.12,1,.42):new V(.6,.55,.75));}
+function selectInfra(k,noFly){infraSel=k;compSel='';if(current)closeInfo();if(FACV.includes(view)||document.body.dataset.view==='alaska'){setView('site');}
+  siteApply();const x=INFRA_BY[k];if(x&&!noFly)infraFly(x);else if(!x){const to=preset(view);tw={t:0,dur:reduceMotion?.01:1.4,p0:camera.position.clone(),t0:controls.target.clone(),p1:to.p,t1:to.t};controls.enabled=false;}
+  navRender();}
+function enterInfra(k,comp){const x=INFRA_BY[k];if(!x)return;infraSel=k;siteSel=null;
+  if(x.view){setView(x.view);if(comp&&A[comp]){if(FSYS[x.view]&&FSOF[comp])isoId=comp;openInfo(comp);}}
+  else if(comp&&A[comp])openInfo(comp);navRender();}
+// clicking an infrastructure object on the plan selects it instead of opening a card
+const openInfo4=openInfo;openInfo=function(id){if(navMode==='infra'&&!FACV.includes(view)&&!window.__directOpen){const x=INFRA.find(i=>i.ids.includes(id));if(x&&x.k!==infraSel&&!touring){selectInfra(x.k);return;}}return openInfo4.apply(this,arguments);};
+const directOpen=id=>{window.__directOpen=true;try{openInfo(id);}finally{window.__directOpen=false;}};
+// ---------- rendering ----------
+function capTxt(x){try{const v=x.cap();return v?fmtK(v)+(x.per?' per home':'')+' installed':'';}catch(e){return '';}}
+function compGroups(x){if(x.view&&FSYS[x.view])return FSYS[x.view].map(([k,n,ids,,col])=>({k,n,col:SYSCOL[k]||col||'#7f97a8',ids:ids.filter(id=>A[id])})).filter(g=>g.ids.length);
+  return[{k:'all',n:'Components',col:x.ic,ids:x.comps.filter(id=>A[id])}];}
+function kpiHtml(){try{const R=rollUp(),F=finCalc();return '<div class="nv-kpi"><div><b>'+UIN.homes+'</b><span>homes</span></div><div><b>'+fmtM(R.village.mid)+'</b><span>haul system, built</span></div><div><b>'+money(F.m(F.full))+'</b><span>per home / month</span></div></div>';}catch(e){return '';}}
+const rowBtn=(id,act,cls)=>'<button class="fi nv-c'+(cls||'')+(compSel===id?' sel':'')+'" data-comp="'+id+'" data-act-c="'+act+'"><i style="background:'+(SYS[A[id].sys]?SYS[A[id].sys][1]:'#ccc')+'"></i>'+(REG[id]&&REG[id].tag?'<b class="tg">'+esc(REG[id].tag)+'</b>':'')+esc(SHORT[id]||A[id].t)+(compSel===id&&!finePointer?'<em class="nv-go">Open ›</em>':'')+'</button>';
+function navRender(){const fac=FACV.includes(view)&&document.body.dataset.view!=='alaska';
+  document.querySelectorAll('.nav-mode [data-mode]').forEach(b=>b.setAttribute('aria-selected',b.dataset.mode===navMode));
+  bEl('pg-infra').hidden=navMode!=='infra'||fac;bEl('pg-fac').hidden=navMode!=='infra'||!fac;bEl('pg-studies').hidden=navMode!=='studies';
+  document.body.dataset.level=navMode==='studies'?'studies':fac?'3':infraSel?'2':'1';
+  if(navMode==='studies'){bEl('pg-studies').innerHTML='<p class="nv-lead">Everything that isn’t a piece of infrastructure: logistics, costs, comparisons, risk and reference.</p>'+
+    STUDY_NAV.map(([g,items])=>'<p class="np-h">'+g+'</p>'+items.map(([a,t,d])=>'<button class="tool hub-i" data-study="'+a+'"><b>'+t+'</b><small>'+d+'</small></button>').join('')).join('');}
+  else if(fac){const x=INFRA_BY[VIEW2INFRA[view]];bEl('fac-h').innerHTML='<button class="nv-back" data-nv="back">‹ Site plan</button><div class="nv-title"><i style="background:'+(x?x.ic:'#ccc')+'"></i><div><b>'+esc(x?x.n:VIEWNAME[view])+'</b><small>Inside · '+esc(capTxt(x||{cap:()=>0}))+'</small></div></div>';
+    let chem='';if(view==='well')chem='<div class="nv-chem">'+Object.keys(CHEM).map(k=>'<button data-chem="'+k+'" aria-pressed="'+(k===chemKey)+'">'+esc(CHEM[k].name)+'</button>').join('')+'</div>';
+    const c=bEl('fac-chem');if(c)c.remove();if(chem){const d=document.createElement('div');d.id='fac-chem';d.innerHTML=chem;bEl('fac-tools').append(d);}
+    npRender();}
+  else if(!infraSel){bEl('pg-infra').innerHTML=kpiHtml()+'<p class="nv-lead">Pick a piece of infrastructure to isolate it on the site plan and see what it is made of.</p><div class="nv-list">'+
+    INFRA.map(x=>'<button class="nv-card" data-infra="'+x.k+'"><i style="background:'+x.ic+'"></i><span><b>'+esc(x.n)+'</b><small>'+esc(x.d)+'</small><em>'+esc(capTxt(x))+'</em></span><u aria-hidden="true">›</u></button>').join('')+'</div>'+
+    '<div class="nv-pv"><button data-pv="site" aria-pressed="'+(view==='site')+'">Plan</button><button data-pv="village" aria-pressed="'+(view==='village')+'">3D</button></div>';}
+  else{const x=INFRA_BY[infraSel],G=compGroups(x);
+    bEl('pg-infra').innerHTML='<button class="nv-back" data-nv="all">‹ All infrastructure</button><div class="nv-title"><i style="background:'+x.ic+'"></i><div><b>'+esc(x.n)+'</b><small>'+esc(capTxt(x))+'</small></div></div><p class="nv-lead">'+esc(x.d)+'</p>'+
+      '<div class="nv-acts">'+(x.view?'<button class="cta" data-nv="enter">Go inside ›</button>':'')+'<button class="tool" data-nv="details">Details</button></div>'+
+      '<p class="np-h">'+(x.view?'Systems and components':'Components')+(finePointer?' · hover to highlight':' · tap to highlight')+'</p>'+
+      G.map(g=>'<div class="np-g"><div class="np-gh nv-gh"><i style="background:'+g.col+'"></i><span>'+esc(g.n)+'</span></div><div class="np-items">'+g.ids.map(id=>rowBtn(id,x.view?'enter':'open')).join('')+'</div></div>').join('');}
+  renderBar();}
+// ---------- events ----------
+navEl.addEventListener('click',e=>{const t=e.target.closest('[data-infra],[data-nv],[data-comp],[data-study],[data-pv]');if(!t)return;if(touring)stopTour();
+  if(t.dataset.infra){selectInfra(t.dataset.infra);if(phoneQ.matches)setNav(false);}
+  else if(t.dataset.pv){if(view!==t.dataset.pv){setView(t.dataset.pv);siteApply();if(infraSel)infraFly(INFRA_BY[infraSel]);}navRender();}
+  else if(t.dataset.nv==='all')selectInfra('');
+  else if(t.dataset.nv==='back'){const k=VIEW2INFRA[view]||infraSel;selectInfra(k);}
+  else if(t.dataset.nv==='enter'){enterInfra(infraSel);if(phoneQ.matches)setNav(false);}
+  else if(t.dataset.nv==='details'){const x=INFRA_BY[infraSel];directOpen(x.ids[0]);if(phoneQ.matches)setNav(false);}
+  else if(t.dataset.comp){const id=t.dataset.comp;if(!finePointer&&compSel!==id){compSel=id;hoverId=id;applyHighlights();navRender();return;}
+    compSel='';hoverId=null;if(phoneQ.matches)setNav(false);if(t.dataset.actC==='enter')enterInfra(infraSel,id);else directOpen(id);}
+  else if(t.dataset.study){const a=t.dataset.study;if(phoneQ.matches)setNav(false);
+    if(a==='hz'){if(touring)stopTour();openHazards('overview');}else if(a==='budget')openBudget();else if(a==='alaska')setView('alaska');else hubAct(a);}});
+navEl.addEventListener('pointerover',e=>{if(!finePointer)return;const c=e.target.closest('[data-infra]'),r=e.target.closest('[data-comp]');
+  const ni=c?c.dataset.infra:'';if(ni!==infraHover){infraHover=ni;applyLens();}
+  const hid=r?r.dataset.comp:null;if(hid!==hoverId&&(r||hoverId)){hoverId=hid;applyHighlights();}});
+navEl.addEventListener('pointerleave',()=>{if(infraHover){infraHover='';applyLens();}if(hoverId){hoverId=null;applyHighlights();}});
+// ---------- view changes keep the panel in step ----------
+const setView4=setView;setView=function(v,a,b){setView4(v,a,b);if(VIEW2INFRA[v])infraSel=VIEW2INFRA[v];if(v==='alaska')navMode='studies';siteApply();navRender();};
+// ---------- eye toggles on systems inside a facility ----------
+const EYE_HOME={h_water:['water'],h_waste:['waste'],h_struct:['shell','foundation'],h_valves:['valves']};
+function eyeOn(k){if(EYE_HOME[k])return EYE_HOME[k].every(l=>layerOn[l]);if(k.endsWith('_valves'))return layerOn.valves;return FSON[k]!==false;}
+function eyeToggle(k){const on=eyeOn(k);if(EYE_HOME[k]||k.endsWith('_valves')){(EYE_HOME[k]||['valves']).forEach(l=>{if(layerOn[l]===on){const c=document.querySelector('.chip[data-layer="'+l+'"]');if(c)c.click();}});}
+  else{FSON[k]=!on;applyFsysVis();}npRender();}
+const npRender2=npRender;npRender=function(){npRender2();bEl('np-list').querySelectorAll('[data-npg]').forEach(h=>{const k=h.dataset.npg;if(!(EYE_HOME[k]||FSOF&&Object.values(FSOF).includes(k)||k.endsWith('_valves')))return;
+  const b=document.createElement('span');b.className='np-eye';b.dataset.eye=k;b.setAttribute('role','button');b.tabIndex=0;b.title=eyeOn(k)?'Hide':'Show';b.textContent=eyeOn(k)?'◉':'○';b.setAttribute('aria-label',(eyeOn(k)?'Hide ':'Show ')+h.textContent);h.insertBefore(b,h.querySelector('em'));});};
+bEl('np-list').addEventListener('click',e=>{const b=e.target.closest('[data-eye]');if(b){e.stopPropagation();e.preventDefault();eyeToggle(b.dataset.eye);}},true);
+// ---------- phone: a context bar instead of the old dock ----------
+const mbar=document.createElement('div');mbar.id='mbar';mbar.className='mbar card';document.body.append(mbar);
+function renderBar(){const lv=document.body.dataset.level;let h='<button class="mb-menu" data-mb="menu" aria-label="Open menu">☰</button>';
+  if(lv==='studies')h+='<span class="mb-t">Studies &amp; logistics</span><button class="tool" data-mb="infra">Site plan</button>';
+  else if(lv==='1')h+='<div class="mb-chips">'+INFRA.map(x=>'<button data-mb-infra="'+x.k+'"><i style="background:'+x.ic+'"></i>'+esc(x.n.replace(' & route','').replace('Water treatment plant','Water plant').replace('Haul-served home','Haul home').replace('Private-well home','Well home').replace('Power plant & distribution','Power'))+'</button>').join('')+'</div>';
+  else if(lv==='2'){const x=INFRA_BY[infraSel];h+='<button class="tool" data-mb="all">‹</button><span class="mb-t">'+esc(x.n)+'</span><button class="tool" data-mb="list">Parts</button>'+(x.view?'<button class="cta" data-mb="enter">Inside ›</button>':'');}
+  else{const x=INFRA_BY[VIEW2INFRA[view]];h+='<button class="tool" data-mb="back">‹</button><span class="mb-t">'+esc(x?x.n:'')+'</span><button class="tool" data-mb="list">Parts</button><button class="tool" data-mb="sec">◱ 2D</button>';}
+  mbar.innerHTML=h;}
+mbar.addEventListener('click',e=>{const b=e.target.closest('[data-mb],[data-mb-infra]');if(!b)return;if(touring)stopTour();
+  if(b.dataset.mbInfra){selectInfra(b.dataset.mbInfra);return;}const a=b.dataset.mb;
+  if(a==='menu'||a==='list')setNav(true);else if(a==='infra')setMode('infra');else if(a==='all')selectInfra('');else if(a==='back')selectInfra(VIEW2INFRA[view]);
+  else if(a==='enter')enterInfra(infraSel);else if(a==='sec')setSection(!sectionOn,view);});
+// leader lines only inside a facility
+const drawLeaders0=drawLeaders;drawLeaders=function(){if(document.body.dataset.level!=='3'||navMode!=='infra'){if(ldr.innerHTML)ldr.innerHTML='';return;}drawLeaders0();};
+// land on the site plan
+enterTwin=function(){if(!music.muted)music.start();const sp=bEl('splash');sp.classList.add('out');document.body.classList.remove('splash-on');controls.autoRotate=false;
+  setTimeout(()=>{sp.hidden=true;},700);if(!current&&!touring){setView('site');selectInfra('',true);}};
+bEl('sp-go').onclick=()=>enterTwin();bEl('sp-tour').onclick=()=>{enterTwin();setTimeout(()=>startTour(),400);};
+placeNav=function(){navW();};
+navRender();
+phoneQ.addEventListener&&phoneQ.addEventListener('change',()=>{const r=document.querySelector('.nav-lens');if(r&&lensPick.parentElement!==r)r.prepend(lensPick);});
+
+
+/* =====================================================================
+   Power and lagoon: sections, specs, costs, risk; landing-flow follow-through
+   ===================================================================== */
+const KEYS_LAGOON=[['ldump','Truck dump station'],['linlet','Inlet pipe'],['lcell1','Primary cell'],['ldivide','Divider berm'],['ltransfer','Transfer structure'],['lcell2','Secondary cell'],['ldischarge','Discharge & outfall'],['lberm','Berms'],['lliner','Liner'],['lgauge','Freeboard gauge'],['lmon','Monitoring well']];
+const KN_LAGOON={};KEYS_LAGOON.forEach(([k],i)=>KN_LAGOON[k]=i+1);
+function buildLagoonSection(){const WS=C.waste,EF=C.effluent,{INK,pl,ar,kn,g,R,T,title,open}=secKit(KN_LAGOON);
+  let o=open('Drafted cross-section through the two-cell sewage lagoon with numbered keynotes');o+=title('SECTION E–E','Sewage lagoon · not to scale','W-601','2 cells');
+  let lens='';for(let i=0;i<20;i++){const x=30+i*48+((i*37)%17),y=520+((i*53)%80),w=18+((i*29)%26);lens+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="5" rx="2.5" fill="#f4fbff" stroke="#7d95a8" stroke-width="1"/>';}
+  o+='<rect x="20" y="500" width="960" height="122" fill="#c9d8e4"/><rect x="20" y="500" width="960" height="122" fill="url(#pPF)"/>'+lens+'<rect x="20" y="440" width="960" height="60" fill="#c99d6e"/><rect x="20" y="440" width="960" height="60" fill="url(#pSoil)"/>'+T(30,612,'Permafrost','fill:#2c4152');
+  const berm=(x1,x2)=>'<path d="M'+x1+',440 L'+(x1+50)+',330 L'+(x2-50)+',330 L'+x2+',440 Z" fill="#c9bba1" stroke="'+INK+'" stroke-width="2"/>';
+  o+=g('lberm',berm(70,230)+berm(840,1000)+kn('lberm',150,300));
+  o+=g('ldivide',berm(470,590).replace(/330/g,'350')+kn('ldivide',530,322));
+  o+=g('lliner',pl('180,330 230,440 470,440 520,350',INK,3.2,'stroke-dasharray="1 0"')+pl('540,350 590,440 840,440 890,330',INK,3.2)+T(250,458,'HDPE liner','dim','font-size:9px')+kn('lliner',360,478,360,442));
+  o+=g('lcell1','<path d="M196,362 L216,425 L484,425 L494,380 L500,362 Z" fill="#8fbf8a" opacity=".85"/><path d="M226,425 L478,425 L470,440 L232,440 Z" fill="#6b5a40" opacity=".7"/>'+T(290,400,'primary cell','dim','font-size:9.5px')+T(300,436,'sludge','dim','font-size:8px;fill:#fff')+kn('lcell1',340,370));
+  o+=g('lcell2','<path d="M556,372 L576,425 L846,425 L870,372 Z" fill="#b9dfae" opacity=".9"/>'+T(660,404,'secondary cell','dim','font-size:9.5px')+kn('lcell2',700,368));
+  o+=g('lgauge','<rect x="440" y="338" width="6" height="90" fill="#fff" stroke="'+INK+'" stroke-width="1.2"/>'+[0,1,2,3,4].map(i=>'<rect x="440" y="'+(345+i*16)+'" width="6" height="6" fill="'+(i%2?'#e8553d':INK)+'"/>').join('')+
+    pl('430,330 430,362',INK,1.2)+T(372,326,'freeboard','dim','font-size:8.5px')+kn('lgauge',452,312,446,338));
+  o+=g('ldump',R(20,402,46,38,'#cfd6dc',{rx:3})+R(28,384,30,18,'#7f97a8',{rx:2})+T(22,376,'truck dumps here','dim','font-size:8.5px')+kn('ldump',43,470,43,440));
+  o+=g('linlet',pl('66,420 170,420 200,400',WS,5)+ar(120,420,0,WS)+kn('linlet',120,396));
+  o+=g('ltransfer',pl('490,400 560,400',EF,4)+R(516,390,20,20,'#9aa6ae',{rx:2})+ar(552,400,0,EF)+kn('ltransfer',526,460,526,410));
+  o+=g('ldischarge',R(880,350,30,40,'#9aa6ae',{rx:2})+pl('860,395 910,395 960,470',EF,4)+ar(950,455,55,EF)+T(800,520,'to wetland / river, summer, by permit','dim','font-size:8.5px')+kn('ldischarge',895,322));
+  o+=g('lmon',R(964,380,8,110,'#c3ced6',{sw:1.2})+kn('lmon',968,350));
+  o+='<g><rect x="300" y="24" width="540" height="30" rx="15" fill="#fff" stroke="'+INK+'" stroke-width="1.6"/>'+T(316,44,'Vacuum truck → dump station → primary cell → transfer → secondary cell → summer discharge','dim','font-size:9.4px')+'</g>';
+  return o+'</svg>';}
+const KEYS_POWER=[['pwtank','Bulk fuel tank farm'],['pwday','Day tank'],['pwgen','Generator sets'],['pwswitch','Switchgear'],['pwctrl','Plant controls'],['pwxfmr','Step-up transformer'],['pdist','Overhead lines'],['ptrans','Pole transformers & services'],['pwheat','Heat recovery'],['pwloop','Heat loop to water plant'],['pwbldg','Powerhouse building']];
+const KN_POWER={};KEYS_POWER.forEach(([k],i)=>KN_POWER[k]=i+1);
+function buildPowerSection(){const P='#d99a1e',HOT=C.hot,{INK,pl,ar,kn,g,R,T,title,open}=secKit(KN_POWER);
+  let o=open('One-line and heat-recovery diagram of the village power plant and distribution with numbered keynotes');o+=title('DIAGRAM F–F','Power & heat · one-line','E-701','schematic');
+  o+=g('pwbldg','<rect x="200" y="120" width="380" height="360" rx="10" fill="#fffaf0" stroke="'+INK+'" stroke-width="2" stroke-dasharray="7 5"/>'+T(212,140,'powerhouse','lbl2')+kn('pwbldg',560,140));
+  o+=g('pwtank',[0,1,2].map(i=>R(40+i*48,330,40,110,'#f4f1ea',{rx:6})+'<rect x="'+(40+i*48)+'" y="330" width="40" height="12" fill="#c98a10"/>').join('')+'<rect x="30" y="440" width="152" height="12" fill="#b8bfc5" stroke="'+INK+'" stroke-width="1.4"/>'+T(36,320,'tank farm','dim','font-size:9px')+kn('pwtank',110,474));
+  o+=g('pwday',R(220,370,46,40,'#c98a10',{rx:3})+pl('182,390 220,390','#c98a10',3,'stroke-dasharray="5 3"')+kn('pwday',243,432));
+  const gy=[200,280,360];
+  o+=g('pwgen',gy.map(y=>pl('266,390 290,390 290,'+y+' 320,'+y,'#c98a10',2,'stroke-dasharray="4 3"')+'<circle cx="345" cy="'+y+'" r="22" fill="#f2c14e" stroke="'+INK+'" stroke-width="2"/>'+T(337,y+5,'G','lbl2','font-size:15px')).join('')+kn('pwgen',345,160));
+  o+=g('pwswitch',gy.map(y=>pl('367,'+y+' 410,'+y,P,3)+R(410,y-8,16,16,'#fff',{sw:1.6})+pl('426,'+y+' 460,'+y,P,3)).join('')+pl('460,180 460,380',INK,6)+T(468,176,'bus','dim','font-size:9px')+kn('pwswitch',418,420,418,372));
+  o+=g('pwctrl',R(486,400,64,50,'#5f707c',{rx:3})+'<rect x="492" y="406" width="52" height="16" fill="#d8eef8"/>'+pl('486,425 460,380',INK,1.2,'stroke-dasharray="3 3"')+kn('pwctrl',518,470));
+  o+=g('pwxfmr',pl('460,280 520,280',P,3)+'<circle cx="536" cy="280" r="14" fill="#fff" stroke="'+INK+'" stroke-width="2"/><circle cx="556" cy="280" r="14" fill="#fff" stroke="'+INK+'" stroke-width="2"/>'+T(520,312,'480 V → 7.2 kV','dim','font-size:8.5px')+kn('pwxfmr',546,248));
+  let poles='';[640,720,800,880].forEach(x=>{poles+='<rect x="'+(x-3)+'" y="250" width="6" height="140" fill="#8b6a48"/><rect x="'+(x-16)+'" y="254" width="32" height="5" fill="#6f5236"/>';});
+  o+=g('pdist',pl('570,280 640,258 720,262 800,258 880,262 960,258',INK,2)+poles+T(660,240,'overhead feeder around town','dim','font-size:9px')+kn('pdist',760,214));
+  const house=(x,y)=>'<path d="M'+x+','+(y+20)+' L'+x+','+(y+4)+' L'+(x+14)+','+(y-8)+' L'+(x+28)+','+(y+4)+' L'+(x+28)+','+(y+20)+' Z" fill="#fff" stroke="'+INK+'" stroke-width="1.6"/>';
+  o+=g('ptrans',[720,880].map(x=>'<rect x="'+(x+4)+'" y="290" width="14" height="18" rx="3" fill="#9aa6ae" stroke="'+INK+'" stroke-width="1.2"/>'+pl((x+18)+',300 '+(x+40)+',400',INK,1.2)+house(x+30,400)+pl((x+18)+',300 '+(x-10)+',400',INK,1.2)+house(x-30,400)).join('')+T(700,446,'120/240 V to each home','dim','font-size:9px')+kn('ptrans',800,470));
+  o+=g('pwheat',R(240,200,30,60,'#c3ced6',{sw:1.6})+'<path d="M244,206 v48 M250,206 v48 M256,206 v48 M262,206 v48" stroke="#7d8a96" stroke-width="1"/>'+gy.map(y=>pl('323,'+(y-12)+' 300,'+(y-12)+' 300,230 270,230',HOT,2)).join('')+kn('pwheat',255,180));
+  o+=g('pwloop',pl('240,220 150,220 150,140 60,140',HOT,4)+pl('60,160 140,160 140,240 240,240','#7cc4f0',4)+ar(110,140,180,HOT)+R(20,120,40,50,'#8fc6e6',{rx:3})+T(18,112,'water plant','dim','font-size:9px')+kn('pwloop',100,190));
+  o+='<g><rect x="300" y="24" width="560" height="30" rx="15" fill="#fff" stroke="'+INK+'" stroke-width="1.6"/>'+T(316,44,'Barge fuel → tanks → gensets → bus → transformer → lines → homes · engine heat → water plant','dim','font-size:9.2px')+'</g>';
+  return o+'</svg>';}
+SECS.lagoon={title:'Section E–E',sub:'Sewage lagoon · not to scale · tap a part for specs, costs &amp; upkeep',keys:()=>KEYS_LAGOON,kn:()=>KN_LAGOON,build:()=>buildLagoonSection()};
+SECS.power={title:'Diagram F–F',sub:'Power plant, distribution and heat recovery · schematic · tap a part for specs, costs &amp; upkeep',keys:()=>KEYS_POWER,kn:()=>KN_POWER,build:()=>buildPowerSection()};
+Object.assign(PTAGS,{pwgen:'G-1, G-2, G-3'});Object.assign(PUMPATTR,{pwgen:[['Flow','100–400','kW each'],['Motor','Diesel','']]});
+Object.assign(SPEC,{
+ pwgen:{spec:['Three diesel gensets on isolated bases','Automatic start, sync and load sharing','Jacket-water heat recovery connections'],cost:[['Genset, installed','$180,000–450,000 each'],['Major overhaul','$40,000–120,000']],maint:[['Oil and filters','Every 250–500 hours'],['Valve adjustments, injectors','Per manufacturer'],['Major overhaul','Every 20,000–40,000 hours']]},
+ pwswitch:{spec:['Paralleling switchgear with feeder breakers','Arc-flash labels and lockout points'],cost:[['Switchgear, installed','$250,000–700,000']],maint:[['Infrared scan','Yearly'],['Breaker testing','Every few years']]},
+ pwctrl:{spec:['Genset controls and SCADA','Fuel and kWh logging for PCE'],cost:[['Controls + SCADA','$40,000–120,000']],maint:[['Alarm test','Monthly'],['Expected life','About 15 years']]},
+ pwheat:{spec:['Plate heat exchanger, circulation pumps, three-way valve','Roof radiators reject unused heat'],cost:[['Heat recovery module, installed','$60,000–180,000']],maint:[['Check glycol strength','Yearly'],['Clean exchanger','Every few years']]},
+ pwloop:{spec:['Pre-insulated buried supply and return pipes','Glycol loop to the water plant heat exchanger'],cost:[['Heat loop, installed','$250–600 per ft']],maint:[['Check supply and return temperatures','Daily'],['Expected life','About 30 years']]},
+ pwday:{spec:['Double-wall day tank with level controls','Automatic fill from the tank farm'],cost:[['Day tank + controls','$8,000–20,000']],maint:[['Test level alarms','Monthly']]},
+ pwtank:{spec:['Vertical welded-steel tanks','Lined, bermed secondary containment ≥110% of the largest tank','Barge fill line and transfer pumps'],cost:[['Tank farm, installed','$1,200,000–3,500,000']],maint:[['Inspect tanks and containment','Monthly'],['Spill plan drills','Yearly'],['Expected life','About 30 years']]},
+ pwxfmr:{spec:['Pad-mounted step-up transformer'],cost:[['Transformer','$40,000–120,000']],maint:[['Oil and infrared check','Yearly']]},
+ pdist:{spec:['Wood poles, about every 150 ft','Overhead primary conductors at 7.2 or 12.47 kV','Service drops to each meter'],cost:[['Pole + span, installed','$8,000–20,000 each']],maint:[['Line patrol','Yearly and after storms'],['Re-set frost-jacked poles','Each spring']]},
+ ptrans:{spec:['Pole-mounted transformers, 10–50 kVA','Fused cutouts'],cost:[['Transformer + services, installed','$6,000–15,000 each']],maint:[['Visual check','Yearly']]},
+ pwbldg:{spec:['Insulated steel building','Combustion and cooling air, exhaust stacks','Engine removal door'],cost:[['Powerhouse, installed','$600,000–1,500,000']],maint:[['Inspect stacks and louvers','Yearly']]},
+ lberm:{spec:['Compacted earth berms, about 3:1 slopes','At least 2–3 ft freeboard'],cost:[],maint:[['Walk the berms for slumps and seepage','Monthly'],['Mow or brush top','Summer']]},
+ ldump:{spec:['Dump station with bar screen','Heat-traced inlet','Wash-down hose and paved apron'],cost:[['Dump station','$40,000–120,000']],maint:[['Clean the screen','Every dump'],['Check heat trace','Before freeze-up']]},
+ linlet:{spec:['6–8 in inlet below the ice line'],cost:[],maint:[['Check for blockage','Weekly in winter']]},
+ lcell1:{spec:['Facultative primary cell, 5–6 ft deep'],cost:[['Sludge removal','$100,000–400,000 per event']],maint:[['Sludge survey','Every few years']]},
+ lcell2:{spec:['Polishing and storage cell'],cost:[],maint:[['Sample before discharge','Each discharge']]},
+ ldivide:{spec:['Earth divider berm between cells'],cost:[],maint:[['Repair erosion','As needed']]},
+ ltransfer:{spec:['Pipe and valve or stop logs through the divider'],cost:[['Transfer structure','$15,000–40,000']],maint:[['Exercise the valve','Each season']]},
+ lliner:{spec:['HDPE liner, 40–60 mil, keyed into the berms'],cost:[['Liner, installed','$3–8 per sq ft']],maint:[['Inspect at the waterline','Each spring'],['Patch tears','As found']]},
+ ldischarge:{spec:['Outlet structure with valve and outfall pipe'],cost:[['Outlet + outfall','$30,000–90,000']],maint:[['Sample, then discharge','Summer, per permit'],['Record volumes','Each discharge']]},
+ lmon:{spec:['Monitoring well, cased and capped'],cost:[['Monitoring well','$5,000–15,000']],maint:[['Sample groundwater','Per permit']]},
+ lgauge:{spec:['Staff gauge in each cell'],cost:[['Staff gauge','$300–1,000']],maint:[['Read and log','Weekly']]}});
+Object.assign(ROLL,{pwbldg:[600000,1500000,1,1,'Powerhouse building, installed (assumed)'],pwgen:[180000,450000,3,1,'Genset, installed, each'],pwswitch:[250000,700000,1,1,'Paralleling switchgear, installed'],
+ pwctrl:[40000,120000,1,0,'Controls + SCADA'],pwheat:[60000,180000,1,1,'Heat recovery module, installed'],pwloop:[250,600,70,1,'Buried heat loop, per ft installed'],pwday:[8000,20000,1,0,'Day tank + controls'],
+ pwtank:[1200000,3500000,1,1,'Tank farm with containment, installed (assumed)'],pwxfmr:[40000,120000,1,0,'Step-up transformer'],pdist:[8000,20000,25,1,'Pole + span, installed'],ptrans:[6000,15000,14,1,'Pole transformer + services, installed']});
+RGROUPS.push({k:'power',n:'Power plant & distribution (electric utility, shown for context)',alt:true,ids:['pwbldg','pwgen','pwswitch','pwctrl','pwheat','pwloop','pwday','pwtank','pwxfmr','pdist','ptrans']});
+Object.assign(LIFE,{pwbldg:40,pwgen:20,pwswitch:30,pwctrl:15,pwheat:20,pwloop:30,pwday:25,pwtank:30,pwxfmr:30,pdist:40,ptrans:30});
+Object.assign(RREG,{pwgen:[3,'Every pump, heat trace and the water plant depend on it; standby sets and fuel are the margin'],pwtank:[3,'Spill risk; a missed barge leaves the village short of fuel'],pdist:[2,'Frost-jacked poles, ice and wind bring lines down'],
+ pwheat:[1,'If it fails, the water plant falls back to its boiler'],lberm:[3,'Permafrost thaw under the cells and floods can breach a berm'],lliner:[2,'Tears at the waterline and frost heave let seepage through'],ldischarge:[2,'Releases outside the permit window or limits'],ldump:[1,'Freezes and plugs in deep cold']});
+// ---------- landing-flow follow-through ----------
+INFRA_BY.lagoon.view='lagoon';delete INFRA_BY.lagoon.comps;INFRA_BY.lagoon.d='Two lined cells that settle and treat what the vacuum truck brings, with a summer discharge.';INFRA_BY.lagoon.ids=['lagoon'];
+INFRA.splice(1,0,{k:'power',f:[PWP.x-3,2,PWP.z,18],n:'Power plant & distribution',ids:['powerhouse'],view:'power',ic:'#d99a1e',d:'Diesel generators, a year of fuel, overhead lines to every building, and engine heat piped to the water plant.',cap:()=>rollUp().power.mid});
+INFRA_BY.power=INFRA[1];VIEW2INFRA.lagoon='lagoon';VIEW2INFRA.power='power';
+siteApply=function(){const x=INFRA_BY[infraSel];siteSel=x&&!FACV.includes(view)?x.ids.slice():null;
+  const rv=x&&!FACV.includes(view)?x.view:null;setPlant(view==='plant'||rv==='plant');setWell(view==='well'||rv==='well');setPiped(view==='piped'||rv==='piped');setPower(view==='power'||rv==='power');applyLens();};
+STUDY_NAV[0][1].push(['open:airstrip','Airstrip','Freight and people by air']);
+// live truck status on the haul element; a first-visit tour prompt on the landing
+const navRender5=navRender;navRender=function(){navRender5();
+  if(document.body.dataset.level==='2'&&infraSel==='haul'){const d=document.createElement('div');d.className='nv-truck';d.id='nv-truck';d.innerHTML=truckLive();const acts=bEl('pg-infra').querySelector('.nv-acts');if(acts)acts.after(d);}
+  let seen=false;try{seen=localStorage.getItem('hwh-tourhint')==='1';}catch(e){}
+  if(document.body.dataset.level==='1'&&!seen){const d=document.createElement('div');d.className='nv-tourhint';d.innerHTML='<b>New here?</b> <button class="cta" data-th="go">▶ Take the 2-minute tour</button><button class="iconbtn sm" data-th="x" aria-label="Dismiss">✕</button>';bEl('pg-infra').prepend(d);}};
+function truckLive(){const one=(T,n,cap)=>{const pct=Math.round(T.level/T.cap*100);return '<div class="nv-tk"><b>'+n+'</b><span>'+esc(T.stateText||'On the route')+(T.blocked?' · blocked':'')+'</span><i><u style="width:'+pct+'%"></u></i><small>'+Math.round(T.level).toLocaleString('en-US')+' / '+T.cap.toLocaleString('en-US')+' gal</small></div>';};
+  return '<p class="np-h">Right now</p>'+one(water,'Water truck')+one(sewer,'Sewage truck');}
+setInterval(()=>{const e=bEl('nv-truck');if(e)e.innerHTML=truckLive();},1000);
+navEl.addEventListener('click',e=>{const b=e.target.closest('[data-th]');if(!b)return;try{localStorage.setItem('hwh-tourhint','1');}catch(x){}if(b.dataset.th==='go'){if(phoneQ.matches)setNav(false);startTour();}navRender();});
+{const st0=startTour;startTour=function(){try{localStorage.setItem('hwh-tourhint','1');}catch(x){}return st0.apply(this,arguments);};}
+// the separate 2D site map is retired: the site plan is the map
+setMapMin(true,true);bEl('dock-map').hidden=true;
+navRender();
+
+Object.assign(SHORT,{school:'School',s_tank:'Water storage',s_ports:'Fill & pump-out',s_hold:'Holding tank',s_boiler:'Boiler',clinic:'Clinic',c_tank:'Water storage',c_ports:'Fill & pump-out',c_hold:'Holding tank',c_boiler:'Heat',c_gen:'Backup generator'});
+
+Object.assign(ROLL,{s_tank:[15000,45000,1,1,'Tank room, tank, pump and UV, installed'],s_ports:[2000,6000,1,1,'Fill + pump-out ports, installed'],s_hold:[12000,35000,1,1,'Holding tank + alarm, installed'],
+ c_tank:[8000,25000,1,1,'Tank room, tank, pump and UV, installed'],c_ports:[2000,6000,1,1,'Fill + pump-out ports, installed'],c_hold:[8000,22000,1,1,'Holding tank + alarm, installed'],c_gen:[25000,60000,1,1,'Backup generator, installed']});
+RGROUPS.push({k:'civic',n:'School & clinic water and sewer (shared)',alt:true,ids:['s_tank','s_ports','s_hold','c_tank','c_ports','c_hold','c_gen']});
+Object.assign(LIFE,{s_tank:25,s_ports:15,s_hold:25,c_tank:25,c_ports:15,c_hold:25,c_gen:20});
+Object.assign(RREG,{s_tank:[2,'Several days of storage; a long haul outage closes the school'],c_tank:[3,'Clinic care depends on running water'],c_gen:[2,'If it fails in an outage, heat and vaccine storage are at risk']});
+const civCap=ids=>ids.reduce((a,id)=>{const r=rollOf(id);return a+(r?r.mid*r.q:0);},0);
+INFRA.splice(INFRA.findIndex(x=>x.k==='home')+1,0,
+ {k:'school',f:[SCP.x,2,SCP.z,15],n:'School',ids:['school'],view:null,ic:'#e7b56a',d:'The biggest water customer: kitchen, restrooms and gym showers, with its own tanks on the haul route.',comps:['school','s_tank','s_ports','s_hold','s_boiler'],cap:()=>civCap(['s_tank','s_ports','s_hold'])},
+ {k:'clinic',f:[CLP.x,2,CLP.z,12],n:'Clinic',ids:['clinic'],view:null,ic:'#d3463b',d:'Needs reliable water for handwashing and sterilizing; first stop on the route, with a backup generator.',comps:['clinic','c_tank','c_ports','c_hold','c_boiler','c_gen'],cap:()=>civCap(['c_tank','c_ports','c_hold','c_gen'])});
+INFRA.forEach(x=>INFRA_BY[x.k]=x);
+// map clicks on the parts select the building
+INFRA_BY.school.ids=['school','s_tank','s_ports','s_hold','s_boiler'];INFRA_BY.clinic.ids=['clinic','c_tank','c_ports','c_hold','c_boiler','c_gen'];
+// assumptions
+[['school','School'],['clinic','Clinic']].forEach(([k,n])=>{[['gpd',n+' water use','gal/day','Concept; replace with delivery logs'],['tank',n+' water tank','gal','Concept'],['hold',n+' holding tank','gal','Concept']].forEach(([f,t,u,src])=>{
+  const a={g:'Community & water use',id:'civ_'+k+'_'+f,n:t,u,src,step:f==='gpd'?10:100,get:()=>CIV[k][f],set:v=>{CIV[k][f]=v;}};a.def=a.get();AS.push(a);ASBY[a.id]=a;});});
+for(const id in asSaved){if(id.startsWith('civ_')&&ASBY[id])try{ASBY[id].set(asSaved[id]);}catch(e){}}
+navRender();
+
+Object.assign(SHORT,{cityhall:'City office',tribehall:'Tribal office',store:'Store',k_fuel:'Fuel pumps',y_tank:'Water tank',y_ports:'Fill & pump-out',y_hold:'Holding tank',y_boiler:'Heat',t_tank:'Water tank',t_ports:'Fill & pump-out',t_hold:'Holding tank',t_boiler:'Heat',k_tank:'Water tank',k_ports:'Fill & pump-out',k_hold:'Holding tank',k_boiler:'Heat'});
+['y_','t_','k_'].forEach(p=>Object.assign(ROLL,{[p+'tank']:[1500,4500,1,1,'Tank, pump and UV, installed'],[p+'ports']:[1500,4500,1,1,'Fill + pump-out ports, installed'],[p+'hold']:[1500,4500,1,1,'Holding tank + alarm, installed']}));
+['y_','t_','k_'].forEach(p=>Object.assign(LIFE,{[p+'tank']:25,[p+'ports']:15,[p+'hold']:25}));
+{const g=RGROUPS.find(x=>x.k==='civic');if(g){g.n='Community buildings: water and sewer (shared)';['y_','t_','k_'].forEach(p=>g.ids.push(p+'tank',p+'ports',p+'hold'));}}
+INFRA.splice(INFRA.findIndex(x=>x.k==='clinic')+1,0,
+ {k:'city',f:[CYP.x,2,CYP.z,11],n:'City office',ids:['cityhall','y_tank','y_ports','y_hold','y_boiler'],view:null,ic:'#2b6cb0',d:'Often owns and runs the utility: operators, haul crew, billing, budgets and the state grant match.',comps:['cityhall','y_tank','y_ports','y_hold','y_boiler','finance','study_web'],cap:()=>civCap(['y_tank','y_ports','y_hold'])},
+ {k:'tribe',f:[TRP.x,2,TRP.z,12],n:'Tribal office',ids:['tribehall','t_tank','t_ports','t_hold','t_boiler'],view:null,ic:'#9b2c2c',d:'The tribal government: partner for federal sanitation projects, and the utility owner where there is no city.',comps:['tribehall','t_tank','t_ports','t_hold','t_boiler','study_web'],cap:()=>civCap(['t_tank','t_ports','t_hold'])},
+ {k:'store',f:[STP.x,2,STP.z,11],n:'Village store',ids:['store','k_tank','k_ports','k_hold','k_boiler','k_fuel'],view:null,ic:'#4f8a63',d:'Groceries, supplies and fuel by the gallon, all arriving by barge or plane; a haul customer too.',comps:['store','k_fuel','k_tank','k_ports','k_hold','k_boiler','consumables'],cap:()=>civCap(['k_tank','k_ports','k_hold'])});
+INFRA.forEach(x=>INFRA_BY[x.k]=x);
+[['cityhall','City office'],['tribehall','Tribal office'],['store','Store']].forEach(([k,n])=>{[['gpd',n+' water use','gal/day'],['tank',n+' water tank','gal']].forEach(([f,t,u])=>{
+  const a={g:'Community & water use',id:'gov_'+k+'_'+f,n:t,u,src:'Concept',step:f==='gpd'?5:50,get:()=>GOVB[k][f],set:v=>{GOVB[k][f]=v;}};a.def=a.get();AS.push(a);ASBY[a.id]=a;});});
+for(const id in asSaved){if(id.startsWith('gov_')&&ASBY[id])try{ASBY[id].set(asSaved[id]);}catch(e){}}
+navRender();
+
+Object.assign(SHORT,{bargelanding:'Barge landing',fuelheader:'Fuel header',fuelline:'Fuel line',fuelbarge:'Fuel barge',boatlanding:'Boat landing'});
+Object.assign(ROLL,{bargelanding:[300000,900000,1,1,'Graded landing, ramp and mooring, installed (assumed)'],fuelheader:[40000,120000,1,1,'Header, valves, containment, installed'],fuelline:[150,400,170,1,'Above-ground fuel line, per ft installed'],boatlanding:[60000,200000,1,1,'Float dock, gangway and ramp, installed']});
+Object.assign(LIFE,{bargelanding:30,fuelheader:20,fuelline:30,boatlanding:20});
+Object.assign(RREG,{bargelanding:[3,'Riverbank erosion and spring ice can take out the landing'],fuelline:[3,'A break during transfer is the largest spill risk'],boatlanding:[2,'Spring ice and high water damage the dock']});
+{const g=RGROUPS.find(x=>x.k==='power');if(g)g.ids=g.ids.concat(['fuelheader','fuelline']);}
+RGROUPS.push({k:'landing',n:'River landing (shared)',alt:true,ids:['bargelanding','boatlanding']});
+INFRA.splice(INFRA.findIndex(x=>x.k==='haul')+1,0,{k:'landing',f:[(BLX+BTX)/2,0,BLZ+2,26],n:'River landing',ids:['bargelanding','fuelheader','fuelline','fuelbarge','boatlanding'],view:null,ic:'#1f6f9f',
+  d:'The summer barge landing, fuel header and line to the tank farm, and the boat tie-up. Switch the light to midnight sun to see the barge.',comps:['bargelanding','fuelheader','fuelline','fuelbarge','boatlanding','alaska','consumables'],cap:()=>civCap(['bargelanding','fuelheader','fuelline','boatlanding'])});
+INFRA.forEach(x=>INFRA_BY[x.k]=x);
+{const s0=setSky;setSky=function(k){s0(k);landingSeason();terrainSeason();};}terrainSeason();landingSeason();
+navRender();
 
 const updateHazUI0=updateHazUI;updateHazUI=function(){updateHazUI0();if(window.__scnReady)syncDrawer();if(window.__fsReady&&lens==='risk'){clearTimeout(window.__rl);window.__rl=setTimeout(applyLens,160);}};
 renderBudget();applyPlace(PLACE);applyLand();buildRegistry();document.body.dataset.lens='systems';
