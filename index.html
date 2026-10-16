@@ -867,6 +867,28 @@ body.exploding .vtools .ex label{color:#b8323c}
 @media (min-width:641px){body.panel-open .sysbar,body.panel-open .as-tab,body.panel-open #hint{left:calc(var(--nav-w) + (100vw - var(--nav-w) - min(46vw,600px) - 32px) / 2)!important}}
 .nav-body{overflow-x:hidden}#nav select{min-width:0;max-width:100%}#nav .hl-pick select{flex:1;margin-left:8px}#nav .lens-pick,#nav .hl-pick{box-sizing:border-box;max-width:100%}
 body.panel-open .sysbar{display:none!important}
+
+/* ---- two panels: nav left, detail right ---- */
+.vtools,.sysbar,.scn-tab,#hint{display:none!important}
+.leftcol{left:auto!important;right:16px!important;width:min(420px,calc(100vw - var(--nav-w) - 32px))!important}
+.scn{left:auto!important;right:16px!important}
+body.side-open .rightcol,body.scn-open .rightcol{display:none}body.hz-on #status{display:none}.leaders{z-index:2!important}
+.nav-tools{margin:10px 0 0}
+.nav-tools .vt-row{display:none;flex-wrap:wrap;gap:6px;background:transparent;border:0;box-shadow:none;padding:0}
+body[data-view="home"] .nav-tools .vt-row,body[data-view="plant"] .nav-tools .vt-row,body[data-view="well"] .nav-tools .vt-row,body[data-view="piped"] .nav-tools .vt-row{display:flex}
+.nav-tools .vt-sec{flex:1 1 100%;justify-content:center;font-size:.9rem!important;padding:10px 14px!important}
+.nav-tools .ex{flex:1;display:flex!important;align-items:center;gap:6px;border:2px solid var(--ink);border-radius:999px;padding:4px 10px;background:var(--paper)}
+.nav-tools .ex input{flex:1;width:auto;min-width:0}.nav-tools .ex output{width:4ch}
+#nav #lens-key{margin-top:8px;border:2px solid var(--ink);border-radius:14px;padding:6px 10px;background:#fff;font-size:.74rem}
+#nav #lens-key .lk-s{display:flex;flex-wrap:wrap;gap:4px 8px}
+.np-act{display:flex;flex-wrap:wrap;align-items:center;gap:5px;padding:6px 10px 8px;margin:-4px 0 2px;border:1.5px solid var(--ink);border-top:0;border-radius:0 0 12px 12px;background:#fff9e8}
+.np-act small{flex:1 1 100%;font:600 .68rem/1.2 var(--f-mono);color:var(--mute)}
+.nav-top #as-tab{position:static;transform:none;box-shadow:none;border:2px solid var(--ink);border-radius:999px;padding:7px 10px;font:700 .78rem/1 var(--f-body);background:var(--paper)}
+.nav-top #as-tab .tl{display:none}
+@media (max-width:640px){
+  .leftcol{left:12px!important;right:12px!important;width:auto!important}
+  .scn{left:8px!important;right:8px!important}
+}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -3029,7 +3051,7 @@ function updateViewOffset(dt){
   const sideUp=!narrow&&panel.hidden&&(!budgetCard.hidden||!placeCard.hidden||!bEl('finder').hidden);
   sk+=((sideUp?1:0)-sk)*sp;
   const oy=narrow?Math.max(panel.offsetHeight*.45*vk,statusEl.offsetHeight*.42*mk):0;
-  const ox=narrow?0:panel.offsetWidth/2*vk-(leftcolEl.offsetWidth+16)/2*sk-nO/2;
+  const ox=narrow?0:panel.offsetWidth/2*vk+(leftcolEl.offsetWidth+16)/2*sk-nO/2;
   camera.setViewOffset(W,H,ox,oy,W,H);
 }
 
@@ -5990,6 +6012,46 @@ const applyFsysVis1=applyFsysVis;applyFsysVis=function(){applyFsysVis1();shellAu
 // --- view changes ---
 const setView2=setView;setView=function(v,a,b){if(isoId)isoId='';exIn.value=0;exOut.textContent='0%';setView2(v,a,b);shellAuto();vtSync();npRender();};
 showNp(npTab);vtSync();navW();
+
+/* =====================================================================
+   Two panels: everything lives in the left nav or the right detail slot
+   ===================================================================== */
+{// left panel: assumptions + view tools + lens legend move in
+  const at=bEl('as-tab');at.className='tool';at.innerHTML='<span aria-hidden="true">⚙</span><span class="tl"> Assumptions</span>';bEl('nav-top').append(at);
+  const nt=document.createElement('div');nt.className='nav-tools';nt.id='nav-tools';bEl('nav-views').after(nt);
+  nt.append(vtRow);nt.after(bEl('lens-key'));
+  // system actions live on the selected group in the parts list (replaces the floating system bar)
+  bEl('np-list').addEventListener('click',e=>{const b=e.target.closest('[data-npact]');if(!b)return;e.stopPropagation();const a=b.dataset.npact;
+    if(a==='fit')sysFocus();else if(a==='sec'){if(sectionOn&&sectionKind===view)setSection(false);else setSection(true,view);}else if(a==='clear'){pickSystem('');npRender();}},true);
+  const npRender0=npRender;npRender=function(){npRender0();if(!hlKey)return;const g=bEl('np-list').querySelector('[data-npg="'+hlKey+'"]');if(!g)return;
+    const I=typeof sysInfo==='function'?sysInfo(hlKey):null,d=document.createElement('div');d.className='np-act';
+    d.innerHTML=(I&&I.cost?'<small>'+fmtK(I.cost)+' installed'+(view==='home'?' per home':'')+'</small>':'')+'<button class="mini" data-npact="fit">⤢ Fit</button><button class="mini" data-npact="sec">◱ 2D</button><button class="mini" data-npact="clear">✕ Clear</button>';
+    g.after(d);};
+  const pickSystem0=pickSystem;pickSystem=function(k){pickSystem0(k);npRender();};}
+// right panel: one detail at a time (card, hazards, budget, place, finder, site map, scenario)
+let twoBusy=false;
+function clearRight(keep){if(twoBusy)return;twoBusy=true;try{
+  if(keep!=='info'&&current&&!panel.hidden)closeInfo();
+  if(keep!=='hz'&&HZ.open)closeHazards();
+  if(keep!=='budget'&&!budgetCard.hidden)closeBudget();
+  if(keep!=='place'&&!placeCard.hidden)closePlace();
+  if(keep!=='find'&&!bEl('finder').hidden)closeFinder();
+  if(keep!=='scn'&&document.body.classList.contains('scn-open'))setDrawer(false);
+  if(keep!=='map'&&!document.body.classList.contains('map-min'))setMapMin(true,true);
+}finally{twoBusy=false;}}
+const openInfo3=openInfo;openInfo=function(){clearRight('info');return openInfo3.apply(this,arguments);};
+const openHazards3=openHazards;openHazards=function(){clearRight('hz');return openHazards3.apply(this,arguments);};
+const openBudget3=openBudget;openBudget=function(){clearRight('budget');return openBudget3.apply(this,arguments);};
+const openPlace3=openPlace;openPlace=function(){clearRight('place');return openPlace3.apply(this,arguments);};
+const openFinder3=openFinder;openFinder=function(){clearRight('find');return openFinder3.apply(this,arguments);};
+const setDrawer3=setDrawer;setDrawer=function(o){if(o)clearRight('scn');return setDrawer3.apply(this,arguments);};
+const setMapMin3=setMapMin;setMapMin=function(m){if(!m)clearRight('map');return setMapMin3.apply(this,arguments);};
+// rebind buttons that captured the old functions
+bEl('find-btn').onclick=()=>bEl('finder').hidden?openFinder():closeFinder();
+bEl('dock-map').onclick=()=>setMapMin(!document.body.classList.contains('map-min'));
+bEl('scn-ops').onclick=()=>{setDrawer(false);openInfo('ops');};
+bEl('scn-more').onclick=()=>{setDrawer(false);if(!HZ.open)openHazards('overview');};
+setMapMin(true,true);
 
 const updateHazUI0=updateHazUI;updateHazUI=function(){updateHazUI0();if(window.__scnReady)syncDrawer();if(window.__fsReady&&lens==='risk'){clearTimeout(window.__rl);window.__rl=setTimeout(applyLens,160);}};
 renderBudget();applyPlace(PLACE);applyLand();buildRegistry();document.body.dataset.lens='systems';
