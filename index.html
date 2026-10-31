@@ -1320,6 +1320,40 @@ body:not(.pro).wb-on #mbar,body:not(.pro).wb-on #home-btn,body:not(.pro).wb-on .
   body:not(.pro).drop-on #section{bottom:calc(var(--dropH,0px) + 84px + env(safe-area-inset-bottom,0px))!important}
   body:not(.pro).drop-on #section .sec-legend{display:none!important}
 }
+/* ===== 4D construction schedule ===== */
+body.c4d-on #mbar,body.c4d-on .nav,body.c4d-on #panel{display:none!important}
+.sx-build{display:flex;align-items:center;gap:12px;width:100%;margin:-4px 0 14px;padding:10px 14px;border:2px solid var(--ink);border-radius:16px;background:#e3f0e8;cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.sx-build:hover{background:#d3eadc}.sx-build b{display:block;font-size:.9rem}.sx-build small{display:block;font-size:.7rem;color:var(--mute)}
+.c4d{position:fixed;z-index:30;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));width:min(1100px,calc(100vw - 24px));box-sizing:border-box;padding:10px 14px 12px;border:2px solid var(--ink);border-radius:20px;background:var(--paper,#fffaf0);box-shadow:0 6px 0 rgba(36,50,61,.9),0 18px 40px rgba(0,0,0,.18);--lw:170px}
+.c4-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.c4-now{flex:1;min-width:150px;display:flex;flex-direction:column;line-height:1.15}.c4-now b{font:800 1rem var(--f-display)}.c4-now small{font-size:.76rem;color:var(--mute)}
+.c4-kpi{display:flex;gap:14px}.c4-kpi span{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1}.c4-kpi b{font:800 .95rem var(--f-mono);font-variant-numeric:tabular-nums}.c4-kpi small{font-size:.6rem;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}
+.c4-ctl{display:flex;gap:6px;align-items:center}.c4-ctl button:not(.iconbtn){border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:5px 11px;font:700 .72rem var(--f-body);cursor:pointer;color:var(--ink)}
+.c4-ctl button[aria-pressed="true"]{background:var(--sun)}
+.c4-cap{margin:6px 0 8px;font-size:.84rem;line-height:1.4;min-height:2.8em}
+.c4-chart{position:relative}
+.c4-body{position:relative}
+.c4-row{display:grid;grid-template-columns:var(--lw) 1fr;align-items:center;gap:0;min-height:15px;margin:2px 0}
+.c4-lab{font-size:.68rem;font-weight:700;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:8px}
+.c4-row.act .c4-lab{color:var(--ink)}.c4-row.done .c4-lab{color:#2f7a4f}
+.c4-tr{position:relative;height:13px}
+.c4-bar{position:absolute;top:1px;height:11px;border-radius:6px;background:color-mix(in srgb,var(--c) 28%,#fff);border:1.5px solid var(--c);box-sizing:border-box;overflow:hidden}
+.c4-bar u{position:absolute;left:0;top:0;bottom:0;background:var(--c);width:0;text-decoration:none}
+.c4-row.act .c4-bar{box-shadow:0 0 0 2px rgba(255,193,69,.6)}
+.c4-yrs .c4-tr{height:16px}.c4-yrs .c4-tr span{position:absolute;top:0;font:700 .62rem var(--f-mono);color:var(--mute);border-left:1.5px solid #c9d3da;padding-left:4px;box-sizing:border-box;white-space:nowrap;overflow:hidden}
+.c4-season .c4-tr{height:16px}.cb{position:absolute;top:0;bottom:0}.cb.win{background:#dfe7ee}.cb.bld{background:rgba(63,191,130,calc(.25 + var(--o)*.45))}
+.cb.brg::after{content:'';position:absolute;left:0;right:0;top:0;height:5px;background:#2479bd}
+.c4-ms{position:absolute;top:-2px;width:0;height:20px;font-style:normal}.c4-ms::before{content:'';position:absolute;left:-5px;top:4px;width:9px;height:9px;background:var(--ink);transform:rotate(45deg);border:1.5px solid #fff}
+.c4-ms b{display:none}
+.c4-head{position:absolute;top:-2px;bottom:-2px;width:2px;margin-left:-1px;background:#d64545;pointer-events:none}.c4-head::before{content:'';position:absolute;top:-5px;left:-5px;border:6px solid transparent;border-top-color:#d64545}
+.c4-scrub{margin-top:4px}.c4-scrub input{width:100%;margin:0;accent-color:#d64545}
+.c4-key{display:flex;gap:4px;align-items:center;font-size:.58rem;font-weight:600}.c4-key i{display:inline-block;width:10px;height:8px;border-radius:2px}.k-b{background:rgba(63,191,130,.7)}.k-g{background:#2479bd}.k-w{background:#dfe7ee}
+.c4d-toast{position:fixed;z-index:31;left:50%;top:calc(18px + env(safe-area-inset-top,0px));transform:translateX(-50%);padding:9px 18px;border:2px solid var(--ink);border-radius:999px;background:var(--sun);font:800 .9rem var(--f-display);color:var(--ink);box-shadow:0 3px 0 var(--ink)}
+.c4d-toast.in{animation:c4in .35s ease-out}@keyframes c4in{from{opacity:0;transform:translate(-50%,-10px)}to{opacity:1;transform:translate(-50%,0)}}
+@media (max-width:640px){.c4d{width:100vw;border-radius:20px 20px 0 0;bottom:0;padding:8px 10px calc(10px + env(safe-area-inset-bottom,0px));--lw:92px}
+  .c4-kpi span:nth-child(3){display:none}.c4-cap{font-size:.76rem;min-height:3.6em}.c4-lab{font-size:.6rem}.c4-row{min-height:12px}.c4-tr{height:10px}.c4-bar{height:8px}
+  .c4-ctl{width:100%;justify-content:flex-end;margin-top:-4px}.c4-key{display:none}}
+@media (prefers-reduced-motion:reduce){.c4d-toast.in{animation:none}}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -9320,7 +9354,7 @@ const CAM=(function(){const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
   const occT={l:0,r:0,b:0},occ={l:0,r:0,b:0};
   function measure(){const W=innerWidth,H=innerHeight;occT.l=occT.r=occT.b=0;if(sectionOn)return;
     if(phoneQ.matches||!document.body.classList.contains('pro')){const bot=e=>{if(e&&!e.hidden){const cs=getComputedStyle(e);if(cs.display==='none'||cs.visibility==='hidden')return;const bo=parseFloat(cs.bottom),hh=e.offsetHeight;if(hh&&isFinite(bo)&&bo+hh<H*.8)occT.b=Math.max(occT.b,bo+hh+10);}};
-      if(document.body.classList.contains('navdrawer'))bot(bEl('nav'));bot(bEl('panel'));bot(bEl('drop'));if(typeof HZ!=='undefined'&&HZ.open)bot(document.querySelector('.rightcol'));if(!occT.b)bot(bEl('mbar'));return;}
+      if(document.body.classList.contains('navdrawer'))bot(bEl('nav'));bot(bEl('panel'));bot(bEl('drop'));if(typeof HZ!=='undefined'&&HZ.open)bot(document.querySelector('.rightcol'));bot(bEl('c4d'));if(!occT.b)bot(bEl('mbar'));return;}
     const n=bEl('nav');if(n&&!document.body.classList.contains('nav-closed')&&n.offsetParent!==null){const q=n.getBoundingClientRect();if(q.width&&q.left<W/3)occT.l=Math.max(0,q.right+8);}
     ['panel','hazards'].forEach(id=>{const e=bEl(id);if(e&&!e.hidden&&e.offsetParent!==null){const q=e.getBoundingClientRect();if(q.width&&q.left>W*.45)occT.r=Math.max(occT.r,W-q.left+8);}});
     const d=bEl('drop');if(d&&!d.hidden){const q=d.getBoundingClientRect();occT.b=Math.max(0,H-q.top+8);}}
@@ -9655,6 +9689,149 @@ renderBar();navRender();
  window.layerOnly=only;
  // the drop card and its drawing stack: the drawing sits above the card
  setInterval(()=>{const d=bEl('drop');const h=d&&!d.hidden?d.offsetHeight:0;document.body.style.setProperty('--dropH',h+'px');document.body.classList.toggle('wb-on',wbOpen());},200);}
+
+
+/* =====================================================================
+   4D construction schedule: self-haul + washeteria  →  piped community.
+   A month timeline drives the 3D scene: barges, cranes, a pile rig,
+   mains growing pile by pile, homes switching over one by one.
+   ===================================================================== */
+const C4D=(function(){
+ const st={on:false,t:0,play:true,speed:1,follow:true,prevAlt:'self',lastTask:'',lastMs:-1,raf:0,lt:0};
+ const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+ const cl=(v,a,b)=>Math.max(a,Math.min(b,v)),ease=u=>u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;
+ // ---------- schedule from the model ----------
+ let N=4,TM=60,W=[],TASKS=[],MS=[];
+ const TDEF=[['mob','Mobilize crew and camp',0,.04,'#7f97a8'],['sta','Utility station',.02,.2,'#2479bd'],['wtp','Water plant expansion',.05,.3,'#3aa0e8'],
+  ['piles','Pile supports',.1,.55,'#a0703c'],['mains','Water and vacuum mains',.22,.72,'#6c7a86'],['vsta','Vacuum station',.3,.5,'#9a7148'],
+  ['svc','Home services and plumbing',.55,.9,'#3fbf82'],['hyd','Fire hydrants',.65,.8,'#d64545'],['lag','Lagoon expansion',.75,.93,'#d49a3a'],['comm','Test and commission',.92,1,'#ffc145']];
+ const CAP={design:'Design, permits and funding. Surveyors stake the main route; nothing is built yet.',mob:'The first barge lands the crew camp, equipment and the first load of pipe.',
+  sta:'The utility station goes up first: circulation pumps and boilers that will keep the loop moving and warm.',wtp:'The water plant gets more treatment and storage for the bigger demand of full plumbing.',
+  piles:'A pile rig works the route, setting steel piles into the permafrost so the mains ride above the ground.',mains:'Insulated water and vacuum mains are laid on the piles and welded section by section.',
+  vsta:'The vacuum station is built to pull wastewater from every home to the lagoon.',svc:'Crews connect homes one at a time: service lines, an arctic entry, plumbing inside. Each family stops hauling.',
+  hyd:'Heated fire hydrants go in along the loop.',lag:'A third lagoon cell adds room for the larger wastewater flow.',comm:'Testing, disinfection and start-up. The washeteria joins the loop and the dump station closes.',
+  winter:'Winter: the ground is frozen and work stops. Materials for next season are ordered for the summer barge.',done:'Every home is piped. Water circulates through the village loop day and night.'};
+ function build(){const r=PR.pipe,G=r.G;N=Math.max(2,Math.min(6,r.S.seasons||4));TM=12*(N+1);
+   const bm=G.build_m,tot=bm.reduce((a,b)=>a+b,0)*N;W=[0];let acc=0;for(let m=0;m<TM;m++){const y=Math.floor(m/12);acc+=y>=1?bm[m%12]:0;W.push(acc/tot);}
+   const tAt=w=>{for(let m=0;m<TM;m++)if(W[m+1]>=w-1e-9){const a=W[m],b=W[m+1];return m+(b>a?(w-a)/(b-a):0);}return TM;};
+   TASKS=TDEF.map(([k,n,a,b,c])=>({k,n,a,b,c,t0:tAt(a+1e-6),t1:tAt(b)}));TASKS.unshift({k:'design',n:'Design, permits and funding',a:0,b:0,c:'#9b7fd4',t0:0,t1:12});
+   MS=[[12+5.3,'First barge'],[tAt(.2),'Station closed in'],[tAt(.58),'First home on'],[tAt(.9),'Last home on'],[tAt(1),'Commissioned']];}
+ const Wt=t=>{const m=cl(Math.floor(t),0,TM-1),f=t-m;return W[m]+(W[m+1]-W[m])*f;};
+ const prog=(k,w)=>{const T=TASKS.find(x=>x.k===k);return cl((w-T.a)/(T.b-T.a),0,1);};
+ // ---------- props ----------
+ const G4=new THREE.Group();G4.visible=false;scene.add(G4);
+ const yel=mat('#f2b632'),dk=mat('#2f3a44'),stl=mat(C.steel||'#9aa7b1'),red=mat('#c0392b');
+ function crane(){const g=new THREE.Group();g.add(M(BOX(2.2,.6,2.2),dk,0,.3,0));g.add(M(BOX(.5,13,.5),yel,0,6.8,0));const jib=new THREE.Group();jib.position.y=13.2;
+   jib.add(M(BOX(11,.45,.45),yel,3.5,0,0));jib.add(M(BOX(1.4,.9,.9),dk,-2.2,0,0));const line=M(BOX(.06,5,.06),dk,7.5,-2.5,0);jib.add(line);const hook=M(BOX(.9,.6,.9),red,7.5,-5.2,0);jib.add(hook);g.add(jib);g.userData={jib,line,hook};return g;}
+ function rig(){const g=new THREE.Group();g.add(M(BOX(3,1,2),yel,0,.7,0));g.add(M(BOX(3.2,.5,2.4),dk,0,.25,0));g.add(M(BOX(.35,8,.35),dk,1.2,4.8,0));const ham=M(BOX(.7,1.2,.7),red,1.2,7,0);g.add(ham);g.userData={ham};return g;}
+ function barge(){const g=new THREE.Group();g.add(M(BOX(16,1.1,6),mat('#5f6b75'),0,.4,0));[[-4,'#c0392b'],[0,'#2479bd'],[4,'#3fbf82']].forEach(([x,c])=>g.add(M(BOX(3.4,2.4,2.4),mat(c),x,2.1,-1.2)));
+   for(let i=0;i<5;i++){const p=M(CYL(.35,9,10),mat('#2f3a44'),0,1.25+(i%2)*.7,1.2+(i%3)*.7-.6);p.rotation.z=Math.PI/2;g.add(p);}
+   const tug=new THREE.Group();tug.add(M(BOX(4,1.4,3.2),mat('#d63b2f'),0,.6,0));tug.add(M(BOX(1.8,1.6,2),mat('#f5f8fb'),-.6,2,0));tug.position.x=-11;g.add(tug);return g;}
+ const crA=crane(),crB=crane(),pr=rig(),bg=barge();G4.add(crA,crB,pr,bg);
+ const pile=new THREE.Group();G4.add(pile);for(let i=0;i<14;i++){const p=M(CYL(.35,7,10),mat(i%2?'#2f3a44':'#6c7a86'),(i%5)*.8,.4+Math.floor(i/5)*.7,(i%3)*.8);p.rotation.z=Math.PI/2;pile.add(p);}
+ const camp=new THREE.Group();G4.add(camp);for(let i=0;i<3;i++)camp.add(M(BOX(4.2,2.2,2.6),mat(['#d8c49b','#c8bba6','#b9c6cf'][i]),i*4.8,1.1,0));
+ const tank=new THREE.Group();tank.add(M(CYL(3.4,6.5,24),mat('#e8eef2'),0,3.25,0));tank.add(M(CYL(3.5,.5,24),mat('#3aa0e8'),0,6.6,0));G4.add(tank);
+ const cell=new THREE.Group();{const b=mat('#c9bba1');cell.add(M(BOX(18,1.2,1),b,0,.6,-6));cell.add(M(BOX(18,1.2,1),b,0,.6,6));cell.add(M(BOX(1,1.2,13),b,-9,.6,0));cell.add(M(BOX(1,1.2,13),b,9,.6,0));
+   const w=M(BOX(17,.2,11),mat('#8fbf8a'),0,.35,0);cell.add(w);cell.userData={w};}G4.add(cell);
+ const spark=new THREE.Mesh(new THREE.SphereGeometry(.45,8,6),new THREE.MeshBasicMaterial({color:'#fff2a8'}));G4.add(spark);
+ // places
+ const LAND=(()=>{const b=ruPos(['bargelanding']);const c=new V();if(b)b.getCenter(c);else c.set(10,0,bankN0(10)+2);c.y=0;return c;})();
+ const WTPC=(()=>{const f=INFRA_BY.plant&&INFRA_BY.plant.f;return f?new V(f[0],0,f[2]):new V(-70,0,-6);})();
+ const LAGC=(()=>{const b=ruPos(['lagoon']);const c=new V(40,0,36);if(b)b.getCenter(c);c.y=0;return c;})();
+ let placed=false;function place(){if(placed)return;placed=true;
+   tank.position.copy(clearSpot(WTPC.x+12,WTPC.z-6,4));cell.position.copy(clearSpot(LAGC.x+22,LAGC.z,10));camp.position.copy(clearSpot(LAND.x+14,LAND.z+12,6));pile.position.copy(clearSpot(LAND.x-8,LAND.z+10,4));}
+ // ---------- scene state at time t ----------
+ const order=()=>homes.map((h,i)=>({i,d:STA.position.distanceTo(h.g.position)})).sort((a,b)=>a.d-b.d).map(o=>o.i);
+ let HO=[];const postS=new Map();
+ function setDraw(m,f){m.g.children.slice(0,2).forEach(tb=>{const g=tb.geometry;const n=g.index?g.index.count:g.attributes.position.count;g.setDrawRange(0,f>=1?Infinity:Math.floor(n*f/6)*6);});}
+ function apply(t,dt){const w=Wt(t),mo=Math.floor(t)%12,yr=Math.floor(t/12),G=PR.pipe.G,now=performance.now()/1000;
+   const P={};TASKS.forEach(T=>{if(T.k!=='design')P[T.k]=prog(T.k,w);});
+   // stations and plant tank rise
+   const rise=(o,p)=>{o.visible=p>0;o.scale.y=Math.max(.02,ease(p));};
+   rise(STA,P.sta);rise(VSTA,P.vsta);rise(tank,P.wtp);
+   cell.visible=P.lag>0;cell.scale.set(1,Math.max(.05,ease(P.lag)),1);cell.userData.w.visible=P.lag>.85;
+   // mains: piles then pipe, chunk by chunk
+   const nM=MAINS.length;MAINS.forEach((m,i)=>{const pp=cl(P.piles*nM-i,0,1),pm=cl(P.mains*nM-i,0,1);m.g.visible=pp>0;
+     m.g.children.slice(2).forEach(o=>{if(!postS.has(o))postS.set(o,o.scale.y);o.scale.y=Math.max(.01,postS.get(o)*ease(pp));});
+     m.g.children.slice(0,2).forEach(tb=>tb.visible=pm>0);if(pm>0)setDraw(m,pm);
+     if(m.g.children[1])m.g.children[1].visible=pm>0&&(PR.pipe.S.vac_on_p>0||G.sewer_type===2);});
+   // pile rig on the active chunk
+   const act=P.piles>0&&P.piles<1,ci=cl(Math.floor(P.piles*nM),0,nM-1),seg=MAINS[ci]?MAINS[ci].seg:null;pr.visible=act&&!!seg;
+   if(pr.visible){const f=cl(P.piles*nM-ci,0,1),k=Math.min(seg.length-1,Math.floor(f*(seg.length-1))),a=seg[k],b=seg[Math.min(seg.length-1,k+1)];pr.position.set(a.x+(b.x-a.x)*(f*(seg.length-1)-k)+2.2,0,a.z+(b.z-a.z)*(f*(seg.length-1)-k)+2.2);pr.rotation.y=Math.atan2(b.x-a.x,b.z-a.z);pr.userData.ham.position.y=5+Math.abs(Math.sin(now*4))*2.5;}
+   // welding spark at the head of the mains
+   const mi=cl(Math.floor(P.mains*nM),0,nM-1);spark.visible=P.mains>0&&P.mains<1&&G.build_m[mo]>0;if(spark.visible){const sg=MAINS[mi].seg,f=cl(P.mains*nM-mi,0,1),p=sg[Math.min(sg.length-1,Math.floor(f*(sg.length-1)))];spark.position.set(p.x,1.3,p.z);spark.scale.setScalar(.6+Math.random()*.9);}
+   // cranes on the active vertical work
+   const crOn=(cr,pos,p)=>{cr.visible=p>0&&p<1;if(cr.visible){cr.position.set(pos.x+5,0,pos.z+5);cr.userData.jib.rotation.y=now*.4+(cr===crA?0:2);}};
+   crOn(crA,STA.position,P.sta>0&&P.sta<1?P.sta:(P.vsta>0&&P.vsta<1?P.vsta:0));if(P.vsta>0&&P.vsta<1)crA.position.set(VSTA.position.x+5,0,VSTA.position.z+5);
+   crOn(crB,tank.position,P.wtp);
+   // homes switch over
+   const nh=HO.length,done=Math.floor(P.svc*nh+1e-6);HO.forEach((hi,k)=>{const K=HKIT[hi],on=k<done;Object.keys(K).forEach(n=>K[n].visible=false);
+     if(on){K.pipe.visible=true;SVC[hi].visible=true;HPORTS[hi].forEach(m=>m.visible=false);}else{K.self.visible=true;SVC[hi].visible=false;HPORTS[hi].forEach(m=>m.visible=false);}});
+   HYD.forEach((g,k)=>g.visible=P.hyd*HYD.length>k);
+   const end=P.comm>=1;DUMP.visible=!end;HOPS.forEach(g=>g.visible=!end&&P.svc<1);WPT.visible=true;
+   // barge each summer of a construction year
+   const bmo=G.barge_m[mo];camp.visible=w>0&&!end;pile.visible=yr>=1&&!end&&P.mains<1;
+   if(yr>=1&&yr<=N&&(mo>=5&&mo<=8)){bg.visible=true;const u=(t%12-5)/4,zR=(bankN0(LAND.x)+bankS(LAND.x))/2;let x;
+     if(u<.25)x=LAND.x-180+ease(u/.25)*180;else if(u<.7)x=LAND.x;else x=LAND.x+ease((u-.7)/.3)*200;bg.position.set(x,.1,zR);bg.rotation.y=0;}else bg.visible=false;
+   // numbers
+   return{w,P,mo,yr,done,nh};}
+ // ---------- UI ----------
+ const ui=document.createElement('section');ui.id='c4d';ui.className='c4d card';ui.hidden=true;ui.setAttribute('aria-label','4D construction schedule');document.body.appendChild(ui);
+ const toast=document.createElement('div');toast.className='c4d-toast';toast.hidden=true;document.body.appendChild(toast);let toastT=0;
+ function say(t){toast.textContent=t;toast.hidden=false;toast.classList.remove('in');void toast.offsetWidth;toast.classList.add('in');clearTimeout(toastT);toastT=setTimeout(()=>toast.hidden=true,3200);}
+ function shell(){const pct=t=>(t/TM*100).toFixed(3)+'%';let bands='',yrs='';
+   for(let m=0;m<TM;m++){const mo=m%12,y=Math.floor(m/12),G=PR.pipe.G,b=y>=1?G.build_m[mo]:0;bands+='<i class="cb '+(b>0?'bld':'win')+(y>=1&&G.barge_m[mo]>0?' brg':'')+'" style="left:'+pct(m)+';width:'+pct(1)+';--o:'+(b||0)+'"></i>';}
+   for(let y=0;y<=N;y++)yrs+='<span style="left:'+pct(y*12)+';width:'+pct(12)+'">'+(y===0?'Year 0 · design':'Year '+y)+'</span>';
+   const rows=TASKS.map(T=>'<div class="c4-row" data-k="'+T.k+'"><span class="c4-lab">'+esc(T.n)+'</span><div class="c4-tr"><i class="c4-bar" style="left:'+pct(T.t0)+';width:'+pct(Math.max(.4,T.t1-T.t0))+';--c:'+T.c+'"><u></u></i></div></div>').join('');
+   const ms=MS.map(([t,n])=>'<i class="c4-ms" style="left:'+pct(t)+'" title="'+esc(n)+'"><b>'+esc(n)+'</b></i>').join('');
+   ui.innerHTML='<div class="c4-top"><button class="mb-step" data-c4="play" aria-label="Play or pause">❚❚</button><div class="c4-now"><b id="c4-date"></b><small id="c4-act"></small></div>'+
+     '<div class="c4-kpi"><span><b id="c4-homes">0</b><small>homes piped</small></span><span><b id="c4-ft">0</b><small>ft of main</small></span><span><b id="c4-cost">$0</b><small>spent</small></span></div>'+
+     '<div class="c4-ctl"><button data-c4="speed" id="c4-speed" title="Speed">1×</button><button data-c4="follow" id="c4-follow" aria-pressed="true" title="Camera follows the work">Follow</button><button class="iconbtn sm" data-c4="x" aria-label="Close schedule">✕</button></div></div>'+
+     '<p class="c4-cap" id="c4-cap"></p>'+
+     '<div class="c4-chart"><div class="c4-row c4-yrs"><span class="c4-lab"></span><div class="c4-tr">'+yrs+'</div></div>'+
+     '<div class="c4-body"><div class="c4-row c4-season"><span class="c4-lab">Seasons</span><div class="c4-tr">'+bands+ms+'</div></div>'+rows+
+     '<div class="c4-head" id="c4-head"></div></div>'+
+     '<div class="c4-row c4-scrub"><span class="c4-lab"><span class="c4-key"><i class="k-b"></i>build <i class="k-g"></i>barge <i class="k-w"></i>frozen</span></span><div class="c4-tr"><input type="range" id="c4-t" min="0" max="'+TM+'" step="0.01" value="0" aria-label="Schedule time"></div></div></div>';}
+ function upd(){const s=apply(st.t);const mo=Math.floor(st.t)%12,yr=Math.floor(st.t/12),G=PR.pipe.G;
+   bEl('c4-date').textContent=MON[cl(mo,0,11)]+' · Year '+yr+(yr===0?' (design)':G.build_m[mo]>0?' · building':' · frozen');
+   let act=TASKS.filter(T=>T.k!=='design'&&s.P[T.k]>0&&s.P[T.k]<1);let key=yr===0?'design':s.w>=1?'done':(G.build_m[mo]===0?'winter':(act[act.length-1]||{}).k||'winter');
+   const T=TASKS.find(x=>x.k===key);bEl('c4-act').textContent=T?T.n:(key==='winter'?'Winter shutdown':key==='done'?'Complete':'');bEl('c4-cap').textContent=CAP[key]||'';
+   const tot=PR.pipe.G.homes;bEl('c4-homes').textContent=Math.round(s.done/Math.max(1,s.nh)*tot)+' / '+tot;
+   bEl('c4-ft').textContent=pn(PR.pipe.S.p_main*s.P.mains,0);bEl('c4-cost').textContent=pm(PR.pipe.eopc.tpc*(yr===0?st.t/12*.12:.12+.88*s.w));
+   bEl('c4-t').value=st.t;bEl('c4-head').style.left='calc(var(--lw) + (100% - var(--lw)) * '+(st.t/TM).toFixed(4)+')';
+   ui.querySelectorAll('.c4-row[data-k]').forEach(r=>{const k=r.dataset.k,p=k==='design'?cl(st.t/12,0,1):s.P[k];r.classList.toggle('act',p>0&&p<1);r.classList.toggle('done',p>=1);r.querySelector('u').style.width=(p*100).toFixed(1)+'%';});
+   // milestones and camera
+   MS.forEach(([t,n],i)=>{if(st.lastMs<i&&st.t>=t){st.lastMs=i;if(st.play)say(n);}});if(st.t<(MS[st.lastMs]||[1e9])[0])st.lastMs=MS.findIndex(m=>st.t<m[0])-1;
+   if(key!==st.lastTask){st.lastTask=key;if(st.follow)aim(key,s);}}
+ function aim(key,s){const P=(o,d)=>camTo(new V(o.x,0,o.z),d,null);
+   if(key==='sta')P(STA.position,46);else if(key==='wtp')P(tank.position,52);else if(key==='vsta')P(VSTA.position,46);else if(key==='lag')P(cell.position,62);
+   else if(key==='piles'||key==='mains'){const m=MAINS[Math.min(MAINS.length-1,Math.floor((s.P[key]||0)*MAINS.length))];if(m)P(m.cen,70);}
+   else if(key==='svc'){const h=homes[HO[Math.min(HO.length-1,s.done)]];if(h)P(h.g.position,42);}
+   else if(key==='mob')P(LAND,70);else if(key==='hyd'){const g=HYD.find(x=>x.visible)||HYD[0];if(g)P(g.position,60);}else{const pr0=preset('site');camTo(pr0.t,pr0.p.distanceTo(pr0.t),null);}}
+ function loop(now){st.raf=requestAnimationFrame(loop);const dt=Math.min(.1,(now-(st.lt||now))/1000);st.lt=now;if(!st.on)return;
+   if(st.play){const G=PR.pipe.G,mo=Math.floor(st.t)%12,slow=Math.floor(st.t/12)>=1&&G.build_m[mo]>0?1:2.6;st.t+=dt*st.speed*slow/1.6;if(st.t>=TM){st.t=TM;st.play=false;ui.querySelector('[data-c4="play"]').textContent='↺';}}
+   upd();}
+ ui.addEventListener('click',e=>{const b=e.target.closest('[data-c4]');if(!b)return;const a=b.dataset.c4;
+   if(a==='play'){if(st.t>=TM){st.t=0;st.lastMs=-1;}st.play=!st.play;b.textContent=st.play?'❚❚':'▶';}
+   else if(a==='speed'){st.speed=st.speed>=4?1:st.speed*2;b.textContent=st.speed+'×';}
+   else if(a==='follow'){st.follow=!st.follow;b.setAttribute('aria-pressed',st.follow);if(st.follow){st.lastTask='';}}
+   else if(a==='x')stop();});
+ ui.addEventListener('input',e=>{if(e.target.id==='c4-t'){st.t=+e.target.value;st.play=false;ui.querySelector('[data-c4="play"]').textContent='▶';}});
+ renderer.domElement.addEventListener('pointerdown',()=>{if(st.on&&st.follow){st.follow=false;const f=bEl('c4-follow');if(f)f.setAttribute('aria-pressed','false');}},true);
+ function start(){if(st.on)return;if(window.layerOnly)layerOnly('c4d');if(window.DROP&&DROP.st.on)DROP.stop();if(sectionOn)setSection(false);
+   st.prevAlt=PALT;if(PALT!=='self')setAlt('self');build();place();HO=order();st.on=true;st.t=0;st.play=true;st.lastTask='';st.lastMs=-1;st.follow=true;
+   document.body.classList.add('c4d-on');G4.visible=true;shell();ui.hidden=false;if(view!=='site')setView('site');upd();if(!st.raf)st.raf=requestAnimationFrame(loop);}
+ function stop(){if(!st.on)return;st.on=false;ui.hidden=true;toast.hidden=true;document.body.classList.remove('c4d-on');G4.visible=false;
+   MAINS.forEach(m=>{setDraw(m,1);m.g.children.slice(2).forEach(o=>{if(postS.has(o))o.scale.y=postS.get(o);});});[STA,VSTA].forEach(o=>o.scale.y=1);
+   const a=st.prevAlt;setAlt(a);perScene();if(typeof renderBar==='function')renderBar();}
+ {const ps=perScene;perScene=function(){if(st.on)return;return ps.apply(this,arguments);};}
+ {const gh=window.goHome;if(gh)window.goHome=function(){stop();return gh.apply(this,arguments);};}
+ return{start,stop,st,get t(){return st.t;},set t(v){st.t=v;}};})();
+window.C4D=C4D;
+// entry points: a row in the menu and in Plan & data
+{const t0=ruTop;ruTop=function(){let h=t0();return h.replace('<p class="sx-h">Explore</p>','<button class="sx-build" data-c4go><span class="sx-play">▶</span><span><b>Watch it get built</b><small>4D schedule: self-haul and washeteria → piped</small></span></button><p class="sx-h">Explore</p>');};}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-c4go]');if(b){e.stopPropagation();if(document.body.classList.contains('navdrawer'))setNav(false);C4D.start();}},true);
+navRender();
 
 
 capTxt=function(){return '';};navRender();
