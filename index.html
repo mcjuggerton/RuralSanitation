@@ -1296,6 +1296,30 @@ body:not(.pro) .sec-draw:has([data-id].sel) [data-id]:not(.sel):not(:has(.sel)){
   body:not(.pro) .nav .sx-q{display:block!important}
 }
 body:not(.pro) #panel .p-foot{display:none!important}
+#sysldr{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none}
+.sysl.peek{box-shadow:0 0 0 3px rgba(255,193,69,.75),0 4px 14px rgba(20,30,40,.25)!important}
+/* ===== layer cleanup ===== */
+body:not(.pro) #mbar,body:not(.pro) #panel,body:not(.pro) .nav,body:not(.pro) #section,body:not(.pro) .drop,body:not(.pro) .rightcol{box-sizing:border-box}
+body:not(.pro) .leftcol{display:none!important}
+/* hazards (in .rightcol) = a sheet above the bar, like the menu */
+body:not(.pro) .rightcol{top:auto!important;right:auto!important;left:50%!important;width:var(--sheetW)!important;margin-left:calc(var(--sheetW) / -2);bottom:calc(84px + env(safe-area-inset-bottom,0px))!important;max-height:min(56vh,600px)!important;padding:0!important;z-index:13}
+body:not(.pro):not(.hz-on) .rightcol{display:none!important}
+body:not(.pro) .rightcol>*{width:100%!important;box-sizing:border-box;max-height:min(56vh,600px);overflow:auto}
+/* the drawing sits above the drop card when both are open */
+body:not(.pro).drop-on #section{bottom:calc(var(--dropH,0px) + 98px + env(safe-area-inset-bottom,0px))!important}
+body:not(.pro).drop-on .drop{z-index:47}
+/* workbench is a full-screen page: nothing else on top */
+body:not(.pro).wb-on #mbar,body:not(.pro).wb-on #home-btn,body:not(.pro).wb-on .nav{display:none!important}
+/* section on phones: drawing hugs the top, keynotes take the rest */
+@media (max-width:640px){
+  body:not(.pro) .rightcol{bottom:calc(72px + env(safe-area-inset-bottom,0px))!important;width:100vw!important;margin-left:-50vw}
+  body:not(.pro) .rightcol>*{border-radius:22px 22px 0 0!important}
+  body:not(.pro) .sec-draw{flex:0 0 auto!important;min-height:0!important}
+  body:not(.pro) #section.zoom .sec-draw{flex:1 1 auto!important}
+  body:not(.pro) .sec-legend{flex:1 1 auto;max-height:none!important}
+  body:not(.pro).drop-on #section{bottom:calc(var(--dropH,0px) + 84px + env(safe-area-inset-bottom,0px))!important}
+  body:not(.pro).drop-on #section .sec-legend{display:none!important}
+}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -9296,7 +9320,7 @@ const CAM=(function(){const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
   const occT={l:0,r:0,b:0},occ={l:0,r:0,b:0};
   function measure(){const W=innerWidth,H=innerHeight;occT.l=occT.r=occT.b=0;if(sectionOn)return;
     if(phoneQ.matches||!document.body.classList.contains('pro')){const bot=e=>{if(e&&!e.hidden){const cs=getComputedStyle(e);if(cs.display==='none'||cs.visibility==='hidden')return;const bo=parseFloat(cs.bottom),hh=e.offsetHeight;if(hh&&isFinite(bo)&&bo+hh<H*.8)occT.b=Math.max(occT.b,bo+hh+10);}};
-      if(document.body.classList.contains('navdrawer'))bot(bEl('nav'));bot(bEl('panel'));bot(bEl('drop'));if(!occT.b)bot(bEl('mbar'));return;}
+      if(document.body.classList.contains('navdrawer'))bot(bEl('nav'));bot(bEl('panel'));bot(bEl('drop'));if(typeof HZ!=='undefined'&&HZ.open)bot(document.querySelector('.rightcol'));if(!occT.b)bot(bEl('mbar'));return;}
     const n=bEl('nav');if(n&&!document.body.classList.contains('nav-closed')&&n.offsetParent!==null){const q=n.getBoundingClientRect();if(q.width&&q.left<W/3)occT.l=Math.max(0,q.right+8);}
     ['panel','hazards'].forEach(id=>{const e=bEl(id);if(e&&!e.hidden&&e.offsetParent!==null){const q=e.getBoundingClientRect();if(q.width&&q.left>W*.45)occT.r=Math.max(occT.r,W-q.left+8);}});
     const d=bEl('drop');if(d&&!d.hidden){const q=d.getBoundingClientRect();occT.b=Math.max(0,H-q.top+8);}}
@@ -9591,6 +9615,46 @@ setPro=function(){document.body.classList.remove('pro');renderBar();};
  const oi=openInfo;openInfo=function(){const r=oi.apply(this,arguments);renderBar();return r;};
  const ci=closeInfo;closeInfo=function(){const r=ci.apply(this,arguments);renderBar();return r;};}
 renderBar();navRender();
+
+/* ---------- system labels point at their real parts ---------- */
+{const NS='http://www.w3.org/2000/svg',svg=document.createElementNS(NS,'svg');svg.id='sysldr';svg.setAttribute('aria-hidden','true');bEl('hotspots').before(svg);
+ let peek='',peekOn='',lastSig='';const _p=new V();
+ const col=k=>{const g=(FSYS[view]||[]).find(x=>x[0]===k);return (typeof SYSCOL!=='undefined'&&SYSCOL[k])||(g&&g[4])||'#7f97a8';};
+ function outline(k){if(k===peekOn)return;peekOn=k;if(!k){sysOutline();return;}
+   for(const m of pickables){const on=FSOF[m.userData.id]===k;for(const c of m.children)if(c.userData.hull){if(!c.userData.m0)c.userData.m0=c.material;c.material=on?(c.userData.m0===OUT_THIN?OUT_HL_THIN:OUT_HL):(hlKey&&hlMember(m.userData.id)?c.material:c.userData.m0);}}}
+ // hover or press-and-hold on a label previews its system
+ for(const k in SYSL){const el=SYSL[k].el;let t=0;
+   el.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')peek=k;});el.addEventListener('pointerleave',()=>{if(peek===k)peek='';clearTimeout(t);});
+   el.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'){peek=k;}});el.addEventListener('pointerup',e=>{if(e.pointerType!=='mouse')t=setTimeout(()=>{if(peek===k)peek='';},900);});
+   el.addEventListener('focus',()=>{peek=k;});el.addEventListener('blur',()=>{if(peek===k)peek='';});}
+ const ps=projectSystems;projectSystems=function(w,h){ps(w,h);
+   let out='',sig='';const active=peek||hlKey;
+   for(const k in SYSL){const S=SYSL[k];if(S.el.hidden)continue;const lx=parseFloat(S.el.style.left),ly=parseFloat(S.el.style.top);if(!isFinite(lx))continue;
+     const c=col(k),strong=active===k,faint=active&&!strong;
+     sysMembers(k).forEach(id=>{anchorWorld(A[id],_p);if(!onScreen(_p))return;const x=(_p.x+1)/2*w,y=(1-_p.y)/2*h;if(Math.hypot(x-lx,y-ly)<16)return;
+       out+='<line x1="'+lx.toFixed(1)+'" y1="'+ly.toFixed(1)+'" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" stroke="'+c+'" stroke-width="'+(strong?2.6:1.4)+'" stroke-opacity="'+(faint?.12:strong?.95:.5)+'"'+(strong?'':' stroke-dasharray="4 4"')+'/>'+
+         '<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+(strong?6:3)+'" fill="'+(strong?'#fff':c)+'" stroke="'+c+'" stroke-width="'+(strong?2.5:0)+'" fill-opacity="'+(faint?.2:1)+'"/>';});}
+   if(out!==lastSig){svg.innerHTML=out;lastSig=out;}
+   for(const k in SYSL)SYSL[k].el.classList.toggle('peek',peek===k);
+   outline(FACV.includes(view)?peek:'');};}
+
+/* =====================================================================
+   Layer manager: one sheet at a time above the bar
+   menu · card · hazards · workbench · 2D drawing   (drop tour may pair with its drawing)
+   ===================================================================== */
+{const hzOpen=()=>typeof HZ!=='undefined'&&HZ.open,menuOpen=()=>document.body.classList.contains('navdrawer'),wbOpen=()=>!bEl('wb').hidden;
+ let busy=false;const guard=f=>function(){if(busy)return f.apply(this,arguments);busy=true;try{return f.apply(this,arguments);}finally{busy=false;}};
+ function only(keep){if(keep!=='menu'&&menuOpen())setNav(false);if(keep!=='card'&&keep!=='section'&&current)closeInfo();
+   if(keep!=='hz'&&hzOpen())closeHazards();if(keep!=='wb'&&wbOpen())closeWB();if(keep!=='section'&&keep!=='card'&&sectionOn&&!(window.DROP&&DROP.st.on))setSection(false);}
+ const sn=setNav;setNav=function(o){if(o&&!busy){busy=true;try{only('menu');}finally{busy=false;}}return sn.apply(this,arguments);};
+ const oi=openInfo;openInfo=function(id){if(!busy){busy=true;try{if(menuOpen())setNav(false);if(hzOpen())closeHazards();if(wbOpen())closeWB();}finally{busy=false;}}return oi.apply(this,arguments);};
+ const oh=openHazards;openHazards=function(){if(!busy){busy=true;try{only('hz');}finally{busy=false;}}return oh.apply(this,arguments);};
+ const ow=openWB;openWB=function(){if(!busy){busy=true;try{only('wb');}finally{busy=false;}}return ow.apply(this,arguments);};
+ const ss=setSection;setSection=function(on){if(on&&!busy){busy=true;try{if(menuOpen())setNav(false);if(hzOpen())closeHazards();if(wbOpen())closeWB();if(current&&!(window.DROP&&DROP.st.on))closeInfo();}finally{busy=false;}}return ss.apply(this,arguments);};
+ const ds=DROP.start;DROP.start=function(){if(!busy){busy=true;try{only('drop');}finally{busy=false;}}return ds.apply(this,arguments);};
+ window.layerOnly=only;
+ // the drop card and its drawing stack: the drawing sits above the card
+ setInterval(()=>{const d=bEl('drop');const h=d&&!d.hidden?d.offsetHeight:0;document.body.style.setProperty('--dropH',h+'px');document.body.classList.toggle('wb-on',wbOpen());},200);}
 
 
 capTxt=function(){return '';};navRender();
