@@ -1214,6 +1214,43 @@ body:not(.pro) #section{left:16px!important}
 .home-btn svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 @keyframes hbIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 body.pro .home-btn{left:auto;right:14px}
+/* ---- simple mode: lighter pins and labels ---- */
+body:not(.pro) .hs:not(.hz){width:16px;height:16px;margin:-8px 0 0 -8px;font-size:0!important;color:transparent!important;background:var(--c)!important;border:3px solid #fff!important;
+  box-shadow:0 0 0 1.5px rgba(36,50,61,.8),0 3px 8px rgba(20,30,40,.28)!important;transition:transform .15s}
+body:not(.pro) .hs:not(.hz):hover,body:not(.pro) .hs[aria-current="true"]{transform:scale(1.35)}
+body:not(.pro) .hs[aria-current="true"]{box-shadow:0 0 0 1.5px var(--ink),0 0 0 6px rgba(255,193,69,.55),0 3px 8px rgba(20,30,40,.28)!important}
+body:not(.pro) .hlbl,body:not(.pro) .hlbl.left{border:0!important;border-radius:999px!important;background:rgba(255,253,247,.95)!important;box-shadow:0 2px 10px rgba(20,30,40,.2)!important;
+  font:800 .74rem/1 var(--f-body)!important;padding:5px 10px!important;letter-spacing:.01em}
+/* ---- simple mode: inside a facility the menu shows systems only ---- */
+body:not(.pro) .np-items,body:not(.pro) #np-q,body:not(.pro) .np-foot,body:not(.pro) .nv-gh+.np-items{display:none!important}
+body:not(.pro) #pg-fac .ex,body:not(.pro) #fac-tools .ex,body:not(.pro) .np-eye{display:none!important}
+body:not(.pro) .np-g{margin-bottom:5px}body:not(.pro) .np-gh{padding:11px 12px;font-size:.9rem}
+/* inside a facility: systems only, no cost/fit blocks */
+body:not(.pro) .np-act{display:none!important}
+/* 2D section in simple mode */
+.sec-step{display:none}
+body:not(.pro) .sec-step{display:flex;align-items:center;gap:8px;flex:1;min-width:0;justify-content:center}
+body:not(.pro) .sec-step .mb-step{width:36px;height:36px}
+.sec-now{min-width:0;display:flex;flex-direction:column;align-items:center;line-height:1.15;text-align:center}
+.sec-now b{font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}.sec-now small{font:600 .62rem var(--f-mono);color:var(--mute)}
+.sec-zoom{display:none}
+body:not(.pro) #sec-sched-btn,body:not(.pro) #sec-sched{display:none!important}
+body:not(.pro).section-on #mbar,body:not(.pro).section-on #home-btn{display:none!important}
+body:not(.pro) #section{bottom:calc(14px + env(safe-area-inset-bottom,0px))!important}
+body:not(.pro) .sec-draw [data-id].sel{filter:drop-shadow(0 0 5px #ffc145) drop-shadow(0 0 2px #ffc145)}
+body:not(.pro) .sec-draw:has([data-id].sel) [data-id]:not(.sel):not(:has(.sel)){opacity:.4;transition:opacity .3s}
+@media (max-width:640px){
+  body:not(.pro) #section{left:6px!important;right:6px!important;top:calc(8px + env(safe-area-inset-top,0px))!important;bottom:calc(8px + env(safe-area-inset-bottom,0px))!important}
+  body:not(.pro) .sec-head{flex-wrap:wrap;gap:6px;padding:8px 10px}
+  body:not(.pro) .sec-head>div:first-child{order:1}body:not(.pro) #sec-legend-btn{order:2}body:not(.pro) .sec-zoom{order:3}body:not(.pro) #sec-close{order:4}
+  body:not(.pro) .sec-step{order:5;flex:1 0 100%}
+  body:not(.pro) .sec-zoom{display:inline-flex}
+  body:not(.pro) .sec-cl-t{display:none}
+  body:not(.pro) .sec-draw svg{width:100%!important;height:auto;max-width:100%}
+  body:not(.pro) #section.zoom .sec-draw svg{width:900px!important;max-width:none!important}
+  body:not(.pro) .sec-draw{align-items:center;justify-content:flex-start}
+  body:not(.pro) .sec-legend{max-height:40%;display:grid!important}
+}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -3820,6 +3857,7 @@ function updateFocus(dt){
 let vk=0,mk=0,sk=0;
 const statusEl=bEl('status'),leftcolEl=document.querySelector('.leftcol');
 function updateViewOffset(dt){
+  if(window.CAM)return;
   const W=innerWidth,H=innerHeight,narrow=W<=640,sp=Math.min(1,dt*(reduceMotion?10:1.6));
   vk+=((panel.hidden?0:1)-vk)*sp;
   const mapUp=narrow&&panel.hidden&&!document.body.classList.contains('map-min')&&statusEl.offsetHeight>0;
@@ -8972,7 +9010,7 @@ const INFRA_OF=id=>INFRA.find(x=>(x.ids||[]).includes(id)||(x.comps||[]).include
    const sec=SEC_OF(id),x=INFRA_OF(id),inSec=sectionOn&&sectionKind===sec;const items=[];
    if(sec&&SECS[sec]&&!inSec)items.push(['sec','◱','See the 2D drawing',SECS[sec].title+(a.v==='any'||(SECS[sec].kn&&SECS[sec].kn()[id])?' · this part lit':'')]);
    if(x&&x.view&&view!==x.view&&!FACV.includes(view))items.push(['inside','⤓','Go inside in 3D',x.n]);
-   if(x&&a.v==='village')items.push(['parts','☰','Parts and systems','Highlight '+x.n.toLowerCase()+' on the plan']);
+   if(x&&a.v==='village'&&document.body.classList.contains('pro'))items.push(['parts','☰','Parts and systems','Highlight '+x.n.toLowerCase()+' on the plan']);
    items.push(['drop','💧','Follow a drop of water','Through the village for '+(PERM.ALTS.find(z=>z.k===PALT)||{n:''}).n.toLowerCase()]);
    items.push(['cost','$','Cost in the estimate','Engineer’s estimate for the selected alternative']);
    box.innerHTML='<button class="cta pm-go" data-pm="toggle" aria-expanded="'+open+'">See more <span aria-hidden="true">'+(open?'▴':'▾')+'</span></button>'+
@@ -9212,7 +9250,7 @@ camera.fov=30;camera.updateProjectionMatrix();const LENS_K=Math.tan(20*Math.PI/1
 const CAM=(function(){const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
   const occT={l:0,r:0,b:0},occ={l:0,r:0,b:0};
   function measure(){const W=innerWidth,H=innerHeight;occT.l=occT.r=occT.b=0;if(sectionOn)return;
-    if(phoneQ.matches||!document.body.classList.contains('pro')){const bot=e=>{if(e&&!e.hidden&&e.offsetParent!==null){const q=e.getBoundingClientRect();if(q.height&&q.top>H*.2&&q.top<H)occT.b=Math.max(occT.b,H-q.top+8);}};
+    if(phoneQ.matches||!document.body.classList.contains('pro')){const bot=e=>{if(e&&!e.hidden){const cs=getComputedStyle(e);if(cs.display==='none'||cs.visibility==='hidden')return;const bo=parseFloat(cs.bottom),hh=e.offsetHeight;if(hh&&isFinite(bo)&&bo+hh<H*.8)occT.b=Math.max(occT.b,bo+hh+10);}};
       if(document.body.classList.contains('navdrawer'))bot(bEl('nav'));bot(bEl('panel'));bot(bEl('drop'));if(!occT.b)bot(bEl('mbar'));return;}
     const n=bEl('nav');if(n&&!document.body.classList.contains('nav-closed')&&n.offsetParent!==null){const q=n.getBoundingClientRect();if(q.width&&q.left<W/3)occT.l=Math.max(0,q.right+8);}
     ['panel','hazards'].forEach(id=>{const e=bEl(id);if(e&&!e.hidden&&e.offsetParent!==null){const q=e.getBoundingClientRect();if(q.width&&q.left>W*.45)occT.r=Math.max(occT.r,W-q.left+8);}});
@@ -9222,7 +9260,7 @@ const CAM=(function(){const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
     const k=Math.min(1,dt*5);let moved=false;for(const s of['l','r','b']){const d=occT[s]-occ[s];if(Math.abs(d)>.5){occ[s]+=d*k;moved=true;}else occ[s]=occT[s];}
     const W=innerWidth,H=innerHeight,sx=(occ.l-occ.r)/2,sy=occ.b/2;
     if(Math.abs(sx)<.5&&Math.abs(sy)<.5){if(camera.view&&camera.view.enabled)camera.clearViewOffset();}
-    else if(moved||!camera.view||!camera.view.enabled||camera.view.fullWidth!==W||camera.view.fullHeight!==H)camera.setViewOffset(W,H,-sx,sy,W,H);
+    else if(moved||!camera.view||!camera.view.enabled||camera.view.fullWidth!==W||camera.view.fullHeight!==H||Math.abs(camera.view.offsetX+sx)>.5||Math.abs(camera.view.offsetY-sy)>.5)camera.setViewOffset(W,H,-sx,sy,W,H);
     const open=view==='site'||view==='village';controls.minPolarAngle=open?.18:0;controls.maxPolarAngle=open?1.2:Math.PI*.49;}
   requestAnimationFrame(tick);
   // distance that fits a sphere of radius r inside the uncovered part of the screen
@@ -9231,6 +9269,7 @@ const CAM=(function(){const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
   function occFactor(){measure();const W=innerWidth,H=innerHeight,vw=Math.max(240,W-occT.l-occT.r),vh=Math.max(200,H-occT.b);return Math.pow(cl(Math.max(W/vw,H/vh),1,2.2),.9);}
   return{fitDist,occFactor,measure,occT,cl};})();
 // eased spherical flight: heading and tilt interpolate, distance interpolates in log space with a pull-back hop
+window.CAM=CAM;
 window.CAMSTEP=function(tw,u){const cl=CAM.cl;
   if(!tw.sph){const sp=o=>{const r=Math.max(.01,o.length());return{r,az:Math.atan2(o.x,o.z),el:Math.asin(cl(o.y/r,-1,1))};};
     tw.s0=sp(tw.p0.clone().sub(tw.t0));tw.s1=sp(tw.p1.clone().sub(tw.t1));let d=tw.s1.az-tw.s0.az;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;tw.daz=d;
@@ -9243,11 +9282,11 @@ window.CAMSTEP=function(tw,u){const cl=CAM.cl;
   const fitted=!!window.__fitted;window.__fitted=false;if(!fitted)dist*=LENS_K*(phoneQ.matches?1.35:1);
   if(FACV.includes(view)){return camTo0(c,dist,dur,dirIn);}
   const curAz=Math.atan2(cur.x,cur.z);let el=dirIn?Math.asin(cl(dirIn.clone().normalize().y,-1,1)):Math.asin(cl(cur.y/Math.max(.01,cur.length()),-1,1));
-  el=cl(el,view==='site'?.7:.45,1.05);const dir=new V(Math.cos(el)*Math.sin(curAz),Math.sin(el),Math.cos(el)*Math.cos(curAz));
+  el=cl(el,.4,view==='site'?.82:.78);const dir=new V(Math.cos(el)*Math.sin(curAz),Math.sin(el),Math.cos(el)*Math.cos(curAz));
   // an open card frames its object by its real size
   if(current&&A[current]&&A[current].v==='village'&&!window.__noFit){let rr=FIT_R[current];
     if(!rr){const bx=ruPos([current]);if(bx){const sp=new THREE.Sphere();bx.getBoundingSphere(sp);if(sp.center.distanceTo(c)<sp.radius+25){rr=sp.radius;c=sp.center.clone();c.y*=.4;}}}
-    if(!rr)rr=Math.max(8,dist*.32);dist=CAM.fitDist(CAM.cl(rr,phoneQ.matches?10:6,140))/CAM.occFactor();}
+    if(!rr)rr=Math.max(8,dist*.32);dist=CAM.fitDist(CAM.cl(rr*.72,phoneQ.matches?9:6,140))/CAM.occFactor();}
   dist=cl(dist*CAM.occFactor(),controls.minDistance*2,controls.maxDistance);
   const travel=controls.target.distanceTo(c),r0=cur.length();const auto=cl(.75+.42*Math.log2(1+travel/Math.max(12,Math.min(r0,dist))),.8,2.3);
   camTo0(c,dist,reduceMotion?.01:auto,dir);};}
@@ -9256,7 +9295,7 @@ function frameIds(ids,minR){const b=ruPos(ids);if(!b)return false;const s=new TH
   window.__fitted=true;camTo(s.center,CAM.fitDist(r)/CAM.occFactor(),1);return true;}
 ruFlyHome=function(k){const T=HOME_T[k];if(T.anchor&&frameIds([T.anchor],18)){siteOutline(T.tags);return;}const i=perKinds.indexOf(k);if(i<0)return;const p=homes[i].g.position.clone();window.__fitted=true;camTo(p,CAM.fitDist(18)/CAM.occFactor(),1);siteOutline(T.tags);};
 // overview: a 3/4 view of the whole village instead of straight down
-{const pr0=preset;preset=function(v){if(v!=='site'){const o=pr0(v);o.p=o.t.clone().add(o.p.clone().sub(o.t).multiplyScalar(LENS_K));return o;}const t=new V(phoneQ.matches?-17:-16,0,12),el=.9,az=phoneQ.matches?.22:.3,r=CAM.fitDist(phoneQ.matches?98:76);
+{const pr0=preset;preset=function(v){if(v!=='site'){const o=pr0(v);o.p=o.t.clone().add(o.p.clone().sub(o.t).multiplyScalar(LENS_K));return o;}const t=new V(phoneQ.matches?-17:-16,0,12),el=.6,az=phoneQ.matches?.22:.3,r=CAM.fitDist(phoneQ.matches?88:68);
   return{p:t.clone().add(new V(Math.cos(el)*Math.sin(az)*r,Math.sin(el)*r,Math.cos(el)*Math.cos(az)*r)),t};};}
 // grabbing the view during a flight hands control back immediately
 renderer.domElement.addEventListener('pointerdown',()=>{if(tw&&!touring){tw=null;controls.enabled=true;controls.update();}},true);
@@ -9349,6 +9388,12 @@ navEl.addEventListener('click',e=>{if(!SIMPLE())return;const t=e.target.closest(
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-sx]');if(b)setTimeout(renderBar,0);});
 if(SIMPLE())setNav(false);
 renderBar();
+// simple mode skips the long component lists: picking a facility opens its card; inside, ◀ ▶ steps systems
+{const si=selectInfra;selectInfra=function(k,noFly){if(SIMPLE()&&k&&INFRA_BY[k]){const x=INFRA_BY[k],id=(x.ids||[])[0];infraSel='';if(FACV.includes(view))setView('site');
+   if(id&&A[id]){window.__directOpen=true;try{openInfo(id);}finally{window.__directOpen=false;}}return;}return si.apply(this,arguments);};}
+// simple mode never parks on the old "selected facility" list level
+{const nr=navRender;navRender=function(){if(SIMPLE()&&infraSel&&!FACV.includes(view)&&document.body.dataset.view!=='alaska')infraSel='';return nr.apply(this,arguments);};}
+navRender();renderBar();
 
 /* ---------- Home: one button back to the village overview from anywhere ---------- */
 {const hb=document.createElement('button');hb.id='home-btn';hb.className='home-btn';hb.hidden=true;hb.setAttribute('aria-label','Back to the village overview');
@@ -9361,6 +9406,24 @@ renderBar();
  hb.addEventListener('click',e=>{e.stopPropagation();goHome();});
  let shown=false;setInterval(()=>{if(document.body.classList.contains('splash-on'))return;const s=!atHome();if(s!==shown){shown=s;hb.hidden=!s;}},250);
  document.addEventListener('keydown',e=>{if((e.key==='h'||e.key==='Home')&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)&&!e.metaKey&&!e.ctrlKey){goHome();}});}
+
+/* ---------- 2D section, simple mode: fits the screen, steps keynotes with ◀ ▶ like everywhere else ---------- */
+{const head=document.querySelector('#section .sec-head');let ki=-1;
+ const nav=document.createElement('div');nav.className='sec-step';nav.innerHTML='<button class="mb-step" data-ss="-1" aria-label="Previous part">◀</button><div class="sec-now" id="sec-now"></div><button class="mb-step" data-ss="1" aria-label="Next part">▶</button>';
+ head.insertBefore(nav,bEl('sec-sched-btn'));
+ const zb=document.createElement('button');zb.className='pill sec-zoom';zb.id='sec-zoom';zb.textContent='⤢ Zoom';zb.setAttribute('aria-pressed','false');head.insertBefore(zb,bEl('sec-close'));
+ zb.onclick=()=>{const on=!bEl('section').classList.contains('zoom');bEl('section').classList.toggle('zoom',on);zb.setAttribute('aria-pressed',on);if(on)lit(ki,true);};
+ const keys=()=>SECS[sectionKind]?SECS[sectionKind].keys():[];
+ function lit(i,scroll){const K=keys();if(!K.length)return;ki=i;const id=K[i]?K[i][0]:'';
+   bEl('sec-draw').querySelectorAll('[data-id]').forEach(el=>el.classList.toggle('sel',el.dataset.id===id));
+   bEl('sec-legend').querySelectorAll('[data-key]').forEach(b=>b.setAttribute('aria-current',b.dataset.key===id));
+   bEl('sec-now').innerHTML=i>=0?'<b>'+(i+1)+'</b> '+esc(K[i][1])+'<small>'+(i+1)+' / '+K.length+'</small>':'<b>'+K.length+' parts</b><small>tap ▶ to step</small>';
+   const el=id&&bEl('sec-draw').querySelector('[data-id="'+id+'"]');if(el&&scroll&&bEl('section').classList.contains('zoom'))el.scrollIntoView({block:'center',inline:'center',behavior:reduceMotion?'auto':'smooth'});
+   const lb=id&&bEl('sec-legend').querySelector('[data-key="'+id+'"]');if(lb)lb.scrollIntoView({block:'nearest'});}
+ nav.addEventListener('click',e=>{const b=e.target.closest('[data-ss]');if(!b)return;const n=keys().length;if(!n)return;lit(ki<0?(+b.dataset.ss>0?0:n-1):(ki+ +b.dataset.ss+n)%n,true);});
+ const ss=setSection;setSection=function(on,kind){const was=sectionKind;const r=ss.apply(this,arguments);if(on){if(sectionKind!==was||ki>=keys().length)ki=-1;lit(ki,false);}else bEl('section').classList.remove('zoom');renderBar();return r;};
+ document.addEventListener('keydown',e=>{if(!sectionOn||current||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();e.stopImmediatePropagation();nav.querySelector('[data-ss="'+(e.key==='ArrowRight'?1:-1)+'"]').click();}},true);
+ bEl('sec-close').innerHTML='✕<span class="sec-cl-t"> Back to 3D</span>';}
 
 
 capTxt=function(){return '';};navRender();
