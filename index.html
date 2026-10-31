@@ -1042,6 +1042,126 @@ body.wb-open .vtools,body.wb-open #hint,body.wb-open .sysbar{visibility:hidden}
 .ms-row{display:grid;grid-template-columns:62px repeat(12,minmax(30px,1fr));gap:2px;margin-bottom:2px;min-width:440px}
 .ms-row span{color:#5f707c;font:700 11px var(--f-body);align-self:center}.ms-row b{text-align:center;color:#24323d}
 .ms-row i{font-style:normal;text-align:center;border-radius:4px;padding:3px 0;color:#24323d;min-height:18px}
+/* ---- follow a drop ---- */
+.drop-go{display:flex;align-items:center;gap:10px;width:100%;margin:2px 0 10px;padding:10px 12px;border:2px solid var(--ink);border-radius:14px;background:linear-gradient(135deg,#d9efff,#bfe3fb);color:var(--ink);text-align:left;cursor:pointer;box-shadow:0 3px 0 var(--ink);font:inherit}
+.drop-go:hover{background:linear-gradient(135deg,#c9e8ff,#a9d8f8)}.drop-go:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.drop-go svg{width:30px;height:30px;flex:none;stroke:#1d6fa8}.drop-go b{display:block;font-size:.9rem}.drop-go small{display:block;font-size:.72rem;color:var(--mute);line-height:1.3}
+.drop{position:fixed;z-index:46;left:50%;transform:translateX(-50%);bottom:calc(var(--ctrl-h,64px) + 26px + env(safe-area-inset-bottom,0px));width:min(640px,calc(100vw - 32px));padding:14px 16px 12px;border:2px solid var(--ink);border-radius:18px;background:var(--paper,#fffaf0);box-shadow:0 6px 0 rgba(36,50,61,.9),0 18px 40px rgba(0,0,0,.18)}
+.dr-top{display:flex;align-items:flex-start;gap:10px}.dr-h{flex:1;min-width:0}
+.dr-ico{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--c);border:2px solid var(--ink)}.dr-ico svg{width:22px;height:22px;stroke:#fff}
+.dr-eye{margin:0;font:700 .66rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}.drop h3{margin:2px 0 0;font-size:1.15rem;line-height:1.2}
+.dr-seas{display:flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;flex:none}.dr-seas button{border:0;background:#fff;padding:4px 9px;font:700 .72rem var(--f-body);cursor:pointer;color:var(--ink)}
+.dr-seas button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.dr-t{margin:10px 0 6px;font-size:.98rem;line-height:1.5}.dr-mix{margin:0 0 6px;font-size:.78rem;color:var(--mute)}
+.dr-dots{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:8px 0 6px}.dr-dots button{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);padding:0;cursor:pointer;background:#fff}
+.dr-dots button.c{background:#bfe3fb}.dr-dots button.w{background:#e3cfb6}.dr-dots button.on.c{background:#2f9be0;transform:scale(1.25)}.dr-dots button.on.w{background:#9a7148;transform:scale(1.25)}
+.dr-sep{width:10px;height:2px;background:var(--mute);margin:0 2px}
+.dr-bar{height:3px;background:#e3e9ee;border-radius:2px;overflow:hidden;margin-bottom:8px}.dr-bar span{display:block;height:100%;width:0;background:#2f9be0;transition:width .2s linear}
+.dr-acts{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.dr-sp{flex:1}.dr-acts .tool.on{background:var(--sun)}.dr-acts button[disabled]{opacity:.4;cursor:default}
+body.drop-on #section{bottom:calc(var(--ctrl-h,64px) + 250px + env(safe-area-inset-bottom,0px))}
+#sec-draw.drop-hl [data-id]:not(.dhl){opacity:.28;transition:opacity .4s}#sec-draw.drop-hl [data-id].dhl{opacity:1}
+.vt-drop i{background:radial-gradient(circle at 40% 35%,#9fd6ff,#2f9be0)!important;border-radius:50% 50% 50% 0;transform:rotate(-45deg)}
+@media (max-width:640px){.drop{bottom:calc(var(--ctrl-h,64px) + 14px);padding:12px}.drop h3{font-size:1rem}.dr-t{font-size:.9rem}.dr-seas button{padding:3px 7px}}
+/* ---- info card: see more ---- */
+.p-more{margin:10px 0 4px;padding-top:10px;border-top:1.5px dashed var(--rule,#d5dde3)}
+.p-more .pm-go{width:100%;display:flex;justify-content:center;gap:8px}
+.pm-list{display:grid;gap:6px;margin-top:8px}
+.pm-list button{display:flex;align-items:center;gap:10px;width:100%;padding:8px 10px;border:2px solid var(--ink);border-radius:12px;background:#fff;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.pm-list button:hover{background:#fff1c9}.pm-list i{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#e8eef2;font-style:normal;font-weight:800}
+.pm-list span{flex:1;min-width:0}.pm-list b{display:block;font-size:.86rem}.pm-list small{display:block;font-size:.72rem;color:var(--mute);line-height:1.3}.pm-list em{font-style:normal;font-weight:800;color:var(--mute)}
+/* ---- roll-up navigation ---- */
+.nav-mode{display:none!important}
+.ru-roll{display:grid;gap:8px;margin:4px 0 10px}
+.ru-big{position:relative;display:grid;grid-template-columns:40px 1fr;gap:4px 10px;align-items:center;width:100%;padding:10px 26px 10px 10px;border:2px solid var(--ink);border-radius:16px;background:#fff;text-align:left;cursor:pointer;font:inherit;color:var(--ink);box-shadow:0 3px 0 var(--ink)}
+.ru-big:hover{background:#fffaf0}.ru-big:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.ru-big>em,.ru-card>em{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-style:normal;font-weight:800;font-size:1.2rem;color:var(--mute)}
+.ru-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 22%,#fff);border:2px solid var(--ink);flex:none}.ru-ic svg{width:24px;height:24px;stroke:var(--ink)}
+.ru-ic.sm{width:28px;height:28px;border-radius:9px}.ru-ic.sm svg{width:17px;height:17px}
+.ru-t b{display:block;font:800 .98rem/1.15 var(--f-display)}.ru-t small{display:block;font-size:.72rem;color:var(--mute);line-height:1.3}
+.ru-ns{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap}
+.ru-n{flex:1 1 0;min-width:62px;padding:5px 7px;border-radius:9px;background:#f3f6f8;line-height:1.1}.ru-n b{display:block;font:800 .86rem var(--f-mono)}.ru-n small{display:block;font-size:.62rem;color:var(--mute);margin-top:2px}
+.ru-head{display:flex;align-items:center;gap:10px;margin:6px 0 4px}.ru-head b{display:block;font:800 1.08rem/1.15 var(--f-display)}.ru-head small{font-size:.72rem;color:var(--mute)}
+.ru-deck{display:grid;gap:7px;margin:6px 0 10px}
+.ru-card{position:relative;display:flex;flex-direction:column;gap:5px;width:100%;padding:9px 26px 9px 10px;border:2px solid var(--ink);border-radius:14px;background:#fff;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.ru-card:hover{background:#fffaf0}.ru-card.on{box-shadow:inset 5px 0 0 var(--c)}
+.ru-ch{display:flex;align-items:center;gap:8px}.ru-ch b{font-size:.9rem}.ru-tag{margin-left:auto;font:700 .6rem var(--f-mono);text-transform:uppercase;letter-spacing:.04em;background:var(--sun);border:1.5px solid var(--ink);border-radius:999px;padding:2px 6px;font-style:normal}
+.ru-one{font-size:.74rem;color:var(--mute);line-height:1.3}
+.ru-kpis{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:8px 0}
+.ru-win{margin:4px 0 8px;padding:7px 9px;border-radius:10px;background:#eaf3fb;font-size:.78rem;line-height:1.4}
+.ru-acts{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}.ru-sel{font:800 .76rem var(--f-body);color:#2f7a4f;align-self:center}
+.ru-parts{display:grid;gap:5px;margin-bottom:10px}
+.ru-parts button{display:block;width:100%;padding:7px 9px;border:1.5px solid #cdd8df;border-radius:10px;background:#fff;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.ru-parts button:hover{border-color:var(--ink);background:#fff1c9}.ru-parts b{display:block;font-size:.82rem}.ru-parts small{display:block;font-size:.68rem;color:var(--mute);line-height:1.3}
+.ru-mix{display:grid;gap:5px;margin-bottom:10px}.ru-mix button{display:grid;grid-template-columns:96px 1fr 40px;align-items:center;gap:6px;border:0;background:none;padding:3px 0;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.ru-mix span{font-size:.78rem;font-weight:700}.ru-mix i{display:block;height:10px;border-radius:5px;border:1.5px solid var(--ink)}.ru-mix b{font:700 .72rem var(--f-mono);text-align:right}
+.ru-eng{margin-top:12px;padding-top:8px;border-top:1.5px dashed var(--rule,#d5dde3)}
+.ru-eng-b{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.ru-eng-b .tool{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;font-size:.62rem}.ru-eng-b svg{width:18px;height:18px}
+.ru-big .ru-ns,.ru-card .ru-ns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}.ru-ns .ru-n{min-width:0;padding:4px 6px}.ru-ns .ru-n b{font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ru-ns .ru-n small{font-size:.58rem}
+.ru-parts small{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ru-card.off{opacity:.62}.ru-card.off:hover{opacity:1}.ru-tag.no{background:#e8eef2;color:var(--mute)}
+.ru-kpis.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.ru-x{width:100%;border-collapse:collapse;margin:2px 0 10px;font-size:.76rem}.ru-x th,.ru-x td{padding:4px 3px;border-bottom:1px solid #e3e9ee;text-align:left}.ru-x td.r{text-align:right;font-family:var(--f-mono);font-size:.72rem}.ru-x td small{color:var(--mute);font-family:var(--f-body);font-size:.62rem}
+.ru-x th button{border:0;background:none;padding:0;font:700 .76rem var(--f-body);color:var(--ink);cursor:pointer;text-decoration:underline dotted}.ru-x tr.sel{background:#fff6d8}.ru-x i{font-style:normal}.ru-x i.ok{color:#2f9e5f}.ru-x i.no{color:#a9b6bf}
+.ru-tag.lv{background:color-mix(in srgb,var(--f) 18%,#fff);border-color:var(--f);color:var(--ink)}
+.ru-fit{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}.ru-fit i{display:grid;place-items:center;height:24px;border-radius:7px;background:color-mix(in srgb,var(--f) 22%,#fff);border:1.5px solid var(--f)}
+.ru-fit i svg{width:15px;height:15px;stroke:var(--ink)}.ru-fit i.sel{box-shadow:0 0 0 2px var(--ink)}
+.ru-fitl{display:grid;gap:5px;margin-bottom:10px}.ru-fitl button{display:flex;gap:8px;align-items:flex-start;width:100%;padding:7px 8px;border:1.5px solid #cdd8df;border-left:5px solid var(--f);border-radius:10px;background:#fff;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.ru-fitl button.sel{background:#fff6d8}.ru-fitl i{flex:none;width:24px;height:24px;display:grid;place-items:center}.ru-fitl i svg{width:18px;height:18px}
+.ru-fitl b{display:block;font-size:.8rem}.ru-fitl b em{font-style:normal;font:700 .62rem var(--f-mono);text-transform:uppercase;color:var(--f);margin-left:4px}.ru-fitl small{display:block;font-size:.7rem;color:var(--mute);line-height:1.35}
+/* ===== simple mode ===== */
+.sx-mode{margin-left:auto;margin-right:6px;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:4px 10px;font:700 .68rem var(--f-body);cursor:pointer;color:var(--ink)}
+.sx-mode:hover{background:var(--sun)}
+body:not(.pro) .nav-lens,body:not(.pro) .nav-foot,body:not(.pro) .nav-tools,body:not(.pro) #scn-tab,body:not(.pro) #p-tabs{display:none!important}
+body:not(.pro)[data-view="site"] #vtools,body:not(.pro)[data-view="village"] #vtools{display:none!important}
+.sx-hero{display:grid;gap:10px;margin:4px 0 14px}
+.sx-q{margin:2px 0 0;font:800 1.12rem/1.2 var(--f-display);color:var(--ink)}
+.sx-opts{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.sx-opts button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 0 6px;border:2px solid transparent;border-radius:12px;background:#f1f4f6;cursor:pointer;font:700 .6rem var(--f-body);color:var(--ink)}
+.sx-opts button svg{width:20px;height:20px;stroke:var(--ink)}
+.sx-opts button:hover{background:#fff;border-color:#cdd8df}
+.sx-opts button[aria-checked="true"]{background:color-mix(in srgb,var(--c) 26%,#fff);border-color:var(--ink);box-shadow:0 2px 0 var(--ink)}
+.sx-sel{padding:12px 13px;border-radius:16px;background:color-mix(in srgb,var(--c) 12%,#fff);border:2px solid color-mix(in srgb,var(--c) 55%,#fff)}
+.sx-sel>b{display:block;font:800 1.02rem var(--f-display)}.sx-sel p{margin:3px 0 10px;font-size:.84rem;line-height:1.4;color:#3b4b57}
+.sx-big{display:flex;gap:16px}.sx-big span{display:flex;flex-direction:column}.sx-big b{font:800 1.5rem/1 var(--f-display);letter-spacing:-.01em}.sx-big small{font-size:.68rem;color:var(--mute);margin-top:3px}
+.sx-drop{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:2px solid var(--ink);border-radius:16px;background:var(--sun);box-shadow:0 3px 0 var(--ink);cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.sx-drop:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.sx-play{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:.8rem;flex:none}
+.sx-drop b{display:block;font-size:.92rem}.sx-drop small{display:block;font-size:.7rem;opacity:.75}
+.sx-h{margin:0 0 6px;font:700 .66rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.sx-rows{display:grid;border:2px solid var(--ink);border-radius:16px;overflow:hidden;background:#fff}
+.sx-row{display:flex;align-items:center;gap:11px;padding:11px 12px;border:0;border-top:1.5px solid #e3e9ee;background:#fff;cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.sx-row:first-child{border-top:0}.sx-row:hover{background:#fffaf0}
+.sx-row i{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 20%,#fff);flex:none}.sx-row i svg{width:19px;height:19px;stroke:var(--ink)}
+.sx-row span{flex:1}.sx-row b{display:block;font-size:.92rem}.sx-row small{display:block;font-size:.72rem;color:var(--mute)}.sx-row em{font-style:normal;font-weight:800;color:var(--mute)}
+.sx-foot{display:flex;gap:4px;margin-top:14px;padding-top:10px;border-top:1.5px dashed #d5dde3}
+.sx-foot button{flex:1;border:0;background:none;padding:6px 2px;font:700 .7rem var(--f-body);color:#4a5b67;cursor:pointer;border-radius:8px}.sx-foot button:hover{background:#eef2f5;color:var(--ink)}
+/* lighter decks and details in simple mode */
+body:not(.pro) .ru-card .ru-ns{display:flex!important}body:not(.pro) .ru-card .ru-ns .ru-n:nth-child(n+2){display:none}
+body:not(.pro) .ru-card .ru-ns .ru-n{flex:none;display:flex;gap:5px;align-items:baseline;background:none;padding:0}
+body:not(.pro) .ru-card{padding:10px 26px 10px 11px;gap:4px}
+body:not(.pro) .ru-kpis .ru-n:nth-child(n+3){display:none}
+body:not(.pro) .ru-x,body:not(.pro) .np-h:has(+ .ru-x){display:none}
+body:not(.pro) .nv-lead{font-size:.82rem}
+body:not(.pro) #pg-infra .pa-grid,body:not(.pro) #pg-infra .ic-kpi{display:none}
+#p-prev,#p-next{display:flex;flex-direction:column;align-items:flex-start;gap:1px;max-width:44%;line-height:1.15;padding:6px 12px}
+#p-next{align-items:flex-end;background:var(--sun)}#p-prev small,#p-next small{font:700 .6rem var(--f-mono);text-transform:uppercase;letter-spacing:.06em;opacity:.65}
+#p-prev b,#p-next b{font-size:.84rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.mb-step,.sb-step{flex:none;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:var(--sun);font-size:.85rem;cursor:pointer;color:var(--ink);display:grid;place-items:center;padding:0}
+.mb-step:active,.sb-step:active{transform:scale(.94)}
+.mb-sys{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;line-height:1.1;text-align:center}
+.mb-sys small{font:700 .6rem var(--f-mono);text-transform:uppercase;letter-spacing:.05em;color:var(--mute);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mb-sys b{font-size:.95rem;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mb-sys i{font-style:normal;font:600 .62rem var(--f-mono);color:var(--mute)}
+.sb-step{width:32px;height:32px;font-size:.72rem}.sb-n{font:700 .7rem var(--f-mono);color:var(--mute);align-self:center}
+/* ---- phone: menu and cards are bottom sheets so the model stays visible ---- */
+@media (max-width:640px){
+  .nav{top:auto!important;left:0!important;right:0!important;bottom:0!important;width:auto!important;height:50vh;max-height:50vh;border-radius:22px 22px 0 0!important;transform:translateY(105%)!important;padding-top:20px!important;transition:transform .32s cubic-bezier(.2,.8,.2,1)}
+  body.navdrawer .nav{transform:none!important}
+  .nav::before{content:'';position:absolute;top:7px;left:50%;width:44px;height:5px;margin-left:-22px;border-radius:3px;background:#c9d3da}
+  .nav .ak-eye{display:none}.nav .nav-t{font-size:1rem}
+  body.navdrawer #mbar{display:none!important}
+  #panel{max-height:46vh!important}
+  .sx-hero{gap:8px}.sx-q{font-size:1rem}.sx-sel p{margin-bottom:6px}.sx-big b{font-size:1.25rem}
+}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -3307,6 +3427,7 @@ function projectHotspots(){
     if(show&&siteSel&&a.v==='village'&&!siteSel.includes(id))show=false;
     if(show&&/^[scytk]_/.test(id)&&a.v==='village'&&!(typeof infraSel!=='undefined'&&({s:'school',c:'clinic',y:'city',t:'tribe',k:'store'})[id[0]]===infraSel))show=false;
     if(show&&a.on&&!a.on())show=false;
+    if(show&&window.pinAllow&&!pinAllow(id,a))show=false;
     if(show){anchorWorld(a,tmpV);
       if(!onScreen(tmpV))show=false;
       else{a.sx=(tmpV.x+1)/2*w;a.sy=(1-tmpV.y)/2*h;a.el.style.left=a.sx+'px';a.el.style.top=a.sy+'px';visHS.push(id);}}
@@ -5141,7 +5262,7 @@ function loop(now){
   exOut.textContent=Math.round(ex*100)+'%';
   updateFacility(dt);
   // camera
-  if(tw){tw.t+=dt/tw.dur;const k=ease(Math.min(1,tw.t));camera.position.lerpVectors(tw.p0,tw.p1,k);controls.target.lerpVectors(tw.t0,tw.t1,k);
+  if(tw){tw.t+=dt/tw.dur;const k=ease(Math.min(1,tw.t));if(window.CAMSTEP)CAMSTEP(tw,Math.min(1,tw.t));else{camera.position.lerpVectors(tw.p0,tw.p1,k);controls.target.lerpVectors(tw.t0,tw.t1,k);}
     camera.lookAt(controls.target);if(tw.t>=1){tw=null;controls.enabled=true;controls.update();}}
   else{
     if(view==='home'&&!focusId&&!current&&!hlKey){const want=liftCur+1.6+3.2*ex,d=(want-controls.target.y)*Math.min(1,dt*3);controls.target.y+=d;camera.position.y+=d;}
@@ -6805,7 +6926,7 @@ function enterInfra(k,comp){const x=INFRA_BY[k];if(!x)return;infraSel=k;siteSel=
   if(x.view){setView(x.view);if(comp&&A[comp]){if(FSYS[x.view]&&FSOF[comp])isoId=comp;openInfo(comp);}}
   else if(comp&&A[comp])openInfo(comp);navRender();}
 // clicking an infrastructure object on the plan selects it instead of opening a card
-const openInfo4=openInfo;openInfo=function(id){if(navMode==='infra'&&!FACV.includes(view)&&!window.__directOpen){const x=INFRA.find(i=>i.ids.includes(id));if(x&&x.k!==infraSel&&!touring){selectInfra(x.k);return;}}return openInfo4.apply(this,arguments);};
+const openInfo4=openInfo;openInfo=function(id){if(window.__pickSelect&&navMode==='infra'&&!FACV.includes(view)&&!window.__directOpen){const x=INFRA.find(i=>i.ids.includes(id));if(x&&x.k!==infraSel&&!touring){selectInfra(x.k);return;}}return openInfo4.apply(this,arguments);};
 const directOpen=id=>{window.__directOpen=true;try{openInfo(id);}finally{window.__directOpen=false;}};
 // ---------- rendering ----------
 function capTxt(x){try{const v=x.cap();return v?fmtK(v)+(x.per?' per home':'')+' installed':'';}catch(e){return '';}}
@@ -8536,6 +8657,614 @@ const PERD=(function(){
  const oi=openInfo;openInfo=function(id){if(LEG[id]){openWB(LEG[id]);return;}return oi.apply(this,arguments);};
  const sel=bEl('lens-sel'),o=sel&&sel.querySelector('option[value="cost"]');if(o)o.remove();
  if(typeof lens!=='undefined'&&lens==='cost'){lens='systems';if(sel)sel.value='systems';applyLens();}}
+
+
+/* =====================================================================
+   Follow a drop: a water drop travels through the village for the selected
+   alternative. Each stop has a plain caption (summer or winter), and
+   "See inside" opens the drafted 2D section with the parts for that step lit.
+   ===================================================================== */
+const DROP=(function(){
+  const st={on:false,i:0,route:[],play:true,clock:0,win:false,inside:false,trav:null,dwell:10};
+  const WC='#2f9be0',BC='#9a7148';
+  // ---- drop mesh and breadcrumb trail ----
+  const g=new THREE.Group();g.visible=false;scene.add(g);
+  const dm=new THREE.MeshStandardMaterial({color:WC,emissive:WC,emissiveIntensity:.35,roughness:.25,metalness:0});
+  const body=new THREE.Mesh(new THREE.SphereGeometry(1,24,18),dm);g.add(body);
+  const tip=new THREE.Mesh(new THREE.ConeGeometry(.86,1.5,24,1,true),dm);tip.position.y=1.12;g.add(tip);
+  const ring=new THREE.Mesh(new THREE.RingGeometry(1.2,1.7,32),new THREE.MeshBasicMaterial({color:WC,transparent:true,opacity:.55,side:THREE.DoubleSide,depthWrite:false}));ring.rotation.x=-Math.PI/2;scene.add(ring);ring.visible=false;
+  const NT=900,trail=new THREE.InstancedMesh(new THREE.SphereGeometry(.32,8,6),new THREE.MeshBasicMaterial({color:'#ffffff'}),NT);trail.count=0;trail.frustumCulled=false;scene.add(trail);
+  const _m=new THREE.Matrix4(),_c=new THREE.Color();let lastCrumb=null;
+  function crumb(p,col){if(trail.count>=NT)return;if(lastCrumb&&lastCrumb.distanceTo(p)<2.2)return;lastCrumb=p.clone();_m.makeTranslation(p.x,p.y,p.z);trail.setMatrixAt(trail.count,_m);trail.setColorAt(trail.count,_c.set(col));trail.count++;trail.instanceMatrix.needsUpdate=true;if(trail.instanceColor)trail.instanceColor.needsUpdate=true;}
+  // ---- where things are ----
+  const _b=new THREE.Box3(),_b1=new THREE.Box3();
+  const shown=o=>{while(o){if(!o.visible)return false;o=o.parent;}return true;};
+  function posId(id){_b.makeEmpty();pickables.forEach(m=>{if(m.userData.id!==id||m.isInstancedMesh||!shown(m))return;m.updateMatrixWorld(true);if(!m.geometry.boundingBox)m.geometry.computeBoundingBox();_b1.copy(m.geometry.boundingBox).applyMatrix4(m.matrixWorld);_b.union(_b1);});
+    if(_b.isEmpty())return null;const c=new V();_b.getCenter(c);c.y=_b.min.y;return c;}
+  const wp=o=>{const v=new V();o.updateMatrixWorld(true);o.getWorldPosition(v);v.y=0;return v;};
+  const river=x=>new V(x,0,bankN0(x)-9);
+  function homeOf(kind){const ref=posId('wtp')||IC;let b=-1,bd=1e9;homes.forEach((h,i)=>{if(perKinds[i]!==kind)return;const d=Math.hypot(h.g.position.x-ref.x,h.g.position.z-ref.z)+Math.abs(Math.hypot(h.g.position.x-core.x,h.g.position.z-core.z)-25)*.6;if(d<bd){bd=d;b=i;}});return b;}
+  // ---- the route for the selected alternative ----
+  const n0=v=>pn(v,0),n1=v=>pn(v,1),wk=v=>v<1.5?'about once a week':v<2.5?'about twice a week':'about '+n0(v)+' times a week';
+  function build(){const r=PR&&PR[PALT];if(!r)return[];const S=r.S,G=r.G,sh=r.sh;
+    let kind=PALT,mix='';if(PALT==='hyb'){kind=['pipe','haul','self','well','none'].sort((a,b)=>sh[b]-sh[a])[0];mix='Mixed plan: following a home on '+({pipe:'piped service',haul:'truck haul',self:'self-haul',well:'a well',none:'no service'})[kind]+' ('+pp(sh[kind])+' of homes). '+['pipe','haul','self','well','none'].filter(k=>k!==kind&&sh[k]>0).map(k=>pp(sh[k])+' '+({pipe:'piped',haul:'truck haul',self:'self-haul',well:'well',none:'no service'})[k]).join(', ')+'.';}
+    const hi=homeOf(kind),H=hi>=0?homes[hi]:null,hp=H?wp(H.g):IC.clone(),K=hi>=0?HKIT[hi]:null;
+    const pl=posId('wtp')||IC.clone(),lg=posId('lagoon'),pw=posId('powerhouse');
+    const gp=G['gpcd_'+kind]||G.gpcd_haul,pph=G.pph,gpw=gp*pph*7;
+    const R=[];const add=(o)=>R.push(Object.assign({dist:40,sec:null,hl:[],waste:false},o));
+    const PWR={k:'power',at:pw,dist:55,ttl:'Power and heat',txt:'Pumps, heat trace and controls run on the village diesel power plant. Heat from the engines is piped to the water plant so less fuel is burned keeping water warm.',win:'At −40 °F the power plant is the lifeline: if it trips, pumps and heat trace stop and the clock starts on frozen pipes. Waste heat from the engines keeps the water plant warm.',sec:['power',['pwgen','pwheat','pwloop']],open:'powerhouse'};
+    if(kind!=='well'){
+      add({k:'river',at:river(pl.x),dist:60,ttl:'It starts in the river',txt:'The village water comes from the river. In summer it carries silt and whatever washes in upstream, so it has to be cleaned before anyone drinks it.',win:'Under the winter ice the river runs clear but just above freezing. The intake line is buried and heat-traced so it does not freeze shut.',sec:['plant',['intake','rawline','rawpump']],open:'intake'});
+      add({k:'plant',at:pl,dist:42,ttl:'Cleaned at the treatment plant',txt:'Chemicals make the silt clump together and settle out, filters catch what is left, and chlorine kills germs. For this option the plant makes about '+n0(S.plant_gpd)+' gallons a day.',win:'Cold water is harder to treat: chemicals work slower and the plant has to be kept warm all winter. The building and its boiler burn fuel every day from October to May.',sec:['plant',['chemfeed','flocsed','filters','ctank']],open:'wtp'});
+      add({k:'store',at:pl.clone().add(new V(3,0,3)),dist:38,ttl:'Stored warm',txt:'Clean water waits in a big insulated tank, about '+n0(G.storage_gal)+' gallons, enough for days of use if something breaks.',win:'The tank is heated so it never freezes. In a cold snap it is the village’s safety margin.',sec:['plant',['clearwell','heat','storage']],open:'storage'});
+      add(PWR);}
+    else{
+      add({k:'aquifer',at:K?wp(K.well):hp,dist:30,ttl:'It starts underground',txt:'This home drills its own well, about '+n0(G.well_depth)+' feet down, below the frozen ground. Every well is different: some water is good, some has iron, arsenic or salt.',win:'The well line is heat-traced where it passes through frozen ground. If the power goes out, the line can freeze.',sec:['well',['aquifer','subpump','wcasing','heattrace']],open:'wellhome'});
+      add({k:'wtreat',at:hp,dist:30,ttl:'Treated in the house',txt:'Filters and a UV light in the utility room clean the water. The treatment depends on what the well water carries, and the family looks after it.',win:'All the treatment sits inside the heated house, so it keeps working as long as the house is warm.',sec:['well',['sediment','oxidizer','ironfilter','wuv','wptank']],open:'wellhome'});
+      add(PWR);}
+    // getting it to the house
+    if(kind==='none'){
+      add({k:'wpt',at:wp(WPT),dist:30,ttl:'Hauled from the watering point',txt:'A family member fills jugs at the watering point and carries them home, '+wk(gpw/G.jug_trip_gal)+'. Each person ends up with only about '+n0(gp)+' gallons a day.',win:'Hauling jugs at −40 °F on a sled is hard, cold work, and on bad days families use even less water.',sec:['none',['g_wpt','g_jugs','g_haul']],open:'per_waterpt'});
+      add({k:'use',at:hp,dist:26,ttl:'Used very carefully at home',txt:'With about '+n0(gp)+' gallons a person a day, washing hands and bathing get cut back. That is linked to more skin and lung infections, especially in kids.',win:'Water in the house is kept by the stove so it does not freeze. Every gallon has to be carried in.',sec:['none',['g_store','g_basin','g_slop']],open:'per_none'});
+      add({k:'bucket',at:hp,dist:24,waste:true,ttl:'Out in a honeybucket',txt:'Without a toilet, waste goes in a honeybucket, a lined bucket that the family empties about every '+n0(G.hb_dump_days)+' days.',win:'In winter buckets get carried out in the dark and cold, and spills freeze where they land.',sec:['none',['g_hb','g_yard']],open:'per_none'});
+      add({k:'hopper',at:HOPS.find(h=>h.visible)?wp(HOPS.find(h=>h.visible)):hp,dist:30,waste:true,ttl:'Emptied into a hopper',txt:'Buckets are dumped into a closed hopper bin. A city crew hauls the hoppers to the lagoon.',win:'Hoppers freeze solid and crews chip them out; full hoppers in spring are a health risk.',sec:['none',['g_hopper','g_crew']],open:'per_hopper'});}
+    else if(kind==='self'){
+      add({k:'wpt',at:wp(WPT),dist:30,ttl:'Hauled by the family',txt:'The family fills a tank on an ATV or sled at the watering point, '+wk(gpw/G.trip_gal)+', about '+n1(gpw/G.trip_gal*G.trip_hr)+' hours a week.',win:'In winter the trip is by sled and the hose has to be drained right away or it freezes.',sec:['self',['h_wpt','h_atv','h_fill']],open:'per_waterpt'});
+      add({k:'tank',at:hp,dist:26,ttl:'Into a tank in the house',txt:'A tank, pump, filter and UV light in the utility room give the house running water at the tap, about '+n0(gp)+' gallons a person a day.',win:'The tank room has to stay warm; the house heat keeps the water liquid.',sec:['self',['h_tank','h_pump','h_uv','h_heater']],open:'per_self'});
+      add({k:'use',at:hp,dist:24,ttl:'Used at the sink and shower',txt:'Kitchen and bathroom fixtures work like any house, just on a smaller tank. Every gallon used is a gallon to haul back in.',win:'Families stretch water further in winter because hauling is harder.',sec:['self',['h_fix','h_sep']],open:'per_self'});
+      add({k:'grey',at:K?wp(K.self):hp,dist:24,waste:true,ttl:'Greywater and a separating toilet',txt:'Sink and shower water drain to a greywater tank; the toilet separates waste so there is less to haul. The family empties the tank '+wk(Math.max(1,gpw*.8/(G.grey_trip_gal||60)))+'.',win:'The greywater tank must stay in the warm house; carrying it out is the hardest winter chore.',sec:['self',['h_grey','h_sep']],open:'per_self'});
+      add({k:'dump',at:wp(DUMP),dist:30,waste:true,ttl:'Emptied at the dump station',txt:'Greywater and urine are emptied at a dump station that drains to the lagoon.',win:'The dump station is heated so the drain stays open.',sec:['self',['h_dump']],open:'per_dump'});}
+    else if(kind==='haul'){
+      add({k:'truck',at:wp(water.g),dist:34,ttl:'Delivered by the water truck',txt:'The utility’s water truck fills at the plant and tops up each home’s tank, '+wk(gpw/G.w_stop_gal)+'.',win:'Trucks live in a heated garage; hoses and the fill port are heat-traced. When roads drift in, deliveries slip.',sec:['plant',['fillarm']],open:'watertruck'});
+      add({k:'tank',at:hp,dist:26,ttl:'Into the tank in your house',txt:'Water goes through a heated fill port into a tank in the utility room. A pump, filter and UV light send it to the taps, about '+n0(gp)+' gallons a person a day.',win:'The fill port and tank room are the weak spots in a cold snap: if the house gets cold, the tank and pipes can freeze.',sec:['home',['fillport','watertank','pump','pressuretank','uv','heater']],open:'thishome'});
+      add({k:'use',at:hp,dist:24,ttl:'Used at the sink, shower and toilet',txt:'Full plumbing: a kitchen sink, a shower and a flush toilet. Once used, the drop becomes wastewater.',win:'Everything indoors stays warm with the house. Drains run to a tank inside the heated envelope.',sec:['home',['kitchen','bath','dwv']],open:'thishome'});
+      if(G.haul_ww>=2){const os=G.haul_ww===2?'mound':'pkg';add({k:'onsite',at:K?wp(K[os]):hp,dist:28,waste:true,ttl:os==='mound'?'Treated in an engineered mound':'Treated in a packaged unit',txt:os==='mound'?'Wastewater settles in a septic tank, then a pump doses it into a bed of sand and gravel built up on the lot, where the soil finishes cleaning it.':'An insulated treatment unit on the lot cleans the wastewater with air and bacteria, then a UV light, before it is released to the ground.',win:os==='mound'?'The mound is built tall so there is enough unfrozen sand between the wastewater and the permafrost.':'The unit needs reliable power all winter; a long outage can freeze it.',sec:os==='mound'?['onsite',['i_septic','i_dose','i_mound','i_bed','i_sep']]:['onsite',['i_pkg','i_blower','i_uvd','i_disch']],open:'per_'+os});}
+      else{add({k:'pump',at:hp,dist:24,waste:true,ttl:'Held for pump-out',txt:'Wastewater collects in a holding tank. The vacuum truck empties it through a port on the outside wall, '+wk(gpw*G.ww_ratio/G.s_stop_gal)+'.',win:'The pump-out port is heat-traced; a frozen port means a full tank and no toilet.',sec:['home',['treatment','effluent','pumpout']],open:'pumpout'});
+        add({k:'vtruck',at:wp(sewer.g),dist:34,waste:true,ttl:'Hauled by the sewage truck',txt:'The vacuum truck carries the wastewater to the lagoon and dumps it at the dump station.',win:'Winter trips are slower and the truck has to keep moving so its tank does not freeze.',sec:['lagoon',['ldump']],open:'sewertruck'});}}
+    else if(kind==='pipe'){
+      add({k:'station',at:wp(STA),dist:32,ttl:'Kept moving and warm',txt:'At the utility station, pumps keep water circulating around the village loop and boilers add heat, so it never sits still long enough to freeze.',win:'At −40 °F the boilers run hard; if circulation stops, the mains have hours, not days, before they freeze.',sec:['piped',['pstation','pcirc','pboiler','phx']],open:'per_station'});
+      const mn=MAINS.filter(m=>m.g.visible).sort((a,b)=>a.cen.distanceTo(hp)-b.cen.distanceTo(hp))[0];
+      add({k:'main',at:mn?mn.cen.clone().setY(0):hp,dist:34,ttl:'Through the village mains',txt:'Insulated pipes on piles carry the water above the frozen ground, about '+n0(S.p_main)+' feet of main past every home.',win:'Above-ground mains stay off the permafrost so they do not thaw it, but they lose heat all winter.',sec:['piped',['pmain','psupport']],open:'per_main'});
+      add({k:'svc',at:hp,dist:26,ttl:'Into your house',txt:'A circulating service line brings the water through a heated entry box and a meter, about '+n0(gp)+' gallons a person a day.',win:'The service loop keeps moving so the short run to the house does not freeze.',sec:['piped',['pservice','pmeter','pheater']],open:'per_svc'});
+      add({k:'use',at:hp,dist:24,ttl:'Used at the sink, shower and toilet',txt:'Full plumbing with no tank to watch and no hauling. Once used, the drop becomes wastewater.',win:'Nothing to haul, but a power outage at the station affects the whole village at once.',sec:['piped',['pfix','pdrain']],open:'per_svc'});
+      add({k:'pit',at:mn?mn.cen.clone().setY(0):hp,dist:30,waste:true,ttl:'Pulled away by vacuum',txt:'A valve pit outside the house opens and vacuum pulls the wastewater down the sewer main to the vacuum station.',win:'Vacuum lines carry little standing water, so they are less likely to freeze than gravity sewers.',sec:['piped',['ppit','pvmain']],open:'per_main'});
+      add({k:'vsta',at:wp(VSTA),dist:32,waste:true,ttl:'Collected at the vacuum station',txt:'Vacuum pumps fill a collection tank, then discharge pumps send the wastewater to the lagoon.',win:'The station is heated and on backup power.',sec:['piped',['pvtank','pvpump','pdisch']],open:'per_vstation'});}
+    else if(kind==='well'){
+      add({k:'use',at:hp,dist:24,ttl:'Used at the sink, shower and toilet',txt:'Full plumbing from the family’s own well, about '+n0(gp)+' gallons a person a day. Once used, the drop becomes wastewater.',win:'Everything works as long as the house is warm and the power is on.',sec:['well',['wheater','wfix']],open:'wellhome'});
+      const os=['','conv','mound','pkg','hold'][G.onsite_type]||'mound',T={conv:['A septic tank and drainfield','Solids settle in the septic tank and the liquid soaks into a drainfield, where soil cleans it.'],mound:['An engineered mound','A septic tank and a dosing pump feed a bed of imported sand and gravel, about '+n0(G.mound_cy)+' cubic yards, built tall above the frozen ground. The sand cleans the wastewater.'],pkg:['A packaged treatment unit','An insulated unit on the lot cleans the wastewater with air, bacteria and UV light before releasing it to the ground.'],hold:['A holding tank','Wastewater is held in a sealed tank and pumped out by a truck.']}[os];
+      add({k:'onsite',at:K&&K[os]?wp(K[os]):hp,dist:28,waste:true,ttl:'Treated on the lot: '+T[0].toLowerCase(),txt:T[1]+' It has to be at least 100 feet from any well.',win:'Rules require 4 feet of unfrozen soil to groundwater and 6 feet to permafrost below the treatment bed; many village lots cannot meet that.',sec:os==='conv'?['well',['septic','drainfield','wpermafrost']]:os==='mound'?['onsite',['i_septic','i_dose','i_mound','i_bed']]:os==='pkg'?['onsite',['i_pkg','i_blower','i_uvd']]:null,open:'per_'+os});
+      add({k:'ground',at:K&&K[os]?wp(K[os]).add(new V(0,0,-5)):hp,dist:34,waste:true,ttl:'Back into the ground',txt:'Cleaned water soaks back into the ground. Done right, it never reaches a well or the river untreated.',win:'Frozen ground slows everything down; systems are sized for the coldest months.',sec:os==='conv'?['well',['drainfield','wpermafrost']]:os==='mound'?['onsite',['i_sep','i_pf','i_well']]:os==='pkg'?['onsite',['i_disch','i_well']]:null,open:'study_onsite'});}
+    if(kind!=='well'&&lg){
+      add({k:'lagoon',at:lg,dist:60,waste:true,ttl:'Cleaned in the lagoon',txt:'The sewage lagoon holds about '+n1(G.lagoon_mg)+' million gallons. Sun, air and bacteria break the waste down over months.',win:'In winter the lagoon freezes and just stores; it needs room for about '+n0(G.lag_days)+' days of wastewater until spring thaw.',sec:['lagoon',['linlet','lcell1','ltransfer','lcell2']],open:'lagoon'});
+      add({k:'out',at:river(lg.x),dist:70,waste:true,ttl:'Back to the river',txt:'After testing, the treated water is released, usually once or twice a year in open-water season, and the drop is back where it started.',win:'Nothing is released in winter; the lagoon waits for breakup and testing.',sec:['lagoon',['ldischarge','lmon']],open:'lagoon'});}
+    R.forEach(s=>{s.at=s.at.clone();s.mix=mix;});return R;}
+  // ---- motion ----
+  const up=new V(0,7,0);let anim=0;const DIR=new V(.42,.62,1);
+  function at(s){return s.at.clone().add(up);}
+  function travel(a,b,dur){const d=a.distanceTo(b),mid=a.clone().lerp(b,.5);mid.y+=Math.min(30,4+d*.22);st.trav={c:new THREE.QuadraticBezierCurve3(a,mid,b),t:0,dur:reduceMotion?.01:dur};}
+  function loop(now){anim=requestAnimationFrame(loop);const dt=Math.min(.05,(now-(loop.t||now))/1000);loop.t=now;if(!st.on)return;
+    const s=st.route[st.i];if(!s)return;let p;
+    if(st.trav){st.trav.t+=dt/st.trav.dur;const u=Math.min(1,st.trav.t),e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;p=st.trav.c.getPoint(e);crumb(p,s.waste&&e>.5?BC:(st.route[st.i-1]&&st.route[st.i-1].waste?BC:WC));if(u>=1)st.trav=null;}
+    else{p=at(s);p.y+=Math.sin(now/420)*.5;if(st.play&&!tw){st.clock+=dt;if(st.clock>=st.dwell){if(st.i<st.route.length-1)go(st.i+1);else{st.play=false;ui();}}}}
+    g.position.copy(p);const k=Math.max(1,camera.position.distanceTo(p)/34);g.scale.setScalar(k);g.rotation.y+=dt*.8;
+    ring.position.set(p.x,(s.at.y||0)+.15,p.z);ring.scale.setScalar(k*(1+.15*Math.sin(now/300)));
+    const prog=bEl('drop-prog');if(prog)prog.style.width=(st.play&&!st.trav?Math.min(100,st.clock/st.dwell*100):0)+'%';}
+  // ---- 2D section with the step's parts lit ----
+  function inside(on){st.inside=on;const s=st.route[st.i];document.body.classList.toggle('drop-in',on);
+    if(on&&s&&s.sec&&SECS[s.sec[0]]){setSection(true,s.sec[0]);const draw=bEl('sec-draw');draw.classList.add('drop-hl');draw.querySelectorAll('[data-id]').forEach(el=>{const h=s.sec[1].includes(el.dataset.id);el.classList.toggle('dhl',h);el.classList.toggle('sel',h);});
+      bEl('sec-legend').querySelectorAll('[data-key]').forEach(b=>b.setAttribute('aria-current',s.sec[1].includes(b.dataset.key)));}
+    else if(sectionOn){bEl('sec-draw').classList.remove('drop-hl');setSection(false);}
+    ui();}
+  // ---- card ----
+  const card=document.createElement('section');card.id='drop';card.className='drop card';card.hidden=true;card.setAttribute('aria-live','polite');card.setAttribute('aria-label','Follow a drop of water');document.body.appendChild(card);
+  function ui(){if(!st.on){card.hidden=true;return;}const s=st.route[st.i];if(!s){card.hidden=true;return;}card.hidden=false;
+    const n=st.route.length,firstW=st.route.findIndex(x=>x.waste);
+    card.innerHTML='<div class="dr-top"><span class="dr-ico" style="--c:'+(s.waste?BC:WC)+'">'+icoSvg('plant')+'</span><div class="dr-h"><p class="dr-eye">Follow a drop · '+esc(PERM.ALTS.find(a=>a.k===PALT).n)+' · step '+(st.i+1)+' of '+n+'</p><h3>'+esc(s.ttl)+'</h3></div>'+
+      '<div class="dr-seas" role="group" aria-label="Season"><button data-dr="sum" aria-pressed="'+!st.win+'">Summer</button><button data-dr="win" aria-pressed="'+st.win+'">−40 °F</button></div><button class="iconbtn sm" data-dr="x" aria-label="Stop following the drop">✕</button></div>'+
+      '<p class="dr-t">'+esc(st.win?s.win:s.txt)+'</p>'+(s.mix&&st.i===0?'<p class="dr-mix">'+esc(s.mix)+'</p>':'')+
+      '<div class="dr-dots">'+st.route.map((x,j)=>'<button data-dri="'+j+'" class="'+(j===st.i?'on ':'')+(x.waste?'w':'c')+'" aria-label="Step '+(j+1)+': '+esc(x.ttl)+'" data-tip="'+esc(x.ttl)+'"></button>'+(j===firstW-1?'<i class="dr-sep" aria-hidden="true"></i>':'')).join('')+'</div>'+
+      '<div class="dr-bar"><span id="drop-prog"></span></div>'+
+      '<div class="dr-acts"><button class="tool" data-dr="prev" '+(st.i?'':'disabled')+'>‹ Back</button><button class="tool" data-dr="play">'+(st.play?'❚❚ Pause':'▶ Play')+'</button><button class="cta" data-dr="next" '+(st.i<n-1?'':'disabled')+'>Next ›</button>'+
+      '<span class="dr-sp"></span><button class="tool'+(st.inside?' on':'')+'" data-dr="in" '+(s.sec?'':'disabled data-tip="No drawing for this step yet"')+' aria-pressed="'+st.inside+'">◱ See inside</button><button class="tool" data-dr="more">Details</button></div>';}
+  card.addEventListener('click',e=>{const d=e.target.closest('[data-dri]');if(d){st.play=false;go(+d.dataset.dri);return;}const b=e.target.closest('[data-dr]');if(!b)return;const a=b.dataset.dr;
+    if(a==='x')stop();else if(a==='next'){go(st.i+1);}else if(a==='prev'){go(st.i-1);}else if(a==='play'){st.play=!st.play;if(st.play&&st.i>=st.route.length-1)go(0);else ui();}
+    else if(a==='sum'||a==='win'){st.win=a==='win';ui();}else if(a==='in')inside(!st.inside);
+    else if(a==='more'){const s=st.route[st.i];st.play=false;ui();if(s.open&&A[s.open]){if(s.open.startsWith('study_')||A[s.open].v==='village'||A[s.open].v==='any')openInfo(s.open);else{window.__directOpen=1;openInfo(s.open);window.__directOpen=0;}}}});
+  // ---- control ----
+  function go(i){if(i<0||i>=st.route.length)return;const from=st.on&&st.route[st.i]?g.position.clone():null;st.i=i;st.clock=0;const s=st.route[i];
+    if(view!=='village')applyViewState('village');if(current)closeInfo();
+    const dur=from?Math.min(3.4,Math.max(1.3,from.distanceTo(at(s))/40)):0;if(from)travel(from,at(s),dur);
+    dm.color.set(s.waste?BC:WC);dm.emissive.set(s.waste?BC:WC);ring.material.color.set(s.waste?BC:WC);
+    camTo(s.at.clone().setY(2),s.dist,from?dur:1.6,DIR);
+    if(st.inside&&!sectionOn)st.inside=false;if(st.inside)inside(!!s.sec);ui();}
+  function start(){if(typeof touring!=='undefined'&&touring)stopTour();if(!bEl('wb').hidden&&typeof closeWB==='function')closeWB();perRun();st.route=build();if(!st.route.length)return;
+    st.on=true;st.play=true;st.i=0;st.inside=false;trail.count=0;lastCrumb=null;g.visible=ring.visible=true;document.body.classList.add('drop-on');g.position.copy(at(st.route[0]));go(0);if(!anim)anim=requestAnimationFrame(loop);}
+  function stop(){st.on=false;st.trav=null;g.visible=ring.visible=false;trail.count=0;document.body.classList.remove('drop-on','drop-in');if(sectionOn&&st.inside){bEl('sec-draw').classList.remove('drop-hl');setSection(false);}st.inside=false;ui();}
+  function rebuild(){if(!st.on)return;st.route=build();trail.count=0;lastCrumb=null;st.i=Math.min(st.i,st.route.length-1);g.position.copy(at(st.route[0]));go(0);}
+  document.addEventListener('keydown',e=>{if(!st.on||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
+    if(e.key==='ArrowRight'){go(st.i+1);e.preventDefault();e.stopImmediatePropagation();}else if(e.key==='ArrowLeft'){go(st.i-1);e.preventDefault();e.stopImmediatePropagation();}
+    else if(e.key===' '&&e.target===document.body){st.play=!st.play;ui();e.preventDefault();}else if(e.key==='Escape'&&!sectionOn){stop();}},true);
+  return{start,stop,rebuild,st,build};})();
+// entry points: a button under the alternative tiles and in the view tools; switching alternatives re-routes the drop
+{const k0=kpiHtml;kpiHtml=function(){return k0().replace('<div class="pa-grid">','<button class="drop-go" data-drop>'+icoSvg('plant')+'<span><b>Follow a drop of water</b><small>From the river, through a home and back, for this option</small></span></button><div class="pa-grid">');};}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-drop]');if(b){if(phoneQ.matches&&typeof setNav==='function')setNav(false);DROP.start();}});
+{const s0=setAlt;setAlt=function(k){s0(k);DROP.rebuild();};}
+{const vb=document.createElement('button');vb.className='chip vt-drop';vb.setAttribute('data-drop','');vb.innerHTML='<i aria-hidden="true"></i><span>Follow a drop</span>';if(typeof vtRow!=='undefined')vtRow.prepend(vb);}
+window.DROP=DROP;navRender();
+
+
+/* =====================================================================
+   New 2D sections: G–G no running water, H–H self-haul home,
+   I–I onsite treatment (engineered mound and packaged unit)
+   ===================================================================== */
+{const P=(t,sys,b,s)=>({t,sys,v:'any',b,s:s||[]});
+ const KEYS_NONE=[['g_wpt','Watering point'],['g_jugs','Water jugs'],['g_haul','Sled or ATV haul'],['g_store','Barrel by the stove'],['g_basin','Wash basin'],['g_slop','Slop bucket'],['g_hb','Honeybucket'],['g_yard','Slop water in the yard'],['g_hopper','Hopper'],['g_crew','Hopper haul to the lagoon']];
+ const KEYS_SELF=[['h_wpt','Watering point'],['h_atv','ATV and haul tank'],['h_fill','Fill port'],['h_tank','Water tank'],['h_pump','Pump and pressure tank'],['h_uv','Filter and UV'],['h_heater','Water heater'],['h_fix','Sink and shower'],['h_sep','Separating toilet'],['h_grey','Greywater tank'],['h_dump','Dump station']];
+ const KEYS_OS=[['i_septic','Septic tank'],['i_dose','Dosing chamber and pump'],['i_mound','Sand mound'],['i_bed','Pressure distribution bed'],['i_sep','Separation distances'],['i_pf','Groundwater and permafrost'],['i_pkg','Packaged treatment unit'],['i_blower','Blower and power'],['i_uvd','UV disinfection'],['i_disch','Surface discharge'],['i_well','Well setback']];
+ const knOf=K=>{const o={};K.forEach(([k],i)=>o[k]=i+1);return o;};const KN_NONE=knOf(KEYS_NONE),KN_SELF=knOf(KEYS_SELF),KN_OS=knOf(KEYS_OS);
+ Object.assign(A,{
+  g_wpt:P('Watering point','water','A small heated building at the plant where families fill jugs with treated water.',[['Open','Set hours, every day'],['Heat','Kept above freezing all winter']]),
+  g_jugs:P('Water jugs','water','Five-gallon jugs carried home and refilled a few times a week. Clean jugs and lids keep the water safe after it leaves the tap.',[['Size','About 5 gal each'],['Watch','Wash and cap jugs; keep off the floor']]),
+  g_haul:P('Sled or ATV haul','haul','Families pull jugs home by sled, ATV or on foot. Distance, weather and who is able to haul decide how much water a home has.',[['Winter','Cold, dark trips; less water used']]),
+  g_store:P('Barrel by the stove','water','A covered barrel inside the house holds the hauled water near the stove so it does not freeze. A dipper takes water out.',[['Size','About 30–55 gal'],['Watch','Keep covered; use a clean dipper']]),
+  g_basin:P('Wash basin','fixture','A basin on a table is the sink: hand washing, dishes and bathing all come from a few gallons a day.',[['Use','About '+n0p('gpcd_none')+' gal per person a day']]),
+  g_slop:P('Slop bucket','waste','Used wash water goes in a slop bucket that is carried out and dumped.',[['Emptied','Daily or more']]),
+  g_hb:P('Honeybucket','waste','A lined bucket with a lid serves as the toilet. Bags are tied off and carried to a hopper.',[['Emptied','Every few days'],['Risk','Spills and splashes spread germs']]),
+  g_yard:P('Slop water in the yard','hazard','Slop water thrown outside freezes into ice around the house and thaws in spring, close to where kids play.',[['Spring','Thaw brings it back to the surface']]),
+  g_hopper:P('Hopper','waste','A closed bin where families empty honeybuckets. Placed through the village so no one walks too far.',[['Per hopper','A few homes'],['Winter','Freezes; crews chip it out']]),
+  g_crew:P('Hopper haul to the lagoon','haul','A city crew hauls the hoppers to the lagoon with a small vehicle or a trailer.',[['Trips','Weekly or as needed']]),
+  h_wpt:P('Watering point','water','A heated fill station with a hose sized for a haul tank.',[['Fill','A few minutes per tank']]),
+  h_atv:P('ATV and haul tank','haul','A tank on an ATV trailer or sled, filled at the watering point and driven home.',[['Tank','About 100–150 gal'],['Winter','Drain the hose right away']]),
+  h_fill:P('Fill port','water','A capped port on the outside wall where the haul hose connects to fill the tank inside.',[['Watch','Keep the cap on; heat trace in winter']]),
+  h_tank:P('Water tank','water','A food-grade tank in the warm utility room holds a week or so of water.',[['Size','About 150–300 gal']]),
+  h_pump:P('Pump and pressure tank','water','A small pump and pressure tank give the house water pressure at the tap.',[['Power','Small, but needs electricity']]),
+  h_uv:P('Filter and UV','water','A cartridge filter and a UV light make sure the water stays safe after hauling.',[['Service','Change the filter and UV bulb on schedule']]),
+  h_heater:P('Water heater','water','A small water heater gives warm water for washing and showers.',[]),
+  h_fix:P('Sink and shower','fixture','Low-flow fixtures make each gallon go further.',[['Use','About '+n0p('gpcd_self')+' gal per person a day']]),
+  h_sep:P('Separating toilet','waste','A toilet that keeps urine and solids apart, so there is no sewage to pipe or truck. Solids are bagged; urine goes to the dump station.',[['No water','Uses no flush water']]),
+  h_grey:P('Greywater tank','waste','Sink and shower water drain to a tank in the warm house that the family empties.',[['Emptied','A few times a week']]),
+  h_dump:P('Dump station','waste','A heated drain where families empty greywater and urine; it runs to the lagoon.',[]),
+  i_septic:P('Septic tank','waste','Solids settle and break down; liquid flows on. Pumped every few years.',[['Size','About 1,000–1,500 gal'],['Pump out','Every 1–5 years']]),
+  i_dose:P('Dosing chamber and pump','waste','A pump sends the liquid up to the mound in doses so the whole bed gets used evenly.',[['Power','Small pump on a timer or float']]),
+  i_mound:P('Sand mound','waste','Imported sand and gravel are built up on the lot to give enough unfrozen soil above groundwater and permafrost. The sand does the cleaning.',[['Fill','About '+n0p('mound_cy')+' cubic yards per home']]),
+  i_bed:P('Pressure distribution bed','waste','Small pipes with holes spread the wastewater across a gravel bed inside the mound.',[]),
+  i_sep:P('Separation distances','ground','State rules require at least 4 ft of soil to seasonal high groundwater and 6 ft to an impermeable layer such as permafrost, measured from the bottom of the bed (18 AAC 72.520).',[['Groundwater','≥ 4 ft'],['Permafrost','≥ 6 ft']]),
+  i_pf:P('Groundwater and permafrost','ground','In much of the Interior, shallow groundwater or permafrost is why a conventional drainfield will not work and a mound is built up instead.',[]),
+  i_pkg:P('Packaged treatment unit','waste','An insulated tank with chambers to settle, aerate and clarify. Bacteria growing on media eat the waste.',[['Rated','To −60 °F with reliable power (maker)'],['Service','Every 3–4 months']]),
+  i_blower:P('Blower and power','power','A blower feeds air to the bacteria. It needs electricity around the clock; a long outage can freeze the unit.',[]),
+  i_uvd:P('UV disinfection','waste','A UV light kills germs before the treated water leaves the unit.',[['Bulb','Every 1–2 years']]),
+  i_disch:P('Surface discharge','waste','Treated water is released onto undisturbed vegetation away from homes and wells.',[]),
+  i_well:P('Well setback','ground','Any wastewater system must be at least 100 ft from a private well (18 AAC 72.100).',[['Setback','≥ 100 ft']])});
+ [KEYS_NONE,KEYS_SELF,KEYS_OS].forEach(K=>K.forEach(([k,n])=>{A[k].list=K.map(x=>x[0]);SHORT[k]=n;}));
+ function n0p(k){try{const r=PR&&PR[PALT];return r?pn(r.G[k],0):'—';}catch(e){return '—';}}
+ const ground=(y)=>'<rect x="20" y="'+y+'" width="960" height="'+(622-y)+'" fill="#c99d6e"/><rect x="20" y="'+y+'" width="960" height="'+(622-y)+'" fill="url(#pSoil)"/><rect x="20" y="'+(y-4)+'" width="960" height="5" fill="#fff" stroke="#c9d6df" stroke-width="1"/>';
+ const pf=(y,x0,x1)=>'<rect x="'+(x0||20)+'" y="'+y+'" width="'+((x1||980)-(x0||20))+'" height="'+(622-y)+'" fill="#c9d8e4"/><rect x="'+(x0||20)+'" y="'+y+'" width="'+((x1||980)-(x0||20))+'" height="'+(622-y)+'" fill="url(#pPF)"/>';
+ const banner=(T,INK,t)=>'<g><rect x="300" y="24" width="560" height="30" rx="15" fill="#fff" stroke="'+INK+'" stroke-width="1.6"/>'+T(316,44,t,'dim','font-size:9.4px')+'</g>';
+ const house=(R,INK,x0,x1,yf,yw,yr)=>'<path d="M'+(x0-14)+','+yw+' L'+((x0+x1)/2)+','+yr+' L'+(x1+14)+','+yw+'" fill="#c8d3db" stroke="'+INK+'" stroke-width="2"/>'+R(x0,yw,x1-x0,yf-yw,'#fffaf0',{sw:2})+R(x0,yf,x1-x0,10,'#d8c9ae',{sw:1.6})+[x0+20,(x0+x1)/2,x1-30].map(x=>R(x,yf+10,14,470-yf-10,'#9a8a70',{sw:1.2})).join('');
+ function buildNone(){const W=C.water,WS=C.waste,{INK,pl,ar,kn,g,R,T,title,open}=secKit(KN_NONE);
+  let o=open('Drafted section of a home without running water, from the watering point to the hopper, with numbered keynotes');o+=title('SECTION G–G','No running water · not to scale','W-801','−40 °F')+banner(T,INK,'Watering point → jugs → barrel by the stove → basin → slop bucket and honeybucket → hopper → lagoon');
+  o+=ground(470)+pf(540);o+=T(30,612,'Permafrost','fill:#2c4152');
+  o+=g('g_wpt','<path d="M30,350 L120,304 L210,350" fill="#c8d3db" stroke="'+INK+'" stroke-width="2"/>'+R(40,350,160,120,'#e9dcc0',{sw:2})+R(80,400,40,70,'#b9a27a',{sw:1.4})+pl('200,410 222,410 222,426',W,4)+T(52,372,'watering point','lbl2')+kn('g_wpt',160,300));
+  o+=g('g_haul',pl('214,462 352,462',INK,1.6,'stroke-dasharray="6 5"')+R(238,452,96,10,'#8a6a45',{rx:3,sw:1.4})+pl('238,462 226,450',INK,2)+T(230,492,'by sled or ATV, a few times a week','dim','font-size:9px')+kn('g_haul',286,520,286,466));
+  o+=g('g_jugs',[246,272,298].map(x=>R(x,424,20,28,'#7cc4ef',{rx:4,sw:1.4})+R(x+6,418,8,6,'#3b4b57',{sw:1})).join('')+kn('g_jugs',286,392));
+  o+=house(R,INK,370,720,440,300,250);
+  o+=R(384,392,44,48,'#3b4b57',{rx:3})+pl('406,392 406,300',INK,4)+T(382,386,'stove','dim','font-size:8.5px');
+  o+=g('g_store',R(438,376,44,64,'#7cc4ef',{rx:6,sw:1.8})+R(436,370,48,8,'#3b4b57',{rx:2,sw:1.2})+T(432,362,'water barrel','dim','font-size:8.5px')+kn('g_store',460,328));
+  o+=g('g_basin',R(520,402,96,8,'#b89a6c',{sw:1.4})+pl('530,410 530,440',INK,2)+pl('606,410 606,440',INK,2)+'<path d="M540,402 Q568,384 596,402 Z" fill="#dfe8ee" stroke="'+INK+'" stroke-width="1.6"/>'+pl('484,392 540,394',W,2.4,'stroke-dasharray="4 4"')+ar(530,394,0,W)+T(526,378,'basin','dim','font-size:8.5px')+kn('g_basin',568,342));
+  o+=g('g_slop',R(556,418,26,22,'#a89a86',{rx:3,sw:1.4})+pl('568,404 568,418',WS,2.4,'stroke-dasharray="3 3"')+kn('g_slop',600,460,575,440));
+  o+=g('g_hb','<path d="M640,326 L700,326" stroke="'+INK+'" stroke-width="2"/><path d="M642,326 Q650,380 644,440" fill="none" stroke="#c48a8a" stroke-width="3"/>'+R(658,404,34,36,'#f3efe3',{rx:4,sw:1.6})+R(654,398,42,8,'#3b4b57',{rx:3,sw:1.2})+R(662,410,26,6,WS,{sw:0})+T(650,390,'honeybucket','dim','font-size:8.5px')+kn('g_hb',676,356));
+  o+=g('g_yard','<ellipse cx="752" cy="468" rx="26" ry="5" fill="#d6ecf7" stroke="#7d95a8" stroke-width="1.2"/>'+pl('720,430 744,462',WS,2,'stroke-dasharray="3 3"')+T(726,500,'slop water freezes here','dim','font-size:8.5px')+kn('g_yard',770,436));
+  o+=g('g_hopper',pl('724,462 800,462',WS,2.2,'stroke-dasharray="6 5"')+ar(790,462,0,WS)+R(806,404,100,66,'#d9d1b8',{rx:3,sw:2})+R(800,396,112,10,'#6c7a86',{rx:2,sw:1.4})+T(818,440,'hopper','lbl2')+kn('g_hopper',856,366));
+  o+=g('g_crew',pl('912,440 972,440',WS,4)+ar(964,440,0,WS)+T(900,424,'to lagoon','dim','font-size:9px')+kn('g_crew',944,400));
+  return o+'</svg>';}
+ function buildSelf(){const W=C.water,WS=C.waste,HOT=C.hot,{INK,pl,ar,kn,g,R,T,title,open}=secKit(KN_SELF);
+  let o=open('Drafted section of a self-haul home with an in-home tank, pump, UV, separating toilet and greywater tank, with numbered keynotes');o+=title('SECTION H–H','Self-haul home · not to scale','W-802','−40 °F')+banner(T,INK,'Watering point → ATV tank → fill port → tank → pump → filter & UV → taps → greywater tank → dump station');
+  o+=ground(470)+pf(540);o+=T(30,612,'Permafrost','fill:#2c4152');
+  o+=g('h_wpt','<path d="M24,360 L92,320 L160,360" fill="#c8d3db" stroke="'+INK+'" stroke-width="2"/>'+R(32,360,120,110,'#e9dcc0',{sw:2})+pl('152,400 176,400 176,420',W,4)+T(42,382,'watering point','lbl2')+kn('h_wpt',92,296));
+  o+=g('h_atv',R(196,420,70,26,'#c0392b',{rx:5,sw:1.6})+R(206,408,40,12,'#2f3a44',{rx:2,sw:1})+[212,252].map(x=>'<circle cx="'+x+'" cy="456" r="13" fill="#2f3a44" stroke="'+INK+'" stroke-width="1.4"/>').join('')+pl('266,440 282,440',INK,3)+
+    '<rect x="282" y="414" width="76" height="30" rx="14" fill="#7cc4ef" stroke="'+INK+'" stroke-width="1.8"/><circle cx="320" cy="456" r="12" fill="#2f3a44" stroke="'+INK+'" stroke-width="1.4"/>'+T(282,404,'haul tank','dim','font-size:8.5px')+kn('h_atv',240,376));
+  o+=house(R,INK,380,770,440,290,246);o+=pl('560,290 560,440',INK,1.4,'stroke-dasharray="5 4"')+T(392,308,'utility room','dim','font-size:8.5px')+T(574,308,'living area','dim','font-size:8.5px');
+  o+=g('h_fill',pl('358,428 368,428 368,404 380,404',W,3.4)+R(372,396,14,16,'#6c7a86',{sw:1.2})+kn('h_fill',346,350,376,396));
+  o+=g('h_tank',R(392,360,64,80,'#e6f3fb',{rx:6,sw:1.8})+R(394,380,60,58,'#7cc4ef',{sw:0})+pl('386,404 392,404',W,3)+T(398,354,'tank','dim','font-size:8.5px')+kn('h_tank',424,326));
+  o+=g('h_pump','<circle cx="476" cy="428" r="11" fill="#5f8fb0" stroke="'+INK+'" stroke-width="1.6"/>'+R(466,388,22,24,'#9fb7c7',{rx:8,sw:1.4})+pl('456,428 465,428',W,3)+pl('476,417 476,412',W,3)+kn('h_pump',476,470,476,440));
+  o+=g('h_uv',R(498,372,16,58,'#dfe8ee',{rx:4,sw:1.4})+R(502,380,8,40,'#b388ff',{rx:2,sw:0})+pl('487,400 498,400',W,3)+kn('h_uv',506,342));
+  o+=g('h_heater',R(524,372,28,68,'#f3efe3',{rx:5,sw:1.6})+R(524,372,28,10,HOT,{rx:4,sw:1})+pl('514,386 524,386',W,3)+kn('h_heater',538,500,538,440));
+  o+=pl('514,360 760,360',W,2.6)+pl('552,368 760,368',HOT,2.6)+T(600,354,'cold and hot supply','dim','font-size:8.5px');
+  o+=g('h_sep',R(578,404,34,36,'#fff',{rx:6,sw:1.6})+R(574,396,42,10,'#dfe8ee',{rx:4,sw:1.2})+R(586,428,12,12,'#d4b06a',{sw:1})+T(570,388,'separating toilet','dim','font-size:8.5px')+kn('h_sep',594,470,594,440));
+  o+=g('h_fix',R(640,388,60,10,'#dfe8ee',{rx:3,sw:1.4})+pl('670,368 670,388',W,2)+pl('734,360 734,326 746,326',W,2.4)+'<path d="M740,326 l12,0 l-6,8 z" fill="#9fb7c7" stroke="'+INK+'" stroke-width="1"/>'+R(722,430,40,10,'#dfe8ee',{sw:1.4})+T(716,420,'shower','dim','font-size:8.5px')+kn('h_fix',700,330));
+  o+=g('h_grey',R(642,410,56,30,'#c9b28e',{rx:4,sw:1.6})+pl('670,398 670,410',WS,3)+pl('742,436 706,436 698,430',WS,3)+T(640,456,'greywater','dim','font-size:8.5px')+kn('h_grey',670,500,670,440));
+  o+=g('h_dump',pl('776,462 850,462',WS,2.2,'stroke-dasharray="6 5"')+ar(842,462,0,WS)+R(856,450,90,20,'#b9b2a5',{sw:1.8})+R(894,420,14,30,WS,{rx:3,sw:1.2})+pl('901,470 901,520 970,520',WS,4)+ar(962,520,0,WS)+T(858,440,'dump station','lbl2')+T(906,540,'to lagoon','dim','font-size:8.5px')+kn('h_dump',900,392));
+  return o+'</svg>';}
+ function buildOnsite(){const WS=C.waste,EF=C.effluent,W=C.water,{INK,pl,ar,kn,g,R,T,title,open}=secKit(KN_OS);
+  let o=open('Drafted sections of an engineered mound and a packaged treatment unit with separation distances, with numbered keynotes');o+=title('SECTION I–I','Onsite treatment · not to scale','W-803','two options')+banner(T,INK,'Drain → septic tank → dosing → sand mound   |   Drain → packaged unit → UV → surface discharge');
+  o+='<rect x="20" y="330" width="960" height="156" fill="#c99d6e"/><rect x="20" y="330" width="960" height="156" fill="url(#pSoil)"/><rect x="20" y="326" width="960" height="5" fill="#fff" stroke="#c9d6df" stroke-width="1"/>';
+  o+=g('i_pf',pl('20,430 980,430',W,2.2,'stroke-dasharray="8 6"')+T(30,424,'seasonal high groundwater','dim','font-size:8.5px;fill:#1f5f8a')+pf(486)+T(30,612,'Permafrost (impermeable)','fill:#2c4152')+kn('i_pf',180,560));
+  o+=pl('500,90 500,622',INK,1.4,'stroke-dasharray="6 6"')+T(40,110,'ENGINEERED MOUND','lbl2','font-weight:800')+T(520,110,'PACKAGED TREATMENT UNIT','lbl2','font-weight:800');
+  // left: mound
+  o+=R(30,240,60,90,'#fffaf0',{sw:2})+'<path d="M24,240 L60,214 L96,240" fill="#c8d3db" stroke="'+INK+'" stroke-width="2"/>'+T(34,232,'home','dim','font-size:8.5px')+pl('90,318 116,340',WS,3.6);
+  o+=g('i_septic',R(112,336,86,52,'#9aa6ae',{rx:6,sw:1.8})+R(146,318,18,18,'#6c7a86',{sw:1.2})+'<rect x="116" y="368" width="78" height="16" fill="#6b5a40" opacity=".6"/>'+T(118,402,'septic tank','dim','font-size:8.5px')+kn('i_septic',154,286,154,318));
+  o+=g('i_dose',R(206,340,40,52,'#9aa6ae',{rx:4,sw:1.6})+'<circle cx="226" cy="380" r="7" fill="#5f8fb0" stroke="'+INK+'" stroke-width="1.2"/>'+pl('198,356 206,356',EF,3)+pl('226,340 226,312 300,288',EF,3)+T(200,408,'dosing','dim','font-size:8.5px')+kn('i_dose',226,262,226,312));
+  o+=g('i_mound','<path d="M262,330 L320,252 L436,252 L494,330 Z" fill="#e8d9a8" stroke="'+INK+'" stroke-width="2"/><path d="M320,252 L436,252 L440,258 L316,258 Z" fill="#9fbf7a"/>'+T(398,326,'imported sand','dim','font-size:8.5px')+kn('i_mound',378,212,378,252));
+  o+=g('i_bed',R(318,280,124,18,'#b9b2a5',{sw:1.4})+pl('300,288 440,288',EF,2.4,'stroke-dasharray="2 6"')+T(322,276,'gravel bed + laterals','dim','font-size:8px')+kn('i_bed',466,262,436,286));
+  o+=g('i_sep',pl('456,298 476,298',INK,1.4)+pl('466,298 466,430',INK,1.6)+'<path d="M461,424 L466,432 L471,424" fill="'+INK+'"/>'+T(380,370,'≥ 4 ft','lbl2','font-weight:800')+T(380,384,'to groundwater','dim','font-size:8.5px')+
+    pl('484,298 484,486',INK,1.6)+'<path d="M479,480 L484,488 L489,480" fill="'+INK+'"/>'+T(380,452,'≥ 6 ft','lbl2','font-weight:800')+T(380,466,'to permafrost','dim','font-size:8.5px')+kn('i_sep',440,520,476,486));
+  // right: packaged unit
+  o+=R(520,240,60,90,'#fffaf0',{sw:2})+'<path d="M514,240 L550,214 L586,240" fill="#c8d3db" stroke="'+INK+'" stroke-width="2"/>'+T(524,232,'home','dim','font-size:8.5px')+pl('580,312 616,300',WS,3.6);
+  o+=g('i_pkg','<rect x="614" y="262" width="168" height="62" rx="28" fill="#7fa58e" stroke="'+INK+'" stroke-width="2"/>'+pl('668,268 668,318',INK,1.4)+pl('728,268 728,318',INK,1.4)+T(628,300,'settle','dim','font-size:8.5px;fill:#fff')+T(682,300,'aerate','dim','font-size:8.5px;fill:#fff')+T(738,300,'clarify','dim','font-size:8.5px;fill:#fff')+
+    [0,1,2,3].map(i=>'<circle cx="'+(686+i*10)+'" cy="'+(312-i*5)+'" r="2.4" fill="#fff"/>').join('')+R(640,324,14,6,'#8a6a45',{sw:1})+R(744,324,14,6,'#8a6a45',{sw:1})+kn('i_pkg',698,388,698,326));
+  o+=g('i_blower',R(684,236,30,24,'#2f3a44',{rx:3,sw:1.4})+pl('580,250 684,248','#d99a1e',2.2,'stroke-dasharray="5 4"')+T(596,244,'power, 24/7','dim','font-size:8.5px')+kn('i_blower',740,214,714,244));
+  o+=g('i_uvd',R(792,272,22,46,'#dfe8ee',{rx:6,sw:1.6})+R(798,280,10,30,'#b388ff',{rx:2,sw:0})+pl('782,294 792,294',EF,3)+kn('i_uvd',803,230,803,272));
+  o+=g('i_disch',pl('814,300 860,300 880,326',EF,3.4)+ar(872,316,50,EF)+[870,890,910,930].map(x=>'<path d="M'+x+',326 l4,-12 l4,12 M'+(x+4)+',326 l-6,-8 M'+(x+4)+',326 l6,-8" stroke="#5c8a46" stroke-width="2" fill="none"/>').join('')+T(852,350,'onto vegetation','dim','font-size:8.5px')+kn('i_disch',890,262));
+  o+=g('i_well',R(960,300,10,30,'#6c7a86',{sw:1.2})+pl('965,330 965,600',INK,2.4)+T(906,292,'well','dim','font-size:8.5px')+pl('880,580 958,580',INK,1.6)+'<path d="M886,575 L878,580 L886,585 M952,575 L960,580 L952,585" fill="none" stroke="'+INK+'" stroke-width="1.6"/>'+T(842,600,'≥ 100 ft to any well','lbl2','font-weight:800')+kn('i_well',916,540));
+  return o+'</svg>';}
+ SECS.none={title:'Section G–G',sub:'Home without running water · not to scale · tap a number or a part to learn more',keys:()=>KEYS_NONE,kn:()=>KN_NONE,build:buildNone};
+ SECS.self={title:'Section H–H',sub:'Self-haul home · not to scale · tap a number or a part to learn more',keys:()=>KEYS_SELF,kn:()=>KN_SELF,build:buildSelf};
+ SECS.onsite={title:'Section I–I',sub:'Engineered mound and packaged treatment unit · not to scale · tap a number or a part to learn more',keys:()=>KEYS_OS,kn:()=>KN_OS,build:buildOnsite};}
+
+
+/* =====================================================================
+   Info cards: one click opens the card, Prev/Next stays within the facility,
+   and every card has a "See more" drill-down (2D drawing, inside in 3D,
+   parts, follow a drop, cost).
+   ===================================================================== */
+{// Prev/Next walks the facility group, not all 42 village items
+ const grp={};INFRA.forEach(x=>{const ids=[...new Set([...(x.ids||[]),...(x.comps||[])])].filter(k=>A[k]&&A[k].v==='village');ids.forEach(k=>{if(!grp[k])grp[k]=ids;});});
+ Object.keys(A).forEach(k=>{if(A[k].v==='village'&&!A[k].list)A[k].list=grp[k]||[k];});}
+const SEC_OF=(()=>{const m={wtp:'plant',thishome:'home',homes:'home',watertruck:'home',fillport:'home',route:'home',wellhome:'well',per_well:'well',per_conv:'well',pipedlot:'piped',per_main:'piped',per_svc:'piped',per_station:'piped',per_vstation:'piped',per_hydrant:'piped',
+  lagoon:'lagoon',sewertruck:'lagoon',powerhouse:'power',fuelheader:'power',fuelline:'power',per_none:'none',per_waterpt:'none',per_hopper:'none',per_self:'self',per_dump:'self',per_mound:'onsite',per_pkg:'onsite',per_hold:'home'};
+  return id=>{if(m[id])return m[id];if(/^g_/.test(id))return 'none';if(/^h_/.test(id))return 'self';if(/^i_/.test(id))return 'onsite';const v=A[id]&&(A[id].v0||A[id].v);return SECS[v]?v:'';};})();
+const INFRA_OF=id=>INFRA.find(x=>(x.ids||[]).includes(id)||(x.comps||[]).includes(id)||(x.view&&A[id]&&(A[id].v0||A[id].v)===x.view));
+{const box=document.createElement('div');box.id='p-more';box.className='p-more';const foot=document.querySelector('#panel .p-foot');foot.parentNode.insertBefore(box,foot);
+ let open=false;
+ function render(id){const a=A[id];if(!a||touring){box.hidden=true;return;}box.hidden=false;
+   const sec=SEC_OF(id),x=INFRA_OF(id),inSec=sectionOn&&sectionKind===sec;const items=[];
+   if(sec&&SECS[sec]&&!inSec)items.push(['sec','◱','See the 2D drawing',SECS[sec].title+(a.v==='any'||(SECS[sec].kn&&SECS[sec].kn()[id])?' · this part lit':'')]);
+   if(x&&x.view&&view!==x.view&&!FACV.includes(view))items.push(['inside','⤓','Go inside in 3D',x.n]);
+   if(x&&a.v==='village')items.push(['parts','☰','Parts and systems','Highlight '+x.n.toLowerCase()+' on the plan']);
+   items.push(['drop','💧','Follow a drop of water','Through the village for '+(PERM.ALTS.find(z=>z.k===PALT)||{n:''}).n.toLowerCase()]);
+   items.push(['cost','$','Cost in the estimate','Engineer’s estimate for the selected alternative']);
+   box.innerHTML='<button class="cta pm-go" data-pm="toggle" aria-expanded="'+open+'">See more <span aria-hidden="true">'+(open?'▴':'▾')+'</span></button>'+
+     '<div class="pm-list"'+(open?'':' hidden')+'>'+items.map(([k,ic,t,s])=>'<button data-pm="'+k+'"><i aria-hidden="true">'+ic+'</i><span><b>'+esc(t)+'</b><small>'+esc(s)+'</small></span><em aria-hidden="true">›</em></button>').join('')+'</div>';}
+ box.addEventListener('click',e=>{const b=e.target.closest('[data-pm]');if(!b||!current)return;const id=current,k=b.dataset.pm,sec=SEC_OF(id),x=INFRA_OF(id);
+   if(k==='toggle'){open=!open;render(id);return;}
+   if(k==='sec'){const keys=SECS[sec].kn?SECS[sec].kn():{},lit=keys[id]?[id]:[];closeInfo();setSection(true,sec);bEl('sec-draw').querySelectorAll('[data-id]').forEach(el=>el.classList.toggle('sel',lit.includes(el.dataset.id)));bEl('sec-legend').querySelectorAll('[data-key]').forEach(b=>b.setAttribute('aria-current',lit.includes(b.dataset.key)));}
+   else if(k==='inside'){closeInfo();enterInfra(x.k);}
+   else if(k==='parts'){closeInfo();selectInfra(x.k);if(phoneQ.matches)setNav(true);}
+   else if(k==='drop'){closeInfo();DROP.start();}
+   else if(k==='cost'){closeInfo();openWB('estimate');}});
+ const OBL=new V(.55,.62,.85).normalize();
+ const oi=openInfo;openInfo=function(id){const r=oi.apply(this,arguments);if(current===id){render(id);
+   // village cards: frame from an oblique angle instead of straight down
+   if(A[id].v==='village'&&tw&&!touring){const d=tw.p1.distanceTo(tw.t1),dir=tw.p1.clone().sub(tw.t1).normalize();if(dir.y>.8)tw.p1.copy(tw.t1).addScaledVector(OBL,d);}}return r;};}
+
+
+/* =====================================================================
+   Roll-up navigation: Homes (types of service) · Utility infrastructure ·
+   Natural constraints. Cards for each thing; detail cards; parts.
+   ===================================================================== */
+const RU={g:'',c:''};
+const firstSent=t=>{t=t||'';const m=t.match(/^[\s\S]*?[.!?](?=\s+[A-Z(]|$)/);return m?m[0]:t;};
+const HOME_T={
+ none:{n:'No running water',one:'Jugs from the watering point; honeybuckets to a hopper.',sec:'none',anchor:null,tags:['per_none'],
+   d:'Water is hauled home in jugs and kept in a barrel by the stove. A honeybucket serves as the toilet and is emptied into a hopper. This is where many homes are today.',
+   parts:null,win:'Hauling at −40 °F is hard; families use even less water in winter.'},
+ self:{n:'Self-haul',one:'The family hauls water into an in-home tank; separating toilet.',sec:'self',anchor:null,tags:['per_self'],
+   d:'A tank, pump, filter and UV light give the house running water. The family fills the tank by ATV or sled at the watering point and empties a greywater tank at a dump station.',
+   parts:null,win:'The tank room must stay warm, and winter hauling by sled takes longer.'},
+ haul:{n:'Truck haul',one:'A utility truck fills your tank and pumps out your sewage.',sec:'home',anchor:'thishome',tags:['thishome','homes'],infra:'home',
+   d:'The utility’s water truck fills an insulated tank in the house and a vacuum truck empties the sewage tank. The house gets full plumbing in a heated utility room.',
+   parts:['fillport','watertank','pump','pressuretank','uv','heater','kitchen','bath','dwv','treatment','effluent','pumpout'],win:'Fill and pump-out ports are heat-traced; drifted roads delay deliveries.'},
+ well:{n:'Well & onsite',one:'Your own well, treatment in the house, and a septic system or mound.',sec:'well',anchor:'wellhome',tags:['wellhome','per_well'],infra:'well',
+   d:'A drilled well, treatment matched to the water quality, and an onsite wastewater system on the lot: a drainfield, an engineered mound or a packaged treatment unit.',
+   parts:null,win:'Onsite systems need unfrozen soil above groundwater and permafrost.'},
+ pipe:{n:'Piped',one:'Circulating water and vacuum sewer mains to every home.',sec:'piped',anchor:'pipedlot',tags:['pipedlot','per_svc'],infra:'piped',
+   d:'Insulated mains on piles loop past every home. Water keeps moving and warm; a vacuum sewer pulls wastewater away. No tanks to watch and nothing to haul.',
+   parts:['pservice','pmeter','pheater','pfix','pdrain','ppit','pshell'],win:'If circulation or power stops, the mains have hours before they freeze.'},
+ hyb:{n:'Hybrid mix',one:'Piped in the core, haul beyond it, wells on large outer lots.',sec:'',anchor:null,tags:[],
+   d:'Each area gets the service that fits it best. The mix is set under Inputs.',parts:[],win:''}};
+const RU_ORDER=['none','self','haul','well','pipe','hyb'];
+function ruNums(k){const r=PR&&PR[k];if(!r)return null;const G=r.G,m=r.mon[0];
+  const hrs=m.hh_hrs/Math.max(1,G.homes)/(31/7);
+  return{mo:r.bud.hh_mo,gpcd:k==='hyb'?null:G['gpcd_'+k],hrs,burden:r.bud.burden,tpc:r.eopc.tpc,om:r.bud.om_u};}
+function ruHomePartIds(k){const T=HOME_T[k];if(T.parts)return T.parts.filter(id=>A[id]);const S=SECS[T.sec];if(!S)return[];
+  let ids=S.keys().map(x=>x[0]);if(k==='well'){const os=['','conv','mound','pkg','hold'][PR[PALT].G.onsite_type];ids=ids.filter(id=>!['septic','drainfield'].includes(id)||os==='conv');
+    if(os==='mound')ids=ids.concat(['i_septic','i_dose','i_mound','i_bed','i_sep']);if(os==='pkg')ids=ids.concat(['i_pkg','i_blower','i_uvd','i_disch']);}
+  return ids.filter(id=>A[id]);}
+// ---- small pieces ----
+const ruNum=(v,l)=>'<span class="ru-n"><b>'+v+'</b><small>'+esc(l)+'</small></span>';
+const ruCrumb=(back,lab)=>'<button class="nv-back" data-ru="'+back+'">‹ '+esc(lab)+'</button>';
+function ruEng(){return '<div class="ru-eng"><p class="np-h">Engineering &amp; studies</p><div class="ru-eng-b">'+
+  [['compare','Compare'],['estimate','Estimate'],['inputs','Inputs'],['export','Export']].map(([k,n])=>'<button class="tool" data-wb="'+k+'">'+icoSvg(WBI[k]||'table')+'<span>'+n+'</span></button>').join('')+
+  '<button class="tool" data-ru="studies">'+icoSvg('book')+'<span>Studies</span></button></div></div>';}
+function ruTop(){const r=PR&&PR[PALT];let h=kpiHtml().replace(/<div class="pa-acts">[\s\S]*$/,'');
+  const n=ruNums(PALT)||{},ks=r?r.ks.filter(k=>k.s>0):[],fails=ks.filter(k=>k.s===2).length;
+  const facs=UTIL_T?UTIL_T.filter(u=>u.need(r)).length:0;
+  h+='<p class="np-h">Explore the village</p><div class="ru-roll">'+
+   '<button class="ru-big" data-ru="homes" style="--c:#3aa0e8">'+'<i class="ru-ic">'+icoSvg('home')+'</i><span class="ru-t"><b>Homes</b><small>Types of service: what each home gets</small></span>'+
+     '<span class="ru-ns">'+ruNum(pd(n.mo||0),'household / mo')+ruNum(n.gpcd!=null?pn(n.gpcd,0):'mix','gal / person / day')+ruNum(n.hrs>0.05?pn(n.hrs,1):'0','hr hauling / wk, Jan')+'</span><em>›</em></button>'+
+   '<button class="ru-big" data-ru="utility" style="--c:#2479bd">'+'<i class="ru-ic">'+icoSvg('plant')+'</i><span class="ru-t"><b>Utility infrastructure</b><small>Plant, trucks, mains, lagoon, power</small></span>'+
+     '<span class="ru-ns">'+(UTIL_T?ruNum(String(facs),'facilities used'):'')+ruNum(pm(n.tpc||0),'project cost')+ruNum(pk(n.om||0),'O&M / yr')+'</span><em>›</em></button>'+
+   '<button class="ru-big" data-ru="nature" style="--c:#c0563b">'+'<i class="ru-ic">'+icoSvg('hazard')+'</i><span class="ru-t"><b>Natural constraints</b><small>River, permafrost, cold, soils, access</small></span>'+
+     '<span class="ru-ns">'+ruNum(String(NAT_T?NAT_T.length:6),'constraints')+ruNum(String(ks.length),'flags for this option')+ruNum(String(fails),'rule it out')+'</span><em>›</em></button></div>'+
+   '<div class="nv-pv"><button data-pv="site" aria-pressed="'+(view==='site')+'">Plan</button><button data-pv="village" aria-pressed="'+(view==='village')+'">3D</button></div>'+ruEng();
+  return h;}
+function ruHomes(){let h=ruCrumb('top','Village')+'<div class="ru-head"><i class="ru-ic" style="--c:#3aa0e8">'+icoSvg('home')+'</i><div><b>Homes</b><small>Types of service</small></div></div>'+
+  '<p class="nv-lead">Six ways a home can get water and get rid of wastewater. Numbers are per household for the inputs as set.</p><div class="ru-deck">';
+  const r=PR&&PR[PALT];
+  RU_ORDER.forEach(k=>{const T=HOME_T[k],n=ruNums(k);if(!n)return;const inOpt=PALT===k||(r&&r.sh&&r.sh[k]>0&&PALT==='hyb');
+    h+='<button class="ru-card'+(inOpt?' on':'')+'" data-ruc="'+k+'" style="--c:'+((PERM.ALTS.find(a=>a.k===k)||{}).ic||'#7f97a8')+'"><span class="ru-ch"><i class="ru-ic sm">'+icoSvg(ALT_ICO[k])+'</i><b>'+esc(T.n)+'</b>'+(inOpt?'<em class="ru-tag">in this option</em>':'')+'</span>'+
+      '<small class="ru-one">'+esc(T.one)+'</small><span class="ru-ns">'+ruNum(pd(n.mo),'/ mo')+ruNum(n.gpcd!=null?pn(n.gpcd,0):'mix','gal / p / day')+ruNum(n.hrs>0.05?pn(n.hrs,1):'0','hr / wk Jan')+'</span></button>';});
+  return h+'</div>'+ruEng();}
+function ruHome(k){const T=HOME_T[k],n=ruNums(k),a=PERM.ALTS.find(z=>z.k===k)||{};
+  let h=ruCrumb('homes','Homes')+'<div class="ru-head"><i class="ru-ic" style="--c:'+(a.ic||'#7f97a8')+'">'+icoSvg(ALT_ICO[k])+'</i><div><b>'+esc(T.n)+'</b><small>Home type of service</small></div></div><p class="nv-lead">'+esc(T.d)+'</p>';
+  h+='<div class="ru-kpis">'+ruNum(pd(n.mo),'household cost / mo')+ruNum(n.gpcd!=null?pn(n.gpcd,0):'mix','gal / person / day')+ruNum(n.hrs>0.05?pn(n.hrs,1):'0','hr hauling / wk, Jan')+ruNum(pp(n.burden),'of median income')+'</div>';
+  if(T.win)h+='<p class="ru-win"><b>−40 °F:</b> '+esc(T.win)+'</p>';
+  h+='<div class="ru-acts">'+(PALT!==k?'<button class="cta" data-rua="show">Show in the village</button>':'<span class="ru-sel">✓ Selected option</span>')+
+    (T.sec&&SECS[T.sec]?'<button class="tool" data-rua="sec">◱ '+esc(SECS[T.sec].title)+'</button>':'')+
+    (k!=='hyb'?'<button class="tool" data-rua="drop">💧 Follow a drop</button>':'')+(T.infra?'<button class="tool" data-rua="inside">Inside in 3D ›</button>':'')+'</div>';
+  if(k==='hyb'){const r=PR.hyb;h+='<p class="np-h">The mix</p><div class="ru-mix">'+['pipe','haul','self','well','none'].filter(x=>r.sh[x]>0).map(x=>'<button data-ruc="'+x+'"><span>'+esc(HOME_T[x].n)+'</span><i style="width:'+Math.round(r.sh[x]*100)+'%;background:'+((PERM.ALTS.find(z=>z.k===x)||{}).ic||'#999')+'"></i><b>'+pp(r.sh[x])+'</b></button>').join('')+'</div>';}
+  else{const ids=ruHomePartIds(k);h+='<p class="np-h">What’s at the house · '+ids.length+' parts</p><div class="ru-parts">'+ids.map(id=>'<button data-rup="'+id+'"><b>'+esc(SHORT[id]||A[id].t)+'</b><small>'+esc(firstSent(A[id].b))+'</small></button>').join('')+'</div>';}
+  return h+ruEng();}
+// placeholders filled by later steps
+let UTIL_T=null,NAT_T=null;
+function ruUtility(){return null;}function ruNature(){return null;}
+// ---- render hook ----
+{const nr=navRender;navRender=function(){nr();if(navMode==='studies'){const p=bEl('pg-studies');if(p&&!p.querySelector('[data-ru="top"]'))p.insertAdjacentHTML('afterbegin',ruCrumb('top','Village'));return;}
+  if(document.body.dataset.level!=='1')return;let h=null;
+  if(RU.g==='homes')h=RU.c?ruHome(RU.c):ruHomes();else if(RU.g==='utility')h=ruUtility();else if(RU.g==='nature')h=ruNature();
+  if(h==null){RU.g='';RU.c='';h=ruTop();}
+  bEl('pg-infra').innerHTML=h;bEl('pg-infra').dataset.rus=RU.g+(RU.c?':'+RU.c:'');};}
+// ---- camera and outline ----
+function ruPos(ids){const b=new THREE.Box3(),b1=new THREE.Box3();pickables.forEach(m=>{if(!ids.includes(m.userData.id)||m.isInstancedMesh)return;let o=m,vis=true;while(o){if(!o.visible){vis=false;break;}o=o.parent;}if(!vis)return;m.updateMatrixWorld(true);if(!m.geometry.boundingBox)m.geometry.computeBoundingBox();b1.copy(m.geometry.boundingBox).applyMatrix4(m.matrixWorld);b.union(b1);});return b.isEmpty()?null:b;}
+function ruFlyHome(k){const T=HOME_T[k];let p=null,r=14;
+  if(T.anchor){const b=ruPos([T.anchor]);if(b){const s=new THREE.Sphere();b.getBoundingSphere(s);p=s.center;r=s.radius;}}
+  if(!p){const i=perKinds.indexOf(k);if(i>=0){p=homes[i].g.position.clone();r=8;}}
+  if(!p)return;const dir=view==='site'?new V(.12,1,.42):new V(.55,.62,.85);camTo(p,Math.max(view==='site'?55:30,r*3.4),1.4,dir);
+  siteOutline(T.tags);}
+function ruOpenPart(id){const a=A[id];if(!a)return;if(a.v!=='any'&&a.v!=='village'&&a.v!==scope()){a.v0=a.v;a.v='any';try{openInfo(id);}finally{a.v=a.v0;}}else openInfo(id);}
+// ---- clicks ----
+navEl.addEventListener('click',e=>{const t=e.target.closest('[data-ru],[data-ruc],[data-rup],[data-rua]');if(!t)return;e.stopPropagation();if(touring)stopTour();if((t.dataset.ru||t.dataset.ruc)&&current)closeInfo();
+  if(t.dataset.ru){const g=t.dataset.ru;if(g==='studies'){setMode('studies');return;}if(g==='top'){RU.g='';RU.c='';if(navMode!=='infra')setMode('infra');siteOutline(null);if(infraSel)selectInfra('');else navRender();return;}
+    if(g==='utility'&&!ruUtility()){selectInfra('');RU.g='';navRender();return;}
+    if(g==='nature'&&!ruNature()){if(typeof openHazards==='function')openHazards('overview');return;}
+    RU.g=g;RU.c='';navRender();bEl('pg-infra').scrollTop=0;navEl.querySelector('.nav-body')&&(navEl.querySelector('.nav-body').scrollTop=0);return;}
+  if(t.dataset.ruc){RU.g='homes';RU.c=t.dataset.ruc;navRender();ruFlyHome(RU.c);return;}
+  if(t.dataset.rup){ruOpenPart(t.dataset.rup);return;}
+  if(t.dataset.rua){const k=RU.c,T=HOME_T[k];const a=t.dataset.rua;
+    if(a==='show'){setAlt(k);ruFlyHome(k);}
+    else if(a==='sec'){closeInfo();setSection(true,T.sec);}
+    else if(a==='drop'){if(PALT!==k)setAlt(k);if(phoneQ.matches)setNav(false);DROP.start();}
+    else if(a==='inside'){enterInfra(T.infra);}}},true);
+{const sa=setAlt;setAlt=function(k){sa(k);if(document.body.dataset.level==='1')navRender();};}
+navRender();
+
+
+/* =====================================================================
+   Roll-up step 2: Utility infrastructure cards
+   ===================================================================== */
+{const n0=v=>pn(v,0),n1=v=>pn(v,1),G=()=>PR[PALT].G;
+ const keysOf=sec=>SECS[sec]?SECS[sec].keys().map(x=>x[0]):[];
+ UTIL_T=[
+  {k:'plant',n:'Water treatment plant',ic:'plant',col:'#2479bd',ids:['wtp'],infra:'plant',sec:'plant',parts:()=>keysOf('plant'),
+   one:'Turns river water into safe drinking water.',d:'River water is pumped in, chemicals make the silt settle, filters catch what is left and chlorine kills germs. The plant runs and is heated all year.',
+   need:r=>r.S.plant_on>0,nums:r=>[[n0(r.S.plant_gpd),'gal / day made'],[n0(r.G.wtp_cap_gpd),'gal / day capacity'],[r.S.wtp_add>0?'+'+n0(r.S.wtp_add):'OK','gal / day to add']]},
+  {k:'store',n:'Storage & watering point',ic:'box',col:'#3aa0e8',ids:['wtp','per_waterpt'],sec:'plant',parts:()=>['storage','clearwell','fillarm','per_waterpt'].filter(id=>A[id]),
+   one:'Treated water stored warm; where tanks, trucks and jugs fill.',d:'An insulated, heated tank holds days of treated water. The truck fill arm and the watering point draw from it.',
+   need:r=>r.S.plant_on>0,nums:r=>[[n0(r.G.storage_gal),'gal stored'],[n0(r.S.stor_req),'gal needed'],[r.S.self_on>0||r.S.n_none>0?'Yes':'No','watering point used']]},
+  {k:'trucks',n:'Haul trucks & garage',ic:'haul',col:'#ffc145',ids:['watertruck','sewertruck','route'],infra:'haul',parts:()=>['watertruck','sewertruck','route','fleet'].filter(id=>A[id]),
+   one:'A water truck and a vacuum truck run the loop.',d:'One truck delivers water to home tanks; a vacuum truck pumps out sewage tanks and empties at the lagoon. Both live in a heated garage.',
+   need:r=>r.S.wtr_on>0||r.S.vac_on>0,nums:r=>[[n0(r.S.n_wtruck+r.S.n_vtruck),'trucks'],[n0(r.S.truck_fuel),'gal fuel / yr'],[r.S.garage_new>0?'New':'Existing','heated garage']]},
+  {k:'mains',n:'Mains & stations',ic:'piped',col:'#6c7a86',ids:['per_main','per_station','per_vstation','pipedlot'],infra:'piped',sec:'piped',parts:()=>['pmain','pvmain','psupport','pstation','pcirc','pboiler','phx','pvtank','pvpump','pdisch','pctrl'].filter(id=>A[id]),
+   one:'Insulated mains on piles, a utility station and a vacuum station.',d:'A circulating water main and a vacuum sewer loop past every home on piles above the frozen ground. The utility station keeps water moving and warm; the vacuum station pulls wastewater to the lagoon.',
+   need:r=>r.S.p_on>0,nums:r=>[[n0(r.S.p_main),'ft of main'],[n0(r.S.p_svc),'ft of services'],[n0(r.S.p_heat_gal),'gal fuel / yr to heat']]},
+  {k:'lagoon',n:'Sewage lagoon',ic:'lagoon',col:'#d49a3a',ids:['lagoon'],sec:'lagoon',parts:()=>keysOf('lagoon'),
+   one:'Two cells that treat wastewater with time, sun and bacteria.',d:'Wastewater from trucks, hoppers, dump stations or the vacuum station settles and breaks down over months. It stores all winter and discharges in summer after testing.',
+   need:r=>r.S.ww_gpd>200,nums:r=>[[n0(r.S.ww_gpd),'gal / day in'],[n1(r.G.lagoon_mg),'MG volume'],[r.S.lag_add>0?'+'+n1(r.S.lag_add)+' MG':'OK','to add']]},
+  {k:'power',n:'Power plant',ic:'power',col:'#d99a1e',ids:['powerhouse'],sec:'power',parts:()=>keysOf('power'),
+   one:'Diesel generators; engine heat warms the water plant.',d:'Every pump, heater and light runs on the village diesel plant. Recovered engine heat cuts the fuel the water plant burns.',
+   need:r=>true,nums:r=>[[n0(r.S.add_peak),'kW added peak'],[n0((r.S.u_kwh+r.S.hh_kwh)/1000),'MWh / yr'],[r.S.gen_add_kw>0?'+'+n0(r.S.gen_add_kw)+' kW':'OK','capacity to add']]},
+  {k:'fuel',n:'Fuel & barge landing',ic:'landing',col:'#7f97a8',ids:['bargelanding','fuelheader','fuelline','fuelbarge'],parts:()=>['bargelanding','fuelheader','fuelline','fuelbarge','boatlanding'].filter(id=>A[id]),
+   one:'Everything big arrives by summer barge.',d:'Fuel, pipe, tanks and trucks come up the river in a short open-water season. Heating fuel for a year is delivered at once and stored in the tank farm.',
+   need:r=>true,nums:r=>[[n0(r.S.u_heat_gal+r.S.hh_heat_gal),'gal heating fuel / yr'],[String(r.G.barge_m.filter(x=>x>0).length),'barge months'],[n0(r.S.u_veh_gal+r.S.hh_veh_gal),'gal vehicle fuel / yr']]},
+  {k:'hoppers',n:'Hoppers & dump station',ic:'bucket',col:'#9a7148',ids:['per_hopper','per_dump'],parts:()=>['per_hopper','per_dump','g_hopper','g_crew','h_dump'].filter(id=>A[id]),
+   one:'Where honeybuckets and greywater are emptied.',d:'Closed hopper bins for honeybuckets, and a heated dump station for greywater and urine. A crew hauls hoppers to the lagoon.',
+   need:r=>r.S.hop_on>0||r.S.self_on>0,nums:r=>[[n0(r.S.hoppers),'hoppers'],[n0(r.S.hop_trips),'hopper trips / yr'],[r.S.self_on>0?'Yes':'No','dump station']]},
+  {k:'bldgs',n:'Community buildings',ic:'school',col:'#9b7fd4',ids:['school','clinic','cityhall','tribehall','store'],parts:()=>['school','s_tank','s_ports','s_hold','s_boiler','clinic','c_tank','c_ports','c_hold','c_boiler','c_gen','cityhall','tribehall','store'].filter(id=>A[id]),
+   one:'School, clinic, offices and store are served too.',d:'Non-residential buildings get the same service as the homes around them or their own tanks and onsite units. They use a large share of the water.',
+   need:r=>true,nums:r=>[[n0(r.G.comm_conn),'buildings'],[n1(r.G.comm_edu),'EDU'],[n0(r.G.comm_gpd),'gal / day']]}];
+ const card=(u,r)=>{const on=u.need(r),ns=u.nums(r);return '<button class="ru-card'+(on?' on':' off')+'" data-ruu="'+u.k+'" style="--c:'+u.col+'"><span class="ru-ch"><i class="ru-ic sm">'+icoSvg(u.ic)+'</i><b>'+esc(u.n)+'</b>'+(on?'':'<em class="ru-tag no">not used</em>')+'</span><small class="ru-one">'+esc(u.one)+'</small><span class="ru-ns">'+ns.map(([v,l])=>ruNum(v,l)).join('')+'</span></button>';};
+ ruUtility=function(){const r=PR&&PR[PALT];if(!r)return null;if(RU.c)return utilDetail(RU.c,r);
+   const used=UTIL_T.filter(u=>u.need(r));
+   return ruCrumb('top','Village')+'<div class="ru-head"><i class="ru-ic" style="--c:#2479bd">'+icoSvg('plant')+'</i><div><b>Utility infrastructure</b><small>'+used.length+' of '+UTIL_T.length+' used by '+esc(PERM.ALTS.find(a=>a.k===PALT).n)+'</small></div></div>'+
+     '<p class="nv-lead">What the utility builds, runs and pays for. Cards marked “not used” are not needed for the selected option.</p><div class="ru-deck">'+used.map(u=>card(u,r)).join('')+UTIL_T.filter(u=>!u.need(r)).map(u=>card(u,r)).join('')+'</div>'+ruEng();};
+ function utilDetail(k,r){const u=UTIL_T.find(x=>x.k===k);if(!u)return null;const on=u.need(r),ns=u.nums(r);
+   let h=ruCrumb('utility','Utility infrastructure')+'<div class="ru-head"><i class="ru-ic" style="--c:'+u.col+'">'+icoSvg(u.ic)+'</i><div><b>'+esc(u.n)+'</b><small>'+(on?'Used by ':'Not used by ')+esc(PERM.ALTS.find(a=>a.k===PALT).n)+'</small></div></div><p class="nv-lead">'+esc(u.d)+'</p>';
+   h+='<div class="ru-kpis three">'+ns.map(([v,l])=>ruNum(v,l)).join('')+'</div>';
+   h+='<div class="ru-acts"><button class="cta" data-rub="fly">Show on the plan</button>'+(u.sec&&SECS[u.sec]?'<button class="tool" data-rub="sec">◱ '+esc(SECS[u.sec].title)+'</button>':'')+(u.infra&&INFRA_BY[u.infra]&&INFRA_BY[u.infra].view?'<button class="tool" data-rub="inside">Inside in 3D ›</button>':'')+'<button class="tool" data-rub="cost">$ Estimate</button></div>';
+   h+='<p class="np-h">Across the options</p><table class="ru-x"><tbody>'+PERM.ALTS.map(a=>{const x=PR[a.k],o=u.need(x),v=u.nums(x)[0];return '<tr class="'+(a.k===PALT?'sel':'')+'"><th><button data-ruopt="'+a.k+'">'+esc(a.n)+'</button></th><td>'+(o?'<i class="ok">●</i> used':'<i class="no">○</i> not used')+'</td><td class="r">'+(o?esc(v[0])+' <small>'+esc(v[1])+'</small>':'')+'</td></tr>';}).join('')+'</tbody></table>';
+   const ids=u.parts();if(ids.length)h+='<p class="np-h">Parts · '+ids.length+'</p><div class="ru-parts">'+ids.map(id=>'<button data-rup="'+id+'"><b>'+esc(SHORT[id]||A[id].t)+'</b><small>'+esc(firstSent(A[id].b))+'</small></button>').join('')+'</div>';
+   return h+ruEng();}
+ function utilFly(u){const b=ruPos(u.ids);if(!b)return;const s=new THREE.Sphere();b.getBoundingSphere(s);const dir=view==='site'?new V(.12,1,.42):new V(.55,.62,.85);camTo(s.center,Math.min(320,Math.max(view==='site'?55:34,s.radius*(view==='site'?3:2.6))),1.4,dir);siteOutline(u.ids);}
+ navEl.addEventListener('click',e=>{const t=e.target.closest('[data-ruu],[data-rub],[data-ruopt]');if(!t)return;e.stopPropagation();if(touring)stopTour();
+   if(t.dataset.ruu){if(current)closeInfo();RU.g='utility';RU.c=t.dataset.ruu;navRender();utilFly(UTIL_T.find(x=>x.k===RU.c));return;}
+   if(t.dataset.ruopt){setAlt(t.dataset.ruopt);return;}
+   const u=UTIL_T.find(x=>x.k===RU.c);if(!u)return;const a=t.dataset.rub;
+   if(a==='fly')utilFly(u);else if(a==='sec'){closeInfo();setSection(true,u.sec);}else if(a==='inside')enterInfra(u.infra);else if(a==='cost')openWB('estimate');},true);}
+navRender();
+
+
+/* =====================================================================
+   Roll-up step 3: Natural constraints cards, with a fit strip per
+   service type (works / needs care / rules it out)
+   ===================================================================== */
+{const n0=v=>pn(v,0),n1=v=>pn(v,1);
+ const LV=['Works','Needs care','Rules it out'],LC=['#2f9e5f','#e0a020','#d64545'];
+ NAT_T=[
+  {k:'flood',n:'River & flooding',ic:'hazard',col:'#3a7bd5',hz:'flood',scr:['k_flood'],
+   one:'Breakup ice jams and high water reach low lots.',d:'Spring breakup can jam ice and push water onto low ground. Anything at grade on a flooded lot, from tanks to drainfields to ports, is at risk, and trucks cannot reach flooded homes.',
+   nums:G=>[[pp(G.pct_flood),'lots in the 100-yr floodplain'],[n0(G.homes*G.pct_flood),'homes exposed'],['Breakup','peak season']],
+   base:{none:[0,'Nothing at the house to flood, but hoppers and paths do.'],self:[1,'Dump station and paths flood; the tank room is inside.'],haul:[1,'Trucks cannot reach flooded lots; ports must sit above flood.'],well:[1,'Wells and drainfields must sit above flood.'],pipe:[1,'Mains on piles ride above flood; stations must be raised.'],hyb:[1,'Mixed: depends on which lots are low.']}},
+  {k:'erosion',n:'Bank erosion',ic:'layers',col:'#a0703c',hz:'erosion',scr:[],
+   one:'The river bank moves toward town.',d:'The village-side bank loses ground each year. The river intake, barge landing and fuel header sit closest; homes and lines near the bank lose their setbacks over time.',
+   nums:G=>[['3','facilities at the bank'],['Yearly','bank retreat'],['20 yr','planning period']],
+   base:{none:[0,'Little to move.'],self:[0,'Little at risk outside the house.'],haul:[0,'Routes can be moved.'],well:[1,'Bank lots can lose well and drainfield setbacks.'],pipe:[1,'Mains near the bank need rerouting over time.'],hyb:[1,'Piped core and bank lots need watching.']}},
+  {k:'perma',n:'Permafrost & thaw',ic:'frost',col:'#5aa3c8',hz:'thaw',scr:['k_perma'],
+   one:'Ice-rich ground settles when warmed.',d:'Much of the townsite sits on frozen ground with ice in it. Warm buildings, buried pipes and drainfields can thaw it and the ground settles. Foundations and mains go on piles or pads to keep it frozen.',
+   nums:G=>[[pp(G.pct_icerich),'lots on ice-rich ground'],['Piles','for mains and buildings'],['6 ft','to permafrost for onsite']],
+   base:{none:[0,'No buried piping.'],self:[1,'House and tank room need a stable foundation.'],haul:[1,'Foundations and ports can heave and settle.'],well:[1,'Onsite systems need unfrozen soil above permafrost.'],pipe:[1,'Mains on piles; heat from pipes must not thaw the ground.'],hyb:[1,'Depends on the lots in each area.']}},
+  {k:'cold',n:'Cold & seasons',ic:'therm',col:'#7f97a8',scr:['k_seasons','k_power','k_ops'],
+   one:'Long, dark winters; a short building season.',d:'Water freezes fast at −40 °F. Every pipe, tank and port needs heat or movement, and an outage starts a freeze clock. Construction squeezes into a few summer months.',
+   nums:G=>[[n0(G.hdd),'degree-days (°F)'],[n0(G.design_t)+'°F','design low'],[n1(G.build_wks),'build weeks / year']],
+   base:{none:[1,'Hauling jugs in the cold and dark.'],self:[1,'Winter hauling by sled; tank room must stay warm.'],haul:[1,'Heat trace, heated garage, drifted roads.'],well:[1,'Power outage can freeze the well line and onsite unit.'],pipe:[1,'Circulation and heat-add all winter.'],hyb:[1,'All of the above, by area.']}},
+  {k:'soils',n:'Groundwater & soils',ic:'box',col:'#8a7a52',scr:['k_gw','k_lot','k_lot_os'],
+   one:'Shallow water, frozen ground and small lots limit onsite systems.',d:'An onsite system needs 4 ft of soil to groundwater and 6 ft to permafrost, 100 ft from any well, and room on the lot. Many village lots cannot meet that without an engineered mound or a packaged unit.',
+   nums:G=>[[n0(G.lot_sqft),'sq ft typical lot'],[n0(G.min_lot_mound),'sq ft for a mound'],['100 ft','well setback']],
+   base:{none:[0,'No onsite system.'],self:[0,'No onsite system.'],haul:[0,'Unless onsite wastewater is chosen.'],well:[1,'Lot size and separation decide what fits.'],pipe:[0,'No onsite system.'],hyb:[1,'Wells only on large outer lots.']}},
+  {k:'access',n:'Access & logistics',ic:'plane',col:'#c0563b',scr:['k_access','k_seasons'],
+   one:'Barge in summer, air the rest of the year.',d:'Pipe, tanks, trucks and a year of fuel arrive on the summer barge. Miss the barge and materials fly or wait a year. Parts and operators for complex equipment are far away.',
+   nums:G=>[[String(G.barge_m.filter(x=>x>0).length),'barge months'],[n1(Math.max(...G.access_m))+'×','winter cost factor'],['Air','the rest of the year']],
+   base:{none:[0,'Little to ship.'],self:[1,'Tanks and fixtures for every home on the barge.'],haul:[1,'Trucks and parts shipped in; one truck down stops service.'],well:[1,'A drill rig and parts for every lot.'],pipe:[1,'Largest barge order; multi-season build.'],hyb:[1,'Several systems to supply and run.']}}];
+ function fit(c,alt){const r=PR[alt],hit=r.ks.filter(k=>c.scr.includes(k.id));const b=c.base[alt]||[0,''];
+   if(hit.length){const m=Math.max(b[0],...hit.map(k=>k.s));const notes=hit.filter(k=>k.s>0).map(k=>k.n+(k.note?': '+k.note:''));return[m,notes.length?notes.join('; ')+'.':b[1]];}return b;}
+ const strip=c=>'<span class="ru-fit">'+PERM.ALTS.map(a=>{const [l]=fit(c,a.k);return '<i class="'+(a.k===PALT?'sel':'')+'" style="--f:'+LC[l]+'" data-tip="'+esc(a.n)+'" data-tip2="'+LV[l]+'">'+icoSvg(ALT_ICO[a.k])+'</i>';}).join('')+'</span>';
+ const card=c=>{const G=PR[PALT].G,[l]=fit(c,PALT);return '<button class="ru-card" data-run="'+c.k+'" style="--c:'+c.col+'"><span class="ru-ch"><i class="ru-ic sm">'+icoSvg(c.ic)+'</i><b>'+esc(c.n)+'</b><em class="ru-tag lv" style="--f:'+LC[l]+'">'+LV[l]+'</em></span><small class="ru-one">'+esc(c.one)+'</small>'+strip(c)+'</button>';};
+ ruNature=function(){const r=PR&&PR[PALT];if(!r)return null;if(RU.c)return natDetail(RU.c);
+   const care=NAT_T.filter(c=>fit(c,PALT)[0]>0).length;
+   return ruCrumb('top','Village')+'<div class="ru-head"><i class="ru-ic" style="--c:#c0563b">'+icoSvg('hazard')+'</i><div><b>Natural constraints</b><small>'+care+' of '+NAT_T.length+' need care for '+esc(PERM.ALTS.find(a=>a.k===PALT).n)+'</small></div></div>'+
+     '<p class="nv-lead">What the land, river and climate allow. Each strip shows the six service types: <b style="color:'+LC[0]+'">works</b>, <b style="color:'+LC[1]+'">needs care</b>, <b style="color:'+LC[2]+'">rules it out</b>.</p><div class="ru-deck">'+NAT_T.map(card).join('')+'</div>'+ruEng();};
+ function natDetail(k){const c=NAT_T.find(x=>x.k===k);if(!c)return null;const G=PR[PALT].G;
+   let h=ruCrumb('nature','Natural constraints')+'<div class="ru-head"><i class="ru-ic" style="--c:'+c.col+'">'+icoSvg(c.ic)+'</i><div><b>'+esc(c.n)+'</b><small>Natural constraint</small></div></div><p class="nv-lead">'+esc(c.d)+'</p>';
+   h+='<div class="ru-kpis three">'+c.nums(G).map(([v,l])=>ruNum(v,l)).join('')+'</div>';
+   h+='<div class="ru-acts">'+(c.hz?'<button class="cta" data-rnb="map">Show on the hazard map</button>':'')+(c.k==='cold'?'<button class="tool" data-hub="open:study_heat">Heat-loss study</button><button class="tool" data-hub="open:ops">Outages & freeze time</button>':'')+
+     (c.k==='soils'?'<button class="tool" data-hub="open:study_onsite">Mounds vs packaged units</button><button class="tool" data-rnb="sec">◱ Section I–I</button>':'')+(c.k==='access'?'<button class="tool" data-hub="alaska">Alaska view</button>':'')+
+     (c.hz?'<button class="tool" data-hub="scn">Scenario sliders</button>':'')+'<button class="tool" data-rnb="inputs">Inputs</button></div>';
+   h+='<p class="np-h">What it means for each service type</p><div class="ru-fitl">'+PERM.ALTS.map(a=>{const [l,why]=fit(c,a.k);return '<button class="'+(a.k===PALT?'sel':'')+'" data-ruopt="'+a.k+'" style="--f:'+LC[l]+'"><i>'+icoSvg(ALT_ICO[a.k])+'</i><span><b>'+esc(a.n)+' <em>'+LV[l]+'</em></b><small>'+esc(why)+'</small></span></button>';}).join('')+'</div>';
+   return h+ruEng();}
+ navEl.addEventListener('click',e=>{const t=e.target.closest('[data-run],[data-rnb]');if(!t)return;e.stopPropagation();if(touring)stopTour();
+   if(t.dataset.run){if(current)closeInfo();RU.g='nature';RU.c=t.dataset.run;navRender();const c=NAT_T.find(x=>x.k===RU.c);if(c&&c.hz&&HZ.open)setHazTab(c.hz);return;}
+   const c=NAT_T.find(x=>x.k===RU.c);if(!c)return;const a=t.dataset.rnb;
+   if(a==='map')openHazards(c.hz);else if(a==='sec'){closeInfo();setSection(true,'onsite');}else if(a==='inputs')openWB('inputs');},true);}
+navRender();
+
+
+/* =====================================================================
+   Simple mode + camera overhaul
+   - Camera: occlusion-aware framing (view offset), keeps the user's heading,
+     clamps tilt, eased spherical flights with a gentle pull-back on long hops.
+   - Declutter: landmark pins only from afar; the rest appear as you zoom in.
+   - Panel: one question, one sentence, one number; Expert view restores all.
+   ===================================================================== */
+const FIT_R={wtp:20,powerhouse:20,lagoon:24,homes:48,school:12,clinic:10,cityhall:9,tribehall:9,store:9,bargelanding:16,boatlanding:12,airstrip:60,route:62,watertruck:9,sewertruck:9,thishome:10,wellhome:10,pipedlot:14,fuelheader:10,fuelline:22,fuelbarge:16,hz_flood:70,hz_erosion:50,hz_thaw:50};
+const CAM=(function(){const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+  const occT={l:0,r:0,b:0},occ={l:0,r:0,b:0};
+  function measure(){const W=innerWidth,H=innerHeight;occT.l=occT.r=occT.b=0;if(sectionOn)return;
+    if(phoneQ.matches){const bot=e=>{if(e&&!e.hidden&&e.offsetParent!==null){const q=e.getBoundingClientRect();if(q.height&&q.top>H*.2&&q.top<H)occT.b=Math.max(occT.b,H-q.top+8);}};
+      if(document.body.classList.contains('navdrawer'))bot(bEl('nav'));bot(bEl('panel'));bot(bEl('drop'));if(!occT.b)bot(bEl('mbar'));return;}
+    const n=bEl('nav');if(n&&!document.body.classList.contains('nav-closed')&&n.offsetParent!==null){const q=n.getBoundingClientRect();if(q.width&&q.left<W/3)occT.l=Math.max(0,q.right+8);}
+    ['panel','hazards'].forEach(id=>{const e=bEl(id);if(e&&!e.hidden&&e.offsetParent!==null){const q=e.getBoundingClientRect();if(q.width&&q.left>W*.45)occT.r=Math.max(occT.r,W-q.left+8);}});
+    const d=bEl('drop');if(d&&!d.hidden){const q=d.getBoundingClientRect();occT.b=Math.max(0,H-q.top+8);}}
+  let last=0;
+  function tick(now){requestAnimationFrame(tick);const dt=Math.min(.05,(now-(last||now))/1000);last=now;measure();
+    const k=Math.min(1,dt*5);let moved=false;for(const s of['l','r','b']){const d=occT[s]-occ[s];if(Math.abs(d)>.5){occ[s]+=d*k;moved=true;}else occ[s]=occT[s];}
+    const W=innerWidth,H=innerHeight,sx=(occ.l-occ.r)/2,sy=occ.b/2;
+    if(Math.abs(sx)<.5&&Math.abs(sy)<.5){if(camera.view&&camera.view.enabled)camera.clearViewOffset();}
+    else if(moved||!camera.view||!camera.view.enabled||camera.view.fullWidth!==W||camera.view.fullHeight!==H)camera.setViewOffset(W,H,-sx,sy,W,H);
+    const open=view==='site'||view==='village';controls.minPolarAngle=open?.18:0;controls.maxPolarAngle=open?1.2:Math.PI*.49;}
+  requestAnimationFrame(tick);
+  // distance that fits a sphere of radius r inside the uncovered part of the screen
+  function fitDist(r){measure();const W=innerWidth,H=innerHeight,vw=Math.max(240,W-occT.l-occT.r),vh=Math.max(200,H-occT.b);
+    const tv=Math.tan(camera.fov*Math.PI/360)*vh/H,th=Math.tan(camera.fov*Math.PI/360)*(W/H)*vw/W;return r*1.08/Math.sin(Math.atan(Math.min(tv,th)));}
+  function occFactor(){measure();const W=innerWidth,H=innerHeight,vw=Math.max(240,W-occT.l-occT.r),vh=Math.max(200,H-occT.b);return Math.pow(cl(Math.max(W/vw,H/vh),1,2.2),.9);}
+  return{fitDist,occFactor,measure,occT,cl};})();
+// eased spherical flight: heading and tilt interpolate, distance interpolates in log space with a pull-back hop
+window.CAMSTEP=function(tw,u){const cl=CAM.cl;
+  if(!tw.sph){const sp=o=>{const r=Math.max(.01,o.length());return{r,az:Math.atan2(o.x,o.z),el:Math.asin(cl(o.y/r,-1,1))};};
+    tw.s0=sp(tw.p0.clone().sub(tw.t0));tw.s1=sp(tw.p1.clone().sub(tw.t1));let d=tw.s1.az-tw.s0.az;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;tw.daz=d;
+    tw.hop=Math.min(.6,tw.t0.distanceTo(tw.t1)/(tw.s0.r+tw.s1.r+1)*.9);tw.sph=1;}
+  const e=u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2;controls.target.lerpVectors(tw.t0,tw.t1,e);
+  const r=Math.exp(Math.log(tw.s0.r)+(Math.log(tw.s1.r)-Math.log(tw.s0.r))*e)*(1+tw.hop*Math.sin(Math.PI*e)),az=tw.s0.az+tw.daz*e,el=tw.s0.el+(tw.s1.el-tw.s0.el)*e,t=controls.target;
+  camera.position.set(t.x+r*Math.cos(el)*Math.sin(az),t.y+r*Math.sin(el),t.z+r*Math.cos(el)*Math.cos(az));};
+// every fly-to: keep the user's heading in the open village, nice tilt, distance corrected for covered screen, time from travel
+{const camTo0=camTo;camTo=function(c,dist,dur,dirIn){const cl=CAM.cl,cur=camera.position.clone().sub(controls.target);
+  if(FACV.includes(view)){return camTo0(c,dist,dur,dirIn);}
+  const curAz=Math.atan2(cur.x,cur.z);let el=dirIn?Math.asin(cl(dirIn.clone().normalize().y,-1,1)):Math.asin(cl(cur.y/Math.max(.01,cur.length()),-1,1));
+  el=cl(el,view==='site'?.7:.45,1.05);const dir=new V(Math.cos(el)*Math.sin(curAz),Math.sin(el),Math.cos(el)*Math.cos(curAz));
+  // an open card frames its object by its real size
+  if(current&&A[current]&&A[current].v==='village'&&!window.__noFit){let rr=FIT_R[current];
+    if(!rr){const bx=ruPos([current]);if(bx){const sp=new THREE.Sphere();bx.getBoundingSphere(sp);if(sp.center.distanceTo(c)<sp.radius+25){rr=sp.radius;c=sp.center.clone();c.y*=.4;}}}
+    if(!rr)rr=Math.max(8,dist*.32);dist=CAM.fitDist(CAM.cl(rr,phoneQ.matches?10:6,140))/CAM.occFactor();}
+  dist=cl(dist*CAM.occFactor(),controls.minDistance*2,controls.maxDistance);
+  const travel=controls.target.distanceTo(c),r0=cur.length();const auto=cl(.75+.42*Math.log2(1+travel/Math.max(12,Math.min(r0,dist))),.8,2.3);
+  camTo0(c,dist,reduceMotion?.01:auto,dir);};}
+// frame a set of objects by their bounds
+function frameIds(ids,minR){const b=ruPos(ids);if(!b)return false;const s=new THREE.Sphere();b.getBoundingSphere(s);const r=Math.max(minR||8,s.radius);
+  camTo(s.center,CAM.fitDist(r)/CAM.occFactor(),1);return true;}
+ruFlyHome=function(k){const T=HOME_T[k];if(T.anchor&&frameIds([T.anchor],18)){siteOutline(T.tags);return;}const i=perKinds.indexOf(k);if(i<0)return;const p=homes[i].g.position.clone();camTo(p,CAM.fitDist(18)/CAM.occFactor(),1);siteOutline(T.tags);};
+// overview: a 3/4 view of the whole village instead of straight down
+{const pr0=preset;preset=function(v){if(v!=='site')return pr0(v);const t=new V(-5,0,10),el=.86,az=.3,r=CAM.fitDist(92);
+  return{p:t.clone().add(new V(Math.cos(el)*Math.sin(az)*r,Math.sin(el)*r,Math.cos(el)*Math.cos(az)*r)),t};};}
+// grabbing the view during a flight hands control back immediately
+renderer.domElement.addEventListener('pointerdown',()=>{if(tw&&!touring){tw=null;controls.enabled=true;controls.update();}},true);
+
+/* ---------- declutter pins ---------- */
+const PIN_KEY=new Set(['wtp','powerhouse','lagoon','homes','school','bargelanding','airstrip']);
+window.pinAllow=function(id,a){if(document.body.classList.contains('pro')||a.hz)return true;if(view!=='site'&&view!=='village')return true;
+  if(id===current||id===hoverId||id===hsHover)return true;if(PIN_KEY.has(id))return true;
+  anchorWorld(a,_pinV);return camera.position.distanceTo(_pinV)<85;};
+const _pinV=new V();
+
+/* ---------- simple panel ---------- */
+const ruTop0=ruTop,ruEng0=ruEng;
+const SX_SHORT={none:'None',self:'Self-haul',haul:'Truck',well:'Well',pipe:'Piped',hyb:'Mix'};
+ruTop=function(){if(document.body.classList.contains('pro'))return ruTop0();
+  const T=HOME_T[PALT],n=ruNums(PALT)||{},a=PERM.ALTS.find(z=>z.k===PALT)||{};
+  let h='<div class="sx-hero"><p class="sx-q">How should homes get water?</p><div class="sx-opts" role="radiogroup" aria-label="Way to serve homes">'+
+    RU_ORDER.map(k=>{const z=PERM.ALTS.find(q=>q.k===k)||{};return '<button role="radio" data-palt="'+k+'" aria-checked="'+(k===PALT)+'" style="--c:'+(z.ic||'#999')+'" title="'+esc(HOME_T[k].n)+'">'+icoSvg(ALT_ICO[k])+'<span>'+esc(SX_SHORT[k])+'</span></button>';}).join('')+'</div>'+
+    '<div class="sx-sel" style="--c:'+(a.ic||'#999')+'"><b>'+esc(T.n)+'</b><p>'+esc(T.one)+'</p><div class="sx-big"><span><b>'+pd(n.mo||0)+'</b><small>a month per household</small></span>'+
+    (n.gpcd!=null?'<span><b>'+pn(n.gpcd,0)+'</b><small>gallons a person a day</small></span>':'')+'</div></div>'+
+    '<button class="sx-drop" data-drop><span class="sx-play">▶</span><span><b>Follow a drop of water</b><small>River → home → back, for this option</small></span></button></div>'+
+    '<p class="sx-h">Explore</p><div class="sx-rows">'+
+    [['homes','home','#3aa0e8','Homes','What each home gets'],['utility','plant','#2479bd','Utility','What the village builds and runs'],['nature','hazard','#c0563b','Land & climate','River, permafrost, cold, access']]
+      .map(([g,ic,c,t,s])=>'<button class="sx-row" data-ru="'+g+'" style="--c:'+c+'"><i>'+icoSvg(ic)+'</i><span><b>'+t+'</b><small>'+s+'</small></span><em>›</em></button>').join('')+'</div>'+ruEng();
+  return h;};
+ruEng=function(){if(document.body.classList.contains('pro'))return ruEng0();
+  return '<div class="sx-foot"><button data-wb="compare">Compare costs</button><button data-ru="studies">Studies</button><button data-sx="pro">Expert view</button></div>';};
+function setPro(on){document.body.classList.toggle('pro',on);try{localStorage.setItem('hwh-pro',on?'1':'0');}catch(e){}navRender();}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-sx]');if(!b)return;e.preventDefault();setPro(b.dataset.sx==='pro'?!document.body.classList.contains('pro'):false);});
+{let pro=false;try{pro=localStorage.getItem('hwh-pro')==='1';}catch(e){}document.body.classList.toggle('pro',pro);
+ const nh=document.querySelector('.nav-h');if(nh&&!bEl('sx-mode')){const b=document.createElement('button');b.id='sx-mode';b.className='sx-mode';b.dataset.sx='pro';b.title='Switch between the simple and expert views';nh.insertBefore(b,nh.lastElementChild);}
+ const upd=()=>{const b=bEl('sx-mode');if(b)b.textContent=document.body.classList.contains('pro')?'Simple':'Expert';};upd();
+ new MutationObserver(upd).observe(document.body,{attributes:true,attributeFilter:['class']});}
+// land on the 3/4 overview
+{const et=enterTwin;enterTwin=function(){et.apply(this,arguments);};}
+navRender();
+/* ---------- cycle through the village in the order water moves ---------- */
+{const RING=['bargelanding','wtp','powerhouse','watertruck','homes','thishome','school','clinic','cityhall','tribehall','store','wellhome','pipedlot','sewertruck','lagoon','airstrip','fuelheader'].filter(k=>A[k]);
+ RING.forEach(k=>{A[k].list=RING;});
+ const nm=k=>SHORT[k]||A[k].t;
+ const oi=openInfo;openInfo=function(id){const r=oi.apply(this,arguments);if(current!==id)return r;
+   const L=listFor(id),i=L.indexOf(id),pv=bEl('p-prev'),nx=bEl('p-next');
+   if(L.length>1&&i>=0){nx.innerHTML='<small>Next</small><b>'+esc(nm(L[(i+1)%L.length]))+' →</b>';pv.innerHTML='<small>Back</small><b>← '+esc(nm(L[(i-1+L.length)%L.length]))+'</b>';}
+   else{nx.textContent='Next →';pv.textContent='← Prev';}return r;};}
+/* ---------- step between systems inside a facility (phone bar + desktop system bar) ---------- */
+{const sysList=()=>(FSYS[view]||[]).filter(g=>SYSL[g[0]]&&sysMembers(g[0]).length);
+ function sysStep(d){const L=sysList();if(!L.length)return;let i=L.findIndex(g=>g[0]===hlKey);i=i<0?(d>0?0:L.length-1):(i+d+L.length)%L.length;if(current)closeInfo();pickSystem(L[i][0]);}
+ window.sysStep=sysStep;
+ const rb=renderBar;renderBar=function(){rb();if(document.body.dataset.level!=='3')return;const L=sysList();if(!L.length)return;
+   const x=INFRA_BY[VIEW2INFRA[view]],i=L.findIndex(g=>g[0]===hlKey),cur=i>=0?L[i][1]:'All systems';
+   mbar.innerHTML='<button class="mb-menu" data-mb="menu" aria-label="Open menu">☰</button><button class="tool" data-mb="back" aria-label="Back to the village">‹</button>'+
+     '<button class="mb-step" data-mbs="-1" aria-label="Previous system">◀</button><span class="mb-t mb-sys"><small>'+esc(x?x.n:VIEWNAME[view]||'')+'</small><b>'+esc(cur)+'</b><i>'+(i>=0?(i+1)+' / '+L.length:L.length+' systems')+'</i></span>'+
+     '<button class="mb-step" data-mbs="1" aria-label="Next system">▶</button><button class="tool" data-mb="sec" aria-label="2D drawing">◱</button>';};
+ mbar.addEventListener('click',e=>{const b=e.target.closest('[data-mbs]');if(!b)return;e.stopPropagation();sysStep(+b.dataset.mbs);},true);
+ const rs=renderSysbar;renderSysbar=function(){rs();const bar=bEl('sysbar');if(bar.hidden)return;const L=sysList();if(L.length<2)return;const i=L.findIndex(g=>g[0]===hlKey);
+   const t=bar.querySelector('.sb-t');if(t&&!bar.querySelector('.sb-step')){t.insertAdjacentHTML('beforebegin','<button class="sb-step" data-sbs="-1" aria-label="Previous system">◀</button>');t.insertAdjacentHTML('afterend','<span class="sb-n">'+(i+1)+' / '+L.length+'</span><button class="sb-step" data-sbs="1" aria-label="Next system">▶</button>');}};
+ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-sbs]');if(!b)return;e.stopPropagation();sysStep(+b.dataset.sbs);},true);
+ const os=onSysChange;onSysChange=function(){os();renderBar();};
+ document.addEventListener('keydown',e=>{if(current||document.body.dataset.level!=='3'||sectionOn||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
+   if(e.key==='ArrowRight'){sysStep(1);e.preventDefault();}else if(e.key==='ArrowLeft'){sysStep(-1);e.preventDefault();}});}
+renderBar();
+// phone: opening a card swaps the menu sheet for the card sheet, so only one covers the model
+{const oi=openInfo;openInfo=function(id){if(phoneQ.matches&&document.body.classList.contains('navdrawer'))setNav(false);return oi.apply(this,arguments);};}
 
 
 capTxt=function(){return '';};navRender();
