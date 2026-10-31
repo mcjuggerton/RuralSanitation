@@ -1251,6 +1251,39 @@ body:not(.pro) .sec-draw:has([data-id].sel) [data-id]:not(.sel):not(:has(.sel)){
   body:not(.pro) .sec-draw{align-items:center;justify-content:flex-start}
   body:not(.pro) .sec-legend{max-height:40%;display:grid!important}
 }
+/* ===== expert layer ===== */
+.p-xp{margin:8px 0 2px;border:1.5px solid #d5dde3;border-radius:14px;background:#f7f9fa;overflow:hidden}
+.xp-h{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border:0;background:none;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.xp-h span{font:800 .78rem var(--f-mono);text-transform:uppercase;letter-spacing:.06em}.xp-h small{flex:1;font-size:.74rem;color:var(--mute);text-align:right}.xp-h em{font-style:normal;font-weight:800;color:var(--mute)}
+.xp-b{padding:2px 12px 12px;border-top:1.5px dashed #d5dde3}
+.xp-k{margin:10px 0 5px;font:700 .62rem var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--mute);display:flex;align-items:center;gap:8px}
+.xp-in{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #e6ecf0}
+.xp-in>span:first-child{flex:1;min-width:0}.xp-in b{display:block;font-size:.8rem;font-weight:700}.xp-in small{display:block;font-size:.64rem;color:var(--mute);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xp-in.ch b::after{content:' • changed';color:#c77d00;font-size:.66rem;font-weight:800}
+.xp-v{display:flex;align-items:center;gap:4px;flex:none}.xp-v input{width:82px;padding:5px 7px;border:1.5px solid #c9d3da;border-radius:8px;font:600 .8rem var(--f-mono);text-align:right;background:#fff;color:var(--ink)}
+.xp-in.ch .xp-v input{border-color:#e0a020;background:#fff8e6}.xp-v input:focus{outline:2px solid var(--sun);border-color:var(--ink)}
+.xp-v i{font-style:normal;font-size:.64rem;color:var(--mute);min-width:34px}
+.xp-r{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid #c9d3da;background:#fff;cursor:pointer;font-size:.8rem;color:var(--ink)}
+.xp-t{width:100%;border-collapse:collapse;font-size:.76rem}.xp-t td{padding:5px 0;border-bottom:1px solid #e6ecf0;vertical-align:top}.xp-t td:last-child{text-align:right;font-family:var(--f-mono);white-space:nowrap;padding-left:8px}
+.xp-t small{display:block;color:var(--mute);font-size:.64rem;font-family:var(--f-mono)}.xp-t tr.tot td{font-weight:800;border-bottom:0}
+.xp-src{margin:8px 0 0;font-size:.66rem;color:var(--mute);line-height:1.35}
+.xp-a{display:flex;gap:6px;margin-top:10px}.xp-a .tool{flex:1;justify-content:center;font-size:.74rem;padding:7px}
+.xp-q{width:100%;padding:9px 12px;border:2px solid #c9d3da;border-radius:12px;font:inherit;font-size:.86rem;margin:6px 0 4px;background:#fff}
+.xp-ch{padding:4px 10px 8px;border-radius:12px;background:#fff8e6;margin:6px 0}
+.xp-ra{margin-left:auto;border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:2px 9px;font:700 .64rem var(--f-body);cursor:pointer;text-transform:none;letter-spacing:0}
+.xp-cat{border:1.5px solid #d5dde3;border-radius:12px;margin-bottom:5px;background:#fff;overflow:hidden}
+.xp-cat>button{display:flex;align-items:center;gap:8px;width:100%;padding:10px 12px;border:0;background:none;cursor:pointer;font:inherit;color:var(--ink);text-align:left}
+.xp-cat>button b{flex:1;font-size:.86rem}.xp-cat>button small{font-size:.7rem;color:var(--mute)}.xp-cat>button em{font-style:normal;color:var(--mute)}
+.xp-cat>div{padding:0 12px 8px}
+.xp-dl{display:grid;border:2px solid var(--ink);border-radius:16px;overflow:hidden;background:#fff;margin:8px 0}
+.xp-dl.two{border-width:1.5px;border-color:#d5dde3}
+.xp-dl button{display:flex;align-items:center;gap:11px;padding:11px 12px;border:0;border-top:1.5px solid #e3e9ee;background:#fff;cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.xp-dl button:first-child{border-top:0}.xp-dl button:hover{background:#fffaf0}
+.xp-dl i{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#e8eef2;font:800 .8rem var(--f-mono);font-style:normal;flex:none}
+.xp-dl span{flex:1}.xp-dl b{display:block;font-size:.9rem}.xp-dl small{display:block;font-size:.72rem;color:var(--mute)}.xp-dl em{font-style:normal;font-weight:800;color:var(--mute)}
+.xp-msg{min-height:1.2em;margin:2px 4px;font-size:.78rem;color:#2f7a4f;font-weight:700}
+.sx-data{margin-top:8px}
+.mb-menu{position:relative}.mb-badge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:#e0a020;color:#fff;border:2px solid var(--paper,#fffaf0);font:800 .62rem/14px var(--f-body);font-style:normal}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -9424,6 +9457,109 @@ navRender();renderBar();
  const ss=setSection;setSection=function(on,kind){const was=sectionKind;const r=ss.apply(this,arguments);if(on){if(sectionKind!==was||ki>=keys().length)ki=-1;lit(ki,false);}else bEl('section').classList.remove('zoom');renderBar();return r;};
  document.addEventListener('keydown',e=>{if(!sectionOn||current||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();e.stopImmediatePropagation();nav.querySelector('[data-ss="'+(e.key==='ArrowRight'?1:-1)+'"]').click();}},true);
  bEl('sec-close').innerHTML='✕<span class="sec-cl-t"> Back to 3D</span>';}
+
+
+/* =====================================================================
+   Expert layer inside the simple GUI
+   - Every card: a folded "For engineers" block — the estimate lines behind
+     this object, the assumptions that drive them (editable), and sources.
+   - Menu: "Plan & data" — assumptions sheet, Draft PER, workbook, import, share.
+   ===================================================================== */
+{const IN=new Map(PERM.IN.map(r=>[r[0],r])),DVF=new Map([...PERM.DV,...PERM.GL].map(r=>[r[0],r[3]]));
+ const H_ITEMS=['h_fillport','h_wtank','fix_full','h_heater','h_stank','h_pumpout','h_elec','h_arctic','h_pump','h_filter'];
+ const MAP={wtp:['wtp_exp','storage','fillsta','water_pt'],powerhouse:['gen_add'],lagoon:['lagoon_exp','dumpsta','grey_dump'],
+  watertruck:['wtruck','garage','fillsta'],sewertruck:['vtruck','dumpsta'],route:['wtruck','vtruck','garage'],homes:H_ITEMS,thishome:H_ITEMS,
+  wellhome:['well_drill','well_pump','well_house','treat_good','treat_iron','treat_ars','treat_brack','perc','septic','drainfield','mound_sys','mound_fill','mound_dose','pkg_small','pkg_large','pkg_disch','hold_tank'],
+  pipedlot:['main_w','main_vac','main_grav','piles','svc_pair','vac_pit','lift_sta','circ_sta','vac_sta','hydrant','p_house','nr_conn'],
+  school:['nr_conn','nr_well','nr_onsite','nr_pkg'],clinic:['nr_conn','nr_well','nr_onsite','nr_pkg'],bargelanding:['barge_mob'],
+  per_well:['well_drill','well_pump','well_house','treat_good','treat_iron','treat_ars','treat_brack','perc'],per_mound:['septic','mound_sys','mound_fill','mound_dose'],
+  per_pkg:['pkg_small','pkg_large','pkg_disch','nr_pkg'],per_conv:['septic','drainfield'],per_hold:['hold_tank'],
+  per_self:['s_tank','h_pump','h_filter','fix_min','s_heater','grey_tank','sep_toilet','haul_kit'],per_none:['hb_kit','jugs'],
+  per_svc:['svc_pair','vac_pit','p_house','fix_full'],per_main:['main_w','main_vac','main_grav','piles'],per_station:['circ_sta'],per_vstation:['vac_sta'],
+  per_waterpt:['water_pt'],per_dump:['grey_dump'],per_hopper:['hopper','hop_equip'],per_hydrant:['hydrant']};
+ const FAC={plant:'wtp',home:'thishome',well:'wellhome',piped:'pipedlot',power:'powerhouse',lagoon:'lagoon'};
+ function itemsFor(id){if(MAP[id])return MAP[id];if(/^g_/.test(id))return MAP.per_none;if(/^h_/.test(id)&&!MAP[id])return MAP.per_self;
+   if(/^i_(pkg|blower|uvd|disch)/.test(id))return MAP.per_pkg;if(/^i_/.test(id))return MAP.per_mound;
+   const v=A[id]&&(A[id].v0||A[id].v);if(FAC[v])return MAP[FAC[v]];const x=INFRA_OF(id);if(x&&x.ids&&MAP[x.ids[0]])return MAP[x.ids[0]];return null;}
+ // trace a formula down to the inputs it depends on
+ function inputsOf(expr,out,seen){if(!expr)return;let ns=[];try{ns=PERE.names(String(expr));}catch(e){return;}
+   ns.forEach(n=>{if(seen.has(n))return;seen.add(n);if(IN.has(n))out.add(n);else if(DVF.has(n))inputsOf(DVF.get(n),out,seen);});}
+ const COST_IN=['labor_rate','freight_rate','cont_pct','mob_pct','ohp_pct'];
+ function expert(id){const ids=itemsFor(id),r=PR&&PR[PALT];if(!ids||!r)return null;
+   const rows=r.cap.filter(c=>ids.includes(c.iid)&&c.q>0);const drv=new Set(),seen=new Set();
+   rows.forEach(c=>inputsOf(c.qf,drv,seen));if(!rows.length)ids.forEach(iid=>{const cr=PERM.CR.find(x=>x[0]===iid);if(cr)inputsOf(cr[1],drv,seen);});
+   const list=[...drv].filter(k=>!/^hyb_|^sh_/.test(k)).slice(0,7).concat(rows.length?COST_IN.slice(0,2):[]);
+   return{rows,inputs:[...new Set(list)],src:rows.length?rows[0].src:''};}
+ const D0=()=>PERE.defaults(PERM).v;
+ const fmtV=(k,v)=>{const r=IN.get(k);return (r&&/pct|share|rate$/.test(k)&&Math.abs(v)<=1&&r[3]!=='$/hr'?+(v*100).toFixed(3):v);};
+ function inRow(k){const r=IN.get(k);if(!r)return '';const v=PST.v[k],d=D0()[k],pct=/_pct$|_share$|growth_rate|disc_rate|loan_rate|afford_pct/.test(k);
+   const show=pct?+(v*100).toFixed(3):v,unit=pct?'%':r[3];
+   return '<label class="xp-in'+(v!==d?' ch':'')+'"><span><b>'+esc(r[2])+'</b><small>'+esc(r[5])+'</small></span><span class="xp-v"><input type="number" step="any" data-xv="'+k+'" data-pct="'+(pct?1:0)+'" value="'+show+'"><i>'+esc(unit)+'</i></span>'+
+     (v!==d?'<button class="xp-r" data-xr="'+k+'" title="Back to default ('+(pct?+(d*100).toFixed(3)+'%':d)+')">↺</button>':'')+'</label>';}
+ let xpOpen=false;try{xpOpen=localStorage.getItem('hwh-xp')==='1';}catch(e){}
+ const box=document.createElement('div');box.id='p-xp';box.className='p-xp';bEl('p-more').before(box);
+ function render(){const id=current;if(!id||touring){box.hidden=true;return;}const X=expert(id);if(!X){box.hidden=true;return;}box.hidden=false;
+   const tot=X.rows.reduce((s,c)=>s+c.con,0),a=PERM.ALTS.find(z=>z.k===PALT);
+   let h='<button class="xp-h" data-xt aria-expanded="'+xpOpen+'"><span>For engineers</span><small>'+(X.rows.length?pm(tot)+' in the '+esc(a.n.toLowerCase())+' estimate':'Not in the '+esc(a.n.toLowerCase())+' estimate')+'</small><em>'+(xpOpen?'▴':'▾')+'</em></button>';
+   if(xpOpen){h+='<div class="xp-b">';
+     if(X.inputs.length)h+='<p class="xp-k">Assumptions that drive it</p>'+X.inputs.map(inRow).join('');
+     if(X.rows.length)h+='<p class="xp-k">Estimate lines</p><table class="xp-t"><tbody>'+X.rows.map(c=>'<tr><td>'+esc(c.n)+'<small>'+pn(c.q)+' '+esc(c.unit)+' × '+pd(c.uc)+'</small></td><td>'+pd(c.con)+'</td></tr>').join('')+'<tr class="tot"><td>With markups and contingency</td><td>'+pd(tot)+'</td></tr></tbody></table>';
+     if(X.src)h+='<p class="xp-src">Source: '+esc(X.src)+'</p>';
+     h+='<div class="xp-a"><button class="tool" data-xa="assume">All assumptions</button><button class="tool" data-xa="est">Full estimate</button></div></div>';}
+   box.innerHTML=h;}
+ window.xpRender=render;
+ box.addEventListener('click',e=>{if(e.target.closest('[data-xt]')){xpOpen=!xpOpen;try{localStorage.setItem('hwh-xp',xpOpen?'1':'0');}catch(x){}render();return;}
+   const a=e.target.closest('[data-xa]');if(a){if(a.dataset.xa==='est'){closeInfo();openWB('estimate');}else{closeInfo();openAssume();}}});
+ // editing an assumption anywhere (card or sheet)
+ function setV(k,raw,pct){let v=parseFloat(raw);if(!isFinite(v))return;if(pct)v/=100;PST.v[k]=v;perChanged(true);setTimeout(()=>{render();if(RU.g==='assume')navRender();renderBar();},60);}
+ document.addEventListener('change',e=>{const i=e.target.closest&&e.target.closest('[data-xv]');if(i)setV(i.dataset.xv,i.value,i.dataset.pct==='1');});
+ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-xr]');if(!b)return;e.preventDefault();PST.v[b.dataset.xr]=D0()[b.dataset.xr];perChanged(true);setTimeout(()=>{render();if(RU.g==='assume')navRender();},60);});
+ const oi=openInfo;openInfo=function(id){const r=oi.apply(this,arguments);if(current===id)render();return r;};
+
+ /* ---------- assumptions sheet (in the menu) ---------- */
+ let aq='',aOpen={};
+ function changed(){const D=D0();return PERM.IN.filter(r=>PST.v[r[0]]!==D[r[0]]);}
+ function assumeHtml(){const ch=changed(),cats=[...new Set(PERM.IN.map(r=>r[1]))],q=aq.trim().toLowerCase();
+   let h=ruCrumb('top','Village')+'<div class="ru-head"><i class="ru-ic" style="--c:#7f97a8">'+icoSvg('sliders')+'</i><div><b>Assumptions</b><small>'+PERM.IN.length+' inputs · '+(ch.length?ch.length+' changed':'all defaults')+'</small></div></div>'+
+     '<input type="search" class="xp-q" id="xp-q" placeholder="Search, e.g. fuel, mound, labor" value="'+esc(aq)+'" aria-label="Search assumptions">';
+   if(q.length>1){const L=PERM.IN.filter(r=>(r[2]+' '+r[0]+' '+r[1]).toLowerCase().includes(q));h+='<p class="xp-k">'+L.length+' match'+(L.length===1?'':'es')+'</p>'+L.slice(0,40).map(r=>inRow(r[0])).join('');return h;}
+   if(ch.length)h+='<div class="xp-ch"><p class="xp-k">Changed from defaults <button class="xp-ra" data-xra>Reset all</button></p>'+ch.map(r=>inRow(r[0])).join('')+'</div>';
+   h+='<p class="xp-k">By topic</p>'+cats.map(c=>{const L=PERM.IN.filter(r=>r[1]===c),n=L.filter(r=>PST.v[r[0]]!==D0()[r[0]]).length;
+     return '<div class="xp-cat'+(aOpen[c]?' open':'')+'"><button data-xc="'+esc(c)+'"><b>'+esc(c)+'</b><small>'+L.length+(n?' · '+n+' changed':'')+'</small><em>'+(aOpen[c]?'▴':'▾')+'</em></button>'+(aOpen[c]?'<div>'+L.map(r=>inRow(r[0])).join('')+'</div>':'')+'</div>';}).join('');
+   return h;}
+ function dataHtml(){const ch=changed().length;
+   return ruCrumb('top','Village')+'<div class="ru-head"><i class="ru-ic" style="--c:#2479bd">'+icoSvg('book')+'</i><div><b>Plan &amp; data</b><small>Preliminary engineering report</small></div></div>'+
+   '<div class="xp-dl">'+
+   '<button data-xd="docx"><i>W</i><span><b>Draft PER</b><small>Word · USDA outline, '+esc(PERM.ALTS.find(a=>a.k===PALT).n)+'</small></span><em>↓</em></button>'+
+   '<button data-xd="xlsx"><i>X</i><span><b>Estimate workbook</b><small>Excel · live formulas, every input</small></span><em>↓</em></button>'+
+   '<button data-xd="import"><i>⇪</i><span><b>Import</b><small>A workbook you edited, or a scenario file</small></span><em>›</em></button>'+
+   '<button data-xd="json"><i>{}</i><span><b>Save scenario</b><small>Your '+(ch?ch+' changed assumptions':'settings')+' as a file</small></span><em>↓</em></button>'+
+   '<button data-xd="link"><i>🔗</i><span><b>Copy share link</b><small>Opens with your assumptions</small></span><em>›</em></button></div>'+
+   '<p class="xp-msg" id="xp-msg" aria-live="polite"></p>'+
+   '<div class="xp-dl two"><button data-xd="assume"><i>≡</i><span><b>Assumptions</b><small>'+(ch?ch+' changed':'All defaults')+'</small></span><em>›</em></button><button data-wb="compare"><i>⇆</i><span><b>Compare options</b><small>Cost, life cycle, scores</small></span><em>›</em></button></div>';}
+ window.openAssume=function(){RU.g='assume';RU.c='';setNav(true);navRender();};
+ {const nr=navRender;navRender=function(){const g=RU.g;if(g!=='assume'&&g!=='data')return nr.apply(this,arguments);const qf=document.activeElement&&document.activeElement.id==='xp-q';RU.g='';const r=nr.apply(this,arguments);RU.g=g;
+   if(document.body.dataset.level==='1'){const p=bEl('pg-infra');p.innerHTML=g==='assume'?assumeHtml():dataHtml();if(qf){const i=bEl('xp-q');i.focus();i.setSelectionRange(i.value.length,i.value.length);}}return r;};}
+ navEl.addEventListener('click',e=>{const c=e.target.closest('[data-xc]');if(c){aOpen[c.dataset.xc]=!aOpen[c.dataset.xc];navRender();return;}
+   if(e.target.closest('[data-xra]')){if(!confirm('Reset every assumption to its default?'))return;const alt=PALT;PST.v=JSON.parse(JSON.stringify(D0()));PALT=alt;perChanged(true);setTimeout(navRender,60);return;}
+   const d=e.target.closest('[data-xd]');if(!d)return;e.stopPropagation();const k=d.dataset.xd,msg=t=>{const m=bEl('xp-msg');if(m)m.textContent=t;};
+   if(k==='assume'){RU.g='assume';navRender();}
+   else if(k==='docx'||k==='xlsx'){wbAct(k);msg(k==='docx'?'Building the report…':'Building the workbook…');setTimeout(()=>msg(''),3000);}
+   else if(k==='json')wbAct('savejson');
+   else if(k==='link'){const u=location.href.split('#')[0]+'#per='+b64u.enc(JSON.stringify(perDiff()));(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>msg('Link copied.'),()=>msg('Copy failed. The link is '+u.length+' characters.'));}
+   else if(k==='import'){const f=document.createElement('input');f.type='file';f.accept='.xlsx,.json,application/json';f.onchange=async()=>{const fl=f.files[0];if(!fl)return;
+     try{if(/\.json$/i.test(fl.name)){const o=JSON.parse(await fl.text());PST=PERE.defaults(PERM);perApply(o);perChanged(true);msg('Opened '+fl.name+'.');}
+       else{msg('Reading '+fl.name+'…');const W=await PERX.read(await fl.arrayBuffer());const s2=JSON.parse(JSON.stringify(PST)),ch=PERX.apply(PERM,s2,W);PST=s2;perChanged(true);msg(ch.length?'Brought in '+ch.length+' change'+(ch.length>1?'s':'')+' from '+fl.name+'.':'No changes found in '+fl.name+'.');}
+       setTimeout(renderBar,80);}catch(x){msg('That file could not be read: '+x.message);}};f.click();}},true);
+ navEl.addEventListener('input',e=>{if(e.target.id==='xp-q'){aq=e.target.value;navRender();}});
+ // menu home: a "Plan & data" row with the changed-assumption count
+ {const t0=ruTop;ruTop=function(){let h=t0();if(!SIMPLE())return h;const n=changed().length;
+   return h.replace('<div class="sx-foot">','<div class="sx-rows sx-data"><button class="sx-row" data-xd="assume" style="--c:#7f97a8"><i>'+icoSvg('sliders')+'</i><span><b>Assumptions</b><small>'+(n?n+' changed from defaults':PERM.IN.length+' inputs, all defaults')+'</small></span><em>›</em></button>'+
+     '<button class="sx-row" data-ru="data" style="--c:#2479bd"><i>'+icoSvg('book')+'</i><span><b>Plan &amp; data</b><small>Draft PER · workbook · import · share</small></span><em>›</em></button></div><div class="sx-foot">');};}
+ navEl.addEventListener('click',e=>{const b=e.target.closest('[data-ru="data"]');if(b){e.stopPropagation();RU.g='data';RU.c='';navRender();}},true);
+ // bar: a small badge when assumptions differ from defaults
+ {const rb=renderBar;renderBar=function(){rb();if(!SIMPLE())return;const n=changed().length,m=mbar.querySelector('.mb-menu');if(m&&n){m.insertAdjacentHTML('beforeend','<i class="mb-badge" title="'+n+' assumptions changed">'+n+'</i>');}};}
+ renderBar();}
 
 
 capTxt=function(){return '';};navRender();
