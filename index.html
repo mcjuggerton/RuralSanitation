@@ -1284,6 +1284,18 @@ body:not(.pro) .sec-draw:has([data-id].sel) [data-id]:not(.sel):not(:has(.sel)){
 .xp-msg{min-height:1.2em;margin:2px 4px;font-size:.78rem;color:#2f7a4f;font-weight:700}
 .sx-data{margin-top:8px}
 .mb-menu{position:relative}.mb-badge{position:absolute;top:-5px;right:-5px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:#e0a020;color:#fff;border:2px solid var(--paper,#fffaf0);font:800 .62rem/14px var(--f-body);font-style:normal}
+/* bar: place stepper */
+.mb-tour{flex:1;min-width:0;display:flex;align-items:center;gap:6px}
+.mb-tour .mb-step{width:40px;height:40px}
+.mb-place{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;line-height:1.15;text-align:center}
+.mb-place b{font:800 .9rem var(--f-display);max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mb-place small{font:600 .62rem var(--f-mono);color:var(--mute);white-space:nowrap}
+/* phone: options move into the menu sheet; bar = ☰ ◀ place ▶ 💧 */
+@media (max-width:640px){
+  body:not(.pro) #mbar .mb-alts{display:none!important}
+  body:not(.pro) .nav .sx-opts,body:not(.pro) .nav .sx-q{display:grid!important}
+  body:not(.pro) .nav .sx-q{display:block!important}
+}
+body:not(.pro) #panel .p-foot{display:none!important}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -9355,7 +9367,7 @@ ruTop=function(){if(document.body.classList.contains('pro'))return ruTop0();
       .map(([g,ic,c,t,s])=>'<button class="sx-row" data-ru="'+g+'" style="--c:'+c+'"><i>'+icoSvg(ic)+'</i><span><b>'+t+'</b><small>'+s+'</small></span><em>›</em></button>').join('')+'</div>'+ruEng();
   return h;};
 ruEng=function(){if(document.body.classList.contains('pro'))return ruEng0();
-  return '<div class="sx-foot"><button data-wb="compare">Compare costs</button><button data-ru="studies">Studies</button><button data-sx="pro">Expert view</button></div>';};
+  return '<div class="sx-foot"><button data-wb="compare">Compare costs</button><button data-ru="studies">Studies</button></div>';};
 function setPro(on){document.body.classList.toggle('pro',on);try{localStorage.setItem('hwh-pro',on?'1':'0');}catch(e){}navRender();}
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-sx]');if(!b)return;e.preventDefault();setPro(b.dataset.sx==='pro'?!document.body.classList.contains('pro'):false);});
 {let pro=false;try{pro=localStorage.getItem('hwh-pro')==='1';}catch(e){}document.body.classList.toggle('pro',pro);
@@ -9367,7 +9379,7 @@ document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest
 navRender();
 /* ---------- cycle through the village in the order water moves ---------- */
 {const RING=['bargelanding','wtp','powerhouse','watertruck','homes','thishome','school','clinic','cityhall','tribehall','store','wellhome','pipedlot','sewertruck','lagoon','airstrip','fuelheader'].filter(k=>A[k]);
- RING.forEach(k=>{A[k].list=RING;});
+ RING.forEach(k=>{A[k].list=RING;});window.RING=RING;
  const nm=k=>SHORT[k]||A[k].t;
  const oi=openInfo;openInfo=function(id){const r=oi.apply(this,arguments);if(current!==id)return r;
    const L=listFor(id),i=L.indexOf(id),pv=bEl('p-prev'),nx=bEl('p-next');
@@ -9560,6 +9572,25 @@ navRender();renderBar();
  // bar: a small badge when assumptions differ from defaults
  {const rb=renderBar;renderBar=function(){rb();if(!SIMPLE())return;const n=changed().length,m=mbar.querySelector('.mb-menu');if(m&&n){m.insertAdjacentHTML('beforeend','<i class="mb-badge" title="'+n+' assumptions changed">'+n+'</i>');}};}
  renderBar();}
+
+/* ---------- one interface: Expert mode retired (its detail lives in "For engineers" and Plan & data) ---------- */
+document.body.classList.remove('pro');try{localStorage.removeItem('hwh-pro');}catch(e){}
+{const b=bEl('sx-mode');if(b)b.remove();}
+setPro=function(){document.body.classList.remove('pro');renderBar();};
+/* ---------- explore the village from the bar: ◀ place ▶ ---------- */
+{const nm=k=>SHORT[k]||A[k].t;
+ function placeStep(d){if(current){step(d);return;}const L=window.RING||[];if(!L.length)return;const i=-1;
+   const k=i<0?(d>0?L[0]:L[L.length-1]):L[(i+d+L.length)%L.length];if(i>=0&&current){step(d);return;}window.__directOpen=true;try{openInfo(k);}finally{window.__directOpen=false;}}
+ window.placeStep=placeStep;
+ const rb=renderBar;renderBar=function(){rb();const lv=document.body.dataset.level;if(lv!=='1'&&lv!=='studies')return;
+   const L=current?listFor(current):(window.RING||[]),i=current?L.indexOf(current):-1,now=mbar.querySelector('.mb-now');
+   const lab=i>=0?'<b>'+esc(nm(current))+'</b><small>'+(i+1)+' of '+L.length+' places</small>':'<b>Explore</b><small>'+L.length+' places · ◀ ▶</small>';
+   const html='<div class="mb-tour"><button class="mb-step" data-mbn="-1" aria-label="Previous place">◀</button><span class="mb-place">'+lab+'</span><button class="mb-step" data-mbn="1" aria-label="Next place">▶</button></div>';
+   if(now)now.outerHTML=html;else{const a=mbar.querySelector('.mb-alts');if(a)a.insertAdjacentHTML('afterend',html);}};
+ mbar.addEventListener('click',e=>{const b=e.target.closest('[data-mbn]');if(!b)return;e.stopPropagation();placeStep(+b.dataset.mbn);},true);
+ const oi=openInfo;openInfo=function(){const r=oi.apply(this,arguments);renderBar();return r;};
+ const ci=closeInfo;closeInfo=function(){const r=ci.apply(this,arguments);renderBar();return r;};}
+renderBar();navRender();
 
 
 capTxt=function(){return '';};navRender();
