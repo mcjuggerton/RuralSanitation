@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fffaf0">
 <title>Haul-Water Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -9201,7 +9207,7 @@ function frameIds(ids,minR){const b=ruPos(ids);if(!b)return false;const s=new TH
   camTo(s.center,CAM.fitDist(r)/CAM.occFactor(),1);return true;}
 ruFlyHome=function(k){const T=HOME_T[k];if(T.anchor&&frameIds([T.anchor],18)){siteOutline(T.tags);return;}const i=perKinds.indexOf(k);if(i<0)return;const p=homes[i].g.position.clone();camTo(p,CAM.fitDist(18)/CAM.occFactor(),1);siteOutline(T.tags);};
 // overview: a 3/4 view of the whole village instead of straight down
-{const pr0=preset;preset=function(v){if(v!=='site')return pr0(v);const t=new V(-5,0,10),el=.86,az=.3,r=CAM.fitDist(92);
+{const pr0=preset;preset=function(v){if(v!=='site')return pr0(v);const t=new V(phoneQ.matches?-20:-12,0,12),el=.86,az=.3,r=CAM.fitDist(phoneQ.matches?112:92);
   return{p:t.clone().add(new V(Math.cos(el)*Math.sin(az)*r,Math.sin(el)*r,Math.cos(el)*Math.cos(az)*r)),t};};}
 // grabbing the view during a flight hands control back immediately
 renderer.domElement.addEventListener('pointerdown',()=>{if(tw&&!touring){tw=null;controls.enabled=true;controls.update();}},true);
