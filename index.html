@@ -1168,6 +1168,52 @@ body:not(.pro) #pg-infra .pa-grid,body:not(.pro) #pg-infra .ic-kpi{display:none}
   #panel{max-height:46vh!important}
   .sx-hero{gap:8px}.sx-q{font-size:1rem}.sx-sel p{margin-bottom:6px}.sx-big b{font-size:1.25rem}
 }
+/* ===== bottom dock (simple mode, every screen) ===== */
+body:not(.pro) #controls,body:not(.pro) #nav-open,body:not(.pro) #sysbar,body:not(.pro) #vtools{display:none!important}
+body:not(.pro){--dockW:min(760px,calc(100vw - 24px));--sheetW:min(540px,calc(100vw - 24px));--cardW:min(600px,calc(100vw - 24px))}
+body:not(.pro) .mbar{display:flex!important;position:fixed;left:50%!important;right:auto!important;width:var(--dockW);margin-left:calc(var(--dockW) / -2);bottom:calc(14px + env(safe-area-inset-bottom,0px))!important;z-index:14;gap:8px;padding:8px!important;border-radius:22px;background:var(--paper,#fffaf0)}
+body:not(.pro) .mb-menu{flex:none;width:46px;height:46px;border-radius:15px;font-size:1.1rem}
+body:not(.pro) .mb-menu.on{background:var(--sun)!important;color:var(--ink)!important}
+.mb-alts{display:flex;gap:4px;flex:none}
+.mb-alts button{width:42px;height:46px;border-radius:13px;border:2px solid transparent;background:#f1f4f6;display:grid;place-items:center;cursor:pointer;padding:0}
+.mb-alts button svg{width:21px;height:21px;stroke:var(--ink)}
+.mb-alts button:hover{background:#fff;border-color:#cdd8df}
+.mb-alts button[aria-checked="true"]{background:color-mix(in srgb,var(--c) 30%,#fff);border-color:var(--ink);box-shadow:0 2px 0 var(--ink)}
+.mb-now{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.15;padding:0 4px}
+.mb-now b{font:800 .92rem var(--f-display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mb-now small{font-size:.7rem;color:var(--mute);white-space:nowrap}
+.mb-drop{flex:none;display:flex;align-items:center;gap:7px;height:46px;padding:0 15px;border:2px solid var(--ink);border-radius:15px;background:var(--sun);box-shadow:0 2px 0 var(--ink);cursor:pointer;font:800 .86rem var(--f-body);color:var(--ink)}
+.mb-drop:active{transform:translateY(2px);box-shadow:none}
+/* menu = bottom sheet above the bar */
+body:not(.pro) .nav{position:fixed!important;top:auto!important;left:50%!important;right:auto!important;width:var(--sheetW)!important;margin-left:calc(var(--sheetW) / -2);bottom:calc(84px + env(safe-area-inset-bottom,0px))!important;height:min(58vh,620px)!important;max-height:none!important;border-radius:22px!important;z-index:13;
+  transform:translateY(calc(100% + 140px))!important;opacity:1!important;pointer-events:none;transition:transform .34s cubic-bezier(.2,.8,.2,1)!important;box-shadow:0 18px 50px rgba(20,30,40,.22),0 4px 0 var(--ink)}
+body:not(.pro).navdrawer .nav{transform:none!important;pointer-events:auto}
+body:not(.pro) .nav-x,body:not(.pro) #nav-x{display:none!important}
+body:not(.pro) .nav::before{content:'';position:absolute;top:7px;left:50%;width:44px;height:5px;margin-left:-22px;border-radius:3px;background:#c9d3da}
+/* the hero is now in the bar: the sheet starts at Explore */
+body:not(.pro) .nav .sx-opts,body:not(.pro) .nav .sx-q,body:not(.pro) .nav .sx-drop{display:none}
+/* selected object's card: compact, centered above the bar */
+body:not(.pro) #panel{top:auto!important;right:auto!important;left:50%!important;width:var(--cardW)!important;margin-left:calc(var(--cardW) / -2);bottom:calc(84px + env(safe-area-inset-bottom,0px))!important;max-height:min(44vh,460px)!important;border-radius:22px!important}
+body:not(.pro) #p-title{font-size:1.5rem!important;line-height:1.15;margin:2px 0 6px}
+body:not(.pro) #p-specs,body:not(.pro) #p-action,body:not(.pro) #panel .p-crumb,body:not(.pro) #panel .note,body:not(.pro) #panel .fig-note{display:none!important}
+body:not(.pro) #p-text{font-size:.92rem;line-height:1.5}
+body:not(.pro) .drop{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+body:not(.pro) #section{left:16px!important}
+@media (max-width:640px){
+  body:not(.pro){--dockW:calc(100vw - 16px);--sheetW:100vw;--cardW:100vw}
+  body:not(.pro) .mbar{bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;gap:5px;padding:6px!important}
+  .mb-now{display:none}.mb-drop b{display:none}.mb-drop{padding:0 12px;font-size:1.05rem}
+  .mb-alts{flex:1;justify-content:space-between}.mb-alts button{width:auto;flex:1;height:44px}
+  body:not(.pro) .mb-menu{width:44px;height:44px}
+  body:not(.pro) .nav{border-radius:22px 22px 0 0!important;bottom:calc(72px + env(safe-area-inset-bottom,0px))!important;height:52vh!important}
+  body:not(.pro) #panel{border-radius:22px 22px 0 0!important;bottom:calc(72px + env(safe-area-inset-bottom,0px))!important;max-height:46vh!important}
+  body:not(.pro) .drop{bottom:calc(72px + env(safe-area-inset-bottom,0px))}
+  body:not(.pro).navdrawer #mbar{display:flex!important}
+}
+.home-btn{position:fixed;z-index:60;top:calc(14px + env(safe-area-inset-top,0px));left:14px;display:flex;align-items:center;gap:7px;height:44px;padding:0 15px 0 11px;border:2px solid var(--ink);border-radius:999px;background:var(--paper,#fffaf0);box-shadow:0 3px 0 var(--ink),0 8px 22px rgba(20,30,40,.18);cursor:pointer;font:800 .86rem var(--f-display);color:var(--ink);animation:hbIn .25s ease-out}
+.home-btn[hidden]{display:none}.home-btn:hover{background:var(--sun)}.home-btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.home-btn svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes hbIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+body.pro .home-btn{left:auto;right:14px}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -8745,14 +8791,14 @@ const DROP=(function(){
       add({k:'out',at:river(lg.x),dist:70,waste:true,ttl:'Back to the river',txt:'After testing, the treated water is released, usually once or twice a year in open-water season, and the drop is back where it started.',win:'Nothing is released in winter; the lagoon waits for breakup and testing.',sec:['lagoon',['ldischarge','lmon']],open:'lagoon'});}
     R.forEach(s=>{s.at=s.at.clone();s.mix=mix;});return R;}
   // ---- motion ----
-  const up=new V(0,7,0);let anim=0;const DIR=new V(.42,.62,1);
+  const up=new V(0,7,0);let anim=0;const DIR=new V(.4,.8,.9);
   function at(s){return s.at.clone().add(up);}
   function travel(a,b,dur){const d=a.distanceTo(b),mid=a.clone().lerp(b,.5);mid.y+=Math.min(30,4+d*.22);st.trav={c:new THREE.QuadraticBezierCurve3(a,mid,b),t:0,dur:reduceMotion?.01:dur};}
   function loop(now){anim=requestAnimationFrame(loop);const dt=Math.min(.05,(now-(loop.t||now))/1000);loop.t=now;if(!st.on)return;
     const s=st.route[st.i];if(!s)return;let p;
     if(st.trav){st.trav.t+=dt/st.trav.dur;const u=Math.min(1,st.trav.t),e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;p=st.trav.c.getPoint(e);crumb(p,s.waste&&e>.5?BC:(st.route[st.i-1]&&st.route[st.i-1].waste?BC:WC));if(u>=1)st.trav=null;}
     else{p=at(s);p.y+=Math.sin(now/420)*.5;if(st.play&&!tw){st.clock+=dt;if(st.clock>=st.dwell){if(st.i<st.route.length-1)go(st.i+1);else{st.play=false;ui();}}}}
-    g.position.copy(p);const k=Math.max(1,camera.position.distanceTo(p)/34);g.scale.setScalar(k);g.rotation.y+=dt*.8;
+    g.position.copy(p);const k=Math.max(1,camera.position.distanceTo(p)/(phoneQ.matches?60:44));g.scale.setScalar(k);g.rotation.y+=dt*.8;
     ring.position.set(p.x,(s.at.y||0)+.15,p.z);ring.scale.setScalar(k*(1+.15*Math.sin(now/300)));
     const prog=bEl('drop-prog');if(prog)prog.style.width=(st.play&&!st.trav?Math.min(100,st.clock/st.dwell*100):0)+'%';}
   // ---- 2D section with the step's parts lit ----
@@ -8781,7 +8827,7 @@ const DROP=(function(){
     if(view!=='village')applyViewState('village');if(current)closeInfo();
     const dur=from?Math.min(3.4,Math.max(1.3,from.distanceTo(at(s))/40)):0;if(from)travel(from,at(s),dur);
     dm.color.set(s.waste?BC:WC);dm.emissive.set(s.waste?BC:WC);ring.material.color.set(s.waste?BC:WC);
-    camTo(s.at.clone().setY(2),s.dist,from?dur:1.6,DIR);
+    camTo(s.at.clone().setY(2),Math.max(34,s.dist*1.3),from?dur:1.6,DIR);
     if(st.inside&&!sectionOn)st.inside=false;if(st.inside)inside(!!s.sec);ui();}
   function start(){if(typeof touring!=='undefined'&&touring)stopTour();if(!bEl('wb').hidden&&typeof closeWB==='function')closeWB();perRun();st.route=build();if(!st.route.length)return;
     st.on=true;st.play=true;st.i=0;st.inside=false;trail.count=0;lastCrumb=null;g.visible=ring.visible=true;document.body.classList.add('drop-on');g.position.copy(at(st.route[0]));go(0);if(!anim)anim=requestAnimationFrame(loop);}
@@ -9161,10 +9207,12 @@ navRender();
    - Panel: one question, one sentence, one number; Expert view restores all.
    ===================================================================== */
 const FIT_R={wtp:20,powerhouse:20,lagoon:24,homes:48,school:12,clinic:10,cityhall:9,tribehall:9,store:9,bargelanding:16,boatlanding:12,airstrip:60,route:62,watertruck:9,sewertruck:9,thishome:10,wellhome:10,pipedlot:14,fuelheader:10,fuelline:22,fuelbarge:16,hz_flood:70,hz_erosion:50,hz_thaw:50};
+// a longer lens: less distortion, a calmer diorama look; heuristic distances scale to match
+camera.fov=30;camera.updateProjectionMatrix();const LENS_K=Math.tan(20*Math.PI/180)/Math.tan(15*Math.PI/180);controls.maxDistance=Math.round(420*LENS_K);
 const CAM=(function(){const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
   const occT={l:0,r:0,b:0},occ={l:0,r:0,b:0};
   function measure(){const W=innerWidth,H=innerHeight;occT.l=occT.r=occT.b=0;if(sectionOn)return;
-    if(phoneQ.matches){const bot=e=>{if(e&&!e.hidden&&e.offsetParent!==null){const q=e.getBoundingClientRect();if(q.height&&q.top>H*.2&&q.top<H)occT.b=Math.max(occT.b,H-q.top+8);}};
+    if(phoneQ.matches||!document.body.classList.contains('pro')){const bot=e=>{if(e&&!e.hidden&&e.offsetParent!==null){const q=e.getBoundingClientRect();if(q.height&&q.top>H*.2&&q.top<H)occT.b=Math.max(occT.b,H-q.top+8);}};
       if(document.body.classList.contains('navdrawer'))bot(bEl('nav'));bot(bEl('panel'));bot(bEl('drop'));if(!occT.b)bot(bEl('mbar'));return;}
     const n=bEl('nav');if(n&&!document.body.classList.contains('nav-closed')&&n.offsetParent!==null){const q=n.getBoundingClientRect();if(q.width&&q.left<W/3)occT.l=Math.max(0,q.right+8);}
     ['panel','hazards'].forEach(id=>{const e=bEl(id);if(e&&!e.hidden&&e.offsetParent!==null){const q=e.getBoundingClientRect();if(q.width&&q.left>W*.45)occT.r=Math.max(occT.r,W-q.left+8);}});
@@ -9192,6 +9240,7 @@ window.CAMSTEP=function(tw,u){const cl=CAM.cl;
   camera.position.set(t.x+r*Math.cos(el)*Math.sin(az),t.y+r*Math.sin(el),t.z+r*Math.cos(el)*Math.cos(az));};
 // every fly-to: keep the user's heading in the open village, nice tilt, distance corrected for covered screen, time from travel
 {const camTo0=camTo;camTo=function(c,dist,dur,dirIn){const cl=CAM.cl,cur=camera.position.clone().sub(controls.target);
+  const fitted=!!window.__fitted;window.__fitted=false;if(!fitted)dist*=LENS_K*(phoneQ.matches?1.35:1);
   if(FACV.includes(view)){return camTo0(c,dist,dur,dirIn);}
   const curAz=Math.atan2(cur.x,cur.z);let el=dirIn?Math.asin(cl(dirIn.clone().normalize().y,-1,1)):Math.asin(cl(cur.y/Math.max(.01,cur.length()),-1,1));
   el=cl(el,view==='site'?.7:.45,1.05);const dir=new V(Math.cos(el)*Math.sin(curAz),Math.sin(el),Math.cos(el)*Math.cos(curAz));
@@ -9204,10 +9253,10 @@ window.CAMSTEP=function(tw,u){const cl=CAM.cl;
   camTo0(c,dist,reduceMotion?.01:auto,dir);};}
 // frame a set of objects by their bounds
 function frameIds(ids,minR){const b=ruPos(ids);if(!b)return false;const s=new THREE.Sphere();b.getBoundingSphere(s);const r=Math.max(minR||8,s.radius);
-  camTo(s.center,CAM.fitDist(r)/CAM.occFactor(),1);return true;}
-ruFlyHome=function(k){const T=HOME_T[k];if(T.anchor&&frameIds([T.anchor],18)){siteOutline(T.tags);return;}const i=perKinds.indexOf(k);if(i<0)return;const p=homes[i].g.position.clone();camTo(p,CAM.fitDist(18)/CAM.occFactor(),1);siteOutline(T.tags);};
+  window.__fitted=true;camTo(s.center,CAM.fitDist(r)/CAM.occFactor(),1);return true;}
+ruFlyHome=function(k){const T=HOME_T[k];if(T.anchor&&frameIds([T.anchor],18)){siteOutline(T.tags);return;}const i=perKinds.indexOf(k);if(i<0)return;const p=homes[i].g.position.clone();window.__fitted=true;camTo(p,CAM.fitDist(18)/CAM.occFactor(),1);siteOutline(T.tags);};
 // overview: a 3/4 view of the whole village instead of straight down
-{const pr0=preset;preset=function(v){if(v!=='site')return pr0(v);const t=new V(phoneQ.matches?-20:-12,0,12),el=.86,az=.3,r=CAM.fitDist(phoneQ.matches?112:92);
+{const pr0=preset;preset=function(v){if(v!=='site'){const o=pr0(v);o.p=o.t.clone().add(o.p.clone().sub(o.t).multiplyScalar(LENS_K));return o;}const t=new V(phoneQ.matches?-17:-16,0,12),el=.9,az=phoneQ.matches?.22:.3,r=CAM.fitDist(phoneQ.matches?98:76);
   return{p:t.clone().add(new V(Math.cos(el)*Math.sin(az)*r,Math.sin(el)*r,Math.cos(el)*Math.cos(az)*r)),t};};}
 // grabbing the view during a flight hands control back immediately
 renderer.domElement.addEventListener('pointerdown',()=>{if(tw&&!touring){tw=null;controls.enabled=true;controls.update();}},true);
@@ -9271,6 +9320,47 @@ navRender();
 renderBar();
 // phone: opening a card swaps the menu sheet for the card sheet, so only one covers the model
 {const oi=openInfo;openInfo=function(id){if(phoneQ.matches&&document.body.classList.contains('navdrawer'))setNav(false);return oi.apply(this,arguments);};}
+
+
+/* =====================================================================
+   One bottom dock on every screen: no sidebars in simple mode.
+   Bar: menu · six options · follow a drop. The menu and the selected
+   object's card rise from the bottom; the camera frames above them.
+   ===================================================================== */
+const SIMPLE=()=>!document.body.classList.contains('pro');
+{const sn=setNav;setNav=function(o){if(!SIMPLE())return sn(o);document.body.classList.remove('nav-closed');document.body.classList.toggle('navdrawer',o);const b=bEl('nav-open');if(b)b.setAttribute('aria-expanded',o);renderBar();};}
+{const rb=renderBar;renderBar=function(){rb();if(!SIMPLE())return;const lv=document.body.dataset.level;
+  if(lv!=='1'&&lv!=='studies')return;const a=PERM.ALTS.find(z=>z.k===PALT)||{},n=ruNums(PALT)||{},open=document.body.classList.contains('navdrawer');
+  mbar.innerHTML='<button class="mb-menu'+(open?' on':'')+'" data-mb="menu" aria-label="'+(open?'Close':'Open')+' menu" aria-expanded="'+open+'">'+(open?'✕':'☰')+'</button>'+
+    '<div class="mb-alts" role="radiogroup" aria-label="Way to serve homes">'+RU_ORDER.map(k=>{const z=PERM.ALTS.find(q=>q.k===k)||{};return '<button role="radio" data-mbalt="'+k+'" aria-checked="'+(k===PALT)+'" style="--c:'+(z.ic||'#999')+'" title="'+esc(HOME_T[k].n)+'" aria-label="'+esc(HOME_T[k].n)+'">'+icoSvg(ALT_ICO[k])+'</button>';}).join('')+'</div>'+
+    '<span class="mb-now"><b>'+esc(HOME_T[PALT].n)+'</b><small>'+pd(n.mo||0)+' a month per home</small></span>'+
+    '<button class="mb-drop" data-drop aria-label="Follow a drop of water"><span>💧</span><b>Follow a drop</b></button>';};}
+mbar.addEventListener('click',e=>{const b=e.target.closest('[data-mbalt]');if(b){e.stopPropagation();setAlt(b.dataset.mbalt);renderBar();return;}
+  const m=e.target.closest('[data-mb="menu"]');if(m&&SIMPLE()){e.stopPropagation();if(current)closeInfo();setNav(!document.body.classList.contains('navdrawer'));}},true);
+// the menu closes when you go back to the model or open something from it
+renderer.domElement.addEventListener('pointerdown',()=>{if(SIMPLE()&&document.body.classList.contains('navdrawer'))setNav(false);},true);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&SIMPLE()&&document.body.classList.contains('navdrawer')){setNav(false);}});
+{const oi=openInfo;openInfo=function(id){if(SIMPLE()&&document.body.classList.contains('navdrawer'))setNav(false);return oi.apply(this,arguments);};}
+{const ds=DROP.start;DROP.start=function(){if(SIMPLE()&&document.body.classList.contains('navdrawer'))setNav(false);return ds.apply(this,arguments);};}
+// choosing a card in the menu flies the camera: drop the sheet so the object is in full view
+navEl.addEventListener('click',e=>{if(!SIMPLE())return;const t=e.target.closest('[data-ruc],[data-ruu],[data-rup],[data-run]');if(t&&!t.dataset.rup)setTimeout(()=>setNav(false),60);},true);
+{const sa=setAlt;setAlt=function(k){sa(k);renderBar();};}
+{const sp=setPro;setPro=function(on){sp(on);if(!on)setNav(false);else{document.body.classList.remove('navdrawer');}renderBar();};}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-sx]');if(b)setTimeout(renderBar,0);});
+if(SIMPLE())setNav(false);
+renderBar();
+
+/* ---------- Home: one button back to the village overview from anywhere ---------- */
+{const hb=document.createElement('button');hb.id='home-btn';hb.className='home-btn';hb.hidden=true;hb.setAttribute('aria-label','Back to the village overview');
+ hb.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M6 9.6V20h4.5v-5.5h3V20H18V9.6"/></svg><span>Village</span>';document.body.appendChild(hb);
+ const atHome=()=>!current&&!sectionOn&&!(window.DROP&&DROP.st.on)&&bEl('wb').hidden&&!document.body.classList.contains('navdrawer')&&(view==='site'||view==='village')&&!infraSel&&!RU.g&&!hlKey&&!(typeof HZ!=='undefined'&&HZ.open);
+ window.goHome=function(){if(typeof touring!=='undefined'&&touring)stopTour();if(window.DROP&&DROP.st.on)DROP.stop();if(sectionOn)setSection(false);if(!bEl('wb').hidden)closeWB();
+   if(typeof HZ!=='undefined'&&HZ.open&&typeof closeHazards==='function')closeHazards();if(current)closeInfo();if(hlKey)pickSystem('');
+   RU.g='';RU.c='';if(typeof siteOutline==='function')siteOutline(null);if(navMode!=='infra')setMode('infra');
+   if(document.body.classList.contains('navdrawer'))setNav(false);infraSel='';compSel='';siteSel=null;setView('site');navRender();renderBar();};
+ hb.addEventListener('click',e=>{e.stopPropagation();goHome();});
+ let shown=false;setInterval(()=>{if(document.body.classList.contains('splash-on'))return;const s=!atHome();if(s!==shown){shown=s;hb.hidden=!s;}},250);
+ document.addEventListener('keydown',e=>{if((e.key==='h'||e.key==='Home')&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)&&!e.metaKey&&!e.ctrlKey){goHome();}});}
 
 
 capTxt=function(){return '';};navRender();
