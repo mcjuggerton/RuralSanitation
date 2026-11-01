@@ -1354,6 +1354,21 @@ body.c4d-on #mbar,body.c4d-on .nav,body.c4d-on #panel{display:none!important}
   .c4-kpi span:nth-child(3){display:none}.c4-cap{font-size:.76rem;min-height:3.6em}.c4-lab{font-size:.6rem}.c4-row{min-height:12px}.c4-tr{height:10px}.c4-bar{height:8px}
   .c4-ctl{width:100%;justify-content:flex-end;margin-top:-4px}.c4-key{display:none}}
 @media (prefers-reduced-motion:reduce){.c4d-toast.in{animation:none}}
+/* 4D: today strip, winter tint, scope card */
+.c4-today{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:-2px 0 8px;font-size:.74rem;min-height:1.2em}
+.c4-today em{font-style:normal;font:700 .66rem var(--f-mono);color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+.c4-today span{display:inline-flex;align-items:center;gap:6px}.c4-today i{width:9px;height:9px;border-radius:2px;background:var(--c);display:inline-block}
+.c4-today b{font-family:var(--f-mono);font-variant-numeric:tabular-nums}.c4-today .fz{color:#2b5d8a;font-weight:700}
+.c4-tint{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .6s;background:linear-gradient(180deg,rgba(40,70,120,.55),rgba(150,180,220,.35))}
+@media (prefers-reduced-motion:reduce){.c4-tint{transition:none}}
+.c4-scope{position:fixed;z-index:32;top:calc(70px + env(safe-area-inset-top,0px));right:16px;width:min(420px,calc(100vw - 32px));box-sizing:border-box;padding:12px 14px;border:2px solid var(--ink);border-radius:18px;background:var(--paper,#fffaf0);box-shadow:0 4px 0 var(--ink),0 14px 34px rgba(0,0,0,.18)}
+.c4s-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.c4s-h b{font:800 1.05rem var(--f-display)}
+.c4s-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}.c4s-g div{padding:8px 10px;border-radius:12px;background:#f1f4f6}
+.c4s-g b{display:block;font:800 1.05rem var(--f-mono);font-variant-numeric:tabular-nums}.c4s-g span{display:block;font-size:.7rem;color:var(--mute);line-height:1.35;margin-top:2px}
+.c4s-n{margin:8px 2px 0;font-size:.66rem;color:var(--mute)}
+.c4-ctl button[aria-pressed="true"]{background:var(--sun)}
+@media (max-width:640px){.c4-scope{top:calc(64px + env(safe-area-inset-top,0px));right:8px;left:8px;width:auto}.c4s-g{grid-template-columns:1fr 1fr}.c4-today{font-size:.66rem;gap:4px 10px}}
+.c4-today .warn{color:#b3261e;font-weight:700}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -9716,6 +9731,13 @@ const C4D=(function(){
    const tAt=w=>{for(let m=0;m<TM;m++)if(W[m+1]>=w-1e-9){const a=W[m],b=W[m+1];return m+(b>a?(w-a)/(b-a):0);}return TM;};
    TASKS=TDEF.map(([k,n,a,b,c])=>({k,n,a,b,c,t0:tAt(a+1e-6),t1:tAt(b)}));TASKS.unshift({k:'design',n:'Design, permits and funding',a:0,b:0,c:'#9b7fd4',t0:0,t1:12});
    MS=[[12+5.3,'First barge'],[tAt(.2),'Station closed in'],[tAt(.58),'First home on'],[tAt(.9),'Last home on'],[tAt(1),'Commissioned']];}
+ let RATE={},WD=500,SC={};
+ function rates(){const r=PR.pipe,G=r.G,S=r.S;WD=N*G.build_wks*G.days_wk;const hrs=id=>r.cap.filter(c=>id.includes(c.iid)).reduce((a,c)=>a+(c.hrs||0),0),q=id=>(r.cap.find(c=>c.iid===id)||{q:0}).q;
+   const T=k=>TASKS.find(x=>x.k===k),days=k=>(T(k).b-T(k).a)*WD;
+   const mk=(k,qty,u,h)=>{const d=Math.max(1,days(k));RATE[k]={qty,u,h,perDay:qty/d,crew:h/(d*G.hrs_day),days:d,hpu:h/Math.max(1,qty)};};
+   mk('piles',q('piles'),'piles',hrs(['piles']));mk('mains',S.p_main,'ft of main (water + vacuum)',hrs(['main_w','main_vac','main_grav']));
+   mk('svc',G.homes,'homes connected',hrs(['svc_pair','vac_pit','p_house','fix_full','h_heater','h_elec']));
+   const lagCY=Math.round(Math.sqrt(S.lag_add*1e6/7.48/5)*4*(10*8+3*64)/27);SC={lagCY,loads:Math.round(lagCY/12),pileFt:q('piles')*G.pile_ft,pipeFt:S.p_main*2,svcFt:S.p_svc,hrs:S.lab_hrs,crew:G.crew_size,days:Math.round(WD)};}
  const Wt=t=>{const m=cl(Math.floor(t),0,TM-1),f=t-m;return W[m]+(W[m+1]-W[m])*f;};
  const prog=(k,w)=>{const T=TASKS.find(x=>x.k===k);return cl((w-T.a)/(T.b-T.a),0,1);};
  // ---------- props ----------
@@ -9734,6 +9756,24 @@ const C4D=(function(){
  const cell=new THREE.Group();{const b=mat('#c9bba1');cell.add(M(BOX(18,1.2,1),b,0,.6,-6));cell.add(M(BOX(18,1.2,1),b,0,.6,6));cell.add(M(BOX(1,1.2,13),b,-9,.6,0));cell.add(M(BOX(1,1.2,13),b,9,.6,0));
    const w=M(BOX(17,.2,11),mat('#8fbf8a'),0,.35,0);cell.add(w);cell.userData={w};}G4.add(cell);
  const spark=new THREE.Mesh(new THREE.SphereGeometry(.45,8,6),new THREE.MeshBasicMaterial({color:'#fff2a8'}));G4.add(spark);
+ // excavator: tracks, rotating house, boom, stick, bucket
+ function excavator(){const g=new THREE.Group();g.add(M(BOX(3.2,.7,2.6),dk,0,.35,0));const up=new THREE.Group();up.position.y=.8;g.add(up);
+   up.add(M(BOX(2.6,1.3,2.2),yel,-.2,.65,0));up.add(M(BOX(1,1.2,1,),mat('#9fc3e6'),.5,1.6,.55));
+   const boom=new THREE.Group();boom.position.set(1,1,0);up.add(boom);boom.add(M(BOX(4,.4,.45),yel,2,0,0));
+   const stick=new THREE.Group();stick.position.set(4,0,0);boom.add(stick);stick.add(M(BOX(.4,3,.4),yel,0,-1.5,0));
+   const bucket=new THREE.Group();bucket.position.set(0,-3,0);stick.add(bucket);bucket.add(M(BOX(.9,.7,1,),dk,.3,-.2,0));
+   g.userData={up,boom,stick,bucket};return g;}
+ function dumpTruck(){const g=new THREE.Group();g.add(M(BOX(5,.6,2.2),dk,0,.7,0));g.add(M(BOX(1.4,1.4,2.1),mat('#f2b632'),1.9,1.6,0));
+   const bed=new THREE.Group();bed.position.set(-1.3,1,0);g.add(bed);bed.add(M(BOX(3,1.2,2.2),mat('#d4a64a'),0,.6,0));const load=M(BOX(2.6,.6,1.8),mat('#8a6a45'),0,1.25,0);bed.add(load);
+   [[-1.6,1],[-1.6,-1],[1.6,1],[1.6,-1]].forEach(([x,z])=>{const w=M(CYL(.5,.4,12),dk,x,.5,z);w.rotation.x=Math.PI/2;g.add(w);});g.userData={bed,load};return g;}
+ const ex=excavator(),trA=dumpTruck(),trB=dumpTruck();G4.add(ex,trA,trB);
+ const auger=M(CYL(.18,3,8),mat('#6c7a86'),1.2,1.6,0);pr.add(auger);
+ const hang=M(CYL(.3,5,10),mat('#2f3a44'),2.2,3.5,0);pr.add(hang);
+ const trench=M(BOX(1,1,1),new THREE.MeshLambertMaterial({color:'#5b4430'}),0,.04,0);G4.add(trench);
+ const spoil=M(new THREE.ConeGeometry(1,1,10),mat('#8a6a45'),0,0,0);G4.add(spoil);
+ const DIRT=new THREE.MeshBasicMaterial({color:'#6b5338',transparent:true,opacity:.5,depthWrite:false});
+ const disks=[];for(let i=0;i<26;i++){const d=new THREE.Mesh(new THREE.CircleGeometry(2.2,14),DIRT.clone());d.rotation.x=-Math.PI/2;d.position.y=.05;d.visible=false;G4.add(d);disks.push(d);}
+ const pit=new THREE.Group();G4.add(pit);
  // places
  const LAND=(()=>{const b=ruPos(['bargelanding']);const c=new V();if(b)b.getCenter(c);else c.set(10,0,bankN0(10)+2);c.y=0;return c;})();
  const WTPC=(()=>{const f=INFRA_BY.plant&&INFRA_BY.plant.f;return f?new V(f[0],0,f[2]):new V(-70,0,-6);})();
@@ -9742,7 +9782,7 @@ const C4D=(function(){
    tank.position.copy(clearSpot(WTPC.x+12,WTPC.z-6,4));cell.position.copy(clearSpot(LAGC.x+22,LAGC.z,10));camp.position.copy(clearSpot(LAND.x+14,LAND.z+12,6));pile.position.copy(clearSpot(LAND.x-8,LAND.z+10,4));}
  // ---------- scene state at time t ----------
  const order=()=>homes.map((h,i)=>({i,d:STA.position.distanceTo(h.g.position)})).sort((a,b)=>a.d-b.d).map(o=>o.i);
- let HO=[];const postS=new Map();
+ let HO=[],POSTS=[];const postS=new Map();
  function setDraw(m,f){m.g.children.slice(0,2).forEach(tb=>{const g=tb.geometry;const n=g.index?g.index.count:g.attributes.position.count;g.setDrawRange(0,f>=1?Infinity:Math.floor(n*f/6)*6);});}
  function apply(t,dt){const w=Wt(t),mo=Math.floor(t)%12,yr=Math.floor(t/12),G=PR.pipe.G,now=performance.now()/1000;
    const P={};TASKS.forEach(T=>{if(T.k!=='design')P[T.k]=prog(T.k,w);});
@@ -9750,16 +9790,24 @@ const C4D=(function(){
    const rise=(o,p)=>{o.visible=p>0;o.scale.y=Math.max(.02,ease(p));};
    rise(STA,P.sta);rise(VSTA,P.vsta);rise(tank,P.wtp);
    cell.visible=P.lag>0;cell.scale.set(1,Math.max(.05,ease(P.lag)),1);cell.userData.w.visible=P.lag>.85;
-   // mains: piles then pipe, chunk by chunk
-   const nM=MAINS.length;MAINS.forEach((m,i)=>{const pp=cl(P.piles*nM-i,0,1),pm=cl(P.mains*nM-i,0,1);m.g.visible=pp>0;
-     m.g.children.slice(2).forEach(o=>{if(!postS.has(o))postS.set(o,o.scale.y);o.scale.y=Math.max(.01,postS.get(o)*ease(pp));});
-     m.g.children.slice(0,2).forEach(tb=>tb.visible=pm>0);if(pm>0)setDraw(m,pm);
+   // piles one at a time along the route, pipe following
+   const NP=POSTS.length,dayAdd=st.dayOn?st.day:0,pilesF=cl(P.piles+(st.dayOn&&P.piles>0&&P.piles<1?dayAdd*RATE.piles.perDay/RATE.piles.qty:0),0,1);
+   const kP=pilesF*NP,kI=Math.floor(kP),kf=kP-kI;
+   POSTS.forEach((o,k)=>{if(!postS.has(o))postS.set(o,o.scale.y);o.scale.y=k<kI?postS.get(o):k===kI?Math.max(.01,postS.get(o)*ease(cl(kf*1.4-.3,0,1))):.001;o.visible=k<=kI;});
+   const nM=MAINS.length,mainsF=cl(P.mains+(st.dayOn&&P.mains>0&&P.mains<1?dayAdd*RATE.mains.perDay/RATE.mains.qty:0),0,1);
+   MAINS.forEach((m,i)=>{const pm=cl(mainsF*nM-i,0,1);m.g.visible=true;m.g.children.slice(0,2).forEach(tb=>tb.visible=pm>0);if(pm>0)setDraw(m,pm);
      if(m.g.children[1])m.g.children[1].visible=pm>0&&(PR.pipe.S.vac_on_p>0||G.sewer_type===2);});
-   // pile rig on the active chunk
-   const act=P.piles>0&&P.piles<1,ci=cl(Math.floor(P.piles*nM),0,nM-1),seg=MAINS[ci]?MAINS[ci].seg:null;pr.visible=act&&!!seg;
-   if(pr.visible){const f=cl(P.piles*nM-ci,0,1),k=Math.min(seg.length-1,Math.floor(f*(seg.length-1))),a=seg[k],b=seg[Math.min(seg.length-1,k+1)];pr.position.set(a.x+(b.x-a.x)*(f*(seg.length-1)-k)+2.2,0,a.z+(b.z-a.z)*(f*(seg.length-1)-k)+2.2);pr.rotation.y=Math.atan2(b.x-a.x,b.z-a.z);pr.userData.ham.position.y=5+Math.abs(Math.sin(now*4))*2.5;}
+   // pile rig cycle: walk · drill (auger) · swing pile in · seat
+   const act=P.piles>0&&P.piles<1&&NP>0;pr.visible=act;
+   if(act){const o=POSTS[Math.min(NP-1,kI)],wp=new V();o.getWorldPosition(wp);const nx=POSTS[Math.min(NP-1,kI+1)],np=new V();nx.getWorldPosition(np);
+     const cyc=st.dayOn?(st.day*Math.max(1,RATE.piles.perDay))%1:(now*.35)%1;const walk=cyc<.15;const pos=walk?wp.clone().lerp(np,0):wp;
+     pr.position.set(pos.x+1.6,0,pos.z+1.6);pr.rotation.y=Math.atan2(np.x-wp.x,np.z-wp.z);
+     auger.visible=cyc>=.15&&cyc<.5;auger.rotation.y=now*14;auger.position.y=2.6-cl((cyc-.15)/.35,0,1)*2.2;
+     hang.visible=cyc>=.5&&cyc<.85;hang.position.y=4.5-cl((cyc-.5)/.35,0,1)*3.2;pr.userData.ham.position.y=cyc>=.85?5+Math.abs(Math.sin(now*9))*2:7;}
+   // disturbed ground behind the rig
+   disks.forEach((d,j)=>{const k=kI-j;if(!act||k<0||k>=NP){d.visible=false;return;}const wp=new V();POSTS[k].getWorldPosition(wp);d.visible=true;d.position.set(wp.x,.05,wp.z);d.material.opacity=.55*(1-j/disks.length);});
    // welding spark at the head of the mains
-   const mi=cl(Math.floor(P.mains*nM),0,nM-1);spark.visible=P.mains>0&&P.mains<1&&G.build_m[mo]>0;if(spark.visible){const sg=MAINS[mi].seg,f=cl(P.mains*nM-mi,0,1),p=sg[Math.min(sg.length-1,Math.floor(f*(sg.length-1)))];spark.position.set(p.x,1.3,p.z);spark.scale.setScalar(.6+Math.random()*.9);}
+   const mi=cl(Math.floor(mainsF*nM),0,nM-1);spark.visible=mainsF>0&&mainsF<1&&G.build_m[mo]>0;if(spark.visible){const sg=MAINS[mi].seg,f=cl(mainsF*nM-mi,0,1),p=sg[Math.min(sg.length-1,Math.floor(f*(sg.length-1)))];spark.position.set(p.x,1.3,p.z);spark.scale.setScalar(.6+Math.random()*.9);}
    // cranes on the active vertical work
    const crOn=(cr,pos,p)=>{cr.visible=p>0&&p<1;if(cr.visible){cr.position.set(pos.x+5,0,pos.z+5);cr.userData.jib.rotation.y=now*.4+(cr===crA?0:2);}};
    crOn(crA,STA.position,P.sta>0&&P.sta<1?P.sta:(P.vsta>0&&P.vsta<1?P.vsta:0));if(P.vsta>0&&P.vsta<1)crA.position.set(VSTA.position.x+5,0,VSTA.position.z+5);
@@ -9768,16 +9816,44 @@ const C4D=(function(){
    const nh=HO.length,done=Math.floor(P.svc*nh+1e-6);HO.forEach((hi,k)=>{const K=HKIT[hi],on=k<done;Object.keys(K).forEach(n=>K[n].visible=false);
      if(on){K.pipe.visible=true;SVC[hi].visible=true;HPORTS[hi].forEach(m=>m.visible=false);}else{K.self.visible=true;SVC[hi].visible=false;HPORTS[hi].forEach(m=>m.visible=false);}});
    HYD.forEach((g,k)=>g.visible=P.hyd*HYD.length>k);
+   // service crew: excavator digs the valve pit and service trench, the line goes in, the trench is backfilled
+   const svcF=cl(P.svc*nh+(st.dayOn&&P.svc>0&&P.svc<1?dayAdd*RATE.svc.perDay/G.homes*nh*0+dayAdd*.5:0),0,nh),hk=Math.floor(svcF),hf=svcF-hk;
+   const exOn=P.svc>0&&P.svc<1&&hk<nh&&G.build_m[mo]>0;ex.visible=trench.visible=spoil.visible=exOn;
+   if(exOn){const h=homes[HO[hk]],q=h.g.localToWorld(new V(0,0,2.6)),n=nearMain(q.x,q.z)||q,len=Math.max(1,Math.hypot(q.x-n.x,q.z-n.z)),ang=Math.atan2(q.x-n.x,q.z-n.z);
+     const dig=cl(hf/.55,0,1),back=cl((hf-.7)/.3,0,1);trench.position.set(n.x+(q.x-n.x)*dig/2,.04,n.z+(q.z-n.z)*dig/2);trench.rotation.y=ang;trench.scale.set(.9,.08,Math.max(.01,len*dig));
+     trench.material.color.set(back>0?'#8a6a45':'#3e2f22');spoil.position.set(n.x+(q.x-n.x)*.5+Math.cos(ang)*1.6,0,n.z+(q.z-n.z)*.5-Math.sin(ang)*1.6);spoil.scale.set(.9,.2+1.1*dig*(1-back),.9*(.4+dig));
+     ex.position.set(n.x+(q.x-n.x)*dig-Math.cos(ang)*2.4,0,n.z+(q.z-n.z)*dig+Math.sin(ang)*2.4);ex.rotation.y=ang-Math.PI/2;
+     const c=st.dayOn?(st.day*9)%1:(now*.33)%1,E=ex.userData;
+     if(c<.35){E.up.rotation.y=0;E.boom.rotation.z=-.25-.35*Math.sin(c/.35*Math.PI);E.stick.rotation.z=.6*c/.35;E.bucket.rotation.z=.9*c/.35;}
+     else if(c<.55){E.up.rotation.y=1.6*ease((c-.35)/.2);}else if(c<.7){E.bucket.rotation.z=.9-1.5*((c-.55)/.15);}else{E.up.rotation.y=1.6*(1-ease((c-.7)/.3));E.bucket.rotation.z=-.6+.6*((c-.7)/.3);}
+     if(hf>.55&&hk<nh)SVC[HO[hk]].visible=true;}
+   // dump trucks haul berm fill for the new lagoon cell
+   const trOn=P.lag>0&&P.lag<1&&G.build_m[mo]>0;[trA,trB].forEach((tr,j)=>{tr.visible=trOn;if(!trOn)return;const nR=RS.length,u=((now*.03+j*.5)%1),ix=Math.floor(u*nR),a=RS[ix],b=RS[(ix+1)%nR];
+     tr.position.set(a.x+(b.x-a.x)*(u*nR-ix),0,a.z+(b.z-a.z)*(u*nR-ix));tr.rotation.y=Math.atan2(b.x-a.x,b.z-a.z)+Math.PI/2;tr.userData.load.visible=u<.5;});
+
    const end=P.comm>=1;DUMP.visible=!end;HOPS.forEach(g=>g.visible=!end&&P.svc<1);WPT.visible=true;
    // barge each summer of a construction year
    const bmo=G.barge_m[mo];camp.visible=w>0&&!end;pile.visible=yr>=1&&!end&&P.mains<1;
    if(yr>=1&&yr<=N&&(mo>=5&&mo<=8)){bg.visible=true;const u=(t%12-5)/4,zR=(bankN0(LAND.x)+bankS(LAND.x))/2;let x;
      if(u<.25)x=LAND.x-180+ease(u/.25)*180;else if(u<.7)x=LAND.x;else x=LAND.x+ease((u-.7)/.3)*200;bg.position.set(x,.1,zR);bg.rotation.y=0;}else bg.visible=false;
    // numbers
-   return{w,P,mo,yr,done,nh};}
+   return{w,P,mo,yr,done,nh,kI,NP};}
  // ---------- UI ----------
  const ui=document.createElement('section');ui.id='c4d';ui.className='c4d card';ui.hidden=true;ui.setAttribute('aria-label','4D construction schedule');document.body.appendChild(ui);
  const toast=document.createElement('div');toast.className='c4d-toast';toast.hidden=true;document.body.appendChild(toast);let toastT=0;
+ const tint=document.createElement('div');tint.className='c4-tint';document.body.appendChild(tint);
+ const scope=document.createElement('section');scope.className='c4-scope card';scope.hidden=true;document.body.appendChild(scope);
+ function scopeHtml(){const f=v=>pn(v,0),mi=v=>(v/5280).toFixed(1);
+   return '<div class="c4s-h"><b>What it takes</b><button class="iconbtn sm" data-c4s="x" aria-label="Close">✕</button></div>'+
+   '<div class="c4s-g">'+
+   '<div><b>'+f(SC.pipeFt)+' ft</b><span>of insulated main (water and vacuum), about '+mi(SC.pipeFt)+' miles</span></div>'+
+   '<div><b>'+f(RATE.piles.qty)+' piles</b><span>'+f(SC.pileFt)+' ft of steel set into permafrost, '+f(RATE.piles.hpu)+' crew-hours each</span></div>'+
+   '<div><b>'+f(SC.svcFt)+' ft</b><span>of service lines to '+f(PR.pipe.G.homes)+' homes, each with plumbing inside</span></div>'+
+   '<div><b>≈'+f(SC.loads)+' loads</b><span>of fill for the new lagoon cell, about '+f(SC.lagCY)+' yd³ (12-yd³ trucks)</span></div>'+
+   '<div><b>'+f(SC.hrs)+' hrs</b><span>of crew time: '+SC.crew+' people, '+PR.pipe.G.hrs_day+'-hour days, '+PR.pipe.G.days_wk+' days a week</span></div>'+
+   '<div><b>'+N+' summers</b><span>about '+f(SC.days)+' working days; the ground is frozen the rest of the year</span></div></div>'+
+   '<p class="c4s-n">From the piped estimate. Lagoon fill is approximated from the added volume; check it against a berm design.</p>';}
+ scope.addEventListener('click',e=>{if(e.target.closest('[data-c4s]'))scope.hidden=true;});
  function say(t){toast.textContent=t;toast.hidden=false;toast.classList.remove('in');void toast.offsetWidth;toast.classList.add('in');clearTimeout(toastT);toastT=setTimeout(()=>toast.hidden=true,3200);}
  function shell(){const pct=t=>(t/TM*100).toFixed(3)+'%';let bands='',yrs='';
    for(let m=0;m<TM;m++){const mo=m%12,y=Math.floor(m/12),G=PR.pipe.G,b=y>=1?G.build_m[mo]:0;bands+='<i class="cb '+(b>0?'bld':'win')+(y>=1&&G.barge_m[mo]>0?' brg':'')+'" style="left:'+pct(m)+';width:'+pct(1)+';--o:'+(b||0)+'"></i>';}
@@ -9786,8 +9862,8 @@ const C4D=(function(){
    const ms=MS.map(([t,n])=>'<i class="c4-ms" style="left:'+pct(t)+'" title="'+esc(n)+'"><b>'+esc(n)+'</b></i>').join('');
    ui.innerHTML='<div class="c4-top"><button class="mb-step" data-c4="play" aria-label="Play or pause">❚❚</button><div class="c4-now"><b id="c4-date"></b><small id="c4-act"></small></div>'+
      '<div class="c4-kpi"><span><b id="c4-homes">0</b><small>homes piped</small></span><span><b id="c4-ft">0</b><small>ft of main</small></span><span><b id="c4-cost">$0</b><small>spent</small></span></div>'+
-     '<div class="c4-ctl"><button data-c4="speed" id="c4-speed" title="Speed">1×</button><button data-c4="follow" id="c4-follow" aria-pressed="true" title="Camera follows the work">Follow</button><button class="iconbtn sm" data-c4="x" aria-label="Close schedule">✕</button></div></div>'+
-     '<p class="c4-cap" id="c4-cap"></p>'+
+     '<div class="c4-ctl"><button data-c4="day" id="c4-day" aria-pressed="false" title="Play one 10-hour shift up close">One shift</button><button data-c4="scope" title="The scope in numbers">What it takes</button><button data-c4="speed" id="c4-speed" title="Speed">1×</button><button data-c4="follow" id="c4-follow" aria-pressed="true" title="Camera follows the work">Follow</button><button class="iconbtn sm" data-c4="x" aria-label="Close schedule">✕</button></div></div>'+
+     '<p class="c4-cap" id="c4-cap"></p><div class="c4-today" id="c4-today"></div>'+
      '<div class="c4-chart"><div class="c4-row c4-yrs"><span class="c4-lab"></span><div class="c4-tr">'+yrs+'</div></div>'+
      '<div class="c4-body"><div class="c4-row c4-season"><span class="c4-lab">Seasons</span><div class="c4-tr">'+bands+ms+'</div></div>'+rows+
      '<div class="c4-head" id="c4-head"></div></div>'+
@@ -9798,31 +9874,50 @@ const C4D=(function(){
    const T=TASKS.find(x=>x.k===key);bEl('c4-act').textContent=T?T.n:(key==='winter'?'Winter shutdown':key==='done'?'Complete':'');bEl('c4-cap').textContent=CAP[key]||'';
    const tot=PR.pipe.G.homes;bEl('c4-homes').textContent=Math.round(s.done/Math.max(1,s.nh)*tot)+' / '+tot;
    bEl('c4-ft').textContent=pn(PR.pipe.S.p_main*s.P.mains,0);bEl('c4-cost').textContent=pm(PR.pipe.eopc.tpc*(yr===0?st.t/12*.12:.12+.88*s.w));
+   {const fr=yr>=1&&G.build_m[mo]===0;tint.style.opacity=yr===0?0:fr?.55:0;tint.classList.toggle('dark',fr);
+    const day=Math.round(s.w*WD),parts=[];
+    if(s.P.piles>0&&s.P.piles<1)parts.push('<span><i style="--c:#a0703c"></i><b>'+RATE.piles.perDay.toFixed(1)+'</b> piles/day · '+RATE.piles.crew.toFixed(1)+' crew · pile '+Math.max(1,Math.round(s.P.piles*RATE.piles.qty))+' of '+RATE.piles.qty+'</span>');
+    if(s.P.mains>0&&s.P.mains<1)parts.push('<span><i style="--c:#6c7a86"></i><b>'+pn(RATE.mains.perDay,0)+'</b> ft of main/day · '+RATE.mains.crew.toFixed(1)+' crew</span>');
+    if(s.P.svc>0&&s.P.svc<1)parts.push('<span><i style="--c:#3fbf82"></i><b>'+(RATE.svc.perDay*6).toFixed(1)+'</b> homes/week · '+RATE.svc.crew.toFixed(1)+' crew</span>');
+    if(s.P.lag>0&&s.P.lag<1)parts.push('<span><i style="--c:#d49a3a"></i>fill load <b>'+Math.round(s.P.lag*SC.loads)+'</b> of '+SC.loads+'</span>');
+    {const need=['piles','mains','svc'].filter(k=>s.P[k]>0&&s.P[k]<1).reduce((a,k)=>a+RATE[k].crew,0),cs=PR.pipe.G.crew_size;if(need>cs*1.1)parts.push('<span class="warn" title="The schedule overlaps tasks; at these rates it needs more workers than the estimate crew">⚠ needs '+pn(need,0)+' workers · estimate crew '+cs+'</span>');}
+    bEl('c4-today').innerHTML=yr===0?'':fr?'<span class="fz">❄ Frozen. No work until breakup. Day '+day+' of '+Math.round(WD)+'.</span>':parts.length?'<em>Day '+day+' of '+Math.round(WD)+'</em>'+parts.join(''):'<em>Day '+day+' of '+Math.round(WD)+'</em>';}
    bEl('c4-t').value=st.t;bEl('c4-head').style.left='calc(var(--lw) + (100% - var(--lw)) * '+(st.t/TM).toFixed(4)+')';
    ui.querySelectorAll('.c4-row[data-k]').forEach(r=>{const k=r.dataset.k,p=k==='design'?cl(st.t/12,0,1):s.P[k];r.classList.toggle('act',p>0&&p<1);r.classList.toggle('done',p>=1);r.querySelector('u').style.width=(p*100).toFixed(1)+'%';});
    // milestones and camera
    MS.forEach(([t,n],i)=>{if(st.lastMs<i&&st.t>=t){st.lastMs=i;if(st.play)say(n);}});if(st.t<(MS[st.lastMs]||[1e9])[0])st.lastMs=MS.findIndex(m=>st.t<m[0])-1;
    if(key!==st.lastTask){st.lastTask=key;if(st.follow)aim(key,s);}}
+ function aimClose(P){let o=null;if(P.piles>0&&P.piles<1){const k=Math.min(POSTS.length-1,Math.floor(P.piles*POSTS.length));o=new V();POSTS[k].getWorldPosition(o);}else if(P.svc>0&&P.svc<1){const h=homes[HO[Math.min(HO.length-1,Math.floor(P.svc*HO.length))]];if(h)o=h.g.position.clone();}else if(P.mains>0&&P.mains<1){const m=MAINS[Math.min(MAINS.length-1,Math.floor(P.mains*MAINS.length))];o=m.cen.clone();}else if(P.lag>0&&P.lag<1)o=cell.position.clone();if(o)camTo(new V(o.x,0,o.z),24,null,new V(.6,.55,.6));}
+ function upd2(){const cap=bEl('c4-cap').innerHTML;upd();bEl('c4-cap').innerHTML=cap;}
+ function shiftText(){const s=Wt(st.t),P={};TASKS.forEach(T=>{if(T.k!=='design')P[T.k]=prog(T.k,s);});const L=[];
+   if(P.piles>0&&P.piles<1)L.push('Pile crew: drill, set and seat about '+RATE.piles.perDay.toFixed(1)+' piles ('+pn(RATE.piles.hpu,0)+' crew-hours each).');
+   if(P.mains>0&&P.mains<1)L.push('Pipe crew: lay and weld about '+pn(RATE.mains.perDay,0)+' ft of water and vacuum main.');
+   if(P.svc>0&&P.svc<1)L.push('Service crew: dig a valve pit and trench, connect and plumb about '+(RATE.svc.perDay).toFixed(1)+' homes.');
+   if(P.lag>0&&P.lag<1)L.push('Earthwork: about '+pn(SC.loads/Math.max(1,(TASKS.find(t=>t.k==="lag").b-TASKS.find(t=>t.k==="lag").a)*WD),0)+' truckloads of berm fill.');
+   return L.length?L.join(' '):'No crew on site this day.';}
  function aim(key,s){const P=(o,d)=>camTo(new V(o.x,0,o.z),d,null);
-   if(key==='sta')P(STA.position,46);else if(key==='wtp')P(tank.position,52);else if(key==='vsta')P(VSTA.position,46);else if(key==='lag')P(cell.position,62);
-   else if(key==='piles'||key==='mains'){const m=MAINS[Math.min(MAINS.length-1,Math.floor((s.P[key]||0)*MAINS.length))];if(m)P(m.cen,70);}
-   else if(key==='svc'){const h=homes[HO[Math.min(HO.length-1,s.done)]];if(h)P(h.g.position,42);}
+   if(key==='sta')P(STA.position,46);else if(key==='wtp')P(tank.position,52);else if(key==='vsta')P(VSTA.position,46);else if(key==='lag')P(cell.position,48);
+   else if(key==='piles'||key==='mains'){const m=MAINS[Math.min(MAINS.length-1,Math.floor((s.P[key]||0)*MAINS.length))];if(m)P(m.cen,46);}
+   else if(key==='svc'){const h=homes[HO[Math.min(HO.length-1,s.done)]];if(h)P(h.g.position,30);}
    else if(key==='mob')P(LAND,70);else if(key==='hyd'){const g=HYD.find(x=>x.visible)||HYD[0];if(g)P(g.position,60);}else{const pr0=preset('site');camTo(pr0.t,pr0.p.distanceTo(pr0.t),null);}}
  function loop(now){st.raf=requestAnimationFrame(loop);const dt=Math.min(.1,(now-(st.lt||now))/1000);st.lt=now;if(!st.on)return;
+   if(st.dayOn){st.day+=dt/22;const c=bEl('c4-cap'),h=7+st.day*10;c.innerHTML='<b>One shift, '+String(Math.floor(h)).padStart(2,'0')+':'+String(Math.floor(h%1*60)).padStart(2,'0')+'.</b> '+shiftText();if(st.day>=1){st.dayOn=false;st.day=0;const b=bEl('c4-day');if(b)b.setAttribute('aria-pressed','false');st.lastTask='';}upd2();return;}
    if(st.play){const G=PR.pipe.G,mo=Math.floor(st.t)%12,slow=Math.floor(st.t/12)>=1&&G.build_m[mo]>0?1:2.6;st.t+=dt*st.speed*slow/1.6;if(st.t>=TM){st.t=TM;st.play=false;ui.querySelector('[data-c4="play"]').textContent='↺';}}
    upd();}
  ui.addEventListener('click',e=>{const b=e.target.closest('[data-c4]');if(!b)return;const a=b.dataset.c4;
    if(a==='play'){if(st.t>=TM){st.t=0;st.lastMs=-1;}st.play=!st.play;b.textContent=st.play?'❚❚':'▶';}
+   else if(a==='day'){st.dayOn=!st.dayOn;st.day=0;b.setAttribute('aria-pressed',st.dayOn);if(st.dayOn){const G=PR.pipe.G;if(Math.floor(st.t/12)<1||G.build_m[Math.floor(st.t)%12]===0){let t=Math.max(12,Math.ceil(st.t));while(t<TM&&G.build_m[t%12]===0)t++;st.t=t+.4;}st.play=false;ui.querySelector('[data-c4="play"]').textContent='▶';const sw=Wt(st.t),P={};TASKS.forEach(T=>{if(T.k!=='design')P[T.k]=prog(T.k,sw);});aimClose(P);}else st.lastTask='';}
+   else if(a==='scope'){scope.innerHTML=scopeHtml();scope.hidden=!scope.hidden;}
    else if(a==='speed'){st.speed=st.speed>=4?1:st.speed*2;b.textContent=st.speed+'×';}
    else if(a==='follow'){st.follow=!st.follow;b.setAttribute('aria-pressed',st.follow);if(st.follow){st.lastTask='';}}
    else if(a==='x')stop();});
  ui.addEventListener('input',e=>{if(e.target.id==='c4-t'){st.t=+e.target.value;st.play=false;ui.querySelector('[data-c4="play"]').textContent='▶';}});
  renderer.domElement.addEventListener('pointerdown',()=>{if(st.on&&st.follow){st.follow=false;const f=bEl('c4-follow');if(f)f.setAttribute('aria-pressed','false');}},true);
  function start(){if(st.on)return;if(window.layerOnly)layerOnly('c4d');if(window.DROP&&DROP.st.on)DROP.stop();if(sectionOn)setSection(false);
-   st.prevAlt=PALT;if(PALT!=='self')setAlt('self');build();place();HO=order();st.on=true;st.t=0;st.play=true;st.lastTask='';st.lastMs=-1;st.follow=true;
-   document.body.classList.add('c4d-on');G4.visible=true;shell();ui.hidden=false;if(view!=='site')setView('site');upd();if(!st.raf)st.raf=requestAnimationFrame(loop);}
+   st.prevAlt=PALT;if(PALT!=='self')setAlt('self');build();rates();place();HO=order();POSTS=[];MAINS.forEach(m=>m.g.children.slice(2).forEach(o=>POSTS.push(o)));st.on=true;st.t=0;st.play=true;st.lastTask='';st.lastMs=-1;st.follow=true;
+   document.body.classList.add('c4d-on');G4.visible=true;shell();ui.hidden=false;scope.innerHTML=scopeHtml();scope.hidden=false;setTimeout(()=>{if(st.t>8)scope.hidden=true;},9000);if(view!=='site')setView('site');upd();if(!st.raf)st.raf=requestAnimationFrame(loop);}
  function stop(){if(!st.on)return;st.on=false;ui.hidden=true;toast.hidden=true;document.body.classList.remove('c4d-on');G4.visible=false;
-   MAINS.forEach(m=>{setDraw(m,1);m.g.children.slice(2).forEach(o=>{if(postS.has(o))o.scale.y=postS.get(o);});});[STA,VSTA].forEach(o=>o.scale.y=1);
+   MAINS.forEach(m=>{setDraw(m,1);m.g.children.slice(2).forEach(o=>{if(postS.has(o))o.scale.y=postS.get(o);o.visible=true;});});st.dayOn=false;tint.style.opacity=0;scope.hidden=true;[STA,VSTA].forEach(o=>o.scale.y=1);
    const a=st.prevAlt;setAlt(a);perScene();if(typeof renderBar==='function')renderBar();}
  {const ps=perScene;perScene=function(){if(st.on)return;return ps.apply(this,arguments);};}
  {const gh=window.goHome;if(gh)window.goHome=function(){stop();return gh.apply(this,arguments);};}
