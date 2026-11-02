@@ -1369,6 +1369,16 @@ body.c4d-on #mbar,body.c4d-on .nav,body.c4d-on #panel{display:none!important}
 .c4-ctl button[aria-pressed="true"]{background:var(--sun)}
 @media (max-width:640px){.c4-scope{top:calc(64px + env(safe-area-inset-top,0px));right:8px;left:8px;width:auto}.c4s-g{grid-template-columns:1fr 1fr}.c4-today{font-size:.66rem;gap:4px 10px}}
 .c4-today .warn{color:#b3261e;font-weight:700}
+/* ===== card actions + drop card cleanup ===== */
+.pm-row{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 10px}
+.chip-b{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1.5px solid var(--ink);border-radius:999px;background:#fff;cursor:pointer;font:700 .78rem var(--f-body);color:var(--ink);white-space:nowrap}
+.chip-b i{font-style:normal}.chip-b:hover{background:#fff1c9}.chip-b.on{background:var(--sun)}.chip-b[disabled]{opacity:.38;cursor:default}
+#p-more.p-more{margin:0;padding:0;border:0}
+.drop .dr-acts{flex-wrap:nowrap;gap:6px;margin-top:4px}
+.drop .dr-more{margin:6px 0 4px;padding:8px 10px;border-radius:12px;background:#f1f4f6;font-size:.82rem;line-height:1.45;max-height:22vh;overflow:auto}
+.drop .dr-more p{margin:3px 0 0}
+body.drop-on #panel{display:none!important}
+.mb-step[disabled]{opacity:.35;cursor:default}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -8967,32 +8977,36 @@ const DROP=(function(){
   const card=document.createElement('section');card.id='drop';card.className='drop card';card.hidden=true;card.setAttribute('aria-live','polite');card.setAttribute('aria-label','Follow a drop of water');document.body.appendChild(card);
   function ui(){if(!st.on){card.hidden=true;return;}const s=st.route[st.i];if(!s){card.hidden=true;return;}card.hidden=false;
     const n=st.route.length,firstW=st.route.findIndex(x=>x.waste);
-    card.innerHTML='<div class="dr-top"><span class="dr-ico" style="--c:'+(s.waste?BC:WC)+'">'+icoSvg('plant')+'</span><div class="dr-h"><p class="dr-eye">Follow a drop · '+esc(PERM.ALTS.find(a=>a.k===PALT).n)+' · step '+(st.i+1)+' of '+n+'</p><h3>'+esc(s.ttl)+'</h3></div>'+
+    card.innerHTML='<div class="dr-top"><span class="dr-ico" style="--c:'+(s.waste?BC:WC)+'">'+icoSvg('plant')+'</span><div class="dr-h"><p class="dr-eye">'+esc(PERM.ALTS.find(a=>a.k===PALT).n)+' · '+(st.i+1)+'/'+n+'</p><h3>'+esc(s.ttl)+'</h3></div>'+
       '<div class="dr-seas" role="group" aria-label="Season"><button data-dr="sum" aria-pressed="'+!st.win+'">Summer</button><button data-dr="win" aria-pressed="'+st.win+'">−40 °F</button></div><button class="iconbtn sm" data-dr="x" aria-label="Stop following the drop">✕</button></div>'+
       '<p class="dr-t">'+esc(st.win?s.win:s.txt)+'</p>'+(s.mix&&st.i===0?'<p class="dr-mix">'+esc(s.mix)+'</p>':'')+
       '<div class="dr-dots">'+st.route.map((x,j)=>'<button data-dri="'+j+'" class="'+(j===st.i?'on ':'')+(x.waste?'w':'c')+'" aria-label="Step '+(j+1)+': '+esc(x.ttl)+'" data-tip="'+esc(x.ttl)+'"></button>'+(j===firstW-1?'<i class="dr-sep" aria-hidden="true"></i>':'')).join('')+'</div>'+
       '<div class="dr-bar"><span id="drop-prog"></span></div>'+
-      '<div class="dr-acts"><button class="tool" data-dr="prev" '+(st.i?'':'disabled')+'>‹ Back</button><button class="tool" data-dr="play">'+(st.play?'❚❚ Pause':'▶ Play')+'</button><button class="cta" data-dr="next" '+(st.i<n-1?'':'disabled')+'>Next ›</button>'+
-      '<span class="dr-sp"></span><button class="tool'+(st.inside?' on':'')+'" data-dr="in" '+(s.sec?'':'disabled data-tip="No drawing for this step yet"')+' aria-pressed="'+st.inside+'">◱ See inside</button><button class="tool" data-dr="more">Details</button></div>';}
+      (st.more&&s.open&&A[s.open]?'<div class="dr-more"><b>'+esc(A[s.open].t)+'</b><p>'+esc(A[s.open].b||'')+'</p></div>':'')+
+      '<div class="dr-acts"><button class="chip-b'+(st.inside?' on':'')+'" data-dr="in" '+(s.sec?'':'disabled')+' aria-pressed="'+st.inside+'">◱ Drawing</button>'+
+      (s.open&&A[s.open]?'<button class="chip-b'+(st.more?' on':'')+'" data-dr="more" aria-pressed="'+!!st.more+'">ⓘ About this</button>':'')+
+      '<span class="dr-sp"></span><button class="chip-b" data-dr="play">'+(st.play?'❚❚ Pause':'▶ Play')+'</button></div>';
+    if(typeof renderBar==='function')renderBar();}
   card.addEventListener('click',e=>{const d=e.target.closest('[data-dri]');if(d){st.play=false;go(+d.dataset.dri);return;}const b=e.target.closest('[data-dr]');if(!b)return;const a=b.dataset.dr;
     if(a==='x')stop();else if(a==='next'){go(st.i+1);}else if(a==='prev'){go(st.i-1);}else if(a==='play'){st.play=!st.play;if(st.play&&st.i>=st.route.length-1)go(0);else ui();}
     else if(a==='sum'||a==='win'){st.win=a==='win';ui();}else if(a==='in')inside(!st.inside);
-    else if(a==='more'){const s=st.route[st.i];st.play=false;ui();if(s.open&&A[s.open]){if(s.open.startsWith('study_')||A[s.open].v==='village'||A[s.open].v==='any')openInfo(s.open);else{window.__directOpen=1;openInfo(s.open);window.__directOpen=0;}}}});
+    else if(a==='more'){st.more=!st.more;if(st.more)st.play=false;ui();}});
   // ---- control ----
-  function go(i){if(i<0||i>=st.route.length)return;const from=st.on&&st.route[st.i]?g.position.clone():null;st.i=i;st.clock=0;const s=st.route[i];
+  function go(i){if(i<0||i>=st.route.length)return;const from=st.on&&st.route[st.i]?g.position.clone():null;st.i=i;st.clock=0;st.more=false;const s=st.route[i];
     if(view!=='village')applyViewState('village');if(current)closeInfo();
     const dur=from?Math.min(3.4,Math.max(1.3,from.distanceTo(at(s))/40)):0;if(from)travel(from,at(s),dur);
     dm.color.set(s.waste?BC:WC);dm.emissive.set(s.waste?BC:WC);ring.material.color.set(s.waste?BC:WC);
     camTo(s.at.clone().setY(2),Math.max(34,s.dist*1.3),from?dur:1.6,DIR);
     if(st.inside&&!sectionOn)st.inside=false;if(st.inside)inside(!!s.sec);ui();}
-  function start(){if(typeof touring!=='undefined'&&touring)stopTour();if(!bEl('wb').hidden&&typeof closeWB==='function')closeWB();perRun();st.route=build();if(!st.route.length)return;
-    st.on=true;st.play=true;st.i=0;st.inside=false;trail.count=0;lastCrumb=null;g.visible=ring.visible=true;document.body.classList.add('drop-on');g.position.copy(at(st.route[0]));go(0);if(!anim)anim=requestAnimationFrame(loop);}
-  function stop(){st.on=false;st.trav=null;g.visible=ring.visible=false;trail.count=0;document.body.classList.remove('drop-on','drop-in');if(sectionOn&&st.inside){bEl('sec-draw').classList.remove('drop-hl');setSection(false);}st.inside=false;ui();}
+  function start(fromId){if(typeof touring!=='undefined'&&touring)stopTour();if(!bEl('wb').hidden&&typeof closeWB==='function')closeWB();perRun();st.route=build();if(!st.route.length)return;
+    let i0=0;if(fromId){const fx=st.route.findIndex(x=>x.open===fromId);if(fx>=0)i0=fx;else{const b=ruPos([fromId]);if(b){const c=new V();b.getCenter(c);let bd=1e9;st.route.forEach((x,k)=>{const d=Math.hypot(x.at.x-c.x,x.at.z-c.z);if(d<bd){bd=d;i0=k;}});}}}
+    if(current)closeInfo();st.on=true;st.play=!fromId;st.i=i0;st.inside=false;trail.count=0;lastCrumb=null;g.visible=ring.visible=true;document.body.classList.add('drop-on');g.position.copy(at(st.route[i0]));go(i0);if(!anim)anim=requestAnimationFrame(loop);}
+  function stop(){st.on=false;st.trav=null;g.visible=ring.visible=false;trail.count=0;document.body.classList.remove('drop-on','drop-in');if(sectionOn&&st.inside){bEl('sec-draw').classList.remove('drop-hl');setSection(false);}st.inside=false;ui();if(typeof renderBar==='function')renderBar();}
   function rebuild(){if(!st.on)return;st.route=build();trail.count=0;lastCrumb=null;st.i=Math.min(st.i,st.route.length-1);g.position.copy(at(st.route[0]));go(0);}
   document.addEventListener('keydown',e=>{if(!st.on||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
     if(e.key==='ArrowRight'){go(st.i+1);e.preventDefault();e.stopImmediatePropagation();}else if(e.key==='ArrowLeft'){go(st.i-1);e.preventDefault();e.stopImmediatePropagation();}
     else if(e.key===' '&&e.target===document.body){st.play=!st.play;ui();e.preventDefault();}else if(e.key==='Escape'&&!sectionOn){stop();}},true);
-  return{start,stop,rebuild,st,build};})();
+  return{start,stop,rebuild,st,build,go,step:d=>go(st.i+d),toggle:()=>{st.play=!st.play;ui();}};})();
 // entry points: a button under the alternative tiles and in the view tools; switching alternatives re-routes the drop
 {const k0=kpiHtml;kpiHtml=function(){return k0().replace('<div class="pa-grid">','<button class="drop-go" data-drop>'+icoSvg('plant')+'<span><b>Follow a drop of water</b><small>From the river, through a home and back, for this option</small></span></button><div class="pa-grid">');};}
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-drop]');if(b){if(phoneQ.matches&&typeof setNav==='function')setNav(false);DROP.start();}});
@@ -9124,21 +9138,19 @@ const SEC_OF=(()=>{const m={wtp:'plant',thishome:'home',homes:'home',watertruck:
 const INFRA_OF=id=>INFRA.find(x=>(x.ids||[]).includes(id)||(x.comps||[]).includes(id)||(x.view&&A[id]&&(A[id].v0||A[id].v)===x.view));
 {const box=document.createElement('div');box.id='p-more';box.className='p-more';const foot=document.querySelector('#panel .p-foot');foot.parentNode.insertBefore(box,foot);
  let open=false;
- function render(id){const a=A[id];if(!a||touring){box.hidden=true;return;}box.hidden=false;
+ function render(id){const a=A[id];if(!a||touring||(window.DROP&&DROP.st.on)){box.hidden=true;return;}box.hidden=false;
    const sec=SEC_OF(id),x=INFRA_OF(id),inSec=sectionOn&&sectionKind===sec;const items=[];
-   if(sec&&SECS[sec]&&!inSec)items.push(['sec','◱','See the 2D drawing',SECS[sec].title+(a.v==='any'||(SECS[sec].kn&&SECS[sec].kn()[id])?' · this part lit':'')]);
-   if(x&&x.view&&view!==x.view&&!FACV.includes(view))items.push(['inside','⤓','Go inside in 3D',x.n]);
-   if(x&&a.v==='village'&&document.body.classList.contains('pro'))items.push(['parts','☰','Parts and systems','Highlight '+x.n.toLowerCase()+' on the plan']);
-   items.push(['drop','💧','Follow a drop of water','Through the village for '+(PERM.ALTS.find(z=>z.k===PALT)||{n:''}).n.toLowerCase()]);
-   items.push(['cost','$','Cost in the estimate','Engineer’s estimate for the selected alternative']);
-   box.innerHTML='<button class="cta pm-go" data-pm="toggle" aria-expanded="'+open+'">See more <span aria-hidden="true">'+(open?'▴':'▾')+'</span></button>'+
-     '<div class="pm-list"'+(open?'':' hidden')+'>'+items.map(([k,ic,t,s])=>'<button data-pm="'+k+'"><i aria-hidden="true">'+ic+'</i><span><b>'+esc(t)+'</b><small>'+esc(s)+'</small></span><em aria-hidden="true">›</em></button>').join('')+'</div>';}
+   if(sec&&SECS[sec]&&!inSec)items.push(['sec','◱','Drawing']);
+   if(x&&x.view&&view!==x.view&&!FACV.includes(view))items.push(['inside','⤓','Inside']);
+   items.push(['drop','💧','Drop from here']);
+   items.push(['cost','$','Cost']);
+   box.innerHTML='<div class="pm-row">'+items.map(([k,ic,t])=>'<button class="chip-b" data-pm="'+k+'"><i aria-hidden="true">'+ic+'</i>'+esc(t)+'</button>').join('')+'</div>';}
  box.addEventListener('click',e=>{const b=e.target.closest('[data-pm]');if(!b||!current)return;const id=current,k=b.dataset.pm,sec=SEC_OF(id),x=INFRA_OF(id);
    if(k==='toggle'){open=!open;render(id);return;}
    if(k==='sec'){const keys=SECS[sec].kn?SECS[sec].kn():{},lit=keys[id]?[id]:[];closeInfo();setSection(true,sec);bEl('sec-draw').querySelectorAll('[data-id]').forEach(el=>el.classList.toggle('sel',lit.includes(el.dataset.id)));bEl('sec-legend').querySelectorAll('[data-key]').forEach(b=>b.setAttribute('aria-current',lit.includes(b.dataset.key)));}
    else if(k==='inside'){closeInfo();enterInfra(x.k);}
    else if(k==='parts'){closeInfo();selectInfra(x.k);if(phoneQ.matches)setNav(true);}
-   else if(k==='drop'){closeInfo();DROP.start();}
+   else if(k==='drop'){DROP.start(id);}
    else if(k==='cost'){closeInfo();openWB('estimate');}});
  const OBL=new V(.55,.62,.85).normalize();
  const oi=openInfo;openInfo=function(id){const r=oi.apply(this,arguments);if(current===id){render(id);
@@ -9927,6 +9939,17 @@ window.C4D=C4D;
 {const t0=ruTop;ruTop=function(){let h=t0();return h.replace('<p class="sx-h">Explore</p>','<button class="sx-build" data-c4go><span class="sx-play">▶</span><span><b>Watch it get built</b><small>4D schedule: self-haul and washeteria → piped</small></span></button><p class="sx-h">Explore</p>');};}
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-c4go]');if(b){e.stopPropagation();if(document.body.classList.contains('navdrawer'))setNav(false);C4D.start();}},true);
 navRender();
+
+/* ---------- one flow: card actions under the title; the drop owns the bar while it runs ---------- */
+{const pm=bEl('p-more'),t=bEl('p-title');if(pm&&t)t.after(pm);}
+{const rb=renderBar;renderBar=function(){rb();if(!(window.DROP&&DROP.st.on))return;const S=DROP.st,s=S.route[S.i];if(!s)return;
+  mbar.innerHTML='<button class="mb-menu" data-dx aria-label="Stop following the drop">✕</button><div class="mb-tour"><button class="mb-step" data-dn="-1" aria-label="Previous stop"'+(S.i?'':' disabled')+'>◀</button>'+
+   '<span class="mb-place"><b>'+esc(s.ttl)+'</b><small>💧 stop '+(S.i+1)+' of '+S.route.length+'</small></span><button class="mb-step" data-dn="1" aria-label="Next stop"'+(S.i<S.route.length-1?'':' disabled')+'>▶</button></div>';};}
+mbar.addEventListener('click',e=>{if(!(window.DROP&&DROP.st.on))return;const n=e.target.closest('[data-dn]');if(n){e.stopPropagation();DROP.st.play=false;DROP.step(+n.dataset.dn);return;}
+  if(e.target.closest('[data-dx]')){e.stopPropagation();DROP.stop();}},true);
+// while a drop runs, tapping a pin shows its details inside the drop card rather than a second sheet
+{const oi=openInfo;openInfo=function(id){if(window.DROP&&DROP.st.on&&!window.__dropOk){const k=DROP.st.route.findIndex(x=>x.open===id);if(k>=0){DROP.st.play=false;DROP.go(k);DROP.st.more=true;DROP.go&&renderBar();return;}DROP.stop();}return oi.apply(this,arguments);};}
+renderBar();
 
 
 capTxt=function(){return '';};navRender();
