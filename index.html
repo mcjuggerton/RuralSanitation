@@ -1379,6 +1379,14 @@ body.c4d-on #mbar,body.c4d-on .nav,body.c4d-on #panel{display:none!important}
 .drop .dr-more p{margin:3px 0 0}
 body.drop-on #panel{display:none!important}
 .mb-step[disabled]{opacity:.35;cursor:default}
+/* ===== callout labels ===== */
+.hlbl,.hlbl.left,body:not(.pro) .hlbl,body:not(.pro) .hlbl.left{border:0!important;border-radius:7px!important;background:rgba(255,253,248,.96)!important;color:#1f2b35!important;
+  box-shadow:0 1px 0 rgba(36,50,61,.25),0 4px 12px rgba(20,30,40,.16)!important;font:700 12px/24px var(--f-body,Nunito,sans-serif)!important;height:24px;padding:0 11px!important;letter-spacing:.01em;white-space:nowrap;text-align:center;box-sizing:border-box;overflow:visible!important}
+.hlbl::after{content:'';position:absolute;left:var(--sx,50%);top:100%;width:1.5px;height:var(--st,22px);margin-left:-.75px;background:rgba(36,50,61,.55);pointer-events:none}
+.hlbl.dn::after{top:auto;bottom:100%}
+.hlbl.cur{background:#24323d!important;color:#fff!important}.hlbl.cur::after{background:#24323d}
+body:not(.pro) .hs:not(.hz){width:12px;height:12px;margin:-6px 0 0 -6px;border-width:2.5px!important}
+body:not(.pro) .hs.lab-on:not(.hz){background:#fff!important;border-color:var(--c)!important;box-shadow:0 0 0 1.5px rgba(36,50,61,.7)!important}
 </style>
 
 <div id="stage" role="img" aria-label="Cartoon diorama of a rural Interior Alaska village on permafrost beside a river, with a cutaway haul-water home, water and sewage trucks, and interactive flood, erosion, permafrost thaw and settlement scenarios."></div>
@@ -9950,6 +9958,43 @@ mbar.addEventListener('click',e=>{if(!(window.DROP&&DROP.st.on))return;const n=e
 // while a drop runs, tapping a pin shows its details inside the drop card rather than a second sheet
 {const oi=openInfo;openInfo=function(id){if(window.DROP&&DROP.st.on&&!window.__dropOk){const k=DROP.st.route.findIndex(x=>x.open===id);if(k>=0){DROP.st.play=false;DROP.go(k);DROP.st.more=true;DROP.go&&renderBar();return;}DROP.stop();}return oi.apply(this,arguments);};}
 renderBar();
+
+/* =====================================================================
+   Callout labels with leader stems · line-art components · part names
+   ===================================================================== */
+// ---- callouts: label floats above its pin on a thin stem; stems lengthen to dodge collisions ----
+placeLabels=function(w,h){const H=24,boxes=[];
+  for(const el of uiBlocks){if(!el||el.offsetParent===null&&getComputedStyle(el).position!=='fixed')continue;const q=el.getBoundingClientRect();if(q.width&&q.height)boxes.push([q.left-4,q.top-4,q.width+8,q.height+8]);}
+  ['mbar','panel','drop','home-btn','c4d','section'].forEach(i=>{const e=bEl(i);if(e&&!e.hidden&&getComputedStyle(e).display!=='none'){const q=e.getBoundingClientRect();if(q.width)boxes.push([q.left-4,q.top-4,q.width+8,q.height+8]);}});
+  if(typeof sysBoxes!=='undefined')boxes.push(...sysBoxes);
+  const hit=(x,y,bw,bh)=>{if(x<6||y<6||x+bw>w-6||y+bh>h-6)return true;for(const q of boxes)if(x<q[0]+q[2]&&x+bw>q[0]&&y<q[1]+q[3]&&y+bh>q[1])return true;return false;};
+  visHS.forEach(id=>{const a=A[id];boxes.push([a.sx-8,a.sy-8,16,16]);});
+  const order=visHS.slice().sort((p,q)=>{const pr=x=>x===current?0:x===hsHover?1:A[x].hz?2:3;return pr(p)-pr(q)||A[q].sy-A[p].sy;});
+  for(const id in A){const a=A[id];if(a.lbl&&!visHS.includes(id)&&a.lblShown){a.lbl.hidden=true;a.lblShown=false;a.el.classList.remove('lab-on');}}
+  for(const id of order){const a=A[id],want=typeof partLabelWanted==='function'?partLabelWanted(id):labelsOn;let pos=null;
+    if(want){const lw=a.lw||100;
+      for(const[st,dir] of [[22,-1],[44,-1],[22,1],[66,-1],[44,1],[88,-1]]){const x=Math.max(8,Math.min(w-8-lw,a.sx-lw/2)),y=dir<0?a.sy-st-H:a.sy+st;if(Math.abs(x+lw/2-a.sx)>lw/2-6)continue;if(!hit(x,y,lw,H)){pos=[x,y,st,dir];break;}}
+      if(!pos&&(id===current||id===hsHover))pos=[a.sx-lw/2,a.sy-22-H,22,-1];
+      if(pos)boxes.push([pos[0]-3,pos[1]-3,lw+6,H+6]);}
+    const on=!!pos;
+    if(on){a.lbl.style.left=pos[0]+'px';a.lbl.style.top=pos[1]+'px';a.lbl.style.setProperty('--st',pos[2]+'px');a.lbl.style.setProperty('--sx',(a.sx-pos[0])+'px');a.lbl.classList.toggle('dn',pos[3]>0);a.lbl.classList.remove('left');}
+    if(on!==a.lblShown){a.lbl.hidden=!on;a.lblShown=on;a.el.classList.toggle('lab-on',on);}
+    if(on)a.lbl.classList.toggle('cur',id===current||id===hsHover);}};
+labelWidths=function(){measure.font='700 12px Nunito, system-ui, sans-serif';for(const id in A){const a=A[id];if(a.lbl)a.lw=Math.ceil(measure.measureText(a.lbl.textContent).width)+22;}};labelWidths();
+// ---- part names for the selected system inside a facility ----
+{const pw=partLabelWanted;partLabelWanted=function(id){const a=A[id];if(FACV.includes(a.v)&&hlKey&&hlMember(id))return true;return pw(id);};}
+// ---- line art inside facilities ----
+const LA=(function(){const INK=new THREE.LineBasicMaterial({color:'#24323d'}),GREY=new THREE.LineBasicMaterial({color:'#a9b7c2',transparent:true,opacity:.75});
+  const PAPER=new THREE.Color('#f7f4ec');let sig='';
+  function edges(m){if(m.userData.edge!==undefined)return m.userData.edge;if(m.isInstancedMesh||!m.geometry||!m.geometry.attributes||!m.geometry.attributes.position||m.geometry.attributes.position.count>6000){m.userData.edge=null;return null;}
+    const e=new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry,30),INK);e.raycast=()=>{};e.userData.la=true;e.renderOrder=2;m.add(e);m.userData.edge=e;return e;}
+  function wash(m,on){if(!m.material||Array.isArray(m.material))return;if(on){if(!m.userData.laW){const c=m.material.clone();if(c.color)c.color.lerp(PAPER,.8);if(c.emissive)c.emissive.set(0);c.transparent=false;m.userData.laW=c;m.userData.laO=m.material;}if(m.material!==m.userData.laW){m.userData.laO=m.material;m.material=m.userData.laW;}}
+    else if(m.userData.laW&&m.material===m.userData.laW)m.material=m.userData.laO;}
+  function apply(){const fac=FACV.includes(view)&&document.body.dataset.view!=='alaska',s=view+'|'+hlKey+'|'+fac;if(s===sig)return;sig=s;
+    for(const m of pickables){const id=m.userData.id,a=A[id];if(!a)continue;const inF=fac&&a.v===view;
+      if(!inF){if(m.userData.edge)m.userData.edge.visible=false;wash(m,false);continue;}
+      const e=edges(m),mem=!hlKey||hlMember(id);if(e){e.visible=true;e.material=mem?INK:GREY;}wash(m,!!hlKey&&!mem);}}
+  function tick(){requestAnimationFrame(tick);apply();}requestAnimationFrame(tick);return{reset:()=>{sig='';}};})();
 
 
 capTxt=function(){return '';};navRender();
